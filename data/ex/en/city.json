@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"The wedding will be at {city hall} on Saturday."},{"t":"You can get the form at {city hall}."},{"t":"The mayor works in the {town hall}."}],
+"word-fire-station": [{"t":"The {fire station} is next to the school."},{"t":"The children visited the {fire station} on Friday."},{"t":"There is a new {fire station} in our town."}],
+"word-mosque": [{"t":"They go to the {mosque} every Friday."},{"t":"The {mosque} has a beautiful blue dome."},{"t":"We visited a famous {mosque} on our trip."}],
+"word-synagogue": [{"t":"The {synagogue} is on the corner of Main Street."},{"t":"His family goes to the {synagogue} on Saturdays."},{"t":"The old {synagogue} was built in 1890."}],
+"word-cathedral": [{"t":"The {cathedral} is the oldest building in the city."},{"t":"We climbed the tower of the {cathedral}."},{"t":"Hundreds of people came to the {cathedral} for the concert."}],
+"word-laundromat": [{"t":"My washing machine is broken, so I go to the {laundromat}."},{"t":"There is a {laundromat} across the street."},{"t":"Bring some coins to the {laundromat}."}],
+"word-art-gallery": [{"t":"We spent the afternoon at the {art gallery}."},{"t":"The {art gallery} is free on Sundays."},{"t":"She has a painting in a small {art gallery} downtown."}],
+"word-nightclub": [{"t":"They danced all night at the {nightclub}."},{"t":"You must be over twenty-one to enter the {nightclub}."},{"t":"The {nightclub} opens at ten and closes at four."}],
+"word-old-town": [{"t":"We walked through the {old town} after lunch."},{"t":"The {old town} has narrow streets and small cafés."},{"t":"Many tourists stay in the {old town}."}],
+"word-skyscraper": [{"t":"You can see the whole city from that {skyscraper}."},{"t":"They are building a new {skyscraper} downtown."},{"t":"My office is on the fortieth floor of a {skyscraper}."}],
+"word-apartment-block": [{"t":"We live in a big {apartment building} near the park."},{"t":"The {apartment building} has an elevator."},{"t":"There are twenty families in this {apartment block}."}],
+"word-avenue": [{"t":"The hotel is on a wide {avenue} with many trees."},{"t":"Turn left at the end of the {avenue}."},{"t":"Fifth {Avenue} is a famous street in New York."}],
+"word-pedestrian-zone": [{"t":"The city center is a {pedestrian zone}."},{"t":"Cars cannot enter the {pedestrian zone}."},{"t":"We had coffee in the {pedestrian zone}."}],
+"word-bench": [{"t":"Let's sit on that {bench} for a minute."},{"t":"An old man was reading on a {bench} in the park."},{"t":"The {bench} was wet from the rain."}],
+"word-fountain": [{"t":"Children were playing near the {fountain}."},{"t":"There is a beautiful {fountain} in the main square."},{"t":"We threw coins into the {fountain}."}],
+"word-opposite": [{"t":"The bank is {opposite} the post office."},{"t":"She sat {opposite} me at the table."},{"t":"There is a bakery {opposite} our house."}],
+"word-city-block": [{"t":"The store is two {blocks} from here."},{"t":"We walked around the {block} to get some air."},{"t":"The bus stop is on the next {block}."}],
+"word-tourist-information": [{"t":"Let's ask at the {tourist information} for a map."},{"t":"The {tourist information} is next to the train station."},{"t":"The {tourist information} closes at five."}],
+"word-landmark": [{"t":"The tower is the most famous {landmark} in the city."},{"t":"Use that big church as a {landmark}."},{"t":"We took photos of every {landmark} on the tour."}],
+"word-outskirts": [{"t":"They live on the {outskirts} of the city."},{"t":"The airport is on the {outskirts} of town."},{"t":"Houses are cheaper on the {outskirts}."}]
+}

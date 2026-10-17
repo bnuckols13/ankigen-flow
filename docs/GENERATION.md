@@ -55,6 +55,7 @@ How `auto` works:
 
 Anything still failing after that is listed for an interactive fix. You can stop `auto` at any time. Then:
 - `node tools/gen/batch.mjs status` shows open batches;
+- `auto --batch <id>` resumes waiting on a submitted batch (then collects and retries as usual);
 - `collect <id>` and `retry <id>` resume by hand.
 
 Manifests live in `tmp/batches/`; outputs in `tmp/` (gitignored).

@@ -117,7 +117,7 @@ export function loadRegistry(metaDir) {
   const languages = readJson(path.join(metaDir, 'languages.json')).data;
   const modulesTree = readJson(path.join(metaDir, 'modules.json')).data;
   const fields = readJson(path.join(metaDir, 'fields.json')).data;
-  const labels = readJson(path.join(metaDir, 'labels.json')).data;
+  const { data: labels, text: labelsText } = readJson(path.join(metaDir, 'labels.json'));
   const retiredFile = path.join(metaDir, 'retired.json');
   const retired = exists(retiredFile) ? readJson(retiredFile).data.retired || {} : {};
   const modules = [];
@@ -125,7 +125,12 @@ export function loadRegistry(metaDir) {
     for (const m of cat.modules) modules.push({ ...m, category: cat.id });
   }
   const moduleById = new Map(modules.map((m, i) => [m.id, { ...m, order: i }]));
-  return { languages, modulesTree, modules, moduleById, fields, labels, retired };
+  return { languages, modulesTree, modules, moduleById, fields, labels, labelsText, retired };
+}
+
+/** Language order for meta/labels.json: the registry's active, then deferred languages. */
+export function labelOrder(reg) {
+  return [...reg.languages.active, ...reg.languages.deferred];
 }
 
 // ---------- Concepts ----------
@@ -262,16 +267,19 @@ export function lint(opts) {
   const p = paths(opts.dataDir, opts.metaDir);
   const issues = [];
   const reg = loadRegistry(p.meta);
-  lintRegistry(reg, issues);
+  lintRegistry(reg, issues, opts);
   const concepts = loadConcepts(p, reg, issues);
   lintConcepts(p, reg, concepts, issues, opts);
   const layers = lintLayers(p, reg, concepts, issues, opts);
   return { issues, ctx: { p, reg, concepts, layers } };
 }
 
-function lintRegistry(reg, issues) {
+function lintRegistry(reg, issues, opts) {
   const L = reg.languages;
   const F = 'meta/languages.json';
+  if (opts.checkCanonical !== false && stringifyLabels(reg.labels, labelOrder(reg)) !== reg.labelsText) {
+    issues.push(err('meta/labels.json', null, 'not in canonical format (run lint with --fix)'));
+  }
   for (const code of [...L.active, ...L.deferred]) {
     if (!L.languages[code]) issues.push(err(F, code, 'listed but not defined'));
   }

@@ -1,0 +1,19 @@
+{
+  "name": "ankigen",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Free Anki vocabulary decks in 15 languages, generated entirely in the browser.",
+  "homepage": "https://xenohunter.github.io/ankigen/",
+  "repository": "github:xenohunter/ankigen",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.mjs\"",
+    "lint:data": "node tools/lint-data.mjs",
+    "lint:fixtures": "node tools/lint-data.mjs --data tests/fixtures/data --meta data/meta",
+    "bundle": "node tools/bundle.mjs"
+  }
+}

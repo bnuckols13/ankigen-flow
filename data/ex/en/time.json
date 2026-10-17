@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"Tomorrow is my {day off}."},{"t":"She takes a {day off} every Wednesday."},{"t":"I need a {day off} to rest."}],
+"word-working-day": [{"t":"Monday is the first {working day} of the week."},{"t":"A normal {working day} is eight hours."},{"t":"The package will arrive in three {working days}."}],
+"word-on-time": [{"t":"The train arrived {on time}."},{"t":"Please try to be {on time} for the meeting."},{"t":"She always pays her rent {on time}."}],
+"word-date-of-birth": [{"t":"Please write your {date of birth} on the form."},{"t":"My {date of birth} is May 4, 1990."},{"t":"They asked me for my name and {date of birth}."}],
+"word-time-zone": [{"t":"New York is in a different {time zone} than Los Angeles."},{"t":"I had trouble sleeping after changing {time zones}."},{"t":"What {time zone} are you in?"}],
+"word-o-clock": [{"t":"The movie starts at eight {o'clock}."},{"t":"It is exactly five {o'clock} now."},{"t":"We have lunch at twelve {o'clock}."}],
+"word-lifetime": [{"t":"He saw many changes in his {lifetime}."},{"t":"This is the trip of a {lifetime}."},{"t":"She spent her whole {lifetime} in the same town."}]
+}

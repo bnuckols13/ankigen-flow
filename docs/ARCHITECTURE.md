@@ -8,7 +8,7 @@ Audience: the engineer (Claude Code) implementing the web app. Product decisions
 - **No build step for the app.** Native ES modules, vanilla JS with JSDoc types (`// @ts-check` on every module), plain CSS. Dependencies are **vendored** with pinned versions in `vendor/` (no CDN at runtime):
   - `sql.js` (WASM SQLite)
   - `fflate` (zip)
-- **Deterministic** deck content: same data version and same config give the same notes, fields, IDs and order. Only export timestamps vary (see §7.4).
+- **Deterministic** deck content: same data version and same config give the same notes, fields, GUIDs and order. Only export timestamps vary, including the note and card ids derived from them (see §7.2, §7.4).
 - **Fast**: initial page JS ≤ 60 KB gzipped (excluding sql.js, which is lazy-loaded). First paint < 1 s on a mid-range phone.
 - Works offline once loaded (nice-to-have: a tiny service worker caching app + fetched data).
 
@@ -147,10 +147,12 @@ Produces the HTML for each Anki field, given the note and config. All text is es
 | ID | Formula |
 |---|---|
 | note GUID | base91(first 8 bytes of SHA-256(`ankigen/v1/note|{learn}|{know}|{key}`)). `know` is `=` in same-language mode. |
-| note id / card id | 53-bit integers from SHA-256(`…/note-id|…`) and (`…/card|{guid}|{ord}`), mapped into [1e12, 2^53) |
-| deck id | from `ankigen/v1/deck|{learn}|{know}` |
-| model id | from `ankigen/v1/model|{learn}|{know}` |
+| deck id | first 8 bytes of SHA-256(`ankigen/v1/deck|{learn}|{know}`), mapped into [1e12, 2^53) |
+| model id | first 8 bytes of SHA-256(`ankigen/v1/model|{learn}|{know}`), mapped into [1e12, 2^53) |
+| note id | export time in ms + note position (0-based): `T + i` |
+| card id | export time in ms + 2 × note position + ord: `T + 2i + ord` |
 
+- Why two kinds: Anki matches an imported note to an existing one by **GUID**, cards by (note, template), and the note type by its **id**. Those are hashed so they never change. Anki does not match on note or card ids: when an incoming id is already taken, the importer shifts it by 999 until it is free. But it reads them as creation times: the browser's "Created" column is the note id, a card's "Added" date and the `added:N` search use the card id. So they follow Anki's own convention (export-time milliseconds), and ids within one file are consecutive, never colliding.
 - `csum` = first 8 hex digits of SHA-1 of the stripped sort field, as an int (Anki's rule).
 - Changing a prefix version (`v1`) is a breaking change for every user. Don't do it.
 
@@ -165,7 +167,7 @@ Produces the HTML for each Anki field, given the note and config. All text is es
 
 ### 7.4 Timestamps and updates
 
-Anki's importer updates an existing note (same GUID) only when the incoming note is **newer** by its `mod` time. So `mod` and the collection timestamps use the export time (seconds). Everything else is deterministic.
+Anki's importer updates an existing note (same GUID) only when the incoming note is **newer** by its `mod` time. So `mod` and the collection timestamps use the export time (seconds), and note and card ids the export time in milliseconds (§7.2). Everything else is deterministic.
 
 Tests pass a fixed clock: in test mode two exports of the same config must be byte-identical. In normal mode, compare everything except the timestamp columns.
 

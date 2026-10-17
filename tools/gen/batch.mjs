@@ -11,6 +11,7 @@
 //   node tools/gen/batch.mjs sync     <unit> [--repairs 2]    one unit via the plain Messages API, with repair rounds
 //   node tools/gen/batch.mjs auto     [filters] [--max N]  submit → wait → collect → retry (≤ 2 rounds);
 //                                                          concepts/review units run one by one via sync
+//   node tools/gen/batch.mjs auto --batch <batchId>        resume waiting on a submitted batch (no new submit)
 // filters:  --type concepts|labels|lang|review|ipa   --lang <code>   --module <id>
 // options:  --model claude-sonnet-5-5  --max-tokens 64000  --price-in 1 --price-out 5 (USD per M tokens, batch)
 //           --data <dir> (default data)
@@ -162,7 +163,8 @@ async function api(method, url, body) {
   }
 }
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// A function declaration, not a const: commands run from the top-level await above, before later consts initialize.
+function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 
 // ---------------------------------------------------------------- manifests
 
@@ -414,7 +416,7 @@ async function auto() {
       if (!ok) return;
     }
   }
-  let m = await submit();
+  let m = opt('--batch') ? loadManifest(opt('--batch')) : await submit();
   for (let round = 0; m && round <= 2; round++) {
     for (;;) {
       await sleep(60000);

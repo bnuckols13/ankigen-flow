@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"city hall","alt":["town hall"],"def":"the building where the local government of a city works"},
+"word-fire-station": {"w":"fire station","def":"a building where firefighters and their trucks wait for emergencies"},
+"word-mosque": {"w":"mosque","def":"a building where Muslims go to pray"},
+"word-synagogue": {"w":"synagogue","def":"a building where Jewish people go to pray and study"},
+"word-cathedral": {"w":"cathedral","def":"a very large and important church led by a bishop"},
+"word-laundromat": {"w":"laundromat","def":"a public place where you wash and dry your clothes in coin-operated machines"},
+"word-art-gallery": {"w":"art gallery","alt":["gallery"],"def":"a building or room where paintings and other art are shown to the public"},
+"word-nightclub": {"w":"nightclub","alt":["club"],"def":"a place that stays open late at night, with music, dancing and drinks"},
+"word-old-town": {"w":"old town","def":"the oldest part of a city, often with historic buildings and narrow streets"},
+"word-skyscraper": {"w":"skyscraper","def":"a very tall building with many floors"},
+"word-apartment-block": {"w":"apartment building","alt":["apartment block"],"def":"a large building divided into many homes on different floors"},
+"word-avenue": {"w":"avenue","alt":["boulevard"],"def":"a wide street in a city, often with trees along the sides"},
+"word-pedestrian-zone": {"w":"pedestrian zone","alt":["pedestrian area"],"def":"a part of a city where cars cannot go, so people can walk safely"},
+"word-bench": {"w":"bench","def":"a long seat for several people, usually outdoors"},
+"word-fountain": {"w":"fountain","def":"a structure that shoots water into the air, usually in a park or square"},
+"word-opposite": {"w":"opposite","alt":["across from"],"def":"on the other side of something, facing it"},
+"word-city-block": {"w":"block","alt":["city block"],"def":"an area of buildings with streets on all four sides"},
+"word-tourist-information": {"w":"tourist information","alt":["visitor center"],"def":"an office where visitors can get maps and advice about a place"},
+"word-landmark": {"w":"landmark","def":"a building or place that is famous and easy to recognize"},
+"word-outskirts": {"w":"outskirts","def":"the parts of a city that are farthest from the center"}
+}

@@ -4,8 +4,9 @@
 //   node tools/lint-data.mjs [--data data] [--meta data/meta] [--fix] [--report] [--warnings] [--filter ru/] [--json]
 // Exit code 1 if any error remains.
 
+import fs from 'node:fs';
 import path from 'node:path';
-import { lint, coverage, moduleSizes, readJson, writeCanonical, listDirs, listJson, LAYERS, paths, loadRegistry, loadConcepts } from './lib/data.mjs';
+import { lint, coverage, moduleSizes, readJson, writeCanonical, stringifyLabels, labelOrder, listDirs, listJson, LAYERS, paths, loadRegistry, loadConcepts } from './lib/data.mjs';
 
 const args = process.argv.slice(2);
 const opt = (name, def) => {
@@ -38,6 +39,7 @@ process.exit(errors.length ? 1 : 0);
 function fix(dataDir, metaDir) {
   const p = paths(dataDir, metaDir);
   const reg = loadRegistry(p.meta);
+  fs.writeFileSync(path.join(p.meta, 'labels.json'), stringifyLabels(reg.labels, labelOrder(reg)), 'utf8');
   const concepts = loadConcepts(p, reg, []);
   for (const [mod, parsed] of Object.entries(concepts.files)) {
     writeCanonical(p.conceptFile(mod), parsed.data, Object.keys(parsed.data));

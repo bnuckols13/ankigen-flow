@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"a full day of 24 hours, day and night together"},
+"word-day-off": {"w":"day off","alt":["free day"],"forms":{"pl":"days off"},"def":"a day when you do not have to go to work or school"},
+"word-working-day": {"w":"working day","alt":["workday","weekday"],"def":"a day on which most people go to work, usually Monday to Friday"},
+"word-on-time": {"w":"on time","alt":["punctually"],"def":"at the right moment, not late and not early"},
+"word-date-of-birth": {"w":"date of birth","alt":["birth date","birthdate"],"def":"the day, month and year when a person was born"},
+"word-time-zone": {"w":"time zone","def":"an area of the world where all clocks show the same hour"},
+"word-o-clock": {"w":"o'clock","def":"a word used after a number to say the exact hour on a clock"},
+"word-lifetime": {"w":"lifetime","alt":["life span"],"def":"the whole period during which a person lives"}
+}
