@@ -5,7 +5,7 @@
 "word-plastic-bag": {"w":"plastic bag","alt":["grocery bag"],"def":"a thin container made of synthetic material for carrying groceries"},
 "word-price-tag": {"w":"price tag","alt":["price label"],"def":"a small label that shows how much something costs"},
 "word-refund": {"w":"refund","def":"money that a store gives back to you when you bring something back"},
-"word-return-goods": {"w":"return","hint":"a purchase","alt":["take back"],"forms":{},"def":"to bring something you bought back to a store, usually to get your money back"},
+"word-return-goods": {"w":"return","hint":"a purchase","alt":["take back"],"def":"to bring something you bought back to a store, usually to get your money back"},
 "word-warranty": {"w":"warranty","alt":["guarantee"],"def":"a written promise that a company will repair or replace a product if it breaks"},
 "word-fitting-room": {"w":"fitting room","alt":["dressing room"],"def":"a small room in a store where you try on clothes"},
 "word-shop-window": {"w":"store window","alt":["shop window"],"def":"the large glass front of a business where goods are shown to people outside"},
