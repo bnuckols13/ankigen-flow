@@ -13,12 +13,12 @@
 
 import { strToU8, zipSync } from '../../vendor/fflate.js';
 import { SITE_URL } from '../config.js';
-import { SAME, encodeHash } from '../state.js';
+import { encodeHash } from '../state.js';
 import { escapeAttr, escapeHtml, stripHtml } from '../text/html.js';
 import { noteTags } from './deck.js';
 import { cardId, deckId, fieldChecksum, modelId, noteGuid, noteId } from './ids.js';
 import { cardOrds, renderTemplate } from './render.js';
-import { pairLabel } from './templates.js';
+import { deckName } from './names.js';
 
 /** @typedef {import('./deck.js').DeckNote} DeckNote */
 /** @typedef {import('./templates.js').NoteType} NoteType */
@@ -72,17 +72,6 @@ const DEFAULT_DCONF = {
 
 /** Zip entry time: 1980-01-01 00:00, the DOS epoch. fflate reads it in local time, so this is the same everywhere. */
 const ZIP_TIME = new Date(1980, 0, 1);
-
-/** @param {Config} config @param {any} meta */
-export function deckName(config, meta) {
-  return `AnkiGen::${pairLabel(meta, config)}`;
-}
-
-/** ankigen-<learn>-<know>-<data version>.apkg; same-language decks repeat the language. @param {Config} config @param {any} meta */
-export function apkgFileName(config, meta) {
-  const know = config.know === SAME ? config.learn : config.know;
-  return `ankigen-${config.learn}-${know}-${meta.version.data}.apkg`;
-}
 
 /** Shown on the deck's overview screen; the link reopens this exact configuration. @param {Config} config @param {any} meta */
 function deckDescription(config, meta) {

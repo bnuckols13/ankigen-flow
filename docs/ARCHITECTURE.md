@@ -29,13 +29,16 @@ src/
   deck/fields.js        per-note field HTML (word, translation, forms, examples, …)
   deck/templates.js     Anki templates + CSS for a config
   deck/render.js        mini Anki template renderer for preview/sidebar
+  deck/names.js         note type, deck and file names of a language pair
   deck/ids.js           stable hashes → GUIDs, note/card/deck/model IDs, Anki checksum
   deck/apkg.js          SQLite collection (schema 11) + zip → .apkg bytes (sql.js passed in)
   text/translit.js      ru → Latin, sr Cyrillic ↔ Latin, hy → Latin (BGN/PCGN), el → Latin (ELOT 743)
   text/normalize.js     search folding (case, diacritics, stress, scripts)
   text/furigana.js      Anki-style furigana → <ruby>; target braces → <b>
+  ui/app.js             the page's model: config store, loaded data, derived deck view (no DOM)
   ui/steps.js ui/languages.js ui/modules.js ui/fields.js ui/options.js
   ui/preview.js ui/sidebar.js ui/feedback.js ui/popover.js ui/download.js
+  ui/dom.js ui/format.js ui/copy.js   element helper, counts, UI text not in data/meta
   feedback/client.js    rate limits, garbage heuristics, POST to Apps Script
 vendor/                 sql-wasm.js, sql-wasm.wasm, fflate.js (ES module) + fflate.d.ts (pinned; versions,
                         checksums and LICENSE files in vendor/README.md)
@@ -54,7 +57,7 @@ Keep pure logic (`state`, `deck/*`, `text/*`, `feedback/client` minus `fetch`) f
 - **Production:** CI runs `tools/bundle.mjs` to produce `bundles/concepts.json`, `bundles/<code>.json` (all layers of one language merged: `{lang:{}, ex:{}, ipa:{}, etym:{}}`) and `bundles/meta.json`. File names include the data version for cache busting: `bundles/<version>/…`. A learning/known pair is then two or three requests, which gzip well (~0.5–1 MB per language over the wire).
 - **Development / fallback:** if bundles are missing, load `data/meta/*`, all `data/concepts/*.json`, then per-module layer files for the two languages, in parallel. A missing file means empty; never throw.
 - Loader API (async, cached): `getMeta()`, `getConcepts()`, `getLanguage(code)` → `{lang: Map, ex: Map, ipa: Map, etym: Map}`.
-- Start prefetching a language when the user hovers or clicks its chip. Show a small inline spinner in the step while loading.
+- Start prefetching a language when the user hovers or focuses its chip. Show a short inline status in the step while loading ("Loading Japanese words…"), and a message if loading fails.
 
 ## 4. State and URL
 
@@ -64,7 +67,9 @@ Keep pure logic (`state`, `deck/*`, `text/*`, `feedback/client` minus `fetch`) f
   - Only non-default field placements are written.
   - Unknown keys are ignored. Invalid values fall back to defaults, keeping the rest.
 - The config is also saved to localStorage (try/catch). On load, the precedence is hash > localStorage > defaults.
-- `state.js` exposes `subscribe()`. The UI re-renders the dependent parts (counter, preview, sidebar) on each change, debounced by about 100 ms.
+- `state.js` exposes `subscribe()`. `ui/app.js` derives the deck view (notes, counts, sample) on each change; it takes a few milliseconds even for the full English deck.
+  - Controls update at once.
+  - The preview frames re-render debounced (about 60 ms), and the URL hash and localStorage are written after about 150 ms.
 
 ## 5. Deck selection (`deck/select.js`)
 
@@ -198,7 +203,7 @@ What re-importing does was checked against the Anki backend itself: the `anki` P
   - Without "Merge note types": notes are not updated, and Anki adds an unused copy "AnkiGen … +" of the incoming note type.
   - With it: notes update, but the user's extra field is emptied.
 
-The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`, along with the user-facing text for the "?" next to Download.
+The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-facing summary of all this is the "?" next to Download (`UPDATE_HELP` in `src/ui/copy.js`).
 
 ## 8. Preview and sidebar
 
@@ -207,7 +212,10 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`, along with th
   - `{{type:F}}` renders as a disabled input.
 
   What the user sees is what Anki shows.
-- **Preview:** each face is rendered in a sandboxed `<iframe srcdoc>` with `card.css`. Light/dark follows the page.
+- **Preview:** each face is rendered in an `<iframe srcdoc sandbox="allow-same-origin">` with `card.css`, inside `<body class="card">` like Anki's reviewer. Light/dark follows the page (`nightMode` on the body).
+  - No scripts run in the frames. `allow-same-origin` only lets the page size each frame to its content and read selections in it.
+  - The sample is the richest of the first 40 notes, and it is kept while it stays in the deck. "Another word" picks a random note.
+  - Wide screens show front and back side by side in a sticky panel; phones open the preview as a sheet from a bar at the bottom.
 - **Sidebar:** a virtualized list with fixed row height, rendering only visible rows. Each row shows the front word plus a short back summary; clicking expands it to the full rendered card and makes it the preview sample.
 - **Search index:** built lazily, one folded string per note (word, alt, translation, romanization, readings, Serbian in both scripts).
 - **Mobile:** the sidebar is a drawer opened from a button with the note count.

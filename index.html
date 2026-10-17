@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AnkiGen — free Anki vocabulary decks in 15 languages</title>
+<meta name="description" content="Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151618" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="css/app.css">
+<script type="module" src="src/main.js"></script>
+</head>
+<body>
+<header class="site-head">
+  <h1 class="logo">AnkiGen</h1>
+  <p class="lede">Free Anki vocabulary decks in 15 languages, built right in your browser.</p>
+  <p class="draft" id="draft">The vocabulary is machine-drafted and only partly reviewed. Feedback is very welcome.</p>
+</header>
+
+<div class="layout">
+  <main class="steps" id="steps">
+    <section class="step" id="step-learn" aria-labelledby="h-learn">
+      <h2 id="h-learn"><span class="step-num" aria-hidden="true">1</span>I’m learning</h2>
+      <div class="chips" id="learn-chips" role="radiogroup" aria-labelledby="h-learn"></div>
+      <p class="status" id="learn-status" role="status"></p>
+    </section>
+
+    <section class="step" id="step-know" aria-labelledby="h-know" hidden>
+      <h2 id="h-know"><span class="step-num" aria-hidden="true">2</span>I speak</h2>
+      <div class="chips" id="know-chips" role="radiogroup" aria-labelledby="h-know"></div>
+      <p class="status" id="know-status" role="status"></p>
+    </section>
+
+    <section class="step" id="step-modules" aria-labelledby="h-modules" hidden>
+      <h2 id="h-modules"><span class="step-num" aria-hidden="true">3</span>Modules</h2>
+      <p class="step-note" id="modules-summary"></p>
+      <div class="tree" id="modules"></div>
+    </section>
+
+    <section class="step" id="step-fields" aria-labelledby="h-fields" hidden>
+      <h2 id="h-fields"><span class="step-num" aria-hidden="true">4</span>Card fields</h2>
+      <p class="step-note">Choose what each card shows, and on which side. The preview follows along.</p>
+      <div class="ftable" id="fields"></div>
+    </section>
+
+    <section class="step" id="step-options" aria-labelledby="h-options" hidden>
+      <h2 id="h-options"><span class="step-num" aria-hidden="true">5</span>Card options</h2>
+      <div class="opts" id="options"></div>
+    </section>
+
+    <section class="step" id="step-download" aria-labelledby="h-download" hidden>
+      <h2 id="h-download"><span class="step-num" aria-hidden="true">6</span>Download</h2>
+      <div id="download"></div>
+    </section>
+  </main>
+
+  <aside class="preview-panel" id="preview-panel" aria-labelledby="h-preview">
+    <h2 id="h-preview">Preview</h2>
+    <div class="pv"></div>
+  </aside>
+</div>
+
+<div class="mobile-bar" id="mobile-bar" hidden>
+  <span class="mobile-count" id="mobile-count"></span>
+  <button type="button" class="button" id="open-preview">Preview cards</button>
+</div>
+
+<dialog class="preview-dialog" id="preview-dialog" aria-labelledby="h-sheet">
+  <div class="sheet-head">
+    <h2 id="h-sheet">Preview</h2>
+    <button type="button" class="button" id="close-preview">Close</button>
+  </div>
+  <div class="pv"></div>
+</dialog>
+
+<noscript><p class="noscript">AnkiGen builds Anki decks right in your browser, so it needs JavaScript. Please enable it and reload the page.</p></noscript>
+</body>
+</html>

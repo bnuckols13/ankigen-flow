@@ -1,6 +1,6 @@
 # Anki import checklist (manual)
 
-A hands-on test of the `.apkg` files on Anki desktop and AnkiDroid. It takes about 40 minutes. At the end there is the user-facing text for the "?" next to Download, to confirm against what you see.
+A hands-on test of the `.apkg` files on Anki desktop and AnkiDroid. It takes about 40 minutes. The page's "?" next to Download explains updating a deck; its text is `UPDATE_HELP` in `src/ui/copy.js`, so check it against what you see.
 
 ## Already verified automatically
 
@@ -193,14 +193,3 @@ Repeat a shorter round on the phone, in a fresh state (or after deleting the des
 | "N notes were not imported, because their note type has changed, and 'Merge note types' was not enabled." | The AnkiGen note type was edited (fields added, removed or renamed) | Re-import with "Merge note types" ticked |
 | A second "AnkiGen::…" deck appears | The original deck was renamed or moved | Move the new cards into your deck |
 | "The front of this card is blank." | Reverse cards were turned off | Tools → Empty Cards |
-
-## Text for the "?" next to Download
-
-> **Updating your deck**
->
-> Changed fields, added modules, or want newer data? Download again and import the new file into Anki (File → Import) with the default options. Anki updates your existing notes and their layout, adds new words to the same deck, and keeps your review progress.
->
-> - Your own edits and tags on AnkiGen notes are replaced by the new version. Flags, suspended cards and progress are kept.
-> - New cards go to the deck with exactly this name: AnkiGen::… If you renamed or moved it, they appear in a new deck with the original name, and you can move them.
-> - If you changed the fields of the AnkiGen note type, tick "Merge note types" when importing, or Anki can't update these notes.
-> - Turned reverse cards off? Anki keeps the old ones as blank cards. Remove them with Tools → Empty Cards.

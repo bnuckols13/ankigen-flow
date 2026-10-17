@@ -171,3 +171,26 @@ export function moduleCounts(config, meta, concepts, learnData, knowData) {
   }
   return counts;
 }
+
+/**
+ * Per module, the included concepts that only some languages have (`only`: country-specific institutions,
+ * untranslatable words), with the first one's word as an example. The module tree explains them.
+ * @param {Config} config @param {any} meta @param {Concepts} concepts @param {LanguageData} learnData @param {LanguageData} knowData
+ * @returns {Map<string, { count: number, example: string }>}
+ */
+export function localTerms(config, meta, concepts, learnData, knowData) {
+  /** @type {Map<string, { count: number, example: string }>} */
+  const terms = new Map();
+  if (!config.learn || !config.know) return terms;
+  const all = meta.modules.categories.flatMap((/** @type {any} */ cat) => cat.modules.map((/** @type {any} */ m) => m.id));
+  const included = inclusion({ ...config, modules: all }, meta, concepts, learnData, knowData);
+  for (const id of concepts.order) {
+    const c = concepts.byId.get(id)?.c;
+    if (!c?.only || !included(id)) continue;
+    for (const m of c.mods) {
+      const t = terms.get(m);
+      terms.set(m, { count: (t?.count ?? 0) + 1, example: t?.example ?? learnData.lang.get(id)?.w });
+    }
+  }
+  return terms;
+}

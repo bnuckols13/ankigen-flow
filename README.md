@@ -4,7 +4,13 @@ Free Anki vocabulary decks in 15 languages, generated entirely in your browser.
 
 Repo: https://github.com/xenohunter/ankigen · Site: https://xenohunter.github.io/ankigen/
 
-**Status:** specification and data pipeline ready; app not built yet; vocabulary being generated.
+**Status:** the app runs locally (the page, the preview and the `.apkg` download); vocabulary is being generated (English is done).
+
+Run it locally from the repo root, then open http://localhost:8000/ (add `?data=tests/fixtures/data` for the small test set in en/ru/ja/de/sr):
+
+```
+python3 -m http.server 8000      # or: npx serve -l 8000
+```
 
 | Path | What |
 |---|---|
@@ -18,6 +24,7 @@ Repo: https://github.com/xenohunter/ankigen · Site: https://xenohunter.github.i
 | `data/meta/` | languages, modules, field table, card labels |
 | `data/` | vocabulary (filled by generation units) |
 | `tools/lint-data.mjs` | data validator (`--report`, `--fix`, `--warnings`) |
+| `tools/apkg.mjs` | builds an `.apkg` in Node from a config hash (testing imports) |
 | `tools/gen/` | generation planner, unit merger, API batch runner, prompts |
 | `tests/fixtures/data/` | golden sample dataset |
 

@@ -2,7 +2,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { strFromU8, unzipSync } from '../vendor/fflate.js';
-import { apkgFileName, buildApkg, deckName } from '../src/deck/apkg.js';
+import { buildApkg } from '../src/deck/apkg.js';
+import { apkgFileName, deckName } from '../src/deck/names.js';
 import { FIELD_NAMES } from '../src/deck/fields.js';
 import { cardId, deckId, fieldChecksum, modelId, noteGuid, noteId } from '../src/deck/ids.js';
 import { stripHtml } from '../src/text/html.js';

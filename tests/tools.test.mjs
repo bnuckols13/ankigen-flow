@@ -6,7 +6,8 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { labelGroups, stringifyLabels } from '../tools/lib/data.mjs';
 import { loadSqlJs } from '../tools/lib/sqljs.mjs';
-import { apkgFileName, buildApkg } from '../src/deck/apkg.js';
+import { buildApkg } from '../src/deck/apkg.js';
+import { apkgFileName } from '../src/deck/names.js';
 import { fixtureDeck } from './helpers/fixtures.mjs';
 
 test('labels.json layout: one line per key group, languages in registry order', () => {
