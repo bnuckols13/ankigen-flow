@@ -275,7 +275,7 @@
 "word-convenient": {"pos":"adj","mods":["core-3"],"note":"suitable, easy to use"},
 "word-exciting": {"pos":"adj","mods":["core-3"],"note":"causing excitement"},
 "word-excited": {"pos":"adj","mods":["core-3","feelings"],"note":"very happy and eager"},
-"word-worried": {"pos":"adj","mods":["core-3","feelings"],"note":"anxious"},
+"word-worried": {"pos":"adj","mods":["core-3","feelings"],"note":"concerned that something bad may happen to someone or something"},
 "word-scared": {"pos":"adj","mods":["core-3","feelings"],"emoji":"😨","note":"frightened"},
 "word-upset": {"pos":"adj","mods":["core-3","feelings"],"note":"unhappy, disappointed"},
 "word-satisfied": {"pos":"adj","mods":["core-3","feelings"],"note":"pleased with what one has"},

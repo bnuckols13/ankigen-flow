@@ -294,7 +294,7 @@
 "word-stupid": {"pos":"adj","mods":["core-2","feelings"],"ant":["word-smart"],"note":"not intelligent"},
 "word-polite": {"pos":"adj","mods":["core-2","feelings"],"ant":["word-rude"],"note":"having good manners"},
 "word-rude": {"pos":"adj","mods":["core-2","feelings"],"ant":["word-polite"],"note":"not polite"},
-"word-nervous": {"pos":"adj","mods":["core-2","feelings"],"note":"anxious"},
+"word-nervous": {"pos":"adj","mods":["core-2","feelings"],"note":"tense and uneasy before or during an event (exam, interview, performance)"},
 "word-surprised": {"pos":"adj","mods":["core-2","feelings"],"emoji":"😮","note":"feeling surprise"},
 "word-bored": {"pos":"adj","mods":["core-2","feelings"],"rel":["word-boring"],"note":"feeling boredom"},
 "word-dangerous": {"pos":"adj","mods":["core-2","emergencies"],"ant":["word-safe"],"note":"likely to cause harm"},
