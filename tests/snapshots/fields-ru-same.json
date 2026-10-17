@@ -1,0 +1,213 @@
+[
+ {
+  "key": "word-water",
+  "ids": [
+   "word-water"
+  ],
+  "fields": {
+   "Word": "вода́ <span class=\"g\" lang=\"ru-RU\">ж. р.</span>",
+   "TypeTarget": "вода",
+   "Translation": "Прозрачная жидкость без цвета и запаха, из которой состоят реки, озёра и моря.",
+   "Romanization": "vodá",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">род. п.</span> воды́</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">мн. ч.</span> во́ды</span>",
+   "IPA": "/vɐˈda/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ru-RU\">Можно мне стакан <b class=\"t\">воды́</b>, пожалуйста?</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ru-RU\"><b class=\"t\">Вода́</b> в этом озере очень холодная.</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ru-RU\">Растениям нужны <b class=\"t\">вода́</b> и солнечный свет.</div></div>",
+   "Related": "<span class=\"rel\">→ пить</span>",
+   "Etymology": "ine-pro:*wódr̥ → sla-pro:*voda → ru:вода",
+   "POS": "сущ.",
+   "Emoji": "💧",
+   "ConceptId": "word-water",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-eat",
+  "ids": [
+   "word-eat"
+  ],
+  "fields": {
+   "Word": "есть",
+   "TypeTarget": "есть",
+   "Translation": "Принимать пищу: класть в рот, жевать и глотать.",
+   "Romanization": "yest",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">вид</span> несов. вид</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">пара</span> съесть</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">я</span> ем</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">ты</span> ешь</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">они</span> едя́т</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">прош.</span> ел, е́ла</span>",
+   "Examples": "<div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ru-RU\">Мы <b class=\"t\">еди́м</b> три раза в день.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ru-RU\">Я не <b class=\"t\">ем</b> мясо.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ru-RU\">Что ты <b class=\"t\">ел</b> на завтрак?</div></div>",
+   "Related": "<span class=\"rel\">→ пить</span>",
+   "POS": "гл.",
+   "Emoji": "🍽️",
+   "ConceptId": "word-eat",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-drink",
+  "ids": [
+   "word-drink"
+  ],
+  "fields": {
+   "Word": "пить",
+   "TypeTarget": "пить",
+   "Translation": "Глотать жидкость, утоляя жажду.",
+   "Romanization": "pit",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">вид</span> несов. вид</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">пара</span> вы́пить</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">я</span> пью</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">ты</span> пьёшь</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">они</span> пьют</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">прош.</span> пил, пила́</span>",
+   "Related": "<span class=\"rel\">→ есть, вода́</span>",
+   "POS": "гл.",
+   "ConceptId": "word-drink",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-big",
+  "ids": [
+   "word-big"
+  ],
+  "fields": {
+   "Word": "большо́й",
+   "TypeTarget": "большой",
+   "Translation": "Значительный по размеру, объёму или количеству.",
+   "Romanization": "bolshóy",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">сравн.</span> бо́льше</span>",
+   "Related": "<span class=\"ant\">↔ ма́ленький</span>",
+   "POS": "прил.",
+   "ConceptId": "word-big",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-small",
+  "ids": [
+   "word-small"
+  ],
+  "fields": {
+   "Word": "ма́ленький",
+   "TypeTarget": "маленький",
+   "Translation": "Незначительный по размеру, росту или количеству.",
+   "Romanization": "málenkiy",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">сравн.</span> ме́ньше</span>",
+   "Related": "<span class=\"syn\">= небольшо́й</span> · <span class=\"ant\">↔ большо́й</span>",
+   "POS": "прил.",
+   "ConceptId": "word-small",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-brother-older",
+  "ids": [
+   "word-brother-older",
+   "word-brother-younger"
+  ],
+  "fields": {
+   "Word": "брат <span class=\"g\" lang=\"ru-RU\">м. р.</span>",
+   "TypeTarget": "брат",
+   "Translation": "<span class=\"n\">1.</span> Сын тех же родителей, родившийся раньше тебя.<br><span class=\"n\">2.</span> Сын тех же родителей, родившийся позже тебя.",
+   "Romanization": "brat",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">род. п.</span> бра́та</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">мн. ч.</span> бра́тья</span>",
+   "Related": "<span class=\"syn\">= ста́рший брат, мла́дший брат</span>",
+   "POS": "сущ.",
+   "ConceptId": "word-brother-older, word-brother-younger",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-hand",
+  "ids": [
+   "word-hand",
+   "word-arm"
+  ],
+  "fields": {
+   "Word": "рука́ <span class=\"g\" lang=\"ru-RU\">ж. р.</span>",
+   "TypeTarget": "рука",
+   "Translation": "<span class=\"n\">1.</span> Кисть: часть тела от запястья до кончиков пальцев.<br><span class=\"n\">2.</span> Верхняя конечность человека от плеча до кисти.",
+   "Romanization": "ruká",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">род. п.</span> руки́</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">мн. ч.</span> ру́ки</span>",
+   "IPA": "/rʊˈka/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ru-RU\">Помой <b class=\"t\">ру́ки</b> перед ужином.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ru-RU\">Он сломал <b class=\"t\">ру́ку</b>, играя в футбол.</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ru-RU\">Она держала чашку в левой <b class=\"t\">руке́</b>.</div></div>",
+   "POS": "сущ.",
+   "Emoji": "✋ 💪",
+   "ConceptId": "word-hand, word-arm",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-monday",
+  "ids": [
+   "word-monday"
+  ],
+  "fields": {
+   "Word": "понеде́льник <span class=\"g\" lang=\"ru-RU\">м. р.</span>",
+   "TypeTarget": "понедельник",
+   "Translation": "Первый день рабочей недели, после воскресенья.",
+   "Romanization": "ponedélnik",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">род. п.</span> понеде́льника</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">мн. ч.</span> понеде́льники</span>",
+   "POS": "сущ.",
+   "ConceptId": "word-monday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-tuesday",
+  "ids": [
+   "word-tuesday"
+  ],
+  "fields": {
+   "Word": "вто́рник <span class=\"g\" lang=\"ru-RU\">м. р.</span>",
+   "TypeTarget": "вторник",
+   "Translation": "День недели после понедельника и перед средой.",
+   "Romanization": "vtórnik",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">род. п.</span> вто́рника</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">мн. ч.</span> вто́рники</span>",
+   "POS": "сущ.",
+   "ConceptId": "word-tuesday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "phrase-thank-you",
+  "ids": [
+   "phrase-thank-you"
+  ],
+  "fields": {
+   "Word": "спаси́бо",
+   "TypeTarget": "спасибо",
+   "Translation": "Слово, которым благодарят за помощь, подарок или услугу.",
+   "Romanization": "spasíbo",
+   "Examples": "<div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ru-RU\"><b class=\"t\">Спаси́бо</b> за помощь!</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ru-RU\">Большое <b class=\"t\">спаси́бо</b> за подарок.</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ru-RU\"><b class=\"t\">Спаси́бо</b>, до завтра!</div></div>",
+   "POS": "фраза",
+   "Emoji": "🙏",
+   "ConceptId": "phrase-thank-you",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-day-24h",
+  "ids": [
+   "word-day-24h"
+  ],
+  "fields": {
+   "Word": "су́тки <span class=\"g\" lang=\"ru-RU\">только мн.</span>",
+   "TypeTarget": "сутки",
+   "Translation": "Промежуток времени в 24 часа: день и ночь вместе.",
+   "Romanization": "sútki",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">род. п.</span> су́ток</span>",
+   "POS": "сущ.",
+   "ConceptId": "word-day-24h",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-residence-permit",
+  "ids": [
+   "word-residence-permit"
+  ],
+  "fields": {
+   "Word": "вид на жи́тельство <span class=\"g\" lang=\"ru-RU\">м. р.</span>",
+   "TypeTarget": "вид на жительство",
+   "Translation": "Документ, дающий иностранцу право долго жить в стране.",
+   "Romanization": "vid na zhítelstvo",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">род. п.</span> ви́да на жи́тельство</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">мн. ч.</span> ви́ды на жи́тельство</span>",
+   "Related": "<span class=\"syn\">= ВНЖ</span>",
+   "POS": "сущ.",
+   "ConceptId": "word-residence-permit",
+   "Reverse": "1"
+  }
+ }
+]

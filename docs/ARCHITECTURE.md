@@ -78,10 +78,10 @@ Input: config, meta, concepts, learning-language data `A`, known-language data `
 4. **Adult module:** profanity concepts are included only when that module is selected (they may be cross-listed, so check membership, not the primary module).
 5. **Order:** canonical concept order (module tree order of the primary module, then position in its file).
 6. **Merge sets** (learning side), computed once per learning language over the **whole inventory**, not the selection:
-   - Group word entries by `(w, g, art, pos, JSON(forms))`.
+   - Group word entries by `(w, g, art, pos, read, JSON(forms))`. The reading keeps Japanese/Chinese homographs apart (今日 きょう / こんにち).
    - Each group of 2 or more is one merge set, keyed by its first member in canonical order.
    - A selected concept that belongs to a merge set produces one note per set. That note contains the selected members only, and its key and GUID come from the set's first member, even if that member is not selected. Its position is the earliest selected member.
-7. **Disambiguators:** entries with the same `w` that are *not* merged (different POS or forms) get `disambig`. That is the POS label in the known language if the POS differs, otherwise the first form value that differs, shown on the front as a small caption.
+7. **Disambiguators:** entries with the same `w` that are *not* merged (different POS, gender, reading or forms) get `disambig`, computed over the whole inventory like the merge sets. That is the POS label in the known language if the POS differs, otherwise the gender (article or mark) if that differs (der/die See), otherwise the first form value that differs, otherwise the learned-language hint; shown on the front as a small caption.
 
 ## 6. Field rendering (`deck/fields.js`)
 
@@ -92,11 +92,12 @@ Produces the HTML for each Anki field, given the note and config. All text is es
   - stress marks stripped if off;
   - Serbian converted to the chosen script;
   - `WordRuby` = `<ruby>` for Japanese (`w` + `read`; readings are per word, so place the ruby over the whole kanji part and keep okurigana outside when `w` ends in kana that also ends `read`);
-  - `TypeTarget` = plain main form with no hint, no stress, de/nl article included.
+  - `TypeTarget` = plain main form with no hint, no stress, de/nl article included while the Gender / article row is on.
 - **Translation:**
   - format: `w (hint) · alt1, alt2`;
   - glosses are rendered in italics;
   - merged notes join members with `; ` in canonical order;
+  - Russian is shown without stress marks (a learner aid; the Stress row is about the learned word);
   - same-language mode: `def` (merged notes numbered `1. … 2. …`);
   - if the known language is Serbian, convert it to the chosen script.
 - **Forms:**
@@ -110,14 +111,14 @@ Produces the HTML for each Anki field, given the note and config. All text is es
   - ru, hy, el: rule-based `text/translit.js` (tables + context rules, unit-tested);
   - sr "other script": the opposite script.
 - **Examples:**
-  - first N slots;
+  - first N slots; merged notes take them round-robin from their members (slot 1 of each, then slot 2, …);
   - target `{…}` → `<b class="t">…</b>`;
   - Japanese furigana rendered as `<ruby>` when Reading ≠ Off, otherwise stripped to plain kanji;
   - Chinese: a pinyin line under the sentence when Romanization ≠ Off;
   - Russian stress follows the toggle;
   - if Example translations are on and both slot k entries are parallel, the known-language sentence goes underneath (braces removed, furigana stripped).
 - **Related:**
-  - antonyms `↔ w` and related `→ w`, rendered in the learned language;
+  - synonyms of the learned word `= alt`, antonyms `↔ w` and related `→ w`, rendered in the learned language;
   - concepts the learned language doesn't have are skipped.
 - **Etymology, IPA, Measure word, Hanja, POS, Register, Emoji, ConceptId:** straight from the data, with captions from `labels.json`.
 

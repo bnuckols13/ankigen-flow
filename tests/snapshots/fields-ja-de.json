@@ -1,0 +1,251 @@
+[
+ {
+  "key": "word-water",
+  "ids": [
+   "word-water"
+  ],
+  "fields": {
+   "Word": "水",
+   "WordRuby": "<ruby>水<rt>みず</rt></ruby>",
+   "TypeTarget": "水",
+   "Translation": "Wasser",
+   "Romanization": "mizu",
+   "Examples": "<div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ja-JP\"><b class=\"t\"><ruby>水<rt>みず</rt></ruby></b>を<ruby>一杯<rt>いっぱい</rt></ruby>ください。</div><div class=\"ex-tr\" lang=\"de-DE\">Kann ich bitte ein Glas Wasser haben?</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ja-JP\">この<ruby>湖<rt>みずうみ</rt></ruby>の<b class=\"t\"><ruby>水<rt>みず</rt></ruby></b>はとても<ruby>冷<rt>つめ</rt></ruby>たいです。</div><div class=\"ex-tr\" lang=\"de-DE\">Das Wasser in diesem See ist sehr kalt.</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>植物<rt>しょくぶつ</rt></ruby>には<b class=\"t\"><ruby>水<rt>みず</rt></ruby></b>と<ruby>日光<rt>にっこう</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>です。</div><div class=\"ex-tr\" lang=\"de-DE\">Pflanzen brauchen Wasser und Sonnenlicht.</div></div>",
+   "Related": "<span class=\"rel\">→ 飲む</span>",
+   "POS": "Subst.",
+   "Emoji": "💧",
+   "ConceptId": "word-water",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-eat",
+  "ids": [
+   "word-eat"
+  ],
+  "fields": {
+   "Word": "食べる",
+   "WordRuby": "<ruby>食<rt>た</rt></ruby>べる",
+   "TypeTarget": "食べる",
+   "Translation": "essen",
+   "Romanization": "taberu",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Klasse</span> Ichidan (ru-Verb)</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">höflich</span> 食べます</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Te-Form</span> 食べて</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Verneinung</span> 食べない</span>",
+   "Examples": "<div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>私<rt>わたし</rt></ruby>たちはいつも<ruby>七時<rt>しちじ</rt></ruby>に<ruby>夕飯<rt>ゆうはん</rt></ruby>を<b class=\"t\"><ruby>食<rt>た</rt></ruby>べます</b>。</div><div class=\"ex-tr\" lang=\"de-DE\">Wir essen normalerweise um sieben zu Abend.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>私<rt>わたし</rt></ruby>は<ruby>肉<rt>にく</rt></ruby>を<b class=\"t\"><ruby>食<rt>た</rt></ruby>べません</b>。</div><div class=\"ex-tr\" lang=\"de-DE\">Ich esse kein Fleisch.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>朝<rt>あさ</rt></ruby>ごはんに<ruby>何<rt>なに</rt></ruby>を<b class=\"t\"><ruby>食<rt>た</rt></ruby>べました</b>か。</div><div class=\"ex-tr\" lang=\"de-DE\">Was hast du zum Frühstück gegessen?</div></div>",
+   "Related": "<span class=\"rel\">→ 飲む</span>",
+   "POS": "Verb",
+   "Emoji": "🍽️",
+   "ConceptId": "word-eat",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-drink",
+  "ids": [
+   "word-drink"
+  ],
+  "fields": {
+   "Word": "飲む",
+   "WordRuby": "<ruby>飲<rt>の</rt></ruby>む",
+   "TypeTarget": "飲む",
+   "Translation": "trinken",
+   "Romanization": "nomu",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Klasse</span> Godan (u-Verb)</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">höflich</span> 飲みます</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Te-Form</span> 飲んで</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Verneinung</span> 飲まない</span>",
+   "Related": "<span class=\"rel\">→ 食べる, 水</span>",
+   "POS": "Verb",
+   "ConceptId": "word-drink",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-big",
+  "ids": [
+   "word-big"
+  ],
+  "fields": {
+   "Word": "大きい",
+   "WordRuby": "<ruby>大<rt>おお</rt></ruby>きい",
+   "TypeTarget": "大きい",
+   "Translation": "groß",
+   "Romanization": "ōkii",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Typ</span> i-Adjektiv</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Verneinung</span> 大きくない</span>",
+   "Related": "<span class=\"ant\">↔ 小さい</span>",
+   "POS": "Adj.",
+   "ConceptId": "word-big",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-small",
+  "ids": [
+   "word-small"
+  ],
+  "fields": {
+   "Word": "小さい",
+   "WordRuby": "<ruby>小<rt>ちい</rt></ruby>さい",
+   "TypeTarget": "小さい",
+   "Translation": "klein",
+   "Romanization": "chiisai",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Typ</span> i-Adjektiv</span> · <span class=\"f\"><span class=\"fk\" lang=\"de-DE\">Verneinung</span> 小さくない</span>",
+   "Related": "<span class=\"ant\">↔ 大きい</span>",
+   "POS": "Adj.",
+   "ConceptId": "word-small",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-brother-older",
+  "ids": [
+   "word-brother-older"
+  ],
+  "fields": {
+   "Word": "兄",
+   "WordRuby": "<ruby>兄<rt>あに</rt></ruby>",
+   "TypeTarget": "兄",
+   "Translation": "Bruder <span class=\"hint\">(älter)</span> <span class=\"alt\">· großer Bruder</span>",
+   "Romanization": "ani",
+   "Related": "<span class=\"syn\">= お兄さん</span> · <span class=\"rel\">→ 弟</span>",
+   "POS": "Subst.",
+   "ConceptId": "word-brother-older",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-brother-younger",
+  "ids": [
+   "word-brother-younger"
+  ],
+  "fields": {
+   "Word": "弟",
+   "WordRuby": "<ruby>弟<rt>おとうと</rt></ruby>",
+   "TypeTarget": "弟",
+   "Translation": "Bruder <span class=\"hint\">(jünger)</span> <span class=\"alt\">· kleiner Bruder</span>",
+   "Romanization": "otōto",
+   "Related": "<span class=\"rel\">→ 兄</span>",
+   "POS": "Subst.",
+   "ConceptId": "word-brother-younger",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-hand",
+  "ids": [
+   "word-hand"
+  ],
+  "fields": {
+   "Word": "手",
+   "WordRuby": "<ruby>手<rt>て</rt></ruby>",
+   "TypeTarget": "手",
+   "Translation": "Hand",
+   "Romanization": "te",
+   "Examples": "<div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>夕食<rt>ゆうしょく</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<b class=\"t\"><ruby>手<rt>て</rt></ruby></b>を<ruby>洗<rt>あら</rt></ruby>って。</div><div class=\"ex-tr\" lang=\"de-DE\">Wasch dir vor dem Essen die Hände.</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>左<rt>ひだり</rt></ruby>の<b class=\"t\"><ruby>手<rt>て</rt></ruby></b>にカップを<ruby>持<rt>も</rt></ruby>っていた。</div><div class=\"ex-tr\" lang=\"de-DE\">Sie hielt eine Tasse in der linken Hand.</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>質問<rt>しつもん</rt></ruby>があれば<b class=\"t\"><ruby>手<rt>て</rt></ruby></b>を<ruby>挙<rt>あ</rt></ruby>げてください。</div><div class=\"ex-tr\" lang=\"de-DE\">Heb die Hand, wenn du eine Frage hast.</div></div>",
+   "Related": "<span class=\"rel\">→ 腕</span>",
+   "POS": "Subst.",
+   "Emoji": "✋",
+   "ConceptId": "word-hand",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-arm",
+  "ids": [
+   "word-arm"
+  ],
+  "fields": {
+   "Word": "腕",
+   "WordRuby": "<ruby>腕<rt>うで</rt></ruby>",
+   "TypeTarget": "腕",
+   "Translation": "Arm",
+   "Romanization": "ude",
+   "Examples": "<div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼<rt>かれ</rt></ruby>はサッカーで<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>を<ruby>折<rt>お</rt></ruby>った。</div><div class=\"ex-tr\" lang=\"de-DE\">Er hat sich beim Fußballspielen den Arm gebrochen.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>赤<rt>あか</rt></ruby>ちゃんを<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>に<ruby>抱<rt>だ</rt></ruby>いていた。</div><div class=\"ex-tr\" lang=\"de-DE\">Sie trug das Baby auf dem Arm.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>泳<rt>およ</rt></ruby>いだので<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>が<ruby>疲<rt>つか</rt></ruby>れた。</div><div class=\"ex-tr\" lang=\"de-DE\">Meine Arme sind vom Schwimmen müde.</div></div>",
+   "Related": "<span class=\"rel\">→ 手</span>",
+   "Etymology": "腕 = ⺼ + 宛",
+   "POS": "Subst.",
+   "Emoji": "💪",
+   "ConceptId": "word-arm",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-monday",
+  "ids": [
+   "word-monday"
+  ],
+  "fields": {
+   "Word": "月曜日",
+   "WordRuby": "<ruby>月曜日<rt>げつようび</rt></ruby>",
+   "TypeTarget": "月曜日",
+   "Translation": "Montag",
+   "Romanization": "getsuyōbi",
+   "POS": "Subst.",
+   "ConceptId": "word-monday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-tuesday",
+  "ids": [
+   "word-tuesday"
+  ],
+  "fields": {
+   "Word": "火曜日",
+   "WordRuby": "<ruby>火曜日<rt>かようび</rt></ruby>",
+   "TypeTarget": "火曜日",
+   "Translation": "Dienstag",
+   "Romanization": "kayōbi",
+   "POS": "Subst.",
+   "ConceptId": "word-tuesday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "phrase-thank-you",
+  "ids": [
+   "phrase-thank-you"
+  ],
+  "fields": {
+   "Word": "ありがとう",
+   "WordRuby": "ありがとう",
+   "TypeTarget": "ありがとう",
+   "Translation": "danke <span class=\"alt\">· vielen Dank</span>",
+   "Romanization": "arigatō",
+   "Examples": "<div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>手伝<rt>てつだ</rt></ruby>ってくれて<b class=\"t\">ありがとう</b>！</div><div class=\"ex-tr\" lang=\"de-DE\">Danke für deine Hilfe!</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ja-JP\">プレゼント、<ruby>本当<rt>ほんとう</rt></ruby>に<b class=\"t\">ありがとうございます</b>。</div><div class=\"ex-tr\" lang=\"de-DE\">Vielen Dank für das Geschenk.</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ja-JP\"><b class=\"t\">ありがとう</b>、また<ruby>明日<rt>あした</rt></ruby>！</div><div class=\"ex-tr\" lang=\"de-DE\">Danke, bis morgen!</div></div>",
+   "Related": "<span class=\"syn\">= ありがとうございます</span>",
+   "POS": "Wendung",
+   "Emoji": "🙏",
+   "ConceptId": "phrase-thank-you",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-residence-permit",
+  "ids": [
+   "word-residence-permit"
+  ],
+  "fields": {
+   "Word": "在留許可",
+   "WordRuby": "<ruby>在留許可<rt>ざいりゅうきょか</rt></ruby>",
+   "TypeTarget": "在留許可",
+   "Translation": "Aufenthaltstitel <span class=\"alt\">· Aufenthaltserlaubnis</span>",
+   "Romanization": "zairyū kyoka",
+   "POS": "Subst.",
+   "ConceptId": "word-residence-permit",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-residence-record-jp",
+  "ids": [
+   "word-residence-record-jp"
+  ],
+  "fields": {
+   "Word": "住民票",
+   "WordRuby": "<ruby>住民票<rt>じゅうみんひょう</rt></ruby>",
+   "TypeTarget": "住民票",
+   "Translation": "<i class=\"gl\">Jūminhyō: japanische Meldebescheinigung über den Wohnsitz</i>",
+   "Romanization": "jūminhyō",
+   "POS": "Subst.",
+   "ConceptId": "word-residence-record-jp",
+   "Reverse": "1"
+  }
+ }
+]

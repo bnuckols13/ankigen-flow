@@ -4,8 +4,17 @@
 /** @type {Record<string, string>} */
 const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
-/** @param {string} text */
+/**
+ * Text content: only & < > need escaping. Quotes stay as typed, so Anki's search finds "aujourd'hui"
+ * in the raw field.
+ * @param {string} text
+ */
 export function escapeHtml(text) {
+  return text.replace(/[&<>]/g, (c) => ESCAPES[c]);
+}
+
+/** Attribute values (always double-quoted by us). @param {string} text */
+export function escapeAttr(text) {
   return text.replace(/[&<>"']/g, (c) => ESCAPES[c]);
 }
 

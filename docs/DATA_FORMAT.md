@@ -123,10 +123,10 @@ No prose and no glosses, so it never needs translating. Lint warns on anything t
 ## 9. Collisions and merging (semantics the app implements)
 
 - **Known-language side** (translations shown to the user): entries that share `w` must carry distinct hints. These are shown as "brother (older)".
-- **Learning-language side** (the word being learned): concepts whose entries in the learned language are identical (same `w`, `g`, `art`, `forms`, POS) are **merged into one note**, e.g. "рука́ → hand; arm".
+- **Learning-language side** (the word being learned): concepts whose entries in the learned language are identical (same `w`, `g`, `art`, `read`, `forms`, POS) are **merged into one note**, e.g. "рука́ → hand; arm".
   - The merge set is computed over the *whole* inventory of that language, not the current selection.
   - The note GUID derives from the first member in canonical order, so adding modules later never changes a note's identity.
-  - If entries share `w` but differ in POS or forms, they stay separate notes. The front then shows a disambiguator: the POS label, or else the first differing form.
+  - If entries share `w` but differ in POS, gender, reading or forms, they stay separate notes. The front then shows a disambiguator: the POS label, or else the gender, or else the first differing form, or else the hint.
 
 ## 10. Languages, variants, deferred languages
 

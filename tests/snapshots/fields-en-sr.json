@@ -1,0 +1,197 @@
+[
+ {
+  "key": "word-water",
+  "ids": [
+   "word-water"
+  ],
+  "fields": {
+   "Word": "water",
+   "TypeTarget": "water",
+   "Translation": "voda",
+   "IPA": "/ˈwɔtɚ/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"en-US\">Can I have a glass of <b class=\"t\">water</b>, please?</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Mogu li da dobijem čašu vode, molim vas?</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"en-US\">The <b class=\"t\">water</b> in this lake is very cold.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Voda u ovom jezeru je veoma hladna.</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"en-US\">Plants need <b class=\"t\">water</b> and sunlight.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Biljkama su potrebni voda i sunčeva svetlost.</div></div>",
+   "Related": "<span class=\"rel\">→ drink</span>",
+   "Etymology": "gem-pro:*watōr → ang:wæter → en:water",
+   "POS": "noun",
+   "Emoji": "💧",
+   "ConceptId": "word-water",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-eat",
+  "ids": [
+   "word-eat"
+  ],
+  "fields": {
+   "Word": "eat",
+   "TypeTarget": "eat",
+   "Translation": "jesti",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"sr-Latn-RS\">past</span> ate</span> · <span class=\"f\"><span class=\"fk\" lang=\"sr-Latn-RS\">perfect</span> eaten</span>",
+   "Examples": "<div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"en-US\">We usually <b class=\"t\">eat</b> dinner at seven.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"en-US\">I don't <b class=\"t\">eat</b> meat.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Ja ne jedem meso.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"en-US\">What did you <b class=\"t\">eat</b> for breakfast?</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Šta si jeo za doručak?</div></div>",
+   "Related": "<span class=\"rel\">→ drink</span>",
+   "POS": "verb",
+   "Emoji": "🍽️",
+   "ConceptId": "word-eat",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-drink",
+  "ids": [
+   "word-drink"
+  ],
+  "fields": {
+   "Word": "drink",
+   "TypeTarget": "drink",
+   "Translation": "piti",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"sr-Latn-RS\">past</span> drank</span> · <span class=\"f\"><span class=\"fk\" lang=\"sr-Latn-RS\">perfect</span> drunk</span>",
+   "Related": "<span class=\"rel\">→ eat, water</span>",
+   "POS": "verb",
+   "ConceptId": "word-drink",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-big",
+  "ids": [
+   "word-big"
+  ],
+  "fields": {
+   "Word": "big",
+   "TypeTarget": "big",
+   "Translation": "veliki",
+   "Related": "<span class=\"syn\">= large</span> · <span class=\"ant\">↔ small</span>",
+   "POS": "adjective",
+   "ConceptId": "word-big",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-small",
+  "ids": [
+   "word-small"
+  ],
+  "fields": {
+   "Word": "small",
+   "TypeTarget": "small",
+   "Translation": "mali",
+   "Related": "<span class=\"syn\">= little</span> · <span class=\"ant\">↔ big</span>",
+   "POS": "adjective",
+   "ConceptId": "word-small",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-brother-older",
+  "ids": [
+   "word-brother-older",
+   "word-brother-younger"
+  ],
+  "fields": {
+   "Word": "brother",
+   "TypeTarget": "brother",
+   "Translation": "<span class=\"m\">brat <span class=\"hint\">(stariji)</span> <span class=\"alt\">· stariji brat</span>;</span> <span class=\"m\">brat <span class=\"hint\">(mlađi)</span> <span class=\"alt\">· mlađi brat</span></span>",
+   "Related": "<span class=\"syn\">= big brother, little brother</span>",
+   "POS": "noun",
+   "ConceptId": "word-brother-older, word-brother-younger",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-hand",
+  "ids": [
+   "word-hand"
+  ],
+  "fields": {
+   "Word": "hand",
+   "TypeTarget": "hand",
+   "Translation": "ruka <span class=\"hint\">(šaka)</span> <span class=\"alt\">· šaka</span>",
+   "IPA": "/hænd/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"en-US\">Wash your <b class=\"t\">hands</b> before dinner.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Operi ruke pre večere.</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"en-US\">She was holding a cup in her left <b class=\"t\">hand</b>.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Držala je šolju u levoj ruci.</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"en-US\">Raise your <b class=\"t\">hand</b> if you have a question.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Podigni ruku ako imaš pitanje.</div></div>",
+   "Related": "<span class=\"rel\">→ arm</span>",
+   "Etymology": "gem-pro:*handuz → ang:hand → en:hand",
+   "POS": "noun",
+   "Emoji": "✋",
+   "ConceptId": "word-hand",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-arm",
+  "ids": [
+   "word-arm"
+  ],
+  "fields": {
+   "Word": "arm",
+   "TypeTarget": "arm",
+   "Translation": "ruka <span class=\"hint\">(od ramena)</span>",
+   "IPA": "/ɑɹm/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"en-US\">He broke his <b class=\"t\">arm</b> playing football.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Slomio je ruku igrajući fudbal.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"en-US\">She carried the baby in her <b class=\"t\">arms</b>.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Nosila je bebu na rukama.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"en-US\">My <b class=\"t\">arms</b> are tired from swimming.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Od plivanja su me zabolele ruke.</div></div>",
+   "Related": "<span class=\"rel\">→ hand</span>",
+   "POS": "noun",
+   "Emoji": "💪",
+   "ConceptId": "word-arm",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-monday",
+  "ids": [
+   "word-monday"
+  ],
+  "fields": {
+   "Word": "Monday",
+   "TypeTarget": "Monday",
+   "Translation": "ponedeljak",
+   "POS": "noun",
+   "ConceptId": "word-monday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-tuesday",
+  "ids": [
+   "word-tuesday"
+  ],
+  "fields": {
+   "Word": "Tuesday",
+   "TypeTarget": "Tuesday",
+   "Translation": "utorak",
+   "POS": "noun",
+   "ConceptId": "word-tuesday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "phrase-thank-you",
+  "ids": [
+   "phrase-thank-you"
+  ],
+  "fields": {
+   "Word": "thank you",
+   "TypeTarget": "thank you",
+   "Translation": "hvala <span class=\"alt\">· hvala vam, hvala ti</span>",
+   "Examples": "<div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"en-US\"><b class=\"t\">Thank you</b> for your help!</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Hvala na pomoći!</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"en-US\"><b class=\"t\">Thank you</b> very much for the gift.</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Hvala vam mnogo na poklonu.</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"en-US\"><b class=\"t\">Thanks</b>, see you tomorrow!</div><div class=\"ex-tr\" lang=\"sr-Latn-RS\">Hvala, vidimo se sutra!</div></div>",
+   "Related": "<span class=\"syn\">= thanks</span>",
+   "POS": "phrase",
+   "Emoji": "🙏",
+   "ConceptId": "phrase-thank-you",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-residence-permit",
+  "ids": [
+   "word-residence-permit"
+  ],
+  "fields": {
+   "Word": "residence permit",
+   "TypeTarget": "residence permit",
+   "Translation": "dozvola za boravak <span class=\"alt\">· boravišna dozvola</span>",
+   "POS": "noun",
+   "ConceptId": "word-residence-permit",
+   "Reverse": "1"
+  }
+ }
+]

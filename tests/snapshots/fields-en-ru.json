@@ -1,0 +1,197 @@
+[
+ {
+  "key": "word-water",
+  "ids": [
+   "word-water"
+  ],
+  "fields": {
+   "Word": "water",
+   "TypeTarget": "water",
+   "Translation": "вода",
+   "IPA": "/ˈwɔtɚ/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"en-US\">Can I have a glass of <b class=\"t\">water</b>, please?</div><div class=\"ex-tr\" lang=\"ru-RU\">Можно мне стакан воды, пожалуйста?</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"en-US\">The <b class=\"t\">water</b> in this lake is very cold.</div><div class=\"ex-tr\" lang=\"ru-RU\">Вода в этом озере очень холодная.</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"en-US\">Plants need <b class=\"t\">water</b> and sunlight.</div><div class=\"ex-tr\" lang=\"ru-RU\">Растениям нужны вода и солнечный свет.</div></div>",
+   "Related": "<span class=\"rel\">→ drink</span>",
+   "Etymology": "gem-pro:*watōr → ang:wæter → en:water",
+   "POS": "сущ.",
+   "Emoji": "💧",
+   "ConceptId": "word-water",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-eat",
+  "ids": [
+   "word-eat"
+  ],
+  "fields": {
+   "Word": "eat",
+   "TypeTarget": "eat",
+   "Translation": "есть",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">прош.</span> ate</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">перфект</span> eaten</span>",
+   "Examples": "<div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"en-US\">We usually <b class=\"t\">eat</b> dinner at seven.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"en-US\">I don't <b class=\"t\">eat</b> meat.</div><div class=\"ex-tr\" lang=\"ru-RU\">Я не ем мясо.</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"en-US\">What did you <b class=\"t\">eat</b> for breakfast?</div><div class=\"ex-tr\" lang=\"ru-RU\">Что ты ел на завтрак?</div></div>",
+   "Related": "<span class=\"rel\">→ drink</span>",
+   "POS": "гл.",
+   "Emoji": "🍽️",
+   "ConceptId": "word-eat",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-drink",
+  "ids": [
+   "word-drink"
+  ],
+  "fields": {
+   "Word": "drink",
+   "TypeTarget": "drink",
+   "Translation": "пить",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">прош.</span> drank</span> · <span class=\"f\"><span class=\"fk\" lang=\"ru-RU\">перфект</span> drunk</span>",
+   "Related": "<span class=\"rel\">→ eat, water</span>",
+   "POS": "гл.",
+   "ConceptId": "word-drink",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-big",
+  "ids": [
+   "word-big"
+  ],
+  "fields": {
+   "Word": "big",
+   "TypeTarget": "big",
+   "Translation": "большой",
+   "Related": "<span class=\"syn\">= large</span> · <span class=\"ant\">↔ small</span>",
+   "POS": "прил.",
+   "ConceptId": "word-big",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-small",
+  "ids": [
+   "word-small"
+  ],
+  "fields": {
+   "Word": "small",
+   "TypeTarget": "small",
+   "Translation": "маленький <span class=\"alt\">· небольшой</span>",
+   "Related": "<span class=\"syn\">= little</span> · <span class=\"ant\">↔ big</span>",
+   "POS": "прил.",
+   "ConceptId": "word-small",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-brother-older",
+  "ids": [
+   "word-brother-older",
+   "word-brother-younger"
+  ],
+  "fields": {
+   "Word": "brother",
+   "TypeTarget": "brother",
+   "Translation": "<span class=\"m\">брат <span class=\"hint\">(старший)</span> <span class=\"alt\">· старший брат</span>;</span> <span class=\"m\">брат <span class=\"hint\">(младший)</span> <span class=\"alt\">· младший брат</span></span>",
+   "Related": "<span class=\"syn\">= big brother, little brother</span>",
+   "POS": "сущ.",
+   "ConceptId": "word-brother-older, word-brother-younger",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-hand",
+  "ids": [
+   "word-hand"
+  ],
+  "fields": {
+   "Word": "hand",
+   "TypeTarget": "hand",
+   "Translation": "рука <span class=\"hint\">(кисть)</span>",
+   "IPA": "/hænd/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"en-US\">Wash your <b class=\"t\">hands</b> before dinner.</div><div class=\"ex-tr\" lang=\"ru-RU\">Помой руки перед ужином.</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"en-US\">She was holding a cup in her left <b class=\"t\">hand</b>.</div><div class=\"ex-tr\" lang=\"ru-RU\">Она держала чашку в левой руке.</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"en-US\">Raise your <b class=\"t\">hand</b> if you have a question.</div><div class=\"ex-tr\" lang=\"ru-RU\">Подними руку, если у тебя есть вопрос.</div></div>",
+   "Related": "<span class=\"rel\">→ arm</span>",
+   "Etymology": "gem-pro:*handuz → ang:hand → en:hand",
+   "POS": "сущ.",
+   "Emoji": "✋",
+   "ConceptId": "word-hand",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-arm",
+  "ids": [
+   "word-arm"
+  ],
+  "fields": {
+   "Word": "arm",
+   "TypeTarget": "arm",
+   "Translation": "рука <span class=\"hint\">(от плеча)</span>",
+   "IPA": "/ɑɹm/",
+   "Examples": "<div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"en-US\">He broke his <b class=\"t\">arm</b> playing football.</div><div class=\"ex-tr\" lang=\"ru-RU\">Он сломал руку, играя в футбол.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"en-US\">She carried the baby in her <b class=\"t\">arms</b>.</div><div class=\"ex-tr\" lang=\"ru-RU\">Она несла ребёнка на руках.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"en-US\">My <b class=\"t\">arms</b> are tired from swimming.</div><div class=\"ex-tr\" lang=\"ru-RU\">У меня устали руки от плавания.</div></div>",
+   "Related": "<span class=\"rel\">→ hand</span>",
+   "POS": "сущ.",
+   "Emoji": "💪",
+   "ConceptId": "word-arm",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-monday",
+  "ids": [
+   "word-monday"
+  ],
+  "fields": {
+   "Word": "Monday",
+   "TypeTarget": "Monday",
+   "Translation": "понедельник",
+   "POS": "сущ.",
+   "ConceptId": "word-monday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-tuesday",
+  "ids": [
+   "word-tuesday"
+  ],
+  "fields": {
+   "Word": "Tuesday",
+   "TypeTarget": "Tuesday",
+   "Translation": "вторник",
+   "POS": "сущ.",
+   "ConceptId": "word-tuesday",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "phrase-thank-you",
+  "ids": [
+   "phrase-thank-you"
+  ],
+  "fields": {
+   "Word": "thank you",
+   "TypeTarget": "thank you",
+   "Translation": "спасибо",
+   "Examples": "<div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"en-US\"><b class=\"t\">Thank you</b> for your help!</div><div class=\"ex-tr\" lang=\"ru-RU\">Спасибо за помощь!</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"en-US\"><b class=\"t\">Thank you</b> very much for the gift.</div><div class=\"ex-tr\" lang=\"ru-RU\">Большое спасибо за подарок.</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"en-US\"><b class=\"t\">Thanks</b>, see you tomorrow!</div><div class=\"ex-tr\" lang=\"ru-RU\">Спасибо, до завтра!</div></div>",
+   "Related": "<span class=\"syn\">= thanks</span>",
+   "POS": "фраза",
+   "Emoji": "🙏",
+   "ConceptId": "phrase-thank-you",
+   "Reverse": "1"
+  }
+ },
+ {
+  "key": "word-residence-permit",
+  "ids": [
+   "word-residence-permit"
+  ],
+  "fields": {
+   "Word": "residence permit",
+   "TypeTarget": "residence permit",
+   "Translation": "вид на жительство <span class=\"alt\">· ВНЖ</span>",
+   "POS": "сущ.",
+   "ConceptId": "word-residence-permit",
+   "Reverse": "1"
+  }
+ }
+]
