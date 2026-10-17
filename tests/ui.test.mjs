@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { shownSteps } from '../src/ui/steps.js';
 import { count, deckSize } from '../src/ui/format.js';
-import { localTermsHelp } from '../src/ui/copy.js';
+import { listStatus, localTermsHelp } from '../src/ui/copy.js';
 import { createApp } from '../src/ui/app.js';
 import { localTerms } from '../src/deck/select.js';
 import { buildDeck } from '../src/deck/deck.js';
@@ -41,6 +41,9 @@ test('counts read naturally', () => {
     '1 word here is specific to Japanese, such as 住民票. Other languages have no exact word for it, so your cards explain it in the language you speak.',
   );
   assert.match(localTermsHelp(12, 'green card', 'English'), /^12 words here are specific to English, such as green card\. .* for them, so your cards explain them/);
+  assert.equal(listStatus(1734, 1734, ''), '', 'the search box shows the total');
+  assert.equal(listStatus(12, 1734, ' water '), '12 of 1,734 words');
+  assert.equal(listStatus(0, 1734, 'xqz'), 'No words match “xqz”.');
 });
 
 test('the app loads what the config needs and derives the deck view', async () => {
@@ -65,9 +68,11 @@ test('the app loads what the config needs and derives the deck view', async () =
 test('the app keeps a chosen sample while it is in the deck, else falls back to the default', async () => {
   const app = await fixtureApp({ learn: 'ru', know: 'en', modules: ['core-1'] }, () => 0);
   const first = app.view().sample?.key;
+  const notes = app.view().notes;
   app.randomSample();
   const random = app.view().sample?.key;
   assert.ok(random && random !== first);
+  assert.equal(app.view().notes, notes, 'a new sample reuses the deck, so the word list keeps its search index');
   app.setSample('word-monday');
   assert.equal(app.view().sample?.key, 'word-monday');
   app.update(() => ({ modules: ['time'] })); // word-monday is in core-1 and time

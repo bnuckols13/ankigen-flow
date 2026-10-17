@@ -55,23 +55,38 @@
     </section>
   </main>
 
-  <aside class="preview-panel" id="preview-panel" aria-labelledby="h-preview">
-    <h2 id="h-preview">Preview</h2>
-    <div class="pv"></div>
-  </aside>
+  <div class="side">
+    <aside class="preview-panel" id="preview-panel" aria-labelledby="h-preview">
+      <h2 id="h-preview">Preview</h2>
+      <div class="pv"></div>
+    </aside>
+
+    <aside class="cards-panel" id="cards-panel" aria-labelledby="h-cards" hidden>
+      <h2 id="h-cards">Words</h2>
+      <div class="cl"></div>
+    </aside>
+  </div>
 </div>
 
 <div class="mobile-bar" id="mobile-bar" hidden>
-  <span class="mobile-count" id="mobile-count"></span>
-  <button type="button" class="button" id="open-preview">Preview cards</button>
+  <button type="button" class="bar-cards" id="open-cards" hidden><span id="mobile-count"></span></button>
+  <button type="button" class="button" id="open-preview">Preview</button>
 </div>
 
-<dialog class="preview-dialog" id="preview-dialog" aria-labelledby="h-sheet">
+<dialog class="sheet" id="preview-dialog" aria-labelledby="h-sheet">
   <div class="sheet-head">
     <h2 id="h-sheet">Preview</h2>
     <button type="button" class="button" id="close-preview">Close</button>
   </div>
   <div class="pv"></div>
+</dialog>
+
+<dialog class="sheet" id="cards-dialog" aria-labelledby="h-cards-sheet">
+  <div class="sheet-head">
+    <h2 id="h-cards-sheet">Words</h2>
+    <button type="button" class="button" id="close-cards">Close</button>
+  </div>
+  <div class="cl"></div>
 </dialog>
 
 <noscript><p class="noscript">AnkiGen builds Anki decks right in your browser, so it needs JavaScript. Please enable it and reload the page.</p></noscript>

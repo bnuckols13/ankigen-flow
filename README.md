@@ -4,7 +4,7 @@ Free Anki vocabulary decks in 15 languages, generated entirely in your browser.
 
 Repo: https://github.com/xenohunter/ankigen · Site: https://xenohunter.github.io/ankigen/
 
-**Status:** the app runs locally (the page, the preview and the `.apkg` download); vocabulary is being generated (English is done).
+**Status:** the app runs locally (the page, the preview, the word list, feedback reports and the `.apkg` download); vocabulary is being generated (English is done).
 
 Run it locally from the repo root, then open http://localhost:8000/ (add `?data=tests/fixtures/data` for the small test set in en/ru/ja/de/sr):
 

@@ -29,6 +29,7 @@ src/
   deck/fields.js        per-note field HTML (word, translation, forms, examples, …)
   deck/templates.js     Anki templates + CSS for a config
   deck/render.js        mini Anki template renderer for preview/sidebar
+  deck/search.js        the word list's search: what a note is found by, and ranking
   deck/names.js         note type, deck and file names of a language pair
   deck/ids.js           stable hashes → GUIDs, note/card/deck/model IDs, Anki checksum
   deck/apkg.js          SQLite collection (schema 11) + zip → .apkg bytes (sql.js passed in)
@@ -38,8 +39,9 @@ src/
   ui/app.js             the page's model: config store, loaded data, derived deck view (no DOM)
   ui/steps.js ui/languages.js ui/modules.js ui/fields.js ui/options.js
   ui/preview.js ui/sidebar.js ui/feedback.js ui/popover.js ui/download.js
-  ui/dom.js ui/format.js ui/copy.js   element helper, counts, UI text not in data/meta
-  feedback/client.js    rate limits, garbage heuristics, POST to Apps Script
+  ui/feedback-dialog.js the feedback dialog and its text (loaded on first use, with feedback/client.js)
+  ui/dom.js ui/format.js ui/copy.js   element helper, icons, counts, UI text not in data/meta
+  feedback/client.js    rate limits, garbage heuristics, payload, POST to Apps Script
 vendor/                 sql-wasm.js, sql-wasm.wasm, fflate.js (ES module) + fflate.d.ts (pinned; versions,
                         checksums and LICENSE files in vendor/README.md)
 data/                   vocabulary (see DATA_FORMAT.md)
@@ -216,9 +218,15 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - No scripts run in the frames. `allow-same-origin` only lets the page size each frame to its content and read selections in it.
   - The sample is the richest of the first 40 notes, and it is kept while it stays in the deck. "Another word" picks a random note.
   - Wide screens show front and back side by side in a sticky panel; phones open the preview as a sheet from a bar at the bottom.
-- **Sidebar:** a virtualized list with fixed row height, rendering only visible rows. Each row shows the front word plus a short back summary; clicking expands it to the full rendered card and makes it the preview sample.
-- **Search index:** built lazily, one folded string per note (word, alt, translation, romanization, readings, Serbian in both scripts).
-- **Mobile:** the sidebar is a drawer opened from a button with the note count.
+- **Word list (the sidebar, `ui/sidebar.js`):** a virtualized list with a fixed row height that renders only the rows in view (13 in the DOM for the 3,341-note English deck).
+  - Each row shows the word as the card does (article or gender mark, stress, script) and the translation or definition.
+  - Clicking a row makes it the preview sample; its flag button reports a problem with that note.
+  - Keyboard: the list is one tab stop (plus the focused row's flag); arrows, Page Up/Down, Home and End move.
+  - Wide screens show it under the preview in the sticky column, where the preview takes up to 60% of the height.
+- **Search (`deck/search.js`):** the index is built on the first search (about 15 ms for the English deck).
+  - A note is found by the word and translation as shown, plus synonyms, readings, romanization (stored, by rule, or kana as romaji) and Serbian in both scripts, all folded like the query.
+  - Results come in this order: a whole word, then a word start, then anywhere, in deck order within each. In same-language decks the definitions are searched too, ranked after the words.
+- **Mobile:** the list is a sheet opened from the note count in the bottom bar. Picking a word opens the preview over it, and closing the preview returns to the list.
 
 ## 9. Feedback client
 
@@ -227,8 +235,10 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - Corner button: a fixed ⚑ in the bottom-right.
 - **Selection capture:**
   - Listen to `selectionchange` and keep the last non-empty selection with its context: `closest('[data-concept]')`, `[data-field]`, and direction/side from the card container.
-  - The preview iframes post their selection to the parent via `postMessage`.
-  - Capture on `pointerdown` of the corner button, because on mobile tapping clears the selection before `click`.
+  - The preview frames run no scripts, so they can't post their selection. Instead the page listens to `selectionchange` and `keydown` on each frame's document itself, which `allow-same-origin` permits. Each frame's body carries the note's concept IDs and word.
+  - Capture on `pointerdown` of the corner button (and of the preview's Report button), because on mobile tapping clears the selection before `click`.
+  - Without a selection, the preview's Report button and the word list's flags report their note; Ctrl/Cmd+Enter reports the focused list row, if any. After a report is sent, its quote is deselected.
+- **Loading:** the dialog (`ui/feedback-dialog.js`) and `feedback/client.js` load when the browser is idle, or on first use, so they are not part of the initial JS.
 - **Request:** `POST` to the Apps Script `/exec` URL with `Content-Type: text/plain;charset=utf-8` (a simple request, so no CORS preflight), body = JSON:
 
 ```json
@@ -239,7 +249,12 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 ```
 
   `website` is the honeypot. Read the JSON response `{ok:true}` / `{ok:false,error}`. If reading fails because of CORS, fall back to `mode:'no-cors'` and assume success.
-- **Limits:** client rate limits and garbage heuristics as in SPEC §5, with counters in localStorage.
+  - Apps Script answers the POST with a 302 to a `script.googleusercontent.com` echo URL. Both responses carry `Access-Control-Allow-Origin: *`, so the answer can be read and the fallback is only a safety net. This was checked on the live `/exec` URL (GET) and with a local mock that redirects the same way (POST).
+  - A timeout (20 s) is shown as an error, not retried, so a slow report isn't sent twice.
+- **Limits:** client rate limits and garbage heuristics as in SPEC §5, with counters in localStorage (`ankigen:feedback`, together with the client ID). They are friction only.
+  - Rate limits: the dialog says how long to wait.
+  - Garbage is no letters, a single letter, one short sequence repeated, or the same report again (same folded message, concept and quote). It is sent only after the user confirms with "Send anyway".
+  - From the 10th garbage report on, nothing is sent, and the dialog still says thanks.
 
 ## 10. SEO
 

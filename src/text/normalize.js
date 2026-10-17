@@ -75,23 +75,25 @@ export function kanaToRomaji(kana) {
 // ---------------------------------------------------------------- matching
 
 /**
- * @typedef {{ text: string, compact: string }} SearchKey
+ * @typedef {{ text: string, compact: string }} Query
  * `compact` drops spaces, so "yin hang" finds yínháng and "icecream" finds "ice cream".
+ * @typedef {Query & { parts: string[] }} SearchKey  `parts`: the folded strings one by one, for ranking
  */
 
-/** @param {string[]} parts index strings of one note, already including script/romaji variants */
+/** @param {string[]} parts index strings of one note, already including script/romaji variants @returns {SearchKey} */
 export function searchKey(parts) {
-  const text = parts.map(fold).filter(Boolean).join(' | ');
-  return { text, compact: text.replace(/ /g, '') };
+  const folded = parts.map(fold).filter(Boolean);
+  const text = folded.join(' | ');
+  return { text, compact: text.replace(/ /g, ''), parts: folded };
 }
 
-/** @param {string} query */
+/** @param {string} query @returns {Query} */
 export function prepareQuery(query) {
   const text = fold(query);
   return { text, compact: text.replace(/ /g, '') };
 }
 
-/** @param {SearchKey} key @param {SearchKey} query */
+/** @param {SearchKey} key @param {Query} query */
 export function matches(key, query) {
   return !query.text || key.text.includes(query.text) || key.compact.includes(query.compact);
 }

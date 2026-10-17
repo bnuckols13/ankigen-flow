@@ -9,7 +9,7 @@
 //   - merged notes take example slots round-robin from their members (slot 1 of each, then slot 2, …).
 
 import { SAME, placementOf, typesAnswer } from '../state.js';
-import { escapeAttr, escapeHtml } from '../text/html.js';
+import { escapeAttr, escapeHtml, stripHtml } from '../text/html.js';
 import { exampleHtml, stripFurigana, stripTarget, wordRubyHtml } from '../text/furigana.js';
 import { SCHEMES, srToLatin } from '../text/translit.js';
 import { stripStress } from '../text/normalize.js';
@@ -123,6 +123,20 @@ export function noteFields(note, ctx) {
     Emoji: on('emoji') ? escapeHtml(unique(concepts.map((c) => c?.emoji)).join(' ')) : '',
     ConceptId: on('conceptId') ? escapeHtml(note.conceptIds.join(', ')) : '',
     Reverse: ctx.config.reverse ? '1' : '',
+  };
+}
+
+/**
+ * Plain text for the card list: the word as the card shows it (article or gender mark, stress, script),
+ * the caption that tells it from a same-spelled word, and the translation or definition.
+ * @param {Note} note @param {DeckContext} ctx
+ */
+export function noteSummary(note, ctx) {
+  const plain = (/** @type {string} */ html) => stripHtml(html.replace(/<br>/g, ' '));
+  return {
+    word: plain(wordHtml(note.learnEntries[0], ctx)),
+    disambig: note.disambig ? disambigText(note.disambig, ctx) : '',
+    translation: plain(translationHtml(note, ctx)),
   };
 }
 

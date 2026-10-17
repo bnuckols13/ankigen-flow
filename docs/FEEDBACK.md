@@ -22,7 +22,11 @@ One row per report, with these columns:
 - `received_at`, `client_time`, `tz_offset_min`
 - `client_id` (a random ID stored in the user's browser; no fingerprinting)
 - `category`, `message`, `email`, `selected_text`
+  - `category` is empty or one of `wrong-translation`, `typo`, `wrong-form`, `bad-example`, `suggestion`, `other`.
+  - `message` starts with the quoted selection, if there was one.
 - `concept_id`, `direction`, `side`, `field`
+  - `concept_id` is one ID, or a merged note's IDs separated by commas.
+  - The other three say where the selected text was, e.g. `forward`, `back`, `Examples` (a field of the note type). They are empty for a report from a card in the word list, or for general feedback.
 - `learning`, `known`, `config_url`
 - `app_version`, `data_version`, `browser_lang`
 - `status` and `notes` (empty, for your triage)

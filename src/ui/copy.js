@@ -1,11 +1,12 @@
 // @ts-check
 // UI text that is not part of data/meta (field rows and deck options carry their own "help" there).
+// The feedback dialog's text is in ui/feedback-dialog.js, which loads on first use.
 
-import { count } from './format.js';
+import { count, number } from './format.js';
 
 export const DRAFT_HELP = [
   'Words, translations and example sentences were drafted with an AI model and are being checked by people, language by language.',
-  'If something looks wrong, select it on a preview card and press Ctrl+Enter (⌘+Enter on a Mac), or use the ⚑ button in the corner. Every report helps fix the deck for everyone.',
+  'If something looks wrong, select it on a preview card and press Ctrl+Enter (⌘+Enter on a Mac), or use the Feedback button in the corner. Every report helps fix the deck for everyone.',
 ];
 
 export const SAME_HELP =
@@ -38,3 +39,18 @@ export const UPDATE_HELP = {
 /** @param {string} file */
 export const downloadedText = (file) =>
   `Saved ${file}. Open it with Anki (File → Import), or tap it on your phone to open it in AnkiDroid.`;
+
+// ---------------------------------------------------------------- card list
+
+/** @param {import('./app.js').View} view */
+export function listEmptyText({ ready, notes }) {
+  if (!ready) return 'Loading words…';
+  return notes.length ? '' : 'No words for these languages in the chosen modules yet.';
+}
+
+/** While searching: "12 of 1,734 words", or that nothing matches. (The search box shows the total.) @param {number} shown @param {number} total @param {string} query */
+export function listStatus(shown, total, query) {
+  if (!query.trim()) return '';
+  if (!shown) return `No words match “${query.trim()}”.`;
+  return `${number(shown)} of ${count(total, 'word')}`;
+}

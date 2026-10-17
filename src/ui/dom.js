@@ -43,3 +43,15 @@ export function whenIdle(fn) {
 }
 
 export const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const ICONS = {
+  flag: '<path d="M3.5 14.5v-13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 2h8.5l-2.2 3.25L12.5 8.5H4z" fill="currentColor"/>',
+  list: '<path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+};
+
+/** A small inline icon, hidden from screen readers (the button around it has the name). @param {keyof typeof ICONS} name */
+export function icon(name) {
+  const span = h('span', { class: 'icon', 'aria-hidden': 'true' });
+  span.innerHTML = `<svg viewBox="0 0 16 16" width="16" height="16" focusable="false">${ICONS[name]}</svg>`;
+  return span;
+}

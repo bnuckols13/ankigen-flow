@@ -66,6 +66,8 @@ export function createApp({ loader, meta, initial, random = Math.random }) {
   const listeners = new Set();
   /** @type {{ config: Config, dataVersion: number, sampleKey: string | null, view: View } | null} */
   let last = null;
+  /** The deck for the last config and data, so changing the sample reuses its notes. @type {{ config: Config, dataVersion: number, view: View } | null} */
+  let deckCache = null;
   /** @type {{ key: string, counts: Map<string, number>, local: Map<string, { count: number, example: string }> } | null} */
   let pairCache = null;
 
@@ -122,8 +124,8 @@ export function createApp({ loader, meta, initial, random = Math.random }) {
     return { learnData, knowData };
   }
 
-  /** @param {Config} config @returns {View} */
-  function derive(config) {
+  /** The view without its sample. @param {Config} config @returns {View} */
+  function deck(config) {
     const { learnData, knowData } = dataFor(config);
     if (!concepts || !learnData || !knowData) {
       return { config, ready: false, notes: [], cards: 0, counts: new Map(), local: new Map(), ctx: null, noteType: null, sample: null };
@@ -135,7 +137,6 @@ export function createApp({ loader, meta, initial, random = Math.random }) {
     }
     const notes = selectNotes(config, meta, concepts, learnData, knowData);
     const ctx = deckContext(input);
-    const sample = notes.find((n) => n.key === sampleKey) ?? richestNote(notes, ctx);
     return {
       config,
       ready: true,
@@ -145,8 +146,16 @@ export function createApp({ loader, meta, initial, random = Math.random }) {
       local: pairCache.local,
       ctx,
       noteType: noteType(ctx, css),
-      sample,
+      sample: null,
     };
+  }
+
+  /** @param {Config} config @returns {View} */
+  function derive(config) {
+    if (deckCache?.config !== config || deckCache.dataVersion !== dataVersion) deckCache = { config, dataVersion, view: deck(config) };
+    const base = deckCache.view;
+    if (!base.ctx) return base;
+    return { ...base, sample: base.notes.find((n) => n.key === sampleKey) ?? richestNote(base.notes, base.ctx) };
   }
 
   /** The current view (memoized until the config, the data or the sample changes). @returns {View} */

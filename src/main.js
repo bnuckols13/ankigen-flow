@@ -1,14 +1,15 @@
 // @ts-check
-// Bootstrap: load the meta files, mount the steps and the preview, keep the config in the URL hash and in
-// localStorage, and re-render on every change. ?data=<dir> reads the vocabulary from another directory
-// (tests/fixtures/data while developing; meta always comes from data/meta).
+// Bootstrap: load the meta files, mount the steps, the preview, the word list and the feedback dialog, keep
+// the config in the URL hash and in localStorage, and re-render on every change. ?data=<dir> reads the
+// vocabulary from another directory (tests/fixtures/data while developing; meta always comes from data/meta).
 
 import { createLoader, safeDataDir } from './data/loader.js';
 import { decodeHash, encodeHash, loadConfig, saveConfig } from './state.js';
 import { createApp } from './ui/app.js';
 import { DRAFT_HELP } from './ui/copy.js';
-import { debounce, h } from './ui/dom.js';
+import { debounce, h, icon } from './ui/dom.js';
 import { mountDownload } from './ui/download.js';
+import { mountFeedback } from './ui/feedback.js';
 import { mountFields } from './ui/fields.js';
 import { deckSize } from './ui/format.js';
 import { mountLanguages } from './ui/languages.js';
@@ -16,6 +17,7 @@ import { mountModules } from './ui/modules.js';
 import { mountOptions } from './ui/options.js';
 import { help } from './ui/popover.js';
 import { mountPreview } from './ui/preview.js';
+import { mountCardList } from './ui/sidebar.js';
 import { mountSteps } from './ui/steps.js';
 
 /** @typedef {import('./ui/app.js').App} App */
@@ -23,6 +25,8 @@ import { mountSteps } from './ui/steps.js';
 
 /** @param {string} id */
 const byId = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
+/** @param {Element} root @param {string} selector */
+const inside = (root, selector) => /** @type {HTMLElement} */ (root.querySelector(selector));
 
 function localStore() {
   try {
@@ -79,32 +83,61 @@ async function main() {
   const fields = mountFields(byId('fields'), app);
   const options = mountOptions(byId('options'), app);
   const download = mountDownload(byId('download'), app);
+  const feedback = mountFeedback({ app, storage });
 
-  // The preview: a sticky panel on wide screens; on phones a sheet opened from the bar at the bottom.
+  // The preview and the word list: a sticky column beside the steps on wide screens; on phones each opens
+  // as a sheet from the bar at the bottom, and a word picked in the list opens the preview over it.
   const wide = window.matchMedia('(min-width: 60rem)');
-  const dialog = /** @type {HTMLDialogElement} */ (byId('preview-dialog'));
-  const panel = mountPreview(/** @type {HTMLElement} */ (byId('preview-panel').querySelector('.pv')), app, { id: 'panel', isActive: () => wide.matches });
-  const sheet = mountPreview(/** @type {HTMLElement} */ (dialog.querySelector('.pv')), app, { id: 'sheet', isActive: () => dialog.open });
+  const previewSheet = /** @type {HTMLDialogElement} */ (byId('preview-dialog'));
+  const cardsSheet = /** @type {HTMLDialogElement} */ (byId('cards-dialog'));
+  const cardsPanel = byId('cards-panel');
+  const reports = { onFrame: feedback.watch, report: feedback.open };
+  const panel = mountPreview(inside(byId('preview-panel'), '.pv'), app, { id: 'panel', isActive: () => wide.matches, ...reports });
+  const sheet = mountPreview(inside(previewSheet, '.pv'), app, { id: 'sheet', isActive: () => previewSheet.open, ...reports });
+  const openPreview = () => {
+    previewSheet.showModal();
+    sheet.show();
+  };
+  const sideList = mountCardList(inside(cardsPanel, '.cl'), app, { isActive: () => wide.matches && !cardsPanel.hidden, report: feedback.open });
+  const sheetList = mountCardList(inside(cardsSheet, '.cl'), app, { isActive: () => cardsSheet.open, report: feedback.open, onPick: openPreview });
+  const side = {
+    /** @param {View} view */
+    update({ config }) {
+      cardsPanel.hidden = !config.learn || !config.know || !config.modules.length;
+    },
+  };
+
   const bar = byId('mobile-bar');
+  const openCards = byId('open-cards');
   const barCount = byId('mobile-count');
+  openCards.prepend(icon('list'));
   const mobileBar = {
     /** @param {View} view */
     update({ config, ready, notes, cards }) {
       bar.hidden = !config.learn || !config.know;
-      barCount.textContent = ready && config.modules.length ? deckSize(notes.length, cards) : '';
+      const size = ready && config.modules.length && notes.length ? deckSize(notes.length, cards) : '';
+      openCards.hidden = !size;
+      barCount.textContent = size;
+      openCards.setAttribute('aria-label', `Word list: ${size}`);
     },
   };
-  byId('open-preview').addEventListener('click', () => {
-    dialog.showModal();
-    sheet.show();
+  byId('open-preview').addEventListener('click', openPreview);
+  byId('close-preview').addEventListener('click', () => previewSheet.close());
+  openCards.addEventListener('click', () => {
+    cardsSheet.showModal();
+    sheetList.show();
   });
-  byId('close-preview').addEventListener('click', () => dialog.close());
+  byId('close-cards').addEventListener('click', () => cardsSheet.close());
   wide.addEventListener('change', () => {
-    if (wide.matches && dialog.open) dialog.close();
+    if (wide.matches) {
+      previewSheet.close();
+      cardsSheet.close();
+    }
     panel.show();
+    sideList.show();
   });
 
-  const parts = [steps, languages, modules, fields, options, download, panel, sheet, mobileBar];
+  const parts = [steps, languages, modules, fields, options, download, side, panel, sheet, sideList, sheetList, mobileBar];
   const render = (/** @type {View} */ view) => {
     for (const part of parts) part.update(view);
   };
