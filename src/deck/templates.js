@@ -10,11 +10,21 @@
 // Captions come from labels.json in the known language. data-field / data-dir / data-side let the site
 // tell which field a selection came from (feedback reports).
 
-import { typesAnswer } from '../state.js';
+import { SAME, typesAnswer } from '../state.js';
 import { escapeHtml } from '../text/html.js';
 import { FIELD_NAMES } from './fields.js';
 
 /** @typedef {import('./fields.js').DeckContext} DeckContext */
+
+/**
+ * "日本語 (Русский)", or "日本語 (definitions)" in same-language mode. Names the note type and the deck;
+ * Anki matches decks by name, so this must stay stable for a language pair.
+ * @param {any} meta @param {import('../state.js').Config} config
+ */
+export function pairLabel(meta, config) {
+  const native = (/** @type {string | null} */ code) => meta.languages.languages[code ?? '']?.native ?? code;
+  return `${native(config.learn)} (${config.know === SAME ? 'definitions' : native(config.know)})`;
+}
 
 /**
  * Field-table rows shown as sections, in display order: [row id, field, CSS class, caption key].
@@ -110,10 +120,8 @@ export function noteType(ctx, css) {
       sections(ctx, (row, p) => (learningRow(row) ? p !== 'off' : p === 'back')),
   );
 
-  const learnName = ctx.learn.reg?.native ?? ctx.learn.code;
-  const knowName = ctx.same ? 'definitions' : (ctx.know.reg?.native ?? ctx.know.code);
   return {
-    name: `AnkiGen ${learnName} (${knowName})`,
+    name: `AnkiGen ${pairLabel(ctx.meta, ctx.config)}`,
     fields: [...FIELD_NAMES],
     sortField: 0,
     templates: [

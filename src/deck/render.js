@@ -57,3 +57,8 @@ export function renderCard(noteType, fields, ord) {
   if (isBlank(front)) return null;
   return { front, back: renderTemplate(tpl.afmt, fields, { frontSide: front, answer: true }) };
 }
+
+/** The template ordinals Anki creates cards for: those whose question is not blank. @param {NoteType} noteType @param {Record<string, string>} fields */
+export function cardOrds(noteType, fields) {
+  return noteType.templates.flatMap((tpl, ord) => (isBlank(renderTemplate(tpl.qfmt, fields)) ? [] : [ord]));
+}

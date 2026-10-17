@@ -30,16 +30,18 @@ src/
   deck/templates.js     Anki templates + CSS for a config
   deck/render.js        mini Anki template renderer for preview/sidebar
   deck/ids.js           stable hashes → GUIDs, note/card/deck/model IDs, Anki checksum
-  deck/apkg.js          SQLite collection (schema 11) + zip → Blob
+  deck/apkg.js          SQLite collection (schema 11) + zip → .apkg bytes (sql.js passed in)
   text/translit.js      ru → Latin, sr Cyrillic ↔ Latin, hy → Latin (BGN/PCGN), el → Latin (ELOT 743)
   text/normalize.js     search folding (case, diacritics, stress, scripts)
   text/furigana.js      Anki-style furigana → <ruby>; target braces → <b>
   ui/steps.js ui/languages.js ui/modules.js ui/fields.js ui/options.js
   ui/preview.js ui/sidebar.js ui/feedback.js ui/popover.js ui/download.js
   feedback/client.js    rate limits, garbage heuristics, POST to Apps Script
-vendor/                 sql-wasm.js, sql-wasm.wasm, fflate.min.js (pinned, with LICENSE files)
+vendor/                 sql-wasm.js, sql-wasm.wasm, fflate.js (ES module) + fflate.d.ts (pinned; versions,
+                        checksums and LICENSE files in vendor/README.md)
 data/                   vocabulary (see DATA_FORMAT.md)
-tools/                  data lint + generation tooling (exists), bundle.mjs (new), sitemap/landing generator (new)
+tools/                  data lint + generation tooling, apkg.mjs (an .apkg from a config hash, in Node),
+                        bundle.mjs (new), sitemap/landing generator (new)
 tests/                  node --test suites + fixtures (tests/fixtures/data exists)
 feedback/Code.gs        Apps Script backend (exists)
 .github/workflows/      ci.yml (lint + tests), pages.yml (bundle + deploy)
@@ -154,27 +156,49 @@ Produces the HTML for each Anki field, given the note and config. All text is es
 | card id | export time in ms + 2 × note position + ord: `T + 2i + ord` |
 
 - Why two kinds: Anki matches an imported note to an existing one by **GUID**, cards by (note, template), and the note type by its **id**. Those are hashed so they never change. Anki does not match on note or card ids: when an incoming id is already taken, the importer shifts it by 999 until it is free. But it reads them as creation times: the browser's "Created" column is the note id, a card's "Added" date and the `added:N` search use the card id. So they follow Anki's own convention (export-time milliseconds), and ids within one file are consecutive, never colliding.
-- `csum` = first 8 hex digits of SHA-1 of the stripped sort field, as an int (Anki's rule).
+- Decks are matched by **name**, not id: the deck id only links cards to the deck inside the file, and the importer gives a new deck an id of its own. So the deck name (§7.3) is part of a language pair's identity, like the GUID prefix: never change a language's `native` name in `languages.json`.
+- `csum` = first 8 hex digits of SHA-1 of the stripped first field (Word), as an int (Anki's rule).
 - Changing a prefix version (`v1`) is a breaking change for every user. Don't do it.
 
 ### 7.3 Collection
 
-- Write a **schema 11** `collection.anki2`: `col`, `notes`, `cards`, `revlog`, `graves`, with `models`, `decks`, `dconf` and `conf` JSON in `col`. It imports into all current Anki desktop, AnkiDroid and AnkiMobile versions.
+- Write a **schema 11** `collection.anki2`: `col`, `notes`, `cards`, `revlog`, `graves` and their indexes, with `conf`, `models`, `decks` and `dconf` JSON in `col`, with the keys and values Anki's own legacy export writes. It imports into all current Anki desktop, AnkiDroid and AnkiMobile versions.
+  - Anki's own legacy export puts the data in `collection.anki21` and a "please update Anki" note in `collection.anki2`. Every importer since 2.1 reads `collection.anki2` when there is no `.anki21`, so one file serves all of them.
+  - `decks` also holds the "Default" deck (id 1) that every schema-11 collection has. Importers skip it, because it holds no cards.
+  - `dconf` is Anki's "Default" preset. Our deck uses it, so users keep their own options.
+  - The note type's legacy `req` (which cards a note gets) is computed the way Anki computes it. Anki ≥ 2.1.28 recomputes it on import and gets the same result.
 - Deck name: `AnkiGen::<Learning native name> (<Known native name>)`; for same-language mode, `AnkiGen::<name> (definitions)`.
-- Tags: `ankigen::<category>::<module>` for every selected module the concept belongs to. Use the module IDs from `modules.json`.
-- New cards: `due` = note position (0-based); `ord` 0 = forward, 1 = reverse.
-- Zip with `fflate` entries `collection.anki2` and `media` (content `{}`), fixed entry mtime 1980-01-01, deterministic order.
-- File name: `ankigen-<learn>-<know>-<data version>.apkg`.
+- Deck description: `Made with AnkiGen · data <version>`, where "AnkiGen" links to the site with this config's hash, so users can reopen their settings to download an update.
+- Tags: `ankigen::<category>::<module>` for every selected module the concept belongs to, sorted (Anki keeps tags sorted). Use the module IDs from `modules.json`.
+- Notes: `sfld` and `csum` come from the stripped Word field, as Anki computes them. `mod` and `usn` per §7.4.
+- Cards:
+  - One per template whose question is not blank: the forward card always, the reverse card when Reverse = 1. This uses `cardOrds` in `deck/render.js`, the same check the preview uses.
+  - New cards: `due` = note position (0-based); `ord` 0 = forward, 1 = reverse.
+- Zip with `fflate` entries `collection.anki2` and `media` (content `{}`), fixed entry mtime 1980-01-01 00:00, deterministic order.
+- File name: `ankigen-<learn>-<know>-<data version>.apkg`; same-language decks repeat the language (`ankigen-en-en-…`).
+- `buildApkg` takes the initialized sql.js module as a parameter and returns the bytes; the page wraps them in a Blob.
 
 ### 7.4 Timestamps and updates
 
-Anki's importer updates an existing note (same GUID) only when the incoming note is **newer** by its `mod` time. So `mod` and the collection timestamps use the export time (seconds), and note and card ids the export time in milliseconds (§7.2). Everything else is deterministic.
+With its default options, Anki's importer updates an existing note (same GUID) or the note type (same id, same field and template names) only when the incoming one is **newer** by its `mod` time, to the second.
+- The defaults are: Update notes and Update note types "If newer"; Merge note types off.
+- So `mod` and the collection timestamps use the export time (seconds), and note and card ids the export time in milliseconds (§7.2). Everything else is deterministic.
 
-Tests pass a fixed clock: in test mode two exports of the same config must be byte-identical. In normal mode, compare everything except the timestamp columns.
+Tests pass a fixed clock. Two exports of the same config are then byte-identical, in Node and in the browser alike. With different clocks, only the timestamp columns and the ids derived from them differ.
 
-**Verify by hand on current Anki desktop and AnkiDroid:**
-1. Import a deck, study a few cards, change the field placement, then re-import. Notes update, review history stays, and the note type templates follow the new config.
-2. If templates don't update, document the importer option the user must pick (the "?" popup next to Download) rather than changing IDs.
+What re-importing does was checked against the Anki backend itself: the `anki` Python package 26.09.3 and 23.12.1, and the legacy importer of 2.1.49 (AnkiDroid's old Java importer is a port of it).
+- **The same file again:** nothing changes ("notes already present").
+- **A newer export:** fields, tags and the templates update. Review history, scheduling, suspended cards and flags stay.
+- **More modules:** new notes are added to the same deck, at their positions in the new export. Existing cards keep their positions.
+- **Reverse turned on:** reverse cards are added.
+- **Reverse turned off:** the existing reverse cards stay but are blank ("The front of this card is blank"). Tools → Empty Cards deletes them.
+- **The user's own edits and tags** on these notes, including "marked" and "leech", are replaced by the new version.
+- **A renamed or moved deck:** existing cards stay where they are; new cards go to a re-created deck with the original name.
+- **A note type the user changed** (e.g. added a field):
+  - Without "Merge note types": notes are not updated, and Anki adds an unused copy "AnkiGen … +" of the incoming note type.
+  - With it: notes update, but the user's extra field is emptied.
+
+The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`, along with the user-facing text for the "?" next to Download.
 
 ## 8. Preview and sidebar
 
@@ -227,7 +251,7 @@ Tests pass a fixed clock: in test mode two exports of the same config must be by
   - **select:** fixtures. Merge рука́ hand/arm when learning Russian; hints for English brother; `only` concepts; glosses.
   - **fields:** snapshots per language for the golden sample.
   - **templates:** reverse rule moves learning fields to the back; type answer only on reverse.
-  - **apkg:** build in Node with sql.js, reopen the DB, assert tables, IDs, field counts; byte-identical with a fixed clock.
+  - **apkg:** build in Node with sql.js, reopen the DB, assert tables, IDs, fields, cards and the zip layout; byte-identical with a fixed clock; another clock changes only timestamps.
 - `tools/lint-data.mjs` on `data/` and on `tests/fixtures/data` in CI.
 - Optional Playwright smoke test (Chromium): pick ja ← ru, select Core I, toggle reverse, download, check the blob size is > 0.
 
