@@ -1,0 +1,129 @@
+{
+ "sessionBudget": 8,
+ "session": null,
+ "done": {
+  "concepts:core-1:1": {
+   "at": "2026-10-17T11:18:58.881Z"
+  },
+  "concepts:core-1:2": {
+   "at": "2026-10-17T11:20:26.681Z"
+  },
+  "concepts:core-2:1": {
+   "at": "2026-10-17T11:22:18.227Z"
+  },
+  "concepts:core-2:2": {
+   "at": "2026-10-17T11:24:35.424Z"
+  },
+  "concepts:core-3:1": {
+   "at": "2026-10-17T11:26:23.394Z"
+  },
+  "concepts:core-3:2": {
+   "at": "2026-10-17T11:28:07.587Z"
+  },
+  "concepts:core-3:3": {
+   "at": "2026-10-17T11:30:36.070Z"
+  },
+  "concepts:core-3:4": {
+   "at": "2026-10-17T11:30:36.301Z"
+  },
+  "concepts:numbers": {
+   "at": "2026-10-17T11:31:56.716Z"
+  },
+  "concepts:time": {
+   "at": "2026-10-17T11:32:51.819Z"
+  },
+  "concepts:phrases": {
+   "at": "2026-10-17T11:32:52.061Z"
+  },
+  "concepts:countries": {
+   "at": "2026-10-17T11:34:27.169Z"
+  },
+  "concepts:family": {
+   "at": "2026-10-17T11:35:00.402Z"
+  },
+  "concepts:feelings": {
+   "at": "2026-10-17T11:35:00.739Z"
+  },
+  "concepts:language-learning": {
+   "at": "2026-10-17T11:35:15.317Z"
+  },
+  "concepts:food": {
+   "at": "2026-10-17T11:36:36.836Z"
+  },
+  "concepts:cooking": {
+   "at": "2026-10-17T11:36:37.134Z"
+  },
+  "concepts:shopping": {
+   "at": "2026-10-17T11:36:37.424Z"
+  },
+  "concepts:housing": {
+   "at": "2026-10-17T11:36:37.735Z"
+  },
+  "concepts:household": {
+   "at": "2026-10-17T11:37:10.220Z"
+  },
+  "concepts:nature": {
+   "at": "2026-10-17T11:37:10.561Z"
+  },
+  "concepts:animals": {
+   "at": "2026-10-17T11:37:10.903Z"
+  },
+  "concepts:city": {
+   "at": "2026-10-17T11:39:03.681Z"
+  },
+  "concepts:transport": {
+   "at": "2026-10-17T11:39:04.099Z"
+  },
+  "concepts:driving": {
+   "at": "2026-10-17T11:39:04.596Z"
+  },
+  "concepts:signs": {
+   "at": "2026-10-17T11:39:05.146Z"
+  },
+  "concepts:residence": {
+   "at": "2026-10-17T11:40:04.104Z"
+  },
+  "concepts:money": {
+   "at": "2026-10-17T11:40:33.717Z"
+  },
+  "concepts:work": {
+   "at": "2026-10-17T11:40:34.179Z"
+  },
+  "concepts:telecom": {
+   "at": "2026-10-17T11:40:34.576Z"
+  },
+  "concepts:education": {
+   "at": "2026-10-17T11:40:45.528Z"
+  },
+  "concepts:emergencies": {
+   "at": "2026-10-17T11:41:28.352Z"
+  },
+  "concepts:health": {
+   "at": "2026-10-17T11:41:39.982Z"
+  },
+  "concepts:hobbies": {
+   "at": "2026-10-17T11:43:14.919Z"
+  },
+  "concepts:sports": {
+   "at": "2026-10-17T11:43:15.314Z"
+  },
+  "concepts:music": {
+   "at": "2026-10-17T11:43:15.765Z"
+  },
+  "concepts:video-games": {
+   "at": "2026-10-17T11:43:45.878Z"
+  },
+  "concepts:tabletop": {
+   "at": "2026-10-17T11:43:46.300Z"
+  },
+  "concepts:tech": {
+   "at": "2026-10-17T11:43:46.740Z"
+  },
+  "concepts:science": {
+   "at": "2026-10-17T11:44:06.989Z"
+  },
+  "concepts:profanity": {
+   "at": "2026-10-17T11:44:07.387Z"
+  }
+ }
+}

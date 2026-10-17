@@ -1,0 +1,4 @@
+{
+  "$comment": "Concept IDs that were removed. IDs are permanent (they seed Anki note GUIDs), so a retired ID must never be reused. Format: \"id\": \"reason / YYYY-MM-DD\".",
+  "retired": {}
+}

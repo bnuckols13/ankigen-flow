@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"pos":"noun","mods":["city","residence"],"note":"city hall, municipal building"},
+"word-fire-station": {"pos":"noun","mods":["city","emergencies"],"note":"fire station"},
+"word-mosque": {"pos":"noun","mods":["city"],"note":"Muslim place of worship"},
+"word-synagogue": {"pos":"noun","mods":["city"],"note":"Jewish place of worship"},
+"word-cathedral": {"pos":"noun","mods":["city"],"note":"large main church"},
+"word-laundromat": {"pos":"noun","mods":["city","household"],"note":"self-service laundry"},
+"word-art-gallery": {"pos":"noun","mods":["city","hobbies"],"note":"gallery for art"},
+"word-nightclub": {"pos":"noun","mods":["city","hobbies"],"note":"club for dancing at night"},
+"word-old-town": {"pos":"noun","mods":["city","transport"],"note":"historic city center"},
+"word-skyscraper": {"pos":"noun","mods":["city"],"emoji":"🏙️","note":"very tall building"},
+"word-apartment-block": {"pos":"noun","mods":["city","housing"],"note":"apartment building"},
+"word-avenue": {"pos":"noun","mods":["city"],"note":"wide street, boulevard"},
+"word-pedestrian-zone": {"pos":"noun","mods":["city","driving"],"note":"area closed to cars"},
+"word-bench": {"pos":"noun","mods":["city"],"note":"long seat in a park"},
+"word-fountain": {"pos":"noun","mods":["city"],"emoji":"⛲","note":"fountain"},
+"word-opposite": {"pos":"prep","mods":["city"],"note":"facing, on the other side of"},
+"word-city-block": {"pos":"noun","mods":["city"],"note":"area between streets"},
+"word-tourist-information": {"pos":"noun","mods":["city","transport"],"note":"tourist information office"},
+"word-landmark": {"pos":"noun","mods":["city","transport"],"note":"famous building or place"},
+"word-outskirts": {"pos":"noun","mods":["city"],"note":"edge of a city"}
+}

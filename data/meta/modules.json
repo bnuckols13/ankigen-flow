@@ -1,0 +1,81 @@
+{
+  "$comment": "Module tree. Order here = canonical order (deck order, UI order, generation order). 'size' = target number of member concepts (including concepts whose primary module is elsewhere, e.g. Core). 'core' modules are mutually exclusive frequency bands. 'adult' modules are shown with an 18+ badge. Module IDs are permanent (they appear in file names and Anki tags).",
+  "categories": [
+    {
+      "id": "foundations", "name": "Foundations", "open": true,
+      "modules": [
+        { "id": "core-1", "name": "Core I", "size": 500, "core": 1, "desc": "The ~500 most frequent words shared by all languages." },
+        { "id": "core-2", "name": "Core II", "size": 500, "core": 2, "desc": "The next ~500 most frequent words." },
+        { "id": "core-3", "name": "Core III", "size": 800, "core": 3, "desc": "The next ~800 most frequent words." },
+        { "id": "numbers", "name": "Numbers & math", "size": 120, "desc": "Cardinal and ordinal numbers, fractions, arithmetic, measurements." },
+        { "id": "time", "name": "Time & calendar", "size": 100, "desc": "Days, months, seasons, clock time, dates, frequency." }
+      ]
+    },
+    {
+      "id": "communication", "name": "Communication", "open": false,
+      "modules": [
+        { "id": "phrases", "name": "Survival phrases", "size": 120, "desc": "Greetings, politeness and whole sentences for everyday situations." },
+        { "id": "countries", "name": "Countries, nationalities & languages", "size": 150, "desc": "Major countries, their people, adjectives and languages." },
+        { "id": "language-learning", "name": "Language learning", "size": 100, "desc": "Talking about language: grammar terms, pronunciation, asking for help." }
+      ]
+    },
+    {
+      "id": "daily-life", "name": "Daily life", "open": false,
+      "modules": [
+        { "id": "family", "name": "Family & relationships", "size": 80, "desc": "Relatives, partners, friends, life events." },
+        { "id": "feelings", "name": "Feelings & character", "size": 150, "desc": "Emotions, moods, personality traits." },
+        { "id": "food", "name": "Food & drinks", "size": 250, "desc": "Groceries, dishes, drinks, eating out." },
+        { "id": "cooking", "name": "Cooking & kitchen", "size": 120, "desc": "Cooking verbs, utensils, appliances, recipes." },
+        { "id": "shopping", "name": "Shopping & clothing", "size": 150, "desc": "Shops, payment, sizes, clothes, returns." },
+        { "id": "housing", "name": "Housing & renting", "size": 120, "desc": "Renting, contracts, landlords, utilities, rooms." },
+        { "id": "household", "name": "Household & repair", "size": 200, "desc": "Chores, furniture, tools, repairs, plumbing, electricity." },
+        { "id": "nature", "name": "Weather & nature", "size": 150, "desc": "Weather, climate, landscape, plants." },
+        { "id": "animals", "name": "Pets & animals", "size": 150, "desc": "Pets, pet care, vet visits, common animals." }
+      ]
+    },
+    {
+      "id": "getting-around", "name": "Getting around", "open": false,
+      "modules": [
+        { "id": "city", "name": "City & directions", "size": 100, "desc": "Places in town, asking and giving directions." },
+        { "id": "transport", "name": "Transport & travel", "size": 150, "desc": "Public transport, tickets, airports, hotels, luggage." },
+        { "id": "driving", "name": "Driving & road rules", "size": 200, "desc": "Car parts, traffic rules, road signs, license exams, fines, accidents." },
+        { "id": "signs", "name": "Signs & notices", "size": 80, "desc": "What you read on doors, shops and streets: Push, Exit, Out of order." }
+      ]
+    },
+    {
+      "id": "living-abroad", "name": "Living abroad", "open": false,
+      "modules": [
+        { "id": "residence", "name": "Residence & legalization", "size": 150, "desc": "Visas, permits, registration, documents, offices — plus country-specific terms." },
+        { "id": "money", "name": "Money & banking", "size": 120, "desc": "Accounts, cards, transfers, taxes, loans." },
+        { "id": "work", "name": "Work & employment", "size": 150, "desc": "Jobs, contracts, salary, office life, job hunting." },
+        { "id": "telecom", "name": "Post, phone & internet", "size": 100, "desc": "Parcels, SIM cards, mobile plans, internet, accounts." },
+        { "id": "education", "name": "Education", "size": 120, "desc": "School, university, courses, exams." }
+      ]
+    },
+    {
+      "id": "health-safety", "name": "Health & safety", "open": false,
+      "modules": [
+        { "id": "health", "name": "Health & medicine", "size": 250, "desc": "Body, symptoms, doctors, pharmacy, insurance." },
+        { "id": "emergencies", "name": "Emergencies", "size": 100, "desc": "Police, fire, ambulance, accidents, disasters." }
+      ]
+    },
+    {
+      "id": "interests", "name": "Interests", "open": false,
+      "modules": [
+        { "id": "hobbies", "name": "Hobbies", "size": 120, "desc": "Common pastimes, crafts, collecting, outdoor activities." },
+        { "id": "sports", "name": "Sports", "size": 120, "desc": "Sports, equipment, competitions, fitness." },
+        { "id": "music", "name": "Music", "size": 100, "desc": "Instruments, genres, playing and listening." },
+        { "id": "video-games", "name": "Video games", "size": 100, "desc": "Gaming vocabulary for playing and chatting." },
+        { "id": "tabletop", "name": "Tabletop games", "size": 100, "desc": "Dice, cards, turns and rules — for game nights." },
+        { "id": "tech", "name": "Tech & computers", "size": 120, "desc": "Devices, software, the web, troubleshooting." },
+        { "id": "science", "name": "Science", "size": 100, "desc": "Basic vocabulary of physics, chemistry, biology, astronomy." }
+      ]
+    },
+    {
+      "id": "adult", "name": "18+", "open": false,
+      "modules": [
+        { "id": "profanity", "name": "Profanity", "size": 50, "adult": true, "desc": "Swear words and insults, matched by strength across languages." }
+      ]
+    }
+  ]
+}

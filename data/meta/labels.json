@@ -1,0 +1,41 @@
+{
+  "$comment": "Card labels, shown in the KNOWN language (the language the user speaks). 'en' is the master key set; every other active language must have the same keys (generation unit labels:<code>). Missing languages fall back to 'en' at runtime. Keep labels short: they sit in small grey captions on cards.",
+  "keys": [
+    "section.forms", "section.examples", "section.related", "section.antonyms", "section.etymology", "section.ipa", "section.reading", "section.romanization", "section.measureWord", "section.counter", "section.hanja", "section.definition", "section.otherScript", "section.conceptId",
+    "pos.noun", "pos.verb", "pos.adj", "pos.adv", "pos.pron", "pos.num", "pos.prep", "pos.conj", "pos.interj", "pos.particle", "pos.det", "pos.phrase",
+    "reg.informal", "reg.formal", "reg.vulgar", "reg.offensive",
+    "gender.m", "gender.f", "gender.n", "gender.c", "gender.mf", "gender.pl",
+    "form.gen", "form.pl", "form.dim", "form.acc", "form.poss3", "form.f", "form.n", "form.short", "form.comp", "form.sup",
+    "form.aspect", "form.pair", "form.1sg", "form.2sg", "form.3sg", "form.1pl", "form.3pl", "form.past", "form.pret", "form.pp", "form.aux", "form.lpt", "form.aor", "form.prog", "form.fut", "form.imp",
+    "form.class", "form.masu", "form.te", "form.nai", "form.type", "form.neg", "form.haeyo",
+    "value.aspect.ipf", "value.aspect.pf", "value.aspect.bi",
+    "value.class.godan", "value.class.ichidan", "value.class.suru", "value.class.kuru",
+    "value.type.i", "value.type.na"
+  ],
+  "labels": {
+    "en": {
+      "section.forms": "Forms", "section.examples": "Examples", "section.related": "Related", "section.antonyms": "Opposite", "section.etymology": "Origin", "section.ipa": "IPA", "section.reading": "Reading", "section.romanization": "Romanization", "section.measureWord": "Measure word", "section.counter": "Counter", "section.hanja": "Hanja", "section.definition": "Definition", "section.otherScript": "Other script", "section.conceptId": "ID",
+      "pos.noun": "noun", "pos.verb": "verb", "pos.adj": "adjective", "pos.adv": "adverb", "pos.pron": "pronoun", "pos.num": "numeral", "pos.prep": "preposition", "pos.conj": "conjunction", "pos.interj": "interjection", "pos.particle": "particle", "pos.det": "determiner", "pos.phrase": "phrase",
+      "reg.informal": "informal", "reg.formal": "formal", "reg.vulgar": "vulgar", "reg.offensive": "offensive",
+      "gender.m": "m.", "gender.f": "f.", "gender.n": "n.", "gender.c": "common", "gender.mf": "m./f.", "gender.pl": "pl. only",
+      "form.gen": "gen.", "form.pl": "pl.", "form.dim": "dim.", "form.acc": "acc.", "form.poss3": "his/her", "form.f": "f.", "form.n": "n.", "form.short": "short", "form.comp": "comp.", "form.sup": "superl.",
+      "form.aspect": "aspect", "form.pair": "pair", "form.1sg": "I", "form.2sg": "you (sg.)", "form.3sg": "he/she", "form.1pl": "we", "form.3pl": "they", "form.past": "past", "form.pret": "preterite", "form.pp": "perfect", "form.aux": "aux.", "form.lpt": "past part.", "form.aor": "aorist", "form.prog": "progressive", "form.fut": "future", "form.imp": "imperative",
+      "form.class": "class", "form.masu": "polite", "form.te": "te-form", "form.nai": "negative", "form.type": "type", "form.neg": "negative", "form.haeyo": "polite",
+      "value.aspect.ipf": "imperfective", "value.aspect.pf": "perfective", "value.aspect.bi": "both aspects",
+      "value.class.godan": "godan (u-verb)", "value.class.ichidan": "ichidan (ru-verb)", "value.class.suru": "suru-verb", "value.class.kuru": "kuru (irregular)",
+      "value.type.i": "i-adjective", "value.type.na": "na-adjective"
+    },
+    "ru": {
+      "section.forms": "Формы", "section.examples": "Примеры", "section.related": "Связанные", "section.antonyms": "Антонимы", "section.etymology": "Происхождение", "section.ipa": "МФА", "section.reading": "Чтение", "section.romanization": "Латиница", "section.measureWord": "Счётное слово", "section.counter": "Счётный суффикс", "section.hanja": "Ханча", "section.definition": "Определение", "section.otherScript": "Другой алфавит", "section.conceptId": "ID",
+      "pos.noun": "сущ.", "pos.verb": "гл.", "pos.adj": "прил.", "pos.adv": "нареч.", "pos.pron": "местоим.", "pos.num": "числ.", "pos.prep": "предлог", "pos.conj": "союз", "pos.interj": "межд.", "pos.particle": "частица", "pos.det": "определитель", "pos.phrase": "фраза",
+      "reg.informal": "разг.", "reg.formal": "офиц.", "reg.vulgar": "груб.", "reg.offensive": "оскорб.",
+      "gender.m": "м. р.", "gender.f": "ж. р.", "gender.n": "ср. р.", "gender.c": "общ. р.", "gender.mf": "м./ж. р.", "gender.pl": "только мн.",
+      "form.gen": "род. п.", "form.pl": "мн. ч.", "form.dim": "уменьш.", "form.acc": "вин. п.", "form.poss3": "его/её", "form.f": "ж. р.", "form.n": "ср. р.", "form.short": "кратк.", "form.comp": "сравн.", "form.sup": "превосх.",
+      "form.aspect": "вид", "form.pair": "пара", "form.1sg": "я", "form.2sg": "ты", "form.3sg": "он/она", "form.1pl": "мы", "form.3pl": "они", "form.past": "прош.", "form.pret": "претерит", "form.pp": "перфект", "form.aux": "вспом.", "form.lpt": "прич. прош.", "form.aor": "аорист", "form.prog": "длит.", "form.fut": "буд.", "form.imp": "повел.",
+      "form.class": "класс", "form.masu": "вежл.", "form.te": "те-форма", "form.nai": "отриц.", "form.type": "тип", "form.neg": "отриц.", "form.haeyo": "вежл.",
+      "value.aspect.ipf": "несов. вид", "value.aspect.pf": "сов. вид", "value.aspect.bi": "двувидовой",
+      "value.class.godan": "годан", "value.class.ichidan": "итидан", "value.class.suru": "суру-глагол", "value.class.kuru": "куру (нерегул.)",
+      "value.type.i": "и-прилагательное", "value.type.na": "на-прилагательное"
+    }
+  }
+}

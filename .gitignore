@@ -1,0 +1,7 @@
+tmp/
+.env
+node_modules/
+_site/
+bundles/
+.DS_Store
+Thumbs.db

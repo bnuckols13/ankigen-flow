@@ -1,0 +1,14 @@
+{
+"word-water": {"w":"Wasser","g":"n","forms":{"gen":"Wassers"},"def":"Klare Flüssigkeit, die als Regen fällt und Flüsse, Seen und Meere füllt."},
+"word-eat": {"w":"essen","forms":{"3sg":"isst","pret":"aß","pp":"hat gegessen"},"def":"Nahrung in den Mund nehmen, kauen und schlucken."},
+"word-drink": {"w":"trinken","forms":{"3sg":"trinkt","pret":"trank","pp":"hat getrunken"},"def":"Eine Flüssigkeit zu sich nehmen."},
+"word-big": {"w":"groß","forms":{"comp":"größer","sup":"am größten"},"def":"Von erheblichem Umfang, Ausmaß oder Wuchs."},
+"word-small": {"w":"klein","forms":{"comp":"kleiner","sup":"am kleinsten"},"def":"Von geringem Umfang oder Ausmaß."},
+"word-brother-older": {"w":"Bruder","g":"m","hint":"älter","alt":["großer Bruder"],"forms":{"pl":"Brüder"},"def":"Sohn derselben Eltern, der vor einem geboren wurde."},
+"word-brother-younger": {"w":"Bruder","g":"m","hint":"jünger","alt":["kleiner Bruder"],"forms":{"pl":"Brüder"},"def":"Sohn derselben Eltern, der nach einem geboren wurde."},
+"word-hand": {"w":"Hand","g":"f","forms":{"pl":"Hände"},"def":"Körperteil am Ende des Arms, mit dem man greift; hat fünf Finger."},
+"word-arm": {"w":"Arm","g":"m","forms":{"pl":"Arme"},"def":"Körperteil zwischen Schulter und Hand."},
+"word-monday": {"w":"Montag","g":"m","forms":{"pl":"Montage"},"def":"Wochentag zwischen Sonntag und Dienstag."},
+"word-tuesday": {"w":"Dienstag","g":"m","forms":{"pl":"Dienstage"},"def":"Wochentag zwischen Montag und Mittwoch."},
+"phrase-thank-you": {"w":"danke","alt":["vielen Dank"],"def":"Wort, mit dem man sich für etwas bedankt."}
+}

@@ -1,0 +1,4 @@
+{
+"word-residence-permit": {"pos":"noun","mods":["residence"],"note":"official document/status allowing a foreigner to live in a country (generic)"},
+"word-residence-record-jp": {"pos":"noun","mods":["residence"],"only":["ja"],"note":"Japan: 住民票, certificate of registered residence issued by the municipality"}
+}

@@ -1,0 +1,14 @@
+{
+"word-water": {"w":"water","def":"the clear liquid that falls as rain and fills rivers, lakes and seas"},
+"word-eat": {"w":"eat","forms":{"past":"ate","pp":"eaten"},"def":"to put food in your mouth, chew it and swallow it"},
+"word-drink": {"w":"drink","forms":{"past":"drank","pp":"drunk"},"def":"to take a liquid into your mouth and swallow it"},
+"word-big": {"w":"big","alt":["large"],"def":"of more than average size or amount"},
+"word-small": {"w":"small","alt":["little"],"def":"of less than average size or amount"},
+"word-brother-older": {"w":"brother","hint":"older","alt":["big brother"],"def":"a male sibling who was born before you"},
+"word-brother-younger": {"w":"brother","hint":"younger","alt":["little brother"],"def":"a male sibling who was born after you"},
+"word-hand": {"w":"hand","def":"the part of the body at the end of the arm, with a palm and five fingers"},
+"word-arm": {"w":"arm","def":"the long part of the body between the shoulder and the hand"},
+"word-monday": {"w":"Monday","def":"the day of the week after Sunday and before Tuesday"},
+"word-tuesday": {"w":"Tuesday","def":"the day of the week after Monday and before Wednesday"},
+"phrase-thank-you": {"w":"thank you","alt":["thanks"],"def":"what you say to show you are grateful for something"}
+}

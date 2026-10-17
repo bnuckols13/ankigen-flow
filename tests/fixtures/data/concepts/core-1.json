@@ -1,0 +1,14 @@
+{
+"word-water": {"pos":"noun","mods":["core-1","food"],"emoji":"💧","rel":["word-drink"],"note":"the liquid H2O"},
+"word-eat": {"pos":"verb","mods":["core-1","food"],"emoji":"🍽️","rel":["word-drink"],"note":"to consume food"},
+"word-drink": {"pos":"verb","mods":["core-1","food"],"rel":["word-eat","word-water"],"note":"to consume a liquid"},
+"word-big": {"pos":"adj","mods":["core-1"],"ant":["word-small"],"note":"large in size"},
+"word-small": {"pos":"adj","mods":["core-1"],"ant":["word-big"],"note":"little in size"},
+"word-brother-older": {"pos":"noun","mods":["core-1","family"],"rel":["word-brother-younger"],"note":"older brother; a separate word in ja/zh/ko"},
+"word-brother-younger": {"pos":"noun","mods":["core-1","family"],"rel":["word-brother-older"],"note":"younger brother; a separate word in ja/zh/ko"},
+"word-hand": {"pos":"noun","mods":["core-1","health"],"emoji":"✋","rel":["word-arm"],"note":"body part at the end of the arm: palm and fingers (ru/sr рука also = arm)"},
+"word-arm": {"pos":"noun","mods":["core-1","health"],"emoji":"💪","rel":["word-hand"],"note":"limb from shoulder to wrist (ru/sr рука also = hand)"},
+"word-monday": {"pos":"noun","mods":["core-1","time"],"grp":"weekdays","note":"day of the week"},
+"word-tuesday": {"pos":"noun","mods":["core-1","time"],"grp":"weekdays","note":"day of the week"},
+"phrase-thank-you": {"pos":"phrase","mods":["core-1","phrases"],"emoji":"🙏","note":"expressing gratitude"}
+}

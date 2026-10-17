@@ -1,0 +1,14 @@
+{
+"word-water": {"w":"水","read":"みず","rom":"mizu","def":"空から雨として降り、川や海を満たす、色も味もない液体。"},
+"word-eat": {"w":"食べる","read":"たべる","rom":"taberu","forms":{"class":"ichidan","masu":"食べます","te":"食べて","nai":"食べない"},"def":"物を口に入れ、かんでのみこむ。"},
+"word-drink": {"w":"飲む","read":"のむ","rom":"nomu","forms":{"class":"godan","masu":"飲みます","te":"飲んで","nai":"飲まない"},"def":"液体を口に入れて、のどを通す。"},
+"word-big": {"w":"大きい","read":"おおきい","rom":"ōkii","forms":{"type":"i","neg":"大きくない"},"def":"サイズや量が普通より上回っているさま。"},
+"word-small": {"w":"小さい","read":"ちいさい","rom":"chiisai","forms":{"type":"i","neg":"小さくない"},"def":"サイズや量が普通より少ないさま。"},
+"word-brother-older": {"w":"兄","read":"あに","rom":"ani","alt":["お兄さん"],"def":"同じ親から先に生まれた男のきょうだい。"},
+"word-brother-younger": {"w":"弟","read":"おとうと","rom":"otōto","def":"同じ親から後に生まれた男のきょうだい。"},
+"word-hand": {"w":"手","read":"て","rom":"te","def":"腕の先にあり、指で物をつかむ部分。"},
+"word-arm": {"w":"腕","read":"うで","rom":"ude","def":"肩から手首までの部分。"},
+"word-monday": {"w":"月曜日","read":"げつようび","rom":"getsuyōbi","def":"一週間のうち、日曜日の次の日。"},
+"word-tuesday": {"w":"火曜日","read":"かようび","rom":"kayōbi","def":"一週間のうち、月曜日の次の日。"},
+"phrase-thank-you": {"w":"ありがとう","rom":"arigatō","alt":["ありがとうございます"],"def":"人に感謝の気持ちを伝える言葉。"}
+}

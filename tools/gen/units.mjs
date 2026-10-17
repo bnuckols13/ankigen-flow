@@ -1,0 +1,167 @@
+// Work units for chunked data generation. Shared by plan.mjs and merge-unit.mjs.
+// A unit is a self-contained piece of generation work, committed atomically.
+// Units are computed from the current data state; completion of data units is checked
+// against the files themselves, so the plan self-heals if files are edited by hand.
+
+import path from 'node:path';
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { paths, loadRegistry, loadConcepts, readJson, exists, listDirs, listJson } from '../lib/data.mjs';
+
+export const CORE_PART = 250;   // concepts per core inventory unit
+export const LANG_SLICE = 100;  // concepts per language unit
+export const LANG_ORDER = ['en', 'ru', 'sr', 'ja', 'zh', 'de', 'es', 'pt', 'pl', 'ko', 'nl', 'fr', 'hy', 'tr', 'el'];
+
+// Relative cost of a unit (1 point ≈ 10k output tokens). Calibrate progress.sessionBudget, not these.
+export const WEIGHTS = { concepts: 2, conceptsSmall: 1.5, labels: 0.5, lang: 2, langCJK: 2.5, review: 1, ipa: 0.5 };
+
+export function repoRoot() {
+  return path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+}
+
+export function context(dataDir, metaDir) {
+  const p = paths(dataDir, metaDir);
+  const reg = loadRegistry(p.meta);
+  const concepts = loadConcepts(p, reg, []);
+  const layers = {};
+  for (const layer of ['lang', 'ex', 'ipa']) {
+    layers[layer] = {};
+    for (const code of listDirs(path.join(p.data, layer))) {
+      const m = new Map();
+      for (const f of listJson(path.join(p.data, layer, code))) {
+        try {
+          for (const [id, v] of Object.entries(readJson(path.join(p.data, layer, code, f)).data)) m.set(id, v);
+        } catch { /* lint reports it */ }
+      }
+      layers[layer][code] = m;
+    }
+  }
+  return { p, reg, concepts, layers };
+}
+
+export function progressFile(rootDir) {
+  return path.join(rootDir, 'tools', 'gen', 'progress.json');
+}
+
+export function loadProgress(rootDir) {
+  const f = progressFile(rootDir);
+  const base = { sessionBudget: 8, session: null, done: {} };
+  if (!exists(f)) return base;
+  return { ...base, ...readJson(f).data };
+}
+
+export function saveProgress(rootDir, prog) {
+  fs.writeFileSync(progressFile(rootDir), JSON.stringify(prog, null, 1) + '\n', 'utf8');
+}
+
+export function moduleConceptIds(ctx, moduleId) {
+  return ctx.concepts.order.filter((id) => ctx.concepts.byId.get(id).module === moduleId);
+}
+
+export function langOrder(reg) {
+  const active = reg.languages.active;
+  return [...LANG_ORDER.filter((c) => active.includes(c)), ...active.filter((c) => !LANG_ORDER.includes(c))];
+}
+
+export function owns(concept, code) {
+  return !concept.only || concept.only.includes(code);
+}
+
+/** All units in execution order: [{id, type, weight, deps:[ids], ...}] */
+export function allUnits(ctx) {
+  const { reg } = ctx;
+  const units = [];
+  // 1. Concept inventory: core bands strictly in sequence, then topical modules
+  const coreUnits = [];
+  for (const m of reg.modules.filter((m) => m.core)) {
+    const parts = Math.ceil(m.size / CORE_PART);
+    for (let i = 1; i <= parts; i++) {
+      const id = `concepts:${m.id}:${i}`;
+      units.push({ id, type: 'concepts', module: m.id, part: i, parts, weight: WEIGHTS.concepts, deps: coreUnits.length ? [coreUnits[coreUnits.length - 1]] : [] });
+      coreUnits.push(id);
+    }
+  }
+  const conceptUnits = [...coreUnits];
+  for (const m of reg.modules.filter((m) => !m.core)) {
+    const id = `concepts:${m.id}`;
+    units.push({ id, type: 'concepts', module: m.id, part: null, weight: m.size > 150 ? WEIGHTS.concepts : WEIGHTS.conceptsSmall, deps: [conceptUnits[conceptUnits.length - 1]] });
+    conceptUnits.push(id);
+  }
+  // 2. Card labels (independent of everything else)
+  for (const code of langOrder(reg)) {
+    units.push({ id: `labels:${code}`, type: 'labels', lang: code, weight: WEIGHTS.labels, deps: [] });
+  }
+  // 3. Language layers (need the complete concept inventory; non-English needs reviewed English)
+  for (const code of langOrder(reg)) {
+    const langUnits = [];
+    for (const m of reg.modules) {
+      const ids = moduleConceptIds(ctx, m.id);
+      const parts = Math.ceil(ids.length / LANG_SLICE);
+      for (let i = 1; i <= parts; i++) {
+        const id = `lang:${code}:${m.id}:${i}`;
+        const deps = [conceptUnits[conceptUnits.length - 1]];
+        if (code !== 'en') deps.push('review:en');
+        units.push({ id, type: 'lang', lang: code, module: m.id, part: i, slice: ids.slice((i - 1) * LANG_SLICE, i * LANG_SLICE), weight: ['ja', 'zh'].includes(code) ? WEIGHTS.langCJK : WEIGHTS.lang, deps });
+        langUnits.push(id);
+      }
+    }
+    units.push({ id: `review:${code}`, type: 'review', lang: code, weight: WEIGHTS.review, deps: langUnits.length ? langUnits : [conceptUnits[conceptUnits.length - 1]] });
+  }
+  // 4. IPA (after the language is reviewed)
+  for (const code of langOrder(reg)) {
+    if (!reg.languages.languages[code].ipa) continue;
+    for (const m of reg.modules) {
+      const ids = moduleConceptIds(ctx, m.id);
+      if (!ids.length) continue;
+      units.push({ id: `ipa:${code}:${m.id}`, type: 'ipa', lang: code, module: m.id, ids, weight: WEIGHTS.ipa, deps: [`review:${code}`] });
+    }
+  }
+  return units;
+}
+
+/** Is the unit complete? Data units are checked against files; others use progress.done. */
+export function unitDone(ctx, prog, u) {
+  switch (u.type) {
+    case 'labels': {
+      const map = ctx.reg.labels.labels[u.lang];
+      return Boolean(map) && ctx.reg.labels.keys.every((k) => k in map);
+    }
+    case 'lang': {
+      if (!u.slice.length) return true;
+      const L = ctx.layers.lang[u.lang];
+      const E = ctx.layers.ex[u.lang];
+      return u.slice.every((id) => {
+        const e = L?.get(id);
+        if (!e) return false;
+        const c = ctx.concepts.byId.get(id).c;
+        if (!owns(c, u.lang)) return true;
+        return Array.isArray(E?.get(id)) && E.get(id).length > 0;
+      });
+    }
+    case 'ipa': {
+      const L = ctx.layers.lang[u.lang];
+      const I = ctx.layers.ipa[u.lang];
+      // done only when the language layer exists for every concept and every word entry has IPA
+      return u.ids.every((id) => {
+        const e = L?.get(id);
+        return Boolean(e) && (!e.w || I?.has(id));
+      });
+    }
+    default:
+      return Boolean(prog.done[u.id]);
+  }
+}
+
+export function availableUnits(ctx, prog, { type, lang } = {}) {
+  const units = allUnits(ctx);
+  const doneSet = new Set(units.filter((u) => unitDone(ctx, prog, u)).map((u) => u.id));
+  return {
+    units,
+    doneSet,
+    available: units.filter((u) => !doneSet.has(u.id) && u.deps.every((d) => doneSet.has(d)) && (!type || u.type === type) && (!lang || u.lang === lang)),
+  };
+}
+
+export function findUnit(ctx, id) {
+  return allUnits(ctx).find((u) => u.id === id);
+}

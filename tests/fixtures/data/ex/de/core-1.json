@@ -1,0 +1,7 @@
+{
+"word-water": [{"t":"Kann ich bitte ein Glas {Wasser} haben?"},{"t":"Das {Wasser} in diesem See ist sehr kalt."},{"t":"Pflanzen brauchen {Wasser} und Sonnenlicht."}],
+"word-eat": [{"t":"Wir {essen} normalerweise um sieben zu Abend."},{"t":"Ich {esse} kein Fleisch."},{"t":"Was hast du zum Frühstück {gegessen}?"}],
+"word-hand": [{"t":"Wasch dir vor dem Essen die {Hände}."},{"t":"Sie hielt eine Tasse in der linken {Hand}."},{"t":"Heb die {Hand}, wenn du eine Frage hast."}],
+"word-arm": [{"t":"Er hat sich beim Fußballspielen den {Arm} gebrochen."},{"t":"Sie trug das Baby auf dem {Arm}."},{"t":"Meine {Arme} sind vom Schwimmen müde."}],
+"phrase-thank-you": [{"t":"{Danke} für deine Hilfe!"},{"t":"{Vielen Dank} für das Geschenk."},{"t":"{Danke}, bis morgen!"}]
+}
