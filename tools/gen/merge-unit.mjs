@@ -15,7 +15,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { readJson, writeCanonical, lint, exists } from '../lib/data.mjs';
+import { readJson, writeCanonical, stringifyLabels, lint, exists } from '../lib/data.mjs';
 import { context, findUnit, loadProgress, saveProgress, repoRoot, owns } from './units.mjs';
 
 const ROOT = repoRoot();
@@ -119,7 +119,7 @@ switch (unit.type) {
     const keys = new Set(data.keys);
     for (const k of Object.keys(out.labels || {})) if (!keys.has(k)) problems.push(`labels: unknown key ${k}`);
     data.labels[unit.lang] = { ...(data.labels[unit.lang] || {}), ...(out.labels || {}) };
-    fs.writeFileSync(f, JSON.stringify(data, null, 2) + '\n', 'utf8');
+    fs.writeFileSync(f, stringifyLabels(data, [...ctx.reg.languages.active, ...ctx.reg.languages.deferred]), 'utf8');
     touchedFiles.add('meta/labels.json');
     break;
   }

@@ -385,7 +385,10 @@ async function runSync(unitId, repairs) {
     const raw = msg.content.filter((c) => c.type === 'text').map((c) => c.text).join('');
     if (msg.stop_reason === 'max_tokens') { console.log('  truncated output'); repair = { previous: raw, errors: ['output truncated; be more concise'] }; continue; }
     const res = mergeOutput(r, raw);
-    console.log(`  in ${msg.usage?.input_tokens} (+cache ${msg.usage?.cache_read_input_tokens || 0}) out ${msg.usage?.output_tokens}`);
+    const us = msg.usage || {};
+    // sync runs on the plain Messages API: twice the batch prices given by --price-in/--price-out
+    const cost = (2 * ((us.input_tokens || 0) + (us.cache_creation_input_tokens || 0) * 1.25 + (us.cache_read_input_tokens || 0) * 0.1) * PRICE_IN + 2 * (us.output_tokens || 0) * PRICE_OUT) / 1e6;
+    console.log(`  tokens: in ${us.input_tokens}, cache write ${us.cache_creation_input_tokens || 0}, cache read ${us.cache_read_input_tokens || 0}, out ${us.output_tokens}  ≈ $${cost.toFixed(3)}`);
     if (res.ok) { console.log(`  OK ${u.id}`); return true; }
     console.log(`  ${res.kind}: ${res.errors.slice(0, 5).join(' | ')}`);
     repair = { previous: res.previous || raw, errors: res.errors };

@@ -60,6 +60,44 @@ export function writeCanonical(file, obj, order) {
   fs.writeFileSync(file, canonicalStringify(obj, order), 'utf8');
 }
 
+// Canonical format for meta/labels.json: one line per key group, in "keys" and in every language map.
+// A group starts where the key prefix changes, and also at the verb forms and the ja/ko forms,
+// so the long form.* run stays readable. Language maps follow `langOrder` (registry order).
+const LABEL_LINE_STARTS = new Set(['form.aspect', 'form.class']);
+
+export function labelGroups(keys) {
+  const groups = [];
+  let prev = null;
+  for (const k of keys) {
+    const prefix = k.slice(0, k.lastIndexOf('.'));
+    if (!groups.length || prefix !== prev || LABEL_LINE_STARTS.has(k)) groups.push([]);
+    groups[groups.length - 1].push(k);
+    prev = prefix;
+  }
+  return groups;
+}
+
+export function stringifyLabels(data, langOrder = []) {
+  const groups = labelGroups(data.keys);
+  const known = new Set(data.keys);
+  const rank = (code) => (langOrder.includes(code) ? langOrder.indexOf(code) : langOrder.length);
+  const codes = Object.keys(data.labels).sort((a, b) => rank(a) - rank(b) || (a < b ? -1 : a > b ? 1 : 0));
+  const keyLines = groups.map((g) => '    ' + g.map((k) => JSON.stringify(k)).join(', '));
+  const langBlocks = codes.map((code) => {
+    const map = data.labels[code];
+    const lines = [...groups, Object.keys(map).filter((k) => !known.has(k))]
+      .map((g) => g.filter((k) => k in map).map((k) => `${JSON.stringify(k)}: ${JSON.stringify(map[k])}`).join(', '))
+      .filter(Boolean);
+    return lines.length ? `    ${JSON.stringify(code)}: {\n${lines.map((l) => '      ' + l).join(',\n')}\n    }` : `    ${JSON.stringify(code)}: {}`;
+  });
+  const top = Object.entries(data).map(([k, v]) => {
+    if (k === 'keys') return `  "keys": [\n${keyLines.join(',\n')}\n  ]`;
+    if (k === 'labels') return `  "labels": {\n${langBlocks.join(',\n')}\n  }`;
+    return `  ${JSON.stringify(k)}: ${JSON.stringify(v)}`;
+  });
+  return '{\n' + top.join(',\n') + '\n}\n';
+}
+
 // ---------- Paths ----------
 
 export function paths(dataDir, metaDir) {

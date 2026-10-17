@@ -36,6 +36,18 @@
       "value.aspect.ipf": "несов. вид", "value.aspect.pf": "сов. вид", "value.aspect.bi": "двувидовой",
       "value.class.godan": "годан", "value.class.ichidan": "итидан", "value.class.suru": "суру-глагол", "value.class.kuru": "куру (нерегул.)",
       "value.type.i": "и-прилагательное", "value.type.na": "на-прилагательное"
+    },
+    "de": {
+      "section.forms": "Formen", "section.examples": "Beispiele", "section.related": "Verwandt", "section.antonyms": "Gegenteil", "section.etymology": "Herkunft", "section.ipa": "IPA", "section.reading": "Lesung", "section.romanization": "Umschrift", "section.measureWord": "Zähleinheitswort", "section.counter": "Zählsuffix", "section.hanja": "Hanja", "section.definition": "Definition", "section.otherScript": "Andere Schrift", "section.conceptId": "ID",
+      "pos.noun": "Subst.", "pos.verb": "Verb", "pos.adj": "Adj.", "pos.adv": "Adv.", "pos.pron": "Pron.", "pos.num": "Num.", "pos.prep": "Präp.", "pos.conj": "Konj.", "pos.interj": "Interj.", "pos.particle": "Partikel", "pos.det": "Determinativ", "pos.phrase": "Wendung",
+      "reg.informal": "umgangssprachl.", "reg.formal": "förmlich", "reg.vulgar": "vulgär", "reg.offensive": "beleidigend",
+      "gender.m": "m.", "gender.f": "f.", "gender.n": "n.", "gender.c": "Utrum", "gender.mf": "m./f.", "gender.pl": "nur Pl.",
+      "form.gen": "Gen.", "form.pl": "Pl.", "form.dim": "Dim.", "form.acc": "Akk.", "form.poss3": "sein/ihr", "form.f": "fem. Form", "form.n": "Neutrum", "form.short": "Kurzform", "form.comp": "Komp.", "form.sup": "Sup.",
+      "form.aspect": "Aspekt", "form.pair": "Paar", "form.1sg": "ich", "form.2sg": "du", "form.3sg": "er/sie/es", "form.1pl": "wir", "form.3pl": "sie", "form.past": "Vergangenheit", "form.pret": "Prät.", "form.pp": "Perfekt", "form.aux": "Hilfsverb", "form.lpt": "Part. Prät.", "form.aor": "Aorist", "form.prog": "Verlaufsform", "form.fut": "Futur", "form.imp": "Imp.",
+      "form.class": "Klasse", "form.masu": "höflich", "form.te": "Te-Form", "form.nai": "Verneinung", "form.type": "Typ", "form.neg": "Verneinung", "form.haeyo": "höflich",
+      "value.aspect.ipf": "unvollendet", "value.aspect.pf": "vollendet", "value.aspect.bi": "beide Aspekte",
+      "value.class.godan": "Godan (u-Verb)", "value.class.ichidan": "Ichidan (ru-Verb)", "value.class.suru": "suru-Verb", "value.class.kuru": "kuru (unregelmäßig)",
+      "value.type.i": "i-Adjektiv", "value.type.na": "na-Adjektiv"
     }
   }
 }
