@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"市役所","read":"しやくしょ","rom":"shiyakusho","def":"市や町の行政の仕事をする建物。"},
+"word-fire-station": {"w":"消防署","read":"しょうぼうしょ","rom":"shōbōsho","def":"火事のときに出動する人や車が待機している建物。"},
+"word-mosque": {"w":"モスク","rom":"mosuku","def":"イスラム教の人がお祈りをする建物。"},
+"word-synagogue": {"w":"シナゴーグ","rom":"shinagōgu","def":"ユダヤ教の人がお祈りや勉強をする建物。"},
+"word-cathedral": {"w":"大聖堂","read":"だいせいどう","rom":"daiseidō","def":"司教がいる、とても大きくて大切な教会。"},
+"word-laundromat": {"w":"コインランドリー","rom":"koinrandorī","def":"お金を入れて、機械で服を洗ったり乾かしたりする店。"},
+"word-art-gallery": {"w":"美術館","read":"びじゅつかん","rom":"bijutsukan","alt":["ギャラリー"],"def":"絵や彫刻などの作品を集めて、人々に見せる建物。"},
+"word-nightclub": {"w":"ナイトクラブ","rom":"naitokurabu","alt":["クラブ"],"def":"夜遅くまで開いていて、音楽やダンス、お酒を楽しむ店。"},
+"word-old-town": {"w":"旧市街","read":"きゅうしがい","rom":"kyūshigai","def":"都市のいちばん古い地区で、歴史的な建物や狭い道がある所。"},
+"word-skyscraper": {"w":"超高層ビル","read":"ちょうこうそうビル","rom":"chōkōsōbiru","alt":["高層ビル"],"def":"階の数がとても多い、とても高い建物。"},
+"word-apartment-block": {"w":"マンション","rom":"manshon","alt":["アパート","集合住宅"],"def":"一つの建物がいくつもの住まいに分かれていて、多くの家族が住む建物。"},
+"word-avenue": {"w":"大通り","read":"おおどおり","rom":"ōdōri","def":"町にある広い道で、両側に木が並んでいることも多い。"},
+"word-pedestrian-zone": {"w":"歩行者専用区域","read":"ほこうしゃせんようくいき","rom":"hokōsha sen'yō kuiki","alt":["歩行者天国"],"def":"車が入れず、人が安全に歩ける町の一部。"},
+"word-bench": {"w":"ベンチ","rom":"benchi","def":"何人かが座れる、外に置いてある長い椅子。"},
+"word-fountain": {"w":"噴水","read":"ふんすい","rom":"funsui","def":"水を空に向かって吹き上げる、公園や広場にある設備。"},
+"word-opposite": {"w":"向かい","read":"むかい","rom":"mukai","alt":["向かい側"],"def":"ある物をはさんで、反対の側にあること。"},
+"word-city-block": {"w":"ブロック","rom":"burokku","alt":["区画"],"def":"四方を道に囲まれた、建物が並ぶ一つのまとまり。"},
+"word-tourist-information": {"w":"観光案内所","read":"かんこうあんないじょ","rom":"kankō annaijo","def":"旅行者に地図やその土地の情報を教えてくれる場所。"},
+"word-landmark": {"w":"ランドマーク","rom":"randomāku","alt":["目印"],"def":"有名で見つけやすい建物や場所。"},
+"word-outskirts": {"w":"郊外","read":"こうがい","rom":"kōgai","def":"都市の中心から遠い地域。","hint":"町のはずれ"}
+}

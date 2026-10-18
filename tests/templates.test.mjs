@@ -31,7 +31,7 @@ test('reverse: every learning-side row moves to the answer', async () => {
   assert.deepEqual(question, ['Emoji', 'Translation', 'POS', 'Register']);
   for (const f of LEARNING_FIELDS) assert.ok(!question.includes(f), `${f} is not on the reverse question`);
   const answer = fieldsIn(afterAnswer(rev.afmt));
-  for (const f of ['Word', 'Disambig', 'Romanization', 'Forms', 'IPA', 'Examples', 'Related', 'Etymology']) assert.ok(answer.includes(f), `${f} on the reverse answer`);
+  for (const f of ['Word', 'Disambig', 'Romanization', 'Forms', 'IPA', 'Examples', 'Related']) assert.ok(answer.includes(f), `${f} on the reverse answer`);
   assert.deepEqual(fieldsIn(beforeAnswer(rev.afmt)), ['Emoji', 'Translation', 'POS', 'Register']);
 });
 

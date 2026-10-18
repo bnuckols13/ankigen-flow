@@ -54,16 +54,18 @@ test('rate limits: 15 s between reports, 5 in 10 minutes, 20 in 24 hours', () =>
   assert.equal(rateLimit(record(fresh(), report('x'), T0 + H, false), T0), null, 'a clock set back locks no one out');
 });
 
-test('garbage is sent only when confirmed; from the 10th on nothing is sent, and the user is still thanked', () => {
+test('garbage is sent only when confirmed; from the 10th on it is dropped with thanks, and real reports still go out', () => {
   let state = fresh();
   assert.deepEqual(decide(state, report('Wrong translation'), T0), { action: 'send', garbage: false });
   assert.deepEqual(decide(state, report('x'), T0), { action: 'confirm', reason: 'short' });
   assert.deepEqual(decide(state, report('x'), T0, { confirmed: true }), { action: 'send', garbage: true });
   for (let i = 0; i < 9; i++) state = record(state, report(`? ${i}`), T0 + i * H, true);
   const t = T0 + 9 * H;
-  assert.deepEqual(decide(state, report('x'), t, { confirmed: true }), { action: 'drop', garbage: true }, 'the 10th garbage report');
+  assert.deepEqual(decide(state, report('x'), t), { action: 'confirm', reason: 'short' }, 'the 10th garbage report still asks');
+  assert.deepEqual(decide(state, report('x'), t, { confirmed: true }), { action: 'drop', garbage: true }, 'and is dropped');
   state = record(state, report('x'), t, true);
-  assert.deepEqual(decide(state, report('The plural of вода is wrong'), t + H), { action: 'drop', garbage: false }, 'and everything after it');
+  assert.deepEqual(decide(state, report('y'), t + H), { action: 'drop', garbage: true }, 'later garbage is dropped without asking');
+  assert.deepEqual(decide(state, report('The plural of вода is wrong'), t + H), { action: 'send', garbage: false }, 'real reports still go out');
   assert.equal(decide(state, report('The plural of вода is wrong'), t + 5 * S).action, 'wait', 'rate limits still apply');
 });
 

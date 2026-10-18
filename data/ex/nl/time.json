@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"Morgen is mijn {vrije dag}."},{"t":"Ze neemt elke woensdag een {vrije dag} op."},{"t":"Ik heb een {vrije dag} nodig om uit te rusten."}],
+"word-working-day": [{"t":"Maandag is de eerste {werkdag} van de week."},{"t":"Een normale {werkdag} duurt acht uur."},{"t":"Het pakket komt over drie {werkdagen} aan."}],
+"word-on-time": [{"t":"De trein kwam {op tijd} aan."},{"t":"Probeer {op tijd} te zijn voor de vergadering."},{"t":"Ze betaalt haar huur altijd {op tijd}."}],
+"word-date-of-birth": [{"t":"Schrijf je {geboortedatum} op het formulier."},{"t":"Mijn {geboortedatum} is 4 mei 1990."},{"t":"Ze vroegen me om mijn naam en {geboortedatum}."}],
+"word-time-zone": [{"t":"New York ligt in een andere {tijdzone} dan Los Angeles."},{"t":"Na de overgang naar een andere {tijdzone} sliep ik slecht."},{"t":"In welke {tijdzone} zit je?"}],
+"word-o-clock": [{"t":"De film begint om acht {uur}."},{"t":"Het is nu precies vijf {uur}."},{"t":"We lunchen om twaalf {uur}."}],
+"word-lifetime": [{"t":"De gemiddelde {levensduur} van een mens is ongeveer tachtig jaar.","p":0},{"t":"De {levensduur} van een hond is korter dan die van een mens.","p":0},{"t":"Een goede lamp heeft een lange {levensduur}.","p":0}]
+}

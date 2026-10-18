@@ -1,6 +1,6 @@
 {
   "name": "ankigen",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Free Anki vocabulary decks in 15 languages, generated entirely in the browser.",
   "homepage": "https://xenohunter.github.io/ankigen/",

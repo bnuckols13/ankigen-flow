@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"ayuntamiento","g":"m","alt":["casa consistorial"],"def":"Edificio donde trabajan el alcalde y los concejales de una ciudad.","hint":"edificio"},
+"word-fire-station": {"w":"parque de bomberos","g":"m","alt":["estación de bomberos"],"def":"Edificio donde esperan los profesionales que apagan incendios y sus camiones."},
+"word-mosque": {"w":"mezquita","g":"f","def":"Edificio donde los musulmanes van a rezar."},
+"word-synagogue": {"w":"sinagoga","g":"f","def":"Edificio donde los judíos van a rezar y a estudiar."},
+"word-cathedral": {"w":"catedral","g":"f","def":"Iglesia muy grande e importante, donde tiene su sede un obispo."},
+"word-laundromat": {"w":"lavandería de autoservicio","g":"f","alt":["lavandería automática"],"def":"Local público donde uno limpia y seca su ropa en máquinas que funcionan con monedas."},
+"word-art-gallery": {"w":"galería de arte","g":"f","alt":["pinacoteca"],"def":"Local donde se muestran al público cuadros, esculturas y otras obras creativas."},
+"word-nightclub": {"w":"discoteca","g":"f","alt":["club nocturno"],"def":"Local abierto hasta tarde, con música, baile y bebidas."},
+"word-old-town": {"w":"casco antiguo","g":"m","alt":["centro histórico"],"def":"Parte más antigua de una ciudad, con edificios históricos y calles estrechas."},
+"word-skyscraper": {"w":"rascacielos","g":"m","forms":{"pl":"rascacielos"},"def":"Edificio altísimo con muchas plantas."},
+"word-apartment-block": {"w":"bloque de pisos","g":"m","alt":["edificio de apartamentos"],"def":"Edificio grande dividido en muchas viviendas en distintas plantas."},
+"word-avenue": {"w":"avenida","g":"f","alt":["bulevar"],"def":"Calle ancha de una ciudad, a menudo con árboles a los lados."},
+"word-pedestrian-zone": {"w":"zona peatonal","g":"f","alt":["área peatonal"],"def":"Parte de una ciudad por donde no pasan coches, para que la gente camine con seguridad."},
+"word-bench": {"w":"banco","g":"m","hint":"para sentarse","def":"Asiento largo para varias personas, normalmente al aire libre."},
+"word-fountain": {"w":"fuente","g":"f","hint":"de agua","def":"Construcción que lanza agua al aire, normalmente en un parque o plaza."},
+"word-opposite": {"w":"enfrente de","alt":["frente a"],"def":"En el lado contrario de algo, mirándolo."},
+"word-city-block": {"w":"manzana","g":"f","hint":"de casas","def":"Conjunto de edificios rodeado por calles en sus cuatro lados."},
+"word-tourist-information": {"w":"oficina de turismo","g":"f","alt":["oficina de información turística"],"def":"Lugar donde los visitantes consiguen mapas y consejos sobre una ciudad."},
+"word-landmark": {"w":"lugar emblemático","g":"m","alt":["punto de referencia","hito"],"def":"Edificio o lugar famoso y fácil de reconocer."},
+"word-outskirts": {"w":"afueras","g":"f.pl","alt":["periferia"],"def":"Zonas de una ciudad más alejadas del centro.","hint":"límite urbano"}
+}

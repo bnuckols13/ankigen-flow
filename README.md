@@ -8,7 +8,7 @@ Languages: English, Russian, Serbian, Japanese, Chinese, German, Spanish, Portug
 
 Decks are deterministic: the same settings and data version always give the same notes with the same IDs. You can download again later with more modules, other fields or newer data, and import the new file over the old deck. Anki updates the notes and keeps your review history.
 
-**Status:** the app is complete. The vocabulary is being generated: English is done. The site goes live once all 15 languages are complete.
+**Status:** version 1.0.0. All 15 languages are complete: every word has a definition, three examples and, where the deck offers it, IPA. Italian, Irish, Scottish Gaelic and Swedish come next.
 
 The vocabulary is drafted with an AI model and partly reviewed by people. If something looks wrong, select it on a card and press Ctrl+Enter, or use the Feedback button on the page.
 
@@ -39,7 +39,7 @@ node tools/bundle.mjs                   # build the site in _site/: the page, th
 python3 -m http.server -d _site 8000    # preview the production build; the landing pages are at /decks/
 ```
 
-The landing pages are one static page per language pair with words, such as `decks/japanese-for-russian-speakers/`, for search engines: the deck's modules with word counts and sample words, and links that open the app with the pair chosen. `decks/` lists them, and `sitemap.xml` is written with them.
+The landing pages are one static page per language pair with words, such as `decks/japanese-for-russian-speakers/`, for search engines: the deck's modules with word counts and sample words, and links that open the app with the pair chosen. Each is written in the language its visitors speak, from the translations in `data/landing/`. `decks/` lists them, and `sitemap.xml` is written with them.
 
 `.github/workflows/pages.yml` deploys to GitHub Pages on every push to `master`. It lints the data, runs the tests, checks the data gate, builds `_site/` and publishes it.
 
@@ -60,7 +60,7 @@ The landing pages are one static page per language pair with words, such as `dec
 |---|---|
 | `index.html`, `css/`, `src/` | the app: native ES modules, no framework, no build step |
 | `vendor/` | sql.js and fflate, pinned, with their licenses |
-| `data/` | the vocabulary: concepts, per-language layers, `meta/` (languages, modules, fields, labels, version) |
+| `data/` | the vocabulary: concepts, per-language layers, `meta/` (languages, modules, fields, labels, version), `landing/` (the landing pages' translations) |
 | `tools/lint-data.mjs` | data validator (`--report`, `--fix`, `--warnings`, `--gate`) |
 | `tools/bundle.mjs` | builds the site with one data bundle per language |
 | `tools/landing.mjs` | the landing pages per language pair and the sitemap (`tools/bundle.mjs` writes them) |
@@ -80,4 +80,4 @@ The landing pages are one static page per language pair with words, such as `dec
 
 ## Support
 
-If AnkiGen helps you, you can support it on [Patreon](https://www.patreon.com/cw/blisstweeting).
+If AnkiGen helps you, you can support it on [Patreon](https://www.patreon.com/cw/blisstweeting) or [Buy Me a Coffee](https://buymeacoffee.com/blisstweeting).

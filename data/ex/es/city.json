@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"La boda será en el {ayuntamiento} el sábado."},{"t":"Puedes conseguir el formulario en el {ayuntamiento}."},{"t":"El alcalde trabaja en el {ayuntamiento}."}],
+"word-fire-station": [{"t":"El {parque de bomberos} está junto al colegio."},{"t":"Los niños visitaron el {parque de bomberos} el viernes."},{"t":"Hay un nuevo {parque de bomberos} en nuestro pueblo."}],
+"word-mosque": [{"t":"Van a la {mezquita} todos los viernes."},{"t":"La {mezquita} tiene una bonita cúpula azul."},{"t":"Visitamos una {mezquita} famosa en nuestro viaje."}],
+"word-synagogue": [{"t":"La {sinagoga} está en la esquina de la calle Mayor."},{"t":"Su familia va a la {sinagoga} los sábados."},{"t":"La antigua {sinagoga} se construyó en 1890."}],
+"word-cathedral": [{"t":"La {catedral} es el edificio más antiguo de la ciudad."},{"t":"Subimos a la torre de la {catedral}."},{"t":"Cientos de personas vinieron a la {catedral} para el concierto."}],
+"word-laundromat": [{"t":"Mi lavadora está rota, así que voy a la {lavandería de autoservicio}."},{"t":"Hay una {lavandería de autoservicio} al otro lado de la calle."},{"t":"Lleva monedas a la {lavandería de autoservicio}."}],
+"word-art-gallery": [{"t":"Pasamos la tarde en la {galería de arte}."},{"t":"La {galería de arte} es gratis los domingos."},{"t":"Tiene un cuadro en una pequeña {galería de arte} del centro."}],
+"word-nightclub": [{"t":"Bailaron toda la noche en la {discoteca}."},{"t":"Hay que ser mayor de edad para entrar en la {discoteca}."},{"t":"La {discoteca} abre a las diez y cierra a las cuatro."}],
+"word-old-town": [{"t":"Paseamos por el {casco antiguo} después de comer."},{"t":"El {casco antiguo} tiene calles estrechas y pequeñas cafeterías."},{"t":"Muchos turistas se alojan en el {casco antiguo}."}],
+"word-skyscraper": [{"t":"Se ve toda la ciudad desde ese {rascacielos}."},{"t":"Están construyendo un nuevo {rascacielos} en el centro."},{"t":"Mi oficina está en la planta cuarenta de un {rascacielos}."}],
+"word-apartment-block": [{"t":"Vivimos en un gran {bloque de pisos} cerca del parque."},{"t":"El {bloque de pisos} tiene ascensor."},{"t":"Hay veinte familias en este {bloque de pisos}."}],
+"word-avenue": [{"t":"El hotel está en una {avenida} ancha con muchos árboles."},{"t":"Gira a la izquierda al final de la {avenida}."},{"t":"La Quinta {Avenida} es una calle famosa de Nueva York."}],
+"word-pedestrian-zone": [{"t":"El centro de la ciudad es una {zona peatonal}."},{"t":"Los coches no pueden entrar en la {zona peatonal}."},{"t":"Tomamos un café en la {zona peatonal}."}],
+"word-bench": [{"t":"Sentémonos un momento en ese {banco}."},{"t":"Un anciano leía en un {banco} del parque."},{"t":"El {banco} estaba mojado por la lluvia."}],
+"word-fountain": [{"t":"Los niños jugaban cerca de la {fuente}."},{"t":"Hay una bonita {fuente} en la plaza mayor."},{"t":"Echamos monedas a la {fuente}."}],
+"word-opposite": [{"t":"El banco está {enfrente de} correos."},{"t":"Se sentó {enfrente de} mí a la mesa."},{"t":"Hay una panadería {enfrente de} nuestra casa."}],
+"word-city-block": [{"t":"La tienda está a dos {manzanas} de aquí."},{"t":"Dimos la vuelta a la {manzana} para tomar el aire."},{"t":"La parada de autobús está en la siguiente {manzana}."}],
+"word-tourist-information": [{"t":"Preguntemos en la {oficina de turismo} por un mapa."},{"t":"La {oficina de turismo} está junto a la estación de tren."},{"t":"La {oficina de turismo} cierra a las cinco."}],
+"word-landmark": [{"t":"La torre es el {lugar emblemático} más famoso de la ciudad."},{"t":"Usa esa iglesia grande como {punto de referencia}."},{"t":"Sacamos fotos de cada {lugar emblemático} del recorrido."}],
+"word-outskirts": [{"t":"Viven en las {afueras} de la ciudad."},{"t":"El aeropuerto está en las {afueras} de la ciudad."},{"t":"Las casas son más baratas en las {afueras}."}]
+}

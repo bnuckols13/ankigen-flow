@@ -6,6 +6,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { lint } from '../lib/data.mjs';
 import { moduleConceptIds, owns } from './units.mjs';
+import { appMeta, englishTexts, readTranslations } from '../landing.mjs';
 
 export function langInfo(reg, code) {
   const l = reg.languages.languages[code];
@@ -45,6 +46,18 @@ export function buildInput(ctx, u, opts = {}) {
   }
   if (u.type === 'labels') {
     return { ...base, lang: langInfo(reg, u.lang), keys: reg.labels.keys, en: reg.labels.labels.en, ru: reg.labels.labels.ru, current: reg.labels.labels[u.lang] || {} };
+  }
+  if (u.type === 'landing') {
+    const meta = appMeta(ctx.p.meta);
+    const { name, native, locale, script } = langInfo(reg, u.lang);
+    const { source, ...current } = readTranslations(ctx.p.data)[u.lang] ?? {};
+    return {
+      ...base,
+      lang: { code: u.lang, name, native, locale, script },
+      pluralCategories: new Intl.PluralRules(locale).resolvedOptions().pluralCategories,
+      en: englishTexts(meta, u.lang),
+      current: source ? current : null,
+    };
   }
   if (u.type === 'lang') {
     const ids = opts.subset ? u.slice.filter((id) => opts.subset.includes(id)) : u.slice;
@@ -167,6 +180,8 @@ function fixtureFiles(rootDir, kinds) {
  * followed by the language-specific guide (not cached separately; it is small).
  */
 export function systemBlocks(rootDir, u) {
+  // Landing texts are prose for a web page: no data format, and no language guide (it asks for stress marks).
+  if (u.type === 'landing') return [{ type: 'text', text: [API_PREAMBLE, '# Unit instructions\n' + read(rootDir, 'tools/gen/prompts/landing.md')].join('\n\n'), cache_control: { type: 'ephemeral' } }];
   const shared = [
     API_PREAMBLE,
     '# Data format\n' + read(rootDir, 'docs/DATA_FORMAT.md'),

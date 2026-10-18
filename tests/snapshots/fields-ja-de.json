@@ -158,7 +158,6 @@
    "Romanization": "ude",
    "Examples": "<div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼<rt>かれ</rt></ruby>はサッカーで<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>を<ruby>折<rt>お</rt></ruby>った。</div><div class=\"ex-tr\" lang=\"de-DE\">Er hat sich beim Fußballspielen den Arm gebrochen.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>赤<rt>あか</rt></ruby>ちゃんを<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>に<ruby>抱<rt>だ</rt></ruby>いていた。</div><div class=\"ex-tr\" lang=\"de-DE\">Sie trug das Baby auf dem Arm.</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>泳<rt>およ</rt></ruby>いだので<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>が<ruby>疲<rt>つか</rt></ruby>れた。</div><div class=\"ex-tr\" lang=\"de-DE\">Meine Arme sind vom Schwimmen müde.</div></div>",
    "Related": "<span class=\"rel\">→ 手</span>",
-   "Etymology": "腕 = ⺼ + 宛",
    "POS": "Subst.",
    "Emoji": "💪",
    "ConceptId": "word-arm",

@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"市政府","read":"shìzhèngfǔ","mw":"座","alt":["市政厅"],"def":"城市里负责管理公共事务的机关办公的大楼。"},
+"word-fire-station": {"w":"消防站","read":"xiāofángzhàn","mw":"座","def":"消防员和消防车平时等待出动救火的地方。"},
+"word-mosque": {"w":"清真寺","read":"qīngzhēnsì","mw":"座","def":"穆斯林去祈祷和做礼拜的建筑。"},
+"word-synagogue": {"w":"犹太教堂","read":"yóutài jiàotáng","mw":"座","alt":["犹太会堂"],"def":"犹太人祈祷和学习的地方。"},
+"word-cathedral": {"w":"大教堂","read":"dàjiàotáng","mw":"座","def":"由主教主持的、规模很大很重要的教会建筑。"},
+"word-laundromat": {"w":"自助洗衣店","read":"zìzhù xǐyīdiàn","mw":"家","def":"人们自己投币使用机器洗衣服、烘干衣服的店。"},
+"word-art-gallery": {"w":"美术馆","read":"měishùguǎn","mw":"座","alt":["画廊"],"def":"公开展出绘画和其他艺术作品的建筑或房间。"},
+"word-nightclub": {"w":"夜总会","read":"yèzǒnghuì","mw":"家","alt":["夜店"],"def":"夜里很晚还营业，有音乐、跳舞和酒水的地方。"},
+"word-old-town": {"w":"老城区","read":"lǎochéngqū","mw":"个","alt":["古城"],"def":"城市里最早建成的部分，常有古老的建筑和窄窄的街道。"},
+"word-skyscraper": {"w":"摩天大楼","read":"mótiāndàlóu","mw":"座","alt":["高楼"],"def":"有很多层、特别高的楼房。"},
+"word-apartment-block": {"w":"公寓楼","read":"gōngyùlóu","mw":"栋","alt":["居民楼"],"def":"分成许多套、在不同楼层供人居住的大房子。"},
+"word-avenue": {"w":"大街","read":"dàjiē","mw":"条","alt":["大道"],"def":"城市里宽阔的街道，两旁常常种着树。"},
+"word-pedestrian-zone": {"w":"步行街","read":"bùxíngjiē","mw":"条","alt":["步行区"],"def":"城市里不许汽车进入、行人可以安全走路的地方。"},
+"word-bench": {"w":"长椅","read":"chángyǐ","mw":"张","alt":["长凳"],"def":"可以让几个人并排坐的长座位，多放在室外。"},
+"word-fountain": {"w":"喷泉","read":"pēnquán","mw":"座","def":"把水喷向空中的设施，常建在公园或广场上。"},
+"word-opposite": {"w":"对面","read":"duìmiàn","def":"在某物的另一侧，正好朝着它。"},
+"word-city-block": {"w":"街区","read":"jiēqū","mw":"个","def":"四面都有街道围着的一片建筑区域。"},
+"word-tourist-information": {"w":"旅游咨询处","read":"lǚyóu zīxúnchù","mw":"个","alt":["游客中心"],"def":"来玩的人可以在这里拿地图、询问当地情况的地方。"},
+"word-landmark": {"w":"地标","read":"dìbiāo","mw":"个","alt":["标志性建筑"],"def":"因为很有名、容易认出而被人记住的建筑或地方。"},
+"word-outskirts": {"w":"郊区","read":"jiāoqū","mw":"个","alt":["市郊"],"def":"城市里离中心最远的地区。","hint":"边缘"}
+}

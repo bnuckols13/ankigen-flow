@@ -7,13 +7,14 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { paths, loadRegistry, loadConcepts, readJson, exists, listDirs, listJson } from '../lib/data.mjs';
+import { appMeta, readTranslations, translatedLanguages } from '../landing.mjs';
 
 export const CORE_PART = 250;   // concepts per core inventory unit
 export const LANG_SLICE = 100;  // concepts per language unit
 export const LANG_ORDER = ['en', 'ru', 'sr', 'ja', 'zh', 'de', 'es', 'pt', 'pl', 'ko', 'nl', 'fr', 'hy', 'tr', 'el'];
 
 // Relative cost of a unit (1 point ≈ 10k output tokens). Calibrate progress.sessionBudget, not these.
-export const WEIGHTS = { concepts: 2, conceptsSmall: 1.5, labels: 0.5, lang: 2, langCJK: 2.5, review: 1, ipa: 0.5 };
+export const WEIGHTS = { concepts: 2, conceptsSmall: 1.5, labels: 0.5, landing: 1, lang: 2, langCJK: 2.5, review: 1, ipa: 0.5 };
 
 export function repoRoot() {
   return path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -87,9 +88,13 @@ export function allUnits(ctx) {
     units.push({ id, type: 'concepts', module: m.id, part: null, weight: m.size > 150 ? WEIGHTS.concepts : WEIGHTS.conceptsSmall, deps: [conceptUnits[conceptUnits.length - 1]] });
     conceptUnits.push(id);
   }
-  // 2. Card labels (independent of everything else)
+  // 2. Card labels, and the landing pages' texts for each language's speakers (English is their source, in
+  //    tools/landing.mjs). Both independent of everything else.
   for (const code of langOrder(reg)) {
     units.push({ id: `labels:${code}`, type: 'labels', lang: code, weight: WEIGHTS.labels, deps: [] });
+  }
+  for (const code of langOrder(reg).filter((c) => c !== 'en')) {
+    units.push({ id: `landing:${code}`, type: 'landing', lang: code, weight: WEIGHTS.landing, deps: [] });
   }
   // 3. Language layers (need the complete concept inventory; non-English needs reviewed English)
   for (const code of langOrder(reg)) {
@@ -137,6 +142,10 @@ export function unitDone(ctx, prog, u) {
         if (!owns(c, u.lang)) return true;
         return Array.isArray(E?.get(id)) && E.get(id).length > 0;
       });
+    }
+    case 'landing': {
+      ctx.translated ??= translatedLanguages(appMeta(ctx.p.meta), readTranslations(ctx.p.data));
+      return ctx.translated.includes(u.lang);
     }
     case 'ipa': {
       const L = ctx.layers.lang[u.lang];

@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"Rathaus","g":"n","forms":{"pl":"Rathäuser"},"def":"Gebäude, in dem die Verwaltung einer Stadt oder Gemeinde arbeitet."},
+"word-fire-station": {"w":"Feuerwache","g":"f","alt":["Feuerwehrwache"],"forms":{"pl":"Feuerwachen"},"def":"Gebäude, in dem Einsatzkräfte mit Löschfahrzeugen bei Bränden und Notfällen bereitstehen."},
+"word-mosque": {"w":"Moschee","g":"f","forms":{"pl":"Moscheen"},"def":"Gebäude, in dem Muslime beten."},
+"word-synagogue": {"w":"Synagoge","g":"f","forms":{"pl":"Synagogen"},"def":"Gebäude, in dem Juden beten und ihre Religion lernen."},
+"word-cathedral": {"w":"Kathedrale","g":"f","alt":["Dom"],"forms":{"pl":"Kathedralen"},"def":"Sehr große, wichtige Kirche, in der ein Bischof den Gottesdienst leitet."},
+"word-laundromat": {"w":"Waschsalon","g":"m","forms":{"pl":"Waschsalons"},"def":"Öffentlicher Laden, in dem man Kleidung mit Münzen in Maschinen wäscht und trocknet."},
+"word-art-gallery": {"w":"Kunstgalerie","g":"f","alt":["Galerie"],"forms":{"pl":"Kunstgalerien"},"def":"Raum oder Gebäude, in dem Bilder und Skulpturen ausgestellt und oft verkauft werden."},
+"word-nightclub": {"w":"Nachtclub","g":"m","alt":["Club","Disco"],"forms":{"pl":"Nachtclubs"},"def":"Lokal, das bis in die frühen Morgenstunden geöffnet hat, mit Musik, Tanz und Getränken."},
+"word-old-town": {"w":"Altstadt","g":"f","forms":{"pl":"Altstädte"},"def":"Der geschichtsträchtige Kern eines Ortes mit denkmalgeschützten Häusern und engen Gassen."},
+"word-skyscraper": {"w":"Wolkenkratzer","g":"m","forms":{"pl":"Wolkenkratzer"},"def":"Sehr hohes Gebäude mit vielen Stockwerken."},
+"word-apartment-block": {"w":"Mehrfamilienhaus","g":"n","alt":["Wohnblock","Mietshaus"],"forms":{"pl":"Mehrfamilienhäuser"},"def":"Großes Gebäude, in dem viele Parteien auf mehreren Etagen wohnen."},
+"word-avenue": {"w":"Allee","g":"f","alt":["Boulevard"],"forms":{"pl":"Alleen"},"def":"Breite Straße in einem Ort, an deren Rändern oft Bäume stehen."},
+"word-pedestrian-zone": {"w":"Fußgängerzone","g":"f","forms":{"pl":"Fußgängerzonen"},"def":"Teil eines Ortes, in den keine Autos fahren dürfen, damit Menschen sicher gehen können."},
+"word-bench": {"w":"Bank","g":"f","hint":"zum Sitzen","forms":{"pl":"Bänke"},"def":"Lange Sitzgelegenheit für mehrere Personen, meist im Freien."},
+"word-fountain": {"w":"Springbrunnen","g":"m","alt":["Brunnen"],"forms":{"pl":"Springbrunnen"},"def":"Bauwerk, aus dem Wasser in die Luft spritzt, meist in einem Park oder auf einem Platz."},
+"word-opposite": {"w":"gegenüber","def":"Auf der anderen Seite von etwas, mit Blick darauf."},
+"word-city-block": {"w":"Häuserblock","g":"m","alt":["Block"],"forms":{"pl":"Häuserblöcke"},"def":"Gruppe von Gebäuden, die auf allen vier Seiten von Straßen umgeben ist."},
+"word-tourist-information": {"w":"Touristeninformation","g":"f","alt":["Tourist-Info"],"forms":{"pl":"Touristeninformationen"},"def":"Büro, in dem Besucher Stadtpläne und Tipps zu einem Ort bekommen."},
+"word-landmark": {"w":"Wahrzeichen","g":"n","forms":{"pl":"Wahrzeichen"},"def":"Bekanntes Bauwerk oder bekannter Ort, den man leicht wiedererkennt und der für einen Ort steht."},
+"word-outskirts": {"w":"Stadtrand","g":"m","forms":{"pl":"Stadtränder"},"def":"Gebiet am äußeren Ende eines Ortes, weit vom Zentrum entfernt."}
+}

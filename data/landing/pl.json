@@ -1,0 +1,398 @@
+{
+  "source": "44bca71ba593",
+  "texts": {
+    "decks": "Talie",
+    "cta": "Stwórz swoją talię",
+    "ctaNote": "Otwiera AnkiGen z tą parą języków i modułem „{module}”.",
+    "deck": "Talia Anki: {deck}",
+    "intro": "AnkiGen tworzy darmowe talie Anki prosto w przeglądarce: słownictwo tematyczne, a przy każdym słowie tłumaczenie i zdania przykładowe. Wybierz moduły oraz to, co ma pokazywać każda fiszka, a potem pobierz plik .apkg dla Anki lub AnkiDroid. Bez konta, bez instalowania.",
+    "cardsHeading": "Co pokazują fiszki",
+    "cardsIntro": "Każda fiszka pokazuje słowo, którego się uczysz, i jego tłumaczenie. Resztę ustawiasz po swojemu: co jeszcze ma się pokazywać i na której stronie:",
+    "captions": "Podpisy na fiszkach, takie jak „{caption}”, są po polsku.",
+    "modulesHeading": "Moduły",
+    "modulesIntro": "Słowo należące do kilku modułów trafia do talii tylko raz. Każdy moduł otwiera AnkiGen z wybranym tylko tym modułem; resztę możesz tam dodać.",
+    "sampleWords": "Przykładowe słowa",
+    "local": "Słowa występujące tylko w tym języku: {count}, na przykład {example}. W innych językach nie ma dla nich dokładnych odpowiedników, więc fiszki wyjaśniają je po polsku.",
+    "howHeading": "Jak to działa",
+    "step1": "Wybierz potrzebne moduły. Przy każdym widać, ile słów ma dla Twojej pary języków.",
+    "step2": "Wybierz, co ma pokazywać każda fiszka i na której stronie. Podgląd na bieżąco pokazuje prawdziwe fiszki.",
+    "step3": "Pobierz plik .apkg i otwórz go w Anki (File → Import) albo dotknij go na telefonie, by otworzyć w AnkiDroid.",
+    "update": "Zmienione pola, nowe moduły albo nowsze dane? Pobierz talię ponownie i zaimportuj nowy plik do Anki (File → Import) z domyślnymi opcjami. Anki zaktualizuje istniejące notatki i ich układ, doda nowe słowa do tej samej talii i zachowa postępy w nauce.",
+    "aboutHeading": "O słownictwie",
+    "about": "Słowa, tłumaczenia i zdania przykładowe zostały przygotowane przez model AI i są sprawdzane przez ludzi, język po języku. Jeśli coś wygląda źle, zaznacz to na podglądzie fiszki w AnkiGen i naciśnij Ctrl+Enter (⌘+Enter na Macu) albo użyj tam przycisku Feedback. Każde zgłoszenie pomaga poprawić talię dla wszystkich.",
+    "moreHeading": "Więcej talii",
+    "moreForYou": "Więcej talii dla osób mówiących po polsku",
+    "allDecks": "Wszystkie talie według par języków",
+    "support": "Wesprzyj projekt:",
+    "source": "Kod źródłowy na GitHubie",
+    "license": "Kod na licencji {mit}; słownictwo na licencji {cc}.",
+    "versions": "Dane {data} · Aplikacja {app}"
+  },
+  "languages": {
+    "en": "Angielski",
+    "ru": "Rosyjski",
+    "sr": "Serbski",
+    "ja": "Japoński",
+    "zh": "Chiński",
+    "de": "Niemiecki",
+    "es": "Hiszpański",
+    "pt": "Portugalski",
+    "pl": "Polski",
+    "ko": "Koreański",
+    "nl": "Niderlandzki",
+    "fr": "Francuski",
+    "hy": "Ormiański",
+    "tr": "Turecki",
+    "el": "Grecki"
+  },
+  "categories": {
+    "foundations": "Podstawy",
+    "communication": "Komunikacja",
+    "daily-life": "Życie codzienne",
+    "getting-around": "W drodze",
+    "living-abroad": "Życie za granicą",
+    "health-safety": "Zdrowie i bezpieczeństwo",
+    "interests": "Zainteresowania",
+    "adult": "18+"
+  },
+  "modules": {
+    "core-1": {
+      "name": "Podstawa I",
+      "desc": "Ok. 500 najczęstszych słów wspólnych dla wszystkich języków."
+    },
+    "core-2": {
+      "name": "Podstawa II",
+      "desc": "Kolejne ok. 500 najczęstszych słów."
+    },
+    "core-3": {
+      "name": "Podstawa III",
+      "desc": "Kolejne ok. 800 najczęstszych słów."
+    },
+    "numbers": {
+      "name": "Liczby i matematyka",
+      "desc": "Liczebniki główne i porządkowe, ułamki, arytmetyka, miary."
+    },
+    "time": {
+      "name": "Czas i kalendarz",
+      "desc": "Dni, miesiące, pory roku, godziny, daty, częstotliwość."
+    },
+    "phrases": {
+      "name": "Zwroty na przetrwanie",
+      "desc": "Powitania, grzeczność i całe zdania na co dzień."
+    },
+    "countries": {
+      "name": "Kraje, narodowości i języki",
+      "desc": "Najważniejsze kraje, ich mieszkańcy, przymiotniki i języki."
+    },
+    "language-learning": {
+      "name": "Nauka języków",
+      "desc": "Rozmowa o języku: terminy gramatyczne, wymowa, prośby o pomoc."
+    },
+    "family": {
+      "name": "Rodzina i relacje",
+      "desc": "Krewni, partnerzy, przyjaciele, wydarzenia życiowe."
+    },
+    "feelings": {
+      "name": "Uczucia i charakter",
+      "desc": "Emocje, nastroje, cechy osobowości."
+    },
+    "food": {
+      "name": "Jedzenie i napoje",
+      "desc": "Zakupy spożywcze, potrawy, napoje, jedzenie na mieście."
+    },
+    "cooking": {
+      "name": "Gotowanie i kuchnia",
+      "desc": "Czasowniki kulinarne, przybory, sprzęty, przepisy."
+    },
+    "shopping": {
+      "name": "Zakupy i ubrania",
+      "desc": "Sklepy, płatności, rozmiary, ubrania, zwroty."
+    },
+    "housing": {
+      "name": "Mieszkanie i wynajem",
+      "desc": "Wynajem, umowy, właściciele, media, pomieszczenia."
+    },
+    "household": {
+      "name": "Dom i naprawy",
+      "desc": "Obowiązki domowe, meble, narzędzia, naprawy, hydraulika, elektryka."
+    },
+    "nature": {
+      "name": "Pogoda i przyroda",
+      "desc": "Pogoda, klimat, krajobraz, rośliny."
+    },
+    "animals": {
+      "name": "Zwierzęta",
+      "desc": "Zwierzęta domowe, opieka nad nimi, wizyty u weterynarza, popularne zwierzęta."
+    },
+    "city": {
+      "name": "Miasto i wskazywanie drogi",
+      "desc": "Miejsca w mieście, pytanie o drogę i jej wskazywanie."
+    },
+    "transport": {
+      "name": "Transport i podróże",
+      "desc": "Komunikacja miejska, bilety, lotniska, hotele, bagaż."
+    },
+    "driving": {
+      "name": "Jazda samochodem i przepisy",
+      "desc": "Części samochodu, przepisy ruchu, znaki drogowe, egzaminy na prawo jazdy, mandaty, wypadki."
+    },
+    "signs": {
+      "name": "Znaki i napisy",
+      "desc": "Co czytasz na drzwiach, sklepach i ulicach: Pchać, Wyjście, Nieczynne."
+    },
+    "residence": {
+      "name": "Pobyt i legalizacja",
+      "desc": "Wizy, zezwolenia, meldunek, dokumenty, urzędy — oraz terminy specyficzne dla danego kraju."
+    },
+    "money": {
+      "name": "Pieniądze i bankowość",
+      "desc": "Konta, karty, przelewy, podatki, kredyty."
+    },
+    "work": {
+      "name": "Praca i zatrudnienie",
+      "desc": "Zawody, umowy, wynagrodzenie, życie w biurze, szukanie pracy."
+    },
+    "telecom": {
+      "name": "Poczta, telefon i internet",
+      "desc": "Paczki, karty SIM, abonamenty komórkowe, internet, konta."
+    },
+    "education": {
+      "name": "Edukacja",
+      "desc": "Szkoła, uniwersytet, kursy, egzaminy."
+    },
+    "health": {
+      "name": "Zdrowie i medycyna",
+      "desc": "Ciało, objawy, lekarze, apteka, ubezpieczenie."
+    },
+    "emergencies": {
+      "name": "Sytuacje awaryjne",
+      "desc": "Policja, straż pożarna, pogotowie, wypadki, klęski żywiołowe."
+    },
+    "hobbies": {
+      "name": "Hobby",
+      "desc": "Popularne zajęcia, rękodzieło, kolekcjonowanie, aktywności na świeżym powietrzu."
+    },
+    "sports": {
+      "name": "Sport",
+      "desc": "Dyscypliny, sprzęt, zawody, fitness."
+    },
+    "music": {
+      "name": "Muzyka",
+      "desc": "Instrumenty, gatunki, granie i słuchanie."
+    },
+    "video-games": {
+      "name": "Gry wideo",
+      "desc": "Słownictwo gamingowe do grania i czatowania."
+    },
+    "tabletop": {
+      "name": "Gry planszowe",
+      "desc": "Kości, karty, tury i zasady — na wieczory z grami."
+    },
+    "tech": {
+      "name": "Technologia i komputery",
+      "desc": "Urządzenia, oprogramowanie, internet, rozwiązywanie problemów."
+    },
+    "science": {
+      "name": "Nauka",
+      "desc": "Podstawowe słownictwo z fizyki, chemii, biologii i astronomii."
+    },
+    "profanity": {
+      "name": "Wulgaryzmy",
+      "desc": "Przekleństwa i obelgi, dopasowane według siły w różnych językach."
+    }
+  },
+  "fields": {
+    "gender": {
+      "label": "Rodzaj / rodzajnik",
+      "help": "Pokazuje rodzajnik (der Tisch, la mesa) lub oznaczenie rodzaju (m/f/n) przy słowie."
+    },
+    "stress": {
+      "label": "Akcent",
+      "help": "Zaznacza samogłoskę akcentowaną (молоко́). Dotyczy słowa, jego form i wyróżnionego słowa w przykładach."
+    },
+    "reading": {
+      "label": "Czytanie (furigana)",
+      "help": "Zapis kaną nad kanji. Steruje też furiganą w zdaniach przykładowych."
+    },
+    "romanization": {
+      "label": "Romanizacja",
+      "help": "Słowo zapisane literami łacińskimi: Hepburn (japoński), pinyin (chiński), Revised Romanization (koreański), transliteracja (rosyjski, ormiański, grecki). W chińskim steruje też pinyin w zdaniach przykładowych."
+    },
+    "otherScript": {
+      "label": "Drugie pismo",
+      "help": "Pokazuje słowo w drugim piśmie serbskim (łacinka, jeśli talia używa cyrylicy, i odwrotnie)."
+    },
+    "measureWord": {
+      "label": "Klasyfikator / licznik",
+      "help": "Klasyfikator używany przy liczeniu tego rzeczownika (一本书, 鉛筆を三本)."
+    },
+    "hanja": {
+      "label": "Hanja",
+      "help": "Znaki chińskie stojące za wyrazami sinokoreańskimi (은행 → 銀行). Pokazywane tylko przy słowach, które je mają."
+    },
+    "forms": {
+      "label": "Kluczowe formy",
+      "help": "Kilka form potrzebnych do używania słowa: liczba mnoga, dopełniacz, czas przeszły, para aspektowa, typ czasownika… bez pełnych tabel."
+    },
+    "ipa": {
+      "label": "IPA",
+      "help": "Wymowa zapisana w Międzynarodowym Alfabecie Fonetycznym."
+    },
+    "examples": {
+      "label": "Przykłady",
+      "help": "Zdania przykładowe z wyróżnionym słowem. Suwakiem wybierasz ich liczbę (0–3)."
+    },
+    "exampleTranslations": {
+      "label": "Tłumaczenia przykładów",
+      "help": "Pokazuje każdy przykład w Twoim języku, jeśli istnieje pasujące tłumaczenie. Niektóre przykłady są pisane od razu w danym języku i nie mają tłumaczenia."
+    },
+    "related": {
+      "label": "Antonimy i wyrazy pokrewne",
+      "help": "Przeciwieństwa i blisko powiązane słowa w języku, którego się uczysz."
+    },
+    "pos": {
+      "label": "Część mowy",
+      "help": "rzeczownik, czasownik, przymiotnik…"
+    },
+    "register": {
+      "label": "Rejestr",
+      "help": "Oznacza słowa potoczne, formalne, wulgarne lub obraźliwe."
+    },
+    "emoji": {
+      "label": "Emoji",
+      "help": "Obrazkowa podpowiedź przy konkretnych słowach (💧 woda). Większość słów abstrakcyjnych jej nie ma."
+    },
+    "conceptId": {
+      "label": "ID pojęcia",
+      "help": "Mały kod na dole fiszki (np. word-water). Jeśli podczas nauki w Anki zauważysz błąd, dołącz ten kod do zgłoszenia, a znajdziemy dokładnie ten wpis."
+    }
+  },
+  "options": {
+    "reverse": {
+      "label": "Fiszki odwrotne",
+      "help": "Dodaje drugą fiszkę dla każdego słowa: Twój język → język, którego się uczysz. Na fiszkach odwrotnych wszystko o uczonym słowie przenosi się na stronę odpowiedzi, żeby nic nie zdradzało rozwiązania."
+    },
+    "typeAnswer": {
+      "label": "Wpisywanie odpowiedzi",
+      "help": "Na fiszkach odwrotnych słowo wpisujesz, zamiast tylko je sobie przypominać. Anki porównuje pisownię z główną formą (razem z rodzajnikami, bez uwzględniania akcentów)."
+    },
+    "srScript": {
+      "label": "Pismo serbskie",
+      "help": "Serbski zapisuje się zarówno cyrylicą, jak i łacinką. Wybierz to, którego używają Twoje fiszki."
+    }
+  },
+  "pairs": {
+    "en": {
+      "name": "Angielski dla Polaków",
+      "title": "Angielski dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki angielskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów angielskich, tworzona w przeglądarce.",
+      "others": "Angielski dla osób mówiących innymi językami"
+    },
+    "ru": {
+      "name": "Rosyjski dla Polaków",
+      "title": "Rosyjski dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki rosyjskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów rosyjskich, tworzona w przeglądarce.",
+      "others": "Rosyjski dla osób mówiących innymi językami"
+    },
+    "sr": {
+      "name": "Serbski dla Polaków",
+      "title": "Serbski dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki serbskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów serbskich, tworzona w przeglądarce.",
+      "others": "Serbski dla osób mówiących innymi językami"
+    },
+    "ja": {
+      "name": "Japoński dla Polaków",
+      "title": "Japoński dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki japońskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów japońskich, tworzona w przeglądarce.",
+      "others": "Japoński dla osób mówiących innymi językami"
+    },
+    "zh": {
+      "name": "Chiński dla Polaków",
+      "title": "Chiński dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki chińskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów chińskich, tworzona w przeglądarce.",
+      "others": "Chiński dla osób mówiących innymi językami"
+    },
+    "de": {
+      "name": "Niemiecki dla Polaków",
+      "title": "Niemiecki dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki niemieckiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów niemieckich, tworzona w przeglądarce.",
+      "others": "Niemiecki dla osób mówiących innymi językami"
+    },
+    "es": {
+      "name": "Hiszpański dla Polaków",
+      "title": "Hiszpański dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki hiszpańskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów hiszpańskich, tworzona w przeglądarce.",
+      "others": "Hiszpański dla osób mówiących innymi językami"
+    },
+    "pt": {
+      "name": "Portugalski dla Polaków",
+      "title": "Portugalski dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki portugalskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów portugalskich, tworzona w przeglądarce.",
+      "others": "Portugalski dla osób mówiących innymi językami"
+    },
+    "ko": {
+      "name": "Koreański dla Polaków",
+      "title": "Koreański dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki koreańskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów koreańskich, tworzona w przeglądarce.",
+      "others": "Koreański dla osób mówiących innymi językami"
+    },
+    "nl": {
+      "name": "Niderlandzki dla Polaków",
+      "title": "Niderlandzki dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki niderlandzkiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów niderlandzkich, tworzona w przeglądarce.",
+      "others": "Niderlandzki dla osób mówiących innymi językami"
+    },
+    "fr": {
+      "name": "Francuski dla Polaków",
+      "title": "Francuski dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki francuskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów francuskich, tworzona w przeglądarce.",
+      "others": "Francuski dla osób mówiących innymi językami"
+    },
+    "hy": {
+      "name": "Ormiański dla Polaków",
+      "title": "Ormiański dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki ormiańskiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów ormiańskich, tworzona w przeglądarce.",
+      "others": "Ormiański dla osób mówiących innymi językami"
+    },
+    "tr": {
+      "name": "Turecki dla Polaków",
+      "title": "Turecki dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki tureckiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów tureckich, tworzona w przeglądarce.",
+      "others": "Turecki dla osób mówiących innymi językami"
+    },
+    "el": {
+      "name": "Grecki dla Polaków",
+      "title": "Grecki dla Polaków: darmowa talia Anki — AnkiGen",
+      "description": "Darmowa talia Anki do nauki greckiego. Słowa: {words}, moduły: {modules}. Polskie tłumaczenia i przykłady, dla Anki i AnkiDroid.",
+      "lede": "Darmowa talia Anki z polskimi tłumaczeniami słów greckich, tworzona w przeglądarce.",
+      "others": "Grecki dla osób mówiących innymi językami"
+    }
+  },
+  "plural": {
+    "word": {
+      "one": "{n} słowo",
+      "few": "{n} słowa",
+      "many": "{n} słów",
+      "other": "{n} słowa"
+    },
+    "module": {
+      "one": "{n} moduł",
+      "few": "{n} moduły",
+      "many": "{n} modułów",
+      "other": "{n} modułu"
+    }
+  }
+}

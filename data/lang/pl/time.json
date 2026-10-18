@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"w":"doba","g":"f","forms":{"gen":"doby","pl":"doby"},"def":"Okres dwudziestu czterech godzin, czyli pełnego obrotu Ziemi wokół własnej osi."},
+"word-day-off": {"w":"dzień wolny","g":"m","forms":{"gen":"dnia wolnego","pl":"dni wolne"},"def":"Czas, w którym nie trzeba iść do pracy ani do szkoły."},
+"word-working-day": {"w":"dzień roboczy","g":"m","forms":{"gen":"dnia roboczego","pl":"dni robocze"},"def":"Czas od rana do wieczora, w którym większość ludzi pracuje, zwykle od poniedziałku do piątku."},
+"word-on-time": {"w":"na czas","alt":["punktualnie"],"def":"W odpowiednim momencie, bez spóźnienia."},
+"word-date-of-birth": {"w":"data urodzenia","g":"f","forms":{"gen":"daty urodzenia","pl":"daty urodzenia"},"def":"Dzień, miesiąc i rok, w którym ktoś przyszedł na świat."},
+"word-time-zone": {"w":"strefa czasowa","g":"f","forms":{"gen":"strefy czasowej","pl":"strefy czasowe"},"def":"Obszar świata, w którym wszystkie zegary pokazują tę samą godzinę."},
+"word-o-clock": {"w":"o godzinie","def":"Wyrażenie używane przed liczbą, by podać dokładną porę na zegarze."},
+"word-lifetime": {"w":"życie","g":"n","hint":"cały okres","forms":{"gen":"życia","pl":"życia"},"def":"Cały okres od narodzin do śmierci człowieka."}
+}

@@ -10,10 +10,11 @@ Run everything from the repo root (`/home/xenohunter/projects/ankigen`). You nee
 |---|---|---|---|---|
 | 1. Concept inventory | `concepts:core-1:1` … `concepts:core-3:4`, then `concepts:<module>` | language-neutral concepts, IDs, modules, groups, local concepts | 2 / 1.5–2 | 41 units |
 | 2. Card labels | `labels:<code>` | card captions per language | 0.5 | 13 |
+| | `landing:<code>` | the landing pages' texts for that language's speakers (all but English) | 1 | 14 |
 | 3. Languages | `lang:<code>:<module>:<n>` | words, forms, hints, definitions, 3 example slots for ≤ 100 concepts | 2 (ja/zh 2.5) | 53 per language |
 | | `review:<code>` | fix collisions and warnings, spot-check | 1 | 15 |
 | 4. IPA | `ipa:<code>:<module>` | pronunciation (all but zh, ja) | 0.5 | ≈ 36 per language |
-| — Etymology | (deferred) | one-line schematics | — | — |
+| — Etymology | (dropped for now; the app hides the field) | one-line schematics | — | — |
 
 Dependencies (enforced by `units.mjs`):
 - Concept units run strictly in sequence.
@@ -39,9 +40,10 @@ Phase by phase:
 |---|---|---|
 | Concepts (if any are left) | `node tools/gen/batch.mjs auto --type concepts` | sequential, plain Messages API |
 | Labels | `node tools/gen/batch.mjs auto --type labels` | one small batch |
+| Landing texts | `node tools/gen/batch.mjs auto --type landing` | one small batch |
 | English | `node tools/gen/batch.mjs auto --type lang --lang en` | batch (≈ 56 units) |
 | English review | `node tools/gen/batch.mjs auto --type review --lang en` | sequential |
-| All other languages | `node tools/gen/batch.mjs auto --type lang --max 300` | batches; repeat until `estimate` shows none left |
+| All other languages | `node tools/gen/batch.mjs auto --type lang --max 300 --incomplete` | batches; repeat until `estimate` shows none left |
 | Reviews | `node tools/gen/batch.mjs auto --type review` | sequential, all languages |
 | IPA | `node tools/gen/batch.mjs auto --type ipa --max 300` | batches |
 
@@ -52,6 +54,8 @@ How `auto` works:
 4. Resubmits failures up to twice:
    - lint or parse errors go back with the error list (a repair turn);
    - truncated outputs are split in two halves.
+
+   With `--incomplete` (on `auto` or `retry`), only units still missing entries go back. A lang unit whose entries all merged, but with lint errors, is left to its language's review unit. Those errors are mostly words shared by two concepts that need a hint, and one review fixes a whole language for well under a dollar. A whole-unit retry costs about $0.10 per unit, and the first pass of 11 languages left 444 such units.
 
 Anything still failing after that is listed for an interactive fix. You can stop `auto` at any time. Then:
 - `node tools/gen/batch.mjs status` shows open batches;
@@ -67,7 +71,9 @@ Other commands and options:
 - `--price-in/--price-out`: for the estimate only; default $1/$5 per M = batch Sonnet pricing; check the current price.
 - `sync <unit>`: runs one unit immediately, with up to 2 repair rounds.
 
-**Cost:** `batch.mjs estimate` puts English at about $5 (upper bound, before caching); all of phases 2–4 should land around **$80–100** at batch pricing. The system prompt (data format + unit instructions + golden sample) is marked for prompt caching.
+**Cost:** `batch.mjs estimate` puts English at about $5 (upper bound, before caching); all of phases 2–4 should land around **$80–100** at batch pricing. Measured: about 1.8× the estimate, ≈ $7–8.5 per language for its lang units (11 languages, 583 units: $80.65). Only about 0.8 characters of text come back per billed output token; the rest is presumably the model's reasoning, which the runner doesn't keep. So a large unit can reach `--max-tokens` with ~30,000 characters of text; the retry splits it. The system prompt (data format + unit instructions + golden sample) is marked for prompt caching.
+
+Landing texts translate `englishTexts()` in `tools/landing.mjs` (with the module, field and option texts of `data/meta`) into `data/landing/<code>.json`, with a hash of the English they came from. When those English texts change, `lint-data` warns, the pages of that language fall back to English, and the plan lists the unit again: rerun `auto --type landing`.
 
 ## 3. Checkpoints for you
 
@@ -105,5 +111,5 @@ Continue AnkiGen data generation in this repo. Follow docs/GENERATION.md §5.
 
 - `node tools/lint-data.mjs --report` shows 100% entries, definitions and examples for all 15 languages, with 0 errors.
 - IPA may still be in progress if you choose to ship without it.
-- Etymology is optional.
+- Etymology is not generated (dropped for now).
 - Non-parallel examples are fine.

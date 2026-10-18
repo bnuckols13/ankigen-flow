@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"une journée entière de 24 heures, jour et nuit réunis"},
+"word-day-off": {"w":"jour de congé","g":"m","alt":["jour de repos"],"def":"Moment de la semaine où l'on n'est pas obligé de travailler ni d'aller à l'école."},
+"word-working-day": {"w":"jour ouvrable","g":"m","alt":["jour ouvré"],"def":"Période de vingt-quatre heures où la plupart des gens travaillent, en général du lundi au vendredi."},
+"word-on-time": {"w":"à l'heure","alt":["ponctuellement"],"def":"Au moment prévu, sans retard ni avance."},
+"word-date-of-birth": {"w":"date de naissance","g":"f","def":"Jour, mois et année où une personne est venue au monde."},
+"word-time-zone": {"w":"fuseau horaire","g":"m","def":"Partie du monde où toutes les horloges indiquent le même temps."},
+"word-o-clock": {"w":"heures","def":"Mot qui suit un nombre pour indiquer le moment précis sur une horloge."},
+"word-lifetime": {"w":"vie","g":"f","hint":"durée","def":"Temps pendant lequel une personne respire et existe, de sa naissance à sa mort."}
+}

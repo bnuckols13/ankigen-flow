@@ -1,0 +1,10 @@
+{
+"word-day-24h": [{"t":"Podróż trwała ponad {dobę}.","p":0},{"t":"Apteka jest czynna całą {dobę}.","p":0},{"t":"W ciągu {doby} Ziemia obraca się raz wokół własnej osi.","p":0}],
+"word-day-off": [{"t":"Jutro mam {dzień wolny}."},{"t":"Co środę ona bierze {dzień wolny}."},{"t":"Potrzebuję {dnia wolnego}, żeby odpocząć."}],
+"word-working-day": [{"t":"Poniedziałek to pierwszy {dzień roboczy} tygodnia."},{"t":"Normalny {dzień roboczy} trwa osiem godzin."},{"t":"Paczka dotrze w ciągu trzech {dni roboczych}."}],
+"word-on-time": [{"t":"Pociąg przyjechał {na czas}."},{"t":"Proszę przyjść {na czas} na spotkanie."},{"t":"Ona zawsze płaci czynsz {na czas}."}],
+"word-date-of-birth": [{"t":"Proszę wpisać w formularzu swoją {datę urodzenia}."},{"t":"Moja {data urodzenia} to 4 maja 1990 roku."},{"t":"Zapytali mnie o imię i {datę urodzenia}."}],
+"word-time-zone": [{"t":"Nowy Jork leży w innej {strefie czasowej} niż Los Angeles."},{"t":"Po zmianie {stref czasowych} miałem problemy ze snem."},{"t":"W jakiej {strefie czasowej} jesteś?"}],
+"word-o-clock": [{"t":"Film zaczyna się {o godzinie} ósmej."},{"t":"Pociąg odjeżdża {o godzinie} piątej.","p":0},{"t":"Obiad jemy {o godzinie} dwunastej."}],
+"word-lifetime": [{"t":"Zobaczył wiele zmian w swoim {życiu}."},{"t":"To podróż {życia}."},{"t":"Całe {życie} mieszkała w tym samym mieście."}]
+}

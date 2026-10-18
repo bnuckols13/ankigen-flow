@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"Demain, c'est mon {jour de congé}."},{"t":"Elle prend un {jour de congé} tous les mercredis."},{"t":"J'ai besoin d'un {jour de congé} pour me reposer."}],
+"word-working-day": [{"t":"Le lundi est le premier {jour ouvrable} de la semaine."},{"t":"Un {jour ouvrable} normal compte huit heures de travail."},{"t":"Le colis arrivera dans trois {jours ouvrables}."}],
+"word-on-time": [{"t":"Le train est arrivé {à l'heure}."},{"t":"Essaie d'être {à l'heure} pour la réunion."},{"t":"Elle paie toujours son loyer {à l'heure}."}],
+"word-date-of-birth": [{"t":"Écris ta {date de naissance} sur le formulaire."},{"t":"Ma {date de naissance} est le 4 mai 1990."},{"t":"Ils m'ont demandé mon nom et ma {date de naissance}."}],
+"word-time-zone": [{"t":"New York n'est pas dans le même {fuseau horaire} que Los Angeles."},{"t":"J'ai eu du mal à dormir après avoir changé de {fuseau horaire}."},{"t":"Dans quel {fuseau horaire} es-tu ?"}],
+"word-o-clock": [{"t":"Le film commence à huit {heures}."},{"t":"Il est exactement cinq {heures} maintenant."},{"t":"Nous déjeunons à douze {heures}."}],
+"word-lifetime": [{"t":"Il a vu beaucoup de changements au cours de sa {vie}."},{"t":"C'est le voyage d'une {vie}."},{"t":"Elle a passé toute sa {vie} dans la même ville."}]
+}

@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"시청","hanja":"市廳","rom":"sicheong","def":"시의 일을 맡아 보는 관청의 건물."},
+"word-fire-station": {"w":"소방서","hanja":"消防署","rom":"sobangseo","def":"불이 나거나 사고가 났을 때 출동하는 사람들과 차가 머무는 건물."},
+"word-mosque": {"w":"모스크","rom":"moseukeu","alt":["이슬람 사원"],"def":"이슬람교 신자들이 모여 기도하는 건물."},
+"word-synagogue": {"w":"유대교 회당","rom":"yudaegyo hoedang","alt":["시나고그"],"def":"유대인들이 모여 기도하고 율법을 공부하는 건물."},
+"word-cathedral": {"w":"대성당","hanja":"大聖堂","rom":"daeseongdang","def":"주교가 이끄는 매우 크고 중요한 교회 건물."},
+"word-laundromat": {"w":"빨래방","rom":"ppallaebang","alt":["코인 세탁소"],"def":"동전이나 카드를 넣고 직접 옷을 빨고 말리는 공공장소."},
+"word-art-gallery": {"w":"미술관","hanja":"美術館","rom":"misulgwan","alt":["갤러리"],"def":"그림과 여러 예술 작품을 사람들에게 보여 주는 건물이나 방."},
+"word-nightclub": {"w":"나이트클럽","rom":"naiteukeulleob","alt":["클럽"],"def":"밤늦게까지 열려 있어 음악과 춤, 술을 즐길 수 있는 곳."},
+"word-old-town": {"w":"구시가지","hanja":"舊市街地","rom":"gusigaji","alt":["구도심"],"def":"도시에서 가장 오래된 지역으로, 옛 건물과 좁은 골목이 많은 곳."},
+"word-skyscraper": {"w":"고층 빌딩","rom":"gocheung bilding","alt":["마천루","초고층 건물"],"def":"아주 높고 층수가 많은 건물."},
+"word-apartment-block": {"w":"아파트","rom":"apateu","def":"여러 가구가 층을 나누어 사는 큰 건물.","hint":"건물"},
+"word-avenue": {"w":"대로","hanja":"大路","rom":"daero","alt":["큰길"],"def":"도시에서 폭이 넓고 길가에 나무가 있는 경우가 많은 길."},
+"word-pedestrian-zone": {"w":"보행자 전용 구역","rom":"bohaengja jeonyong guyeok","alt":["보행자 거리","차 없는 거리"],"def":"도시에서 자동차가 들어올 수 없어 사람들이 안전하게 걸어 다닐 수 있는 곳."},
+"word-bench": {"w":"벤치","rom":"benchi","def":"여러 사람이 앉을 수 있는, 주로 밖에 놓인 긴 의자."},
+"word-fountain": {"w":"분수","hanja":"噴水","rom":"bunsu","alt":["분수대"],"def":"물을 공중으로 뿜어 올리는 시설로, 공원이나 광장에 있다.","hint":"물줄기"},
+"word-opposite": {"w":"맞은편","rom":"majeunpyeon","alt":["건너편"],"def":"어떤 것의 반대쪽에서 그것을 마주 보는 곳."},
+"word-city-block": {"w":"블록","rom":"beullok","def":"사방이 길로 둘러싸인 건물들의 한 무리."},
+"word-tourist-information": {"w":"관광 안내소","hanja":"觀光案內所","rom":"gwangwang annaeso","def":"여행자가 지도를 얻고 그곳에 대한 조언을 들을 수 있는 사무실."},
+"word-landmark": {"w":"랜드마크","rom":"raendeumakeu","alt":["명소"],"def":"유명하고 알아보기 쉬운 건물이나 장소."},
+"word-outskirts": {"w":"교외","hanja":"郊外","rom":"gyooe","alt":["변두리"],"def":"도시의 중심에서 가장 먼 지역.","hint":"도시 끝"}
+}

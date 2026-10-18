@@ -126,7 +126,8 @@ test('missing layers render nothing', async () => {
   assert.equal(f.IPA, '', 'Japanese has no IPA row');
   assert.equal(f.Etymology, '');
   assert.equal(f.Examples, '', 'no examples in the sample for this concept');
-  assert.equal(fieldsOf(await fixtureDeck({ learn: 'ja', know: 'en' }), 'word-arm').Etymology, '腕 = ⺼ + 宛');
+  // Etymology is hidden for now (fields.json has no row for it): the note type keeps the field, always empty.
+  assert.equal(fieldsOf(await fixtureDeck({ learn: 'ja', know: 'en' }), 'word-arm').Etymology, '', 'even with etymology in the data');
 });
 
 // Golden snapshots: every field of every note for a spread of pairs, with all rows switched on.

@@ -23,7 +23,7 @@ css/app.css             page styles (light/dark via prefers-color-scheme)
 css/card.css            card styles; SAME file is embedded into the Anki note type
 src/
   main.js               bootstrap, wiring
-  config.js             constants: site, repo, Patreon and data license URLs, feedback endpoint, app version
+  config.js             constants: site, repo, Patreon, Buy Me a Coffee and data license URLs, feedback endpoint, app version
   state.js              config model, defaults, validation, URL-hash codec, localStorage
   data/loader.js        fetch meta, concepts, layer files or bundles; caching; graceful misses
   deck/select.js        which concepts become which notes, in which order (merges, disambiguators)
@@ -135,7 +135,8 @@ Produces the HTML for each Anki field, given the note and config. All text is es
 - **Related:**
   - synonyms of the learned word `= alt`, antonyms `↔ w` and related `→ w`, rendered in the learned language;
   - concepts the learned language doesn't have are skipped.
-- **Etymology, IPA, Measure word, Hanja, POS, Register, Emoji, ConceptId:** straight from the data, with captions from `labels.json`.
+- **IPA, Measure word, Hanja, POS, Register, Emoji, ConceptId:** straight from the data, with captions from `labels.json`.
+- **Etymology:** dropped for now. `fields.json` has no row for it, so the field stays empty, but the note type keeps it (and `fields.js` still fills it from the `etym` layer when a row returns).
 
 ## 7. Anki package
 
@@ -260,7 +261,7 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - **Limits:** client rate limits and garbage heuristics as in SPEC §5, with counters in localStorage (`ankigen:feedback`, together with the client ID). They are friction only.
   - Rate limits: the dialog says how long to wait.
   - Garbage is no letters, a single letter, one short sequence repeated, or the same report again (same folded message, concept and quote). It is sent only after the user confirms with "Send anyway".
-  - From the 10th garbage report on, nothing is sent, and the dialog still says thanks.
+  - From the 10th garbage report on, garbage is dropped without asking, and the dialog still says thanks. Real reports are still sent.
 
 ## 10. SEO
 
@@ -272,13 +273,14 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - Crawlers read `robots.txt` only at the root of a host. For a project site that is `xenohunter.github.io/robots.txt`, outside this repository, so submit `sitemap.xml` in Google Search Console instead. The file under `/ankigen/` is harmless.
 - **Speed:** `index.html` has a `modulepreload` link for every module of the first load (the test checks the list), so the browser fetches them all at once instead of in four rounds. The footer appears only after the first render, so it doesn't jump down while the steps appear.
 - **Landing pages:** `tools/landing.mjs` makes them from the bundles `tools/bundle.mjs` has just built, so they describe the deck the site serves.
-  - `decks/<learning>-for-<known>-speakers/` for each bilingual pair, `decks/<learning>-monolingual/` for each same-language deck: 225 pages once all 15 languages are complete. A pair without words gets no page yet. The slugs come from the English names in `languages.json`, so renaming a language moves its pages.
+  - `decks/<learning>-for-<known>-speakers/` for each bilingual pair: 210 pages once all 15 languages are complete. Same-language decks get no pages, and a pair without words gets none yet. The slugs come from the English names in `languages.json`, so renaming a language moves its pages.
   - Each page has its own title and description and shows the deck with the app's own code:
     - the word count, and the field rows and deck options the app shows for the pair, with their help texts;
     - every module with words, with the count the module tree shows, up to three sample words and its country-specific words. Samples are the module's own single-meaning words first, never from an 18+ module and never vulgar or offensive.
   - "Build your deck" opens the app with a preset hash (the pair with Core I), and each module opens it with only that module.
-  - `decks/` lists the pages by the language you speak, then the monolingual decks. The app's footer and noscript text link to it, and every page links to the other decks for the same speakers and for the same learned language.
-  - Plain HTML with the app's stylesheet and no scripts: canonical URL, Open Graph tags and a JSON-LD `BreadcrumbList`. English, like the app (UI localization is a non-goal).
+  - `decks/` lists the pages by the language you speak. The app's footer and noscript text link to it, and every page links to the other decks for the same speakers and for the same learned language.
+  - Plain HTML with the app's stylesheet and no scripts: canonical URL, Open Graph tags and a JSON-LD `BreadcrumbList`.
+  - A page is written in the language its visitors speak. `data/landing/<code>.json` (unit `landing:<code>`, `docs/GENERATION.md`) translates `englishTexts()`: the page texts, module, field and option texts, language names, and per pair the heading, title, description and lede. Counts use the translation's CLDR plural forms. A page uses its translation only when that is complete and made from the current English texts (it records their hash); otherwise it is in English, as English speakers' pages are. `lang` and `og:locale` follow. The hub stays in English, but names each page in that page's language. The app itself stays English (UI localization is a non-goal).
   - `sitemap.xml` lists the app, `decks/` and every page.
 
 ## 11. Testing

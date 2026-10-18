@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"O casamento vai ser na {câmara municipal} no sábado."},{"t":"Podes obter o formulário na {câmara municipal}."},{"t":"O presidente da câmara trabalha nos {paços do concelho}."}],
+"word-fire-station": [{"t":"O {quartel dos bombeiros} fica ao lado da escola."},{"t":"As crianças visitaram o {quartel dos bombeiros} na sexta-feira."},{"t":"Há um novo {quartel dos bombeiros} na nossa cidade."}],
+"word-mosque": [{"t":"Eles vão à {mesquita} todas as sextas-feiras."},{"t":"A {mesquita} tem uma bonita cúpula azul."},{"t":"Visitámos uma {mesquita} famosa na nossa viagem."}],
+"word-synagogue": [{"t":"A {sinagoga} fica na esquina da Rua Principal."},{"t":"A família dele vai à {sinagoga} aos sábados."},{"t":"A antiga {sinagoga} foi construída em 1890."}],
+"word-cathedral": [{"t":"A {catedral} é o edifício mais antigo da cidade."},{"t":"Subimos à torre da {catedral}."},{"t":"Centenas de pessoas foram à {catedral} para o concerto."}],
+"word-laundromat": [{"t":"A minha máquina de lavar está avariada, por isso vou à {lavandaria self-service}."},{"t":"Há uma {lavandaria self-service} do outro lado da rua."},{"t":"Leva algumas moedas para a {lavandaria self-service}."}],
+"word-art-gallery": [{"t":"Passámos a tarde na {galeria de arte}."},{"t":"A {galeria de arte} é gratuita aos domingos."},{"t":"Ela tem um quadro numa pequena {galeria de arte} no centro."}],
+"word-nightclub": [{"t":"Dançaram a noite toda na {discoteca}."},{"t":"É preciso ter mais de vinte e um anos para entrar na {discoteca}."},{"t":"A {discoteca} abre às dez e fecha às quatro."}],
+"word-old-town": [{"t":"Passeámos pelo {centro histórico} depois do almoço."},{"t":"O {centro histórico} tem ruas estreitas e pequenos cafés."},{"t":"Muitos turistas ficam no {centro histórico}."}],
+"word-skyscraper": [{"t":"Vê-se a cidade toda daquele {arranha-céus}."},{"t":"Estão a construir um novo {arranha-céus} no centro."},{"t":"O meu escritório fica no quadragésimo andar de um {arranha-céus}."}],
+"word-apartment-block": [{"t":"Vivemos num {prédio} grande perto do parque."},{"t":"O {prédio} tem elevador."},{"t":"Há vinte famílias neste {prédio}."}],
+"word-avenue": [{"t":"O hotel fica numa {avenida} larga com muitas árvores."},{"t":"Vira à esquerda no fim da {avenida}."},{"t":"A {Avenida} da Liberdade é uma rua famosa de Lisboa.","p":0}],
+"word-pedestrian-zone": [{"t":"O centro da cidade é uma {zona pedonal}."},{"t":"Os carros não podem entrar na {zona pedonal}."},{"t":"Tomámos café na {zona pedonal}."}],
+"word-bench": [{"t":"Vamos sentar-nos naquele {banco} um minuto."},{"t":"Um senhor idoso lia num {banco} do parque."},{"t":"O {banco} estava molhado da chuva."}],
+"word-fountain": [{"t":"As crianças estavam a brincar perto do {chafariz}."},{"t":"Há um {chafariz} lindo na praça principal."},{"t":"Atirámos moedas para o {chafariz}."}],
+"word-opposite": [{"t":"O banco fica {em frente ao} correio."},{"t":"Ela sentou-se {em frente de} mim à mesa."},{"t":"Há uma padaria {em frente da} nossa casa."}],
+"word-city-block": [{"t":"A loja fica a dois {quarteirões} daqui."},{"t":"Demos a volta ao {quarteirão} para apanhar ar."},{"t":"A paragem de autocarro fica no {quarteirão} seguinte."}],
+"word-tourist-information": [{"t":"Vamos perguntar no {posto de turismo} por um mapa."},{"t":"O {posto de turismo} fica ao lado da estação de comboios."},{"t":"O {posto de turismo} fecha às cinco."}],
+"word-landmark": [{"t":"A torre é o {ponto de referência} mais famoso da cidade."},{"t":"Usa aquela igreja grande como {ponto de referência}."},{"t":"Tirámos fotografias a todos os {pontos de referência} do passeio."}],
+"word-outskirts": [{"t":"Eles vivem nos {arredores} da cidade."},{"t":"O aeroporto fica nos {arredores} da cidade."},{"t":"As casas são mais baratas nos {arredores}."}]
+}

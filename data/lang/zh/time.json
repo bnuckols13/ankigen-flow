@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"俄语 сутки、波兰语 doba：白天加黑夜共24小时的一整天"},
+"word-day-off": {"w":"休息日","read":"xiūxīrì","mw":"天","def":"不用上班或上学的一天。"},
+"word-working-day": {"w":"工作日","read":"gōngzuòrì","mw":"天","alt":["上班日"],"def":"大多数人要上班的日子，通常是星期一到星期五。"},
+"word-on-time": {"w":"准时","read":"zhǔnshí","alt":["按时"],"def":"在规定的时间到达或做事，不早也不晚。"},
+"word-date-of-birth": {"w":"出生日期","read":"chūshēngrìqī","alt":["出生年月日"],"def":"一个人来到世界的那一年、那一月和那一天。"},
+"word-time-zone": {"w":"时区","read":"shíqū","mw":"个","def":"地球上使用同一标准时间的地区。"},
+"word-o-clock": {"w":"点钟","read":"diǎnzhōng","alt":["点"],"def":"放在数字后面，表示钟表上整点的词。"},
+"word-lifetime": {"w":"一生","read":"yīshēng","alt":["一辈子","终生"],"def":"一个人从出生到死亡的整个时间。"}
+}

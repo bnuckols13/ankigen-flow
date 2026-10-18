@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"Le mariage aura lieu à la {mairie} samedi."},{"t":"Vous pouvez obtenir le formulaire à la {mairie}."},{"t":"Le maire travaille à l'{hôtel de ville}."}],
+"word-fire-station": [{"t":"La {caserne de pompiers} est à côté de l'école."},{"t":"Les enfants ont visité la {caserne de pompiers} vendredi."},{"t":"Il y a une nouvelle {caserne de pompiers} dans notre ville."}],
+"word-mosque": [{"t":"Ils vont à la {mosquée} tous les vendredis."},{"t":"La {mosquée} a un beau dôme bleu."},{"t":"Nous avons visité une célèbre {mosquée} pendant notre voyage."}],
+"word-synagogue": [{"t":"La {synagogue} est au coin de la rue principale."},{"t":"Sa famille va à la {synagogue} le samedi."},{"t":"L'ancienne {synagogue} a été construite en 1890."}],
+"word-cathedral": [{"t":"La {cathédrale} est le plus vieux bâtiment de la ville."},{"t":"Nous sommes montés en haut de la tour de la {cathédrale}."},{"t":"Des centaines de personnes sont venues à la {cathédrale} pour le concert."}],
+"word-laundromat": [{"t":"Ma machine à laver est en panne, alors je vais à la {laverie automatique}."},{"t":"Il y a une {laverie automatique} de l'autre côté de la rue."},{"t":"Apporte des pièces à la {laverie}."}],
+"word-art-gallery": [{"t":"Nous avons passé l'après-midi à la {galerie d'art}."},{"t":"La {galerie d'art} est gratuite le dimanche."},{"t":"Elle expose un tableau dans une petite {galerie d'art} du centre-ville."}],
+"word-nightclub": [{"t":"Ils ont dansé toute la nuit en {boîte de nuit}."},{"t":"Il faut avoir plus de vingt et un ans pour entrer dans la {boîte de nuit}."},{"t":"La {boîte de nuit} ouvre à dix heures et ferme à quatre heures."}],
+"word-old-town": [{"t":"Nous nous sommes promenés dans la {vieille ville} après le déjeuner."},{"t":"La {vieille ville} a des rues étroites et de petits cafés."},{"t":"Beaucoup de touristes logent dans la {vieille ville}."}],
+"word-skyscraper": [{"t":"On voit toute la ville depuis ce {gratte-ciel}."},{"t":"Ils construisent un nouveau {gratte-ciel} au centre-ville."},{"t":"Mon bureau est au quarantième étage d'un {gratte-ciel}."}],
+"word-apartment-block": [{"t":"Nous habitons dans un grand {immeuble} près du parc."},{"t":"L'{immeuble} a un ascenseur."},{"t":"Il y a vingt familles dans cet {immeuble}."}],
+"word-avenue": [{"t":"L'hôtel est sur une large {avenue} bordée d'arbres."},{"t":"Tournez à gauche au bout de l'{avenue}."},{"t":"La Cinquième {Avenue} est une rue célèbre de New York."}],
+"word-pedestrian-zone": [{"t":"Le centre-ville est une {zone piétonne}."},{"t":"Les voitures ne peuvent pas entrer dans la {zone piétonne}."},{"t":"Nous avons pris un café dans la {zone piétonne}."}],
+"word-bench": [{"t":"Asseyons-nous un instant sur ce {banc}."},{"t":"Un vieil homme lisait sur un {banc} du parc."},{"t":"Le {banc} était mouillé par la pluie."}],
+"word-fountain": [{"t":"Des enfants jouaient près de la {fontaine}."},{"t":"Il y a une belle {fontaine} sur la place principale."},{"t":"Nous avons jeté des pièces dans la {fontaine}."}],
+"word-opposite": [{"t":"La banque est {en face de} la poste."},{"t":"Elle s'est assise {en face de} moi à la table."},{"t":"Il y a une boulangerie {en face de} chez nous."}],
+"word-city-block": [{"t":"Le magasin est à deux {pâtés de maisons} d'ici."},{"t":"Nous avons fait le tour du {pâté de maisons} pour prendre l'air."},{"t":"L'arrêt de bus est dans le {pâté de maisons} suivant."}],
+"word-tourist-information": [{"t":"Demandons un plan à l'{office de tourisme}."},{"t":"L'{office de tourisme} est à côté de la gare."},{"t":"L'{office de tourisme} ferme à cinq heures."}],
+"word-landmark": [{"t":"La tour est le {monument} le plus célèbre de la ville."},{"t":"Prends cette grande église comme {point de repère}."},{"t":"Nous avons photographié chaque {monument} pendant la visite."}],
+"word-outskirts": [{"t":"Ils habitent en {banlieue}."},{"t":"L'aéroport est à la {périphérie} de la ville."},{"t":"Les maisons sont moins chères en {banlieue}."}]
+}

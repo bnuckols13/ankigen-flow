@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"Yarın benim {izin günüm}."},{"t":"Her çarşamba {izin günü} alıyor."},{"t":"Dinlenmek için bir {izin gününe} ihtiyacım var."}],
+"word-working-day": [{"t":"Pazartesi haftanın ilk {iş günüdür}."},{"t":"Normal bir {iş günü} sekiz saattir."},{"t":"Paket üç {iş günü} içinde gelecek."}],
+"word-on-time": [{"t":"Tren {zamanında} geldi."},{"t":"Lütfen toplantıya {zamanında} gelmeye çalış."},{"t":"Kirasını her zaman {zamanında} öder."}],
+"word-date-of-birth": [{"t":"Lütfen forma {doğum tarihinizi} yazın."},{"t":"Benim {doğum tarihim} 4 Mayıs 1990."},{"t":"Benden adımı ve {doğum tarihimi} istediler."}],
+"word-time-zone": [{"t":"New York, Los Angeles'tan farklı bir {saat diliminde}."},{"t":"{Saat dilimi} değiştirdikten sonra uyumakta zorlandım."},{"t":"Sen hangi {saat dilimindesin}?"}],
+"word-o-clock": [{"t":"Film {saat} sekizde başlıyor."},{"t":"Şu an tam {saat} beş."},{"t":"Öğle yemeğini {saat} on ikide yiyoruz."}],
+"word-lifetime": [{"t":"{Ömrü} boyunca birçok değişiklik gördü."},{"t":"Bu, {ömür} boyu hatırlayacağım bir gezi."},{"t":"Bütün {ömrünü} aynı kasabada geçirdi."}]
+}

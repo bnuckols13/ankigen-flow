@@ -29,8 +29,6 @@
       "help": "Shows each example in your language when a matching translation exists. Some examples are written natively and have no translation." },
     { "id": "related", "label": "Antonyms & related", "side": "learning", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "back"], "default": "back",
       "help": "Opposites and closely related words, in the language you are learning." },
-    { "id": "etymology", "label": "Etymology", "side": "learning", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "back"], "default": "back",
-      "help": "A one-line origin hint (Latin aqua → …). For Chinese and Japanese: how the character is built. Not every word has one yet." },
     { "id": "pos", "label": "Part of speech", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off",
       "help": "noun, verb, adjective…" },
     { "id": "register", "label": "Register", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off",

@@ -37,6 +37,42 @@
       "value.class.godan": "годан", "value.class.ichidan": "итидан", "value.class.suru": "суру-глагол", "value.class.kuru": "куру (нерегул.)",
       "value.type.i": "и-прилагательное", "value.type.na": "на-прилагательное"
     },
+    "sr": {
+      "section.forms": "Облици", "section.examples": "Примери", "section.related": "Сродно", "section.antonyms": "Супротно", "section.etymology": "Порекло", "section.ipa": "ИПА", "section.reading": "Читање", "section.romanization": "Романизација", "section.measureWord": "Мерна реч", "section.counter": "Бројилац", "section.hanja": "Ханџа", "section.definition": "Дефиниција", "section.otherScript": "Друго писмо", "section.conceptId": "ID",
+      "pos.noun": "имен.", "pos.verb": "глаг.", "pos.adj": "прид.", "pos.adv": "прил.", "pos.pron": "зам.", "pos.num": "бр.", "pos.prep": "предл.", "pos.conj": "везн.", "pos.interj": "узв.", "pos.particle": "честица", "pos.det": "детерм.", "pos.phrase": "фраза",
+      "reg.informal": "разг.", "reg.formal": "службено", "reg.vulgar": "вулг.", "reg.offensive": "погрдно",
+      "gender.m": "м.", "gender.f": "ж.", "gender.n": "ср.", "gender.c": "општи род", "gender.mf": "м./ж.", "gender.pl": "само мн.",
+      "form.gen": "ген.", "form.pl": "мн.", "form.dim": "дем.", "form.acc": "акуз.", "form.poss3": "његов/њен", "form.f": "ж.", "form.n": "ср.", "form.short": "кратки", "form.comp": "комп.", "form.sup": "суп.",
+      "form.aspect": "вид", "form.pair": "пар", "form.1sg": "ја", "form.2sg": "ти", "form.3sg": "он/она", "form.1pl": "ми", "form.3pl": "они", "form.past": "прошло", "form.pret": "претерит", "form.pp": "перфекат", "form.aux": "помоћ.", "form.lpt": "рад. прид.", "form.aor": "аорист", "form.prog": "трајно", "form.fut": "футур", "form.imp": "императив",
+      "form.class": "класа", "form.masu": "учтиво", "form.te": "те-облик", "form.nai": "одрично", "form.type": "тип", "form.neg": "одрично", "form.haeyo": "учтиво",
+      "value.aspect.ipf": "несвршен", "value.aspect.pf": "свршен", "value.aspect.bi": "двовидски",
+      "value.class.godan": "годан", "value.class.ichidan": "ичидан", "value.class.suru": "суру-глагол", "value.class.kuru": "куру (неправилан)",
+      "value.type.i": "и-придев", "value.type.na": "на-придев"
+    },
+    "ja": {
+      "section.forms": "活用・形", "section.examples": "例文", "section.related": "関連語", "section.antonyms": "反対語", "section.etymology": "語源", "section.ipa": "IPA", "section.reading": "読み", "section.romanization": "ローマ字", "section.measureWord": "量詞", "section.counter": "助数詞", "section.hanja": "漢字(ハンジャ)", "section.definition": "意味", "section.otherScript": "別の表記", "section.conceptId": "ID",
+      "pos.noun": "名詞", "pos.verb": "動詞", "pos.adj": "形容詞", "pos.adv": "副詞", "pos.pron": "代名詞", "pos.num": "数詞", "pos.prep": "前置詞", "pos.conj": "接続詞", "pos.interj": "感動詞", "pos.particle": "助詞", "pos.det": "限定詞", "pos.phrase": "句",
+      "reg.informal": "くだけた表現", "reg.formal": "改まった表現", "reg.vulgar": "卑俗", "reg.offensive": "侮蔑的",
+      "gender.m": "男性", "gender.f": "女性", "gender.n": "中性", "gender.c": "通性", "gender.mf": "男性/女性", "gender.pl": "複数形のみ",
+      "form.gen": "属格", "form.pl": "複数形", "form.dim": "指小形", "form.acc": "対格", "form.poss3": "彼/彼女の", "form.f": "女性形", "form.n": "中性形", "form.short": "短語尾形", "form.comp": "比較級", "form.sup": "最上級",
+      "form.aspect": "体", "form.pair": "対応語", "form.1sg": "私", "form.2sg": "あなた", "form.3sg": "彼/彼女", "form.1pl": "私たち", "form.3pl": "彼ら", "form.past": "過去形", "form.pret": "過去形", "form.pp": "完了形", "form.aux": "助動詞", "form.lpt": "過去分詞", "form.aor": "アオリスト", "form.prog": "進行形", "form.fut": "未来形", "form.imp": "命令形",
+      "form.class": "活用の種類", "form.masu": "ます形", "form.te": "て形", "form.nai": "ない形", "form.type": "種類", "form.neg": "否定形", "form.haeyo": "ヘヨ体",
+      "value.aspect.ipf": "未完了体", "value.aspect.pf": "完了体", "value.aspect.bi": "両体",
+      "value.class.godan": "五段活用", "value.class.ichidan": "一段活用", "value.class.suru": "サ変(する)", "value.class.kuru": "カ変(来る)",
+      "value.type.i": "イ形容詞", "value.type.na": "ナ形容詞"
+    },
+    "zh": {
+      "section.forms": "词形", "section.examples": "例句", "section.related": "相关", "section.antonyms": "反义", "section.etymology": "来源", "section.ipa": "国际音标", "section.reading": "读音", "section.romanization": "罗马字", "section.measureWord": "量词", "section.counter": "助数词", "section.hanja": "汉字词", "section.definition": "释义", "section.otherScript": "其他文字", "section.conceptId": "ID",
+      "pos.noun": "名词", "pos.verb": "动词", "pos.adj": "形容词", "pos.adv": "副词", "pos.pron": "代词", "pos.num": "数词", "pos.prep": "介词", "pos.conj": "连词", "pos.interj": "叹词", "pos.particle": "助词", "pos.det": "限定词", "pos.phrase": "短语",
+      "reg.informal": "口语", "reg.formal": "书面", "reg.vulgar": "粗俗", "reg.offensive": "冒犯",
+      "gender.m": "阳性", "gender.f": "阴性", "gender.n": "中性", "gender.c": "通性", "gender.mf": "阳/阴性", "gender.pl": "仅复数",
+      "form.gen": "属格", "form.pl": "复数", "form.dim": "指小", "form.acc": "宾格", "form.poss3": "他/她的", "form.f": "阴性", "form.n": "中性", "form.short": "短尾", "form.comp": "比较级", "form.sup": "最高级",
+      "form.aspect": "体", "form.pair": "配对", "form.1sg": "我", "form.2sg": "你", "form.3sg": "他/她", "form.1pl": "我们", "form.3pl": "他们", "form.past": "过去式", "form.pret": "简单过去式", "form.pp": "完成式", "form.aux": "助动词", "form.lpt": "过去分词", "form.aor": "不定过去式", "form.prog": "进行式", "form.fut": "将来时", "form.imp": "命令式",
+      "form.class": "类别", "form.masu": "敬体", "form.te": "て形", "form.nai": "否定形", "form.type": "类型", "form.neg": "否定", "form.haeyo": "敬体",
+      "value.aspect.ipf": "未完成体", "value.aspect.pf": "完成体", "value.aspect.bi": "兼体",
+      "value.class.godan": "五段动词", "value.class.ichidan": "一段动词", "value.class.suru": "サ变动词", "value.class.kuru": "カ变动词(不规则)",
+      "value.type.i": "い形容词", "value.type.na": "な形容词"
+    },
     "de": {
       "section.forms": "Formen", "section.examples": "Beispiele", "section.related": "Verwandt", "section.antonyms": "Gegenteil", "section.etymology": "Herkunft", "section.ipa": "IPA", "section.reading": "Lesung", "section.romanization": "Umschrift", "section.measureWord": "Zähleinheitswort", "section.counter": "Zählsuffix", "section.hanja": "Hanja", "section.definition": "Definition", "section.otherScript": "Andere Schrift", "section.conceptId": "ID",
       "pos.noun": "Subst.", "pos.verb": "Verb", "pos.adj": "Adj.", "pos.adv": "Adv.", "pos.pron": "Pron.", "pos.num": "Num.", "pos.prep": "Präp.", "pos.conj": "Konj.", "pos.interj": "Interj.", "pos.particle": "Partikel", "pos.det": "Determinativ", "pos.phrase": "Wendung",
@@ -48,6 +84,114 @@
       "value.aspect.ipf": "unvollendet", "value.aspect.pf": "vollendet", "value.aspect.bi": "beide Aspekte",
       "value.class.godan": "Godan (u-Verb)", "value.class.ichidan": "Ichidan (ru-Verb)", "value.class.suru": "suru-Verb", "value.class.kuru": "kuru (unregelmäßig)",
       "value.type.i": "i-Adjektiv", "value.type.na": "na-Adjektiv"
+    },
+    "es": {
+      "section.forms": "Formas", "section.examples": "Ejemplos", "section.related": "Relacionadas", "section.antonyms": "Antónimos", "section.etymology": "Origen", "section.ipa": "AFI", "section.reading": "Lectura", "section.romanization": "Romanización", "section.measureWord": "Clasificador", "section.counter": "Contador", "section.hanja": "Hanja", "section.definition": "Definición", "section.otherScript": "Otra escritura", "section.conceptId": "ID",
+      "pos.noun": "sust.", "pos.verb": "verbo", "pos.adj": "adj.", "pos.adv": "adv.", "pos.pron": "pron.", "pos.num": "num.", "pos.prep": "prep.", "pos.conj": "conj.", "pos.interj": "interj.", "pos.particle": "partícula", "pos.det": "det.", "pos.phrase": "locución",
+      "reg.informal": "coloq.", "reg.formal": "formal", "reg.vulgar": "vulg.", "reg.offensive": "ofensivo",
+      "gender.m": "m.", "gender.f": "f.", "gender.n": "neutro", "gender.c": "común", "gender.mf": "m./f.", "gender.pl": "solo pl.",
+      "form.gen": "gen.", "form.pl": "pl.", "form.dim": "dim.", "form.acc": "acus.", "form.poss3": "su", "form.f": "f.", "form.n": "neutro", "form.short": "corto", "form.comp": "comp.", "form.sup": "superl.",
+      "form.aspect": "aspecto", "form.pair": "par", "form.1sg": "yo", "form.2sg": "tú", "form.3sg": "él/ella", "form.1pl": "nosotros", "form.3pl": "ellos", "form.past": "pasado", "form.pret": "pretérito", "form.pp": "participio", "form.aux": "aux.", "form.lpt": "part. pasado", "form.aor": "aoristo", "form.prog": "progresivo", "form.fut": "futuro", "form.imp": "imper.",
+      "form.class": "clase", "form.masu": "cortés", "form.te": "forma te", "form.nai": "negativo", "form.type": "tipo", "form.neg": "negativo", "form.haeyo": "cortés",
+      "value.aspect.ipf": "imperfectivo", "value.aspect.pf": "perfectivo", "value.aspect.bi": "ambos aspectos",
+      "value.class.godan": "godan (verbo en u)", "value.class.ichidan": "ichidan (verbo en ru)", "value.class.suru": "verbo suru", "value.class.kuru": "kuru (irregular)",
+      "value.type.i": "adjetivo en i", "value.type.na": "adjetivo en na"
+    },
+    "pt": {
+      "section.forms": "Formas", "section.examples": "Exemplos", "section.related": "Relacionados", "section.antonyms": "Antónimos", "section.etymology": "Origem", "section.ipa": "AFI", "section.reading": "Leitura", "section.romanization": "Romanização", "section.measureWord": "Classificador", "section.counter": "Contador", "section.hanja": "Hanja", "section.definition": "Definição", "section.otherScript": "Outra escrita", "section.conceptId": "ID",
+      "pos.noun": "subst.", "pos.verb": "v.", "pos.adj": "adj.", "pos.adv": "adv.", "pos.pron": "pron.", "pos.num": "num.", "pos.prep": "prep.", "pos.conj": "conj.", "pos.interj": "interj.", "pos.particle": "partícula", "pos.det": "det.", "pos.phrase": "locução",
+      "reg.informal": "informal", "reg.formal": "formal", "reg.vulgar": "vulg.", "reg.offensive": "ofensivo",
+      "gender.m": "m.", "gender.f": "f.", "gender.n": "n.", "gender.c": "comum", "gender.mf": "m./f.", "gender.pl": "só pl.",
+      "form.gen": "gen.", "form.pl": "pl.", "form.dim": "dim.", "form.acc": "acus.", "form.poss3": "dele/dela", "form.f": "f.", "form.n": "n.", "form.short": "curto", "form.comp": "comp.", "form.sup": "superl.",
+      "form.aspect": "aspeto", "form.pair": "par", "form.1sg": "eu", "form.2sg": "tu", "form.3sg": "ele/ela", "form.1pl": "nós", "form.3pl": "eles/elas", "form.past": "passado", "form.pret": "pretérito", "form.pp": "part. passado", "form.aux": "aux.", "form.lpt": "part. passado", "form.aor": "aoristo", "form.prog": "progressivo", "form.fut": "futuro", "form.imp": "imperativo",
+      "form.class": "classe", "form.masu": "educado", "form.te": "forma em te", "form.nai": "negativo", "form.type": "tipo", "form.neg": "negativo", "form.haeyo": "educado",
+      "value.aspect.ipf": "imperfetivo", "value.aspect.pf": "perfetivo", "value.aspect.bi": "ambos os aspetos",
+      "value.class.godan": "godan (verbo em u)", "value.class.ichidan": "ichidan (verbo em ru)", "value.class.suru": "verbo em suru", "value.class.kuru": "kuru (irregular)",
+      "value.type.i": "adjetivo em i", "value.type.na": "adjetivo em na"
+    },
+    "pl": {
+      "section.forms": "Formy", "section.examples": "Przykłady", "section.related": "Powiązane", "section.antonyms": "Antonimy", "section.etymology": "Pochodzenie", "section.ipa": "IPA", "section.reading": "Odczyt", "section.romanization": "Romanizacja", "section.measureWord": "Klasyfikator", "section.counter": "Licznik", "section.hanja": "Hanja", "section.definition": "Definicja", "section.otherScript": "Inne pismo", "section.conceptId": "ID",
+      "pos.noun": "rz.", "pos.verb": "czas.", "pos.adj": "przym.", "pos.adv": "przysł.", "pos.pron": "zaimek", "pos.num": "liczeb.", "pos.prep": "przyimek", "pos.conj": "spójnik", "pos.interj": "wykrz.", "pos.particle": "partykuła", "pos.det": "określnik", "pos.phrase": "fraza",
+      "reg.informal": "pot.", "reg.formal": "form.", "reg.vulgar": "wulg.", "reg.offensive": "obraźl.",
+      "gender.m": "m", "gender.f": "ż", "gender.n": "n", "gender.c": "wspólny", "gender.mf": "m/ż", "gender.pl": "tylko lm",
+      "form.gen": "dop.", "form.pl": "lm", "form.dim": "zdrobn.", "form.acc": "bier.", "form.poss3": "jego/jej", "form.f": "ż", "form.n": "n", "form.short": "krótka", "form.comp": "stopień wyższy", "form.sup": "stopień najwyższy",
+      "form.aspect": "aspekt", "form.pair": "para", "form.1sg": "ja", "form.2sg": "ty", "form.3sg": "on/ona", "form.1pl": "my", "form.3pl": "oni", "form.past": "przeszły", "form.pret": "preteritum", "form.pp": "perfekt", "form.aux": "posił.", "form.lpt": "imiesłów przeszły", "form.aor": "aoryst", "form.prog": "ciągły", "form.fut": "przyszły", "form.imp": "rozkaźnik",
+      "form.class": "klasa", "form.masu": "grzeczna", "form.te": "forma te", "form.nai": "przeczenie", "form.type": "typ", "form.neg": "przeczenie", "form.haeyo": "grzeczna",
+      "value.aspect.ipf": "niedokonany", "value.aspect.pf": "dokonany", "value.aspect.bi": "obu aspektów",
+      "value.class.godan": "godan (czasownik u)", "value.class.ichidan": "ichidan (czasownik ru)", "value.class.suru": "czasownik suru", "value.class.kuru": "kuru (nieregularny)",
+      "value.type.i": "przymiotnik i", "value.type.na": "przymiotnik na"
+    },
+    "ko": {
+      "section.forms": "활용형", "section.examples": "예문", "section.related": "관련어", "section.antonyms": "반의어", "section.etymology": "어원", "section.ipa": "IPA", "section.reading": "읽기", "section.romanization": "로마자", "section.measureWord": "단위어", "section.counter": "조수사", "section.hanja": "한자", "section.definition": "뜻풀이", "section.otherScript": "다른 문자", "section.conceptId": "ID",
+      "pos.noun": "명사", "pos.verb": "동사", "pos.adj": "형용사", "pos.adv": "부사", "pos.pron": "대명사", "pos.num": "수사", "pos.prep": "전치사", "pos.conj": "접속사", "pos.interj": "감탄사", "pos.particle": "조사", "pos.det": "관형사", "pos.phrase": "구",
+      "reg.informal": "비격식", "reg.formal": "격식", "reg.vulgar": "속어", "reg.offensive": "욕설",
+      "gender.m": "남성", "gender.f": "여성", "gender.n": "중성", "gender.c": "통성", "gender.mf": "남성/여성", "gender.pl": "복수형만",
+      "form.gen": "속격", "form.pl": "복수", "form.dim": "지소형", "form.acc": "대격", "form.poss3": "그의/그녀의", "form.f": "여성형", "form.n": "중성형", "form.short": "단축형", "form.comp": "비교급", "form.sup": "최상급",
+      "form.aspect": "상", "form.pair": "짝", "form.1sg": "나", "form.2sg": "너", "form.3sg": "그/그녀", "form.1pl": "우리", "form.3pl": "그들", "form.past": "과거", "form.pret": "과거형", "form.pp": "완료", "form.aux": "조동사", "form.lpt": "과거분사", "form.aor": "아오리스트", "form.prog": "진행형", "form.fut": "미래", "form.imp": "명령형",
+      "form.class": "종류", "form.masu": "정중형", "form.te": "테형", "form.nai": "부정형", "form.type": "유형", "form.neg": "부정", "form.haeyo": "해요체",
+      "value.aspect.ipf": "미완료상", "value.aspect.pf": "완료상", "value.aspect.bi": "양상",
+      "value.class.godan": "5단 동사", "value.class.ichidan": "1단 동사", "value.class.suru": "する동사", "value.class.kuru": "来る(불규칙)",
+      "value.type.i": "い형용사", "value.type.na": "な형용사"
+    },
+    "nl": {
+      "section.forms": "Vormen", "section.examples": "Voorbeelden", "section.related": "Verwant", "section.antonyms": "Tegenovergestelde", "section.etymology": "Herkomst", "section.ipa": "IPA", "section.reading": "Lezing", "section.romanization": "Romanisering", "section.measureWord": "Maatwoord", "section.counter": "Telwoord", "section.hanja": "Hanja", "section.definition": "Betekenis", "section.otherScript": "Ander schrift", "section.conceptId": "ID",
+      "pos.noun": "znw.", "pos.verb": "ww.", "pos.adj": "bnw.", "pos.adv": "bijw.", "pos.pron": "vnw.", "pos.num": "telw.", "pos.prep": "vz.", "pos.conj": "vgw.", "pos.interj": "tw.", "pos.particle": "partikel", "pos.det": "bepaler", "pos.phrase": "zinsdeel",
+      "reg.informal": "informeel", "reg.formal": "formeel", "reg.vulgar": "vulgair", "reg.offensive": "beledigend",
+      "gender.m": "m.", "gender.f": "v.", "gender.n": "o.", "gender.c": "de-woord", "gender.mf": "m./v.", "gender.pl": "alleen mv.",
+      "form.gen": "gen.", "form.pl": "mv.", "form.dim": "verkl.", "form.acc": "acc.", "form.poss3": "zijn/haar", "form.f": "vr.", "form.n": "o.", "form.short": "kort", "form.comp": "vergr. trap", "form.sup": "overtr. trap",
+      "form.aspect": "aspect", "form.pair": "paar", "form.1sg": "ik", "form.2sg": "jij", "form.3sg": "hij/zij", "form.1pl": "wij", "form.3pl": "zij", "form.past": "verl. tijd", "form.pret": "verl. tijd", "form.pp": "volt. deelw.", "form.aux": "hulpww.", "form.lpt": "verl. deelw.", "form.aor": "aoristus", "form.prog": "duurvorm", "form.fut": "toek. tijd", "form.imp": "gebiedende wijs",
+      "form.class": "klasse", "form.masu": "beleefd", "form.te": "te-vorm", "form.nai": "ontkennend", "form.type": "type", "form.neg": "ontkennend", "form.haeyo": "beleefd",
+      "value.aspect.ipf": "imperfectief", "value.aspect.pf": "perfectief", "value.aspect.bi": "beide aspecten",
+      "value.class.godan": "godan (u-werkwoord)", "value.class.ichidan": "ichidan (ru-werkwoord)", "value.class.suru": "suru-werkwoord", "value.class.kuru": "kuru (onregelmatig)",
+      "value.type.i": "i-adjectief", "value.type.na": "na-adjectief"
+    },
+    "fr": {
+      "section.forms": "Formes", "section.examples": "Exemples", "section.related": "Voir aussi", "section.antonyms": "Contraires", "section.etymology": "Origine", "section.ipa": "API", "section.reading": "Lecture", "section.romanization": "Romanisation", "section.measureWord": "Classificateur", "section.counter": "Compteur", "section.hanja": "Hanja", "section.definition": "Définition", "section.otherScript": "Autre écriture", "section.conceptId": "ID",
+      "pos.noun": "nom", "pos.verb": "verbe", "pos.adj": "adjectif", "pos.adv": "adverbe", "pos.pron": "pronom", "pos.num": "numéral", "pos.prep": "préposition", "pos.conj": "conjonction", "pos.interj": "interjection", "pos.particle": "particule", "pos.det": "déterminant", "pos.phrase": "locution",
+      "reg.informal": "familier", "reg.formal": "soutenu", "reg.vulgar": "vulgaire", "reg.offensive": "injurieux",
+      "gender.m": "m.", "gender.f": "f.", "gender.n": "n.", "gender.c": "commun", "gender.mf": "m./f.", "gender.pl": "pl. seulement",
+      "form.gen": "gén.", "form.pl": "pl.", "form.dim": "dim.", "form.acc": "acc.", "form.poss3": "son/sa", "form.f": "f.", "form.n": "n.", "form.short": "forme courte", "form.comp": "comp.", "form.sup": "superl.",
+      "form.aspect": "aspect", "form.pair": "paire", "form.1sg": "je", "form.2sg": "tu", "form.3sg": "il/elle", "form.1pl": "nous", "form.3pl": "ils/elles", "form.past": "passé", "form.pret": "prétérit", "form.pp": "part. passé", "form.aux": "aux.", "form.lpt": "part. passé", "form.aor": "aoriste", "form.prog": "progressif", "form.fut": "futur", "form.imp": "impératif",
+      "form.class": "classe", "form.masu": "poli", "form.te": "forme en te", "form.nai": "négatif", "form.type": "type", "form.neg": "négatif", "form.haeyo": "poli",
+      "value.aspect.ipf": "imperfectif", "value.aspect.pf": "perfectif", "value.aspect.bi": "biaspectuel",
+      "value.class.godan": "godan (verbe en u)", "value.class.ichidan": "ichidan (verbe en ru)", "value.class.suru": "verbe en suru", "value.class.kuru": "kuru (irrégulier)",
+      "value.type.i": "adjectif en i", "value.type.na": "adjectif en na"
+    },
+    "hy": {
+      "section.forms": "Ձևեր", "section.examples": "Օրինակներ", "section.related": "Առնչվող", "section.antonyms": "Հականիշներ", "section.etymology": "Ծագում", "section.ipa": "ՄՖԱ", "section.reading": "Ընթերցում", "section.romanization": "Լատինատառ", "section.measureWord": "Հաշվառման բառ", "section.counter": "Հաշվիչ", "section.hanja": "Հանջա", "section.definition": "Սահմանում", "section.otherScript": "Այլ գրային համակարգ", "section.conceptId": "ID",
+      "pos.noun": "գոյ.", "pos.verb": "բայ", "pos.adj": "ածական", "pos.adv": "մակբ.", "pos.pron": "դերան.", "pos.num": "թվական", "pos.prep": "նախդիր", "pos.conj": "շաղկապ", "pos.interj": "ձայնարկ.", "pos.particle": "մասնիկ", "pos.det": "որոշիչ", "pos.phrase": "դարձվածք",
+      "reg.informal": "խոսակց.", "reg.formal": "պաշտ.", "reg.vulgar": "կոպիտ", "reg.offensive": "վիրավորական",
+      "gender.m": "արական", "gender.f": "իգական", "gender.n": "չեզոք", "gender.c": "ընդհանուր", "gender.mf": "արական/իգական", "gender.pl": "միայն հոգնակի",
+      "form.gen": "սեռ.", "form.pl": "հոգն.", "form.dim": "փոքրաց.", "form.acc": "հայց.", "form.poss3": "նրա", "form.f": "իգ.", "form.n": "չեզ.", "form.short": "կարճ", "form.comp": "համեմ.", "form.sup": "գերադր.",
+      "form.aspect": "հայացք", "form.pair": "զույգ", "form.1sg": "ես", "form.2sg": "դու", "form.3sg": "նա", "form.1pl": "մենք", "form.3pl": "նրանք", "form.past": "անց.", "form.pret": "անցյալ", "form.pp": "վաղակատար", "form.aux": "օժանդ.", "form.lpt": "անց. դերբայ", "form.aor": "աորիստ", "form.prog": "ընթացիկ", "form.fut": "ապառնի", "form.imp": "հրամ.",
+      "form.class": "դաս", "form.masu": "քաղաք.", "form.te": "տե-ձև", "form.nai": "ժխտ.", "form.type": "տիպ", "form.neg": "ժխտ.", "form.haeyo": "քաղաք.",
+      "value.aspect.ipf": "անկատար", "value.aspect.pf": "կատարյալ", "value.aspect.bi": "երկու հայացք",
+      "value.class.godan": "գոդան", "value.class.ichidan": "իչիդան", "value.class.suru": "սուրու-բայ", "value.class.kuru": "կուրու (անկանոն)",
+      "value.type.i": "i-ածական", "value.type.na": "na-ածական"
+    },
+    "tr": {
+      "section.forms": "Biçimler", "section.examples": "Örnekler", "section.related": "İlgili", "section.antonyms": "Zıt anlamlı", "section.etymology": "Köken", "section.ipa": "IPA", "section.reading": "Okunuş", "section.romanization": "Latin harfleri", "section.measureWord": "Sayı sözcüğü", "section.counter": "Sayaç", "section.hanja": "Hanca", "section.definition": "Tanım", "section.otherScript": "Başka yazı", "section.conceptId": "ID",
+      "pos.noun": "ad", "pos.verb": "fiil", "pos.adj": "sıfat", "pos.adv": "zarf", "pos.pron": "zamir", "pos.num": "sayı", "pos.prep": "edat", "pos.conj": "bağlaç", "pos.interj": "ünlem", "pos.particle": "parçacık", "pos.det": "belirteç", "pos.phrase": "deyim",
+      "reg.informal": "günlük", "reg.formal": "resmî", "reg.vulgar": "kaba", "reg.offensive": "hakaret",
+      "gender.m": "eril", "gender.f": "dişil", "gender.n": "nötr", "gender.c": "ortak", "gender.mf": "eril/dişil", "gender.pl": "yalnız çoğul",
+      "form.gen": "iyelik", "form.pl": "çoğul", "form.dim": "küçült.", "form.acc": "belirtme", "form.poss3": "onun", "form.f": "dişil", "form.n": "nötr", "form.short": "kısa", "form.comp": "üstünlük", "form.sup": "en üstünlük",
+      "form.aspect": "görünüş", "form.pair": "çift", "form.1sg": "ben", "form.2sg": "sen", "form.3sg": "o", "form.1pl": "biz", "form.3pl": "onlar", "form.past": "geçmiş", "form.pret": "geçmiş", "form.pp": "bitmiş", "form.aux": "yardımcı", "form.lpt": "geçmiş ortaç", "form.aor": "geniş zaman", "form.prog": "şimdiki zaman", "form.fut": "gelecek", "form.imp": "emir",
+      "form.class": "sınıf", "form.masu": "kibar", "form.te": "te biçimi", "form.nai": "olumsuz", "form.type": "tür", "form.neg": "olumsuz", "form.haeyo": "kibar",
+      "value.aspect.ipf": "tamamlanmamış", "value.aspect.pf": "tamamlanmış", "value.aspect.bi": "her iki görünüş",
+      "value.class.godan": "godan (u-fiili)", "value.class.ichidan": "ichidan (ru-fiili)", "value.class.suru": "suru fiili", "value.class.kuru": "kuru (düzensiz)",
+      "value.type.i": "i-sıfatı", "value.type.na": "na-sıfatı"
+    },
+    "el": {
+      "section.forms": "Τύποι", "section.examples": "Παραδείγματα", "section.related": "Σχετικά", "section.antonyms": "Αντίθετα", "section.etymology": "Ετυμολογία", "section.ipa": "ΔΦΑ", "section.reading": "Ανάγνωση", "section.romanization": "Λατινικοί χαρακτήρες", "section.measureWord": "Ποσοτικός προσδιορισμός", "section.counter": "Αριθμητικό επίθημα", "section.hanja": "Χάντζα", "section.definition": "Ορισμός", "section.otherScript": "Άλλη γραφή", "section.conceptId": "ID",
+      "pos.noun": "ουσ.", "pos.verb": "ρ.", "pos.adj": "επίθ.", "pos.adv": "επίρρ.", "pos.pron": "αντων.", "pos.num": "αριθμ.", "pos.prep": "πρόθ.", "pos.conj": "σύνδ.", "pos.interj": "επιφ.", "pos.particle": "μόριο", "pos.det": "οριστικό", "pos.phrase": "φράση",
+      "reg.informal": "ανεπίσ.", "reg.formal": "επίσ.", "reg.vulgar": "χυδ.", "reg.offensive": "υβριστ.",
+      "gender.m": "αρσ.", "gender.f": "θηλ.", "gender.n": "ουδ.", "gender.c": "κοινό", "gender.mf": "αρσ./θηλ.", "gender.pl": "μόνο πληθ.",
+      "form.gen": "γεν.", "form.pl": "πληθ.", "form.dim": "υποκ.", "form.acc": "αιτ.", "form.poss3": "του/της", "form.f": "θηλ.", "form.n": "ουδ.", "form.short": "σύντ.", "form.comp": "συγκρ.", "form.sup": "υπερθ.",
+      "form.aspect": "άποψη", "form.pair": "ζεύγος", "form.1sg": "εγώ", "form.2sg": "εσύ", "form.3sg": "αυτός/ή", "form.1pl": "εμείς", "form.3pl": "αυτοί", "form.past": "παρελθ.", "form.pret": "αόρ.", "form.pp": "παρακείμενος", "form.aux": "βοηθ.", "form.lpt": "μτχ. παρακ.", "form.aor": "αόριστος", "form.prog": "εξακολ.", "form.fut": "μέλλ.", "form.imp": "προστ.",
+      "form.class": "κλάση", "form.masu": "ευγενής", "form.te": "μορφή τε", "form.nai": "αρνητ.", "form.type": "τύπος", "form.neg": "αρνητ.", "form.haeyo": "ευγενής",
+      "value.aspect.ipf": "ατελής", "value.aspect.pf": "τετελεσμένη", "value.aspect.bi": "διπλής άποψης",
+      "value.class.godan": "γκοντάν", "value.class.ichidan": "ιτσιντάν", "value.class.suru": "ρήμα σουρού", "value.class.kuru": "κουρού (ανώμαλο)",
+      "value.type.i": "επίθετο ι", "value.type.na": "επίθετο να"
     }
   }
 }

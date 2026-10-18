@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"tam 24 saatlik süre; gece ve gündüz birlikte"},
+"word-day-off": {"w":"izin günü","alt":["tatil günü"],"forms":{"acc":"izin gününü","poss3":"izin günü"},"def":"İşe veya okula gitme zorunluluğu olmayan, dinlenmeye ayrılan zaman."},
+"word-working-day": {"w":"iş günü","alt":["çalışma günü"],"forms":{"acc":"iş gününü","poss3":"iş günü"},"def":"Çoğu kişinin çalıştığı, genelde pazartesiden cumaya kadar süren zaman dilimi."},
+"word-on-time": {"w":"zamanında","alt":["vaktinde"],"def":"Geç kalmadan ve erken gelmeden, tam olması gereken anda."},
+"word-date-of-birth": {"w":"doğum tarihi","forms":{"acc":"doğum tarihini","poss3":"doğum tarihi"},"def":"Bir kişinin doğduğu günü, ayı ve yılı gösteren bilgi."},
+"word-time-zone": {"w":"saat dilimi","forms":{"acc":"saat dilimini","poss3":"saat dilimi"},"def":"Dünyanın, aynı vakti kullanan bölgelerinden her biri."},
+"word-o-clock": {"w":"saat","hint":"tam saat","def":"Sayıdan önce gelerek günün belirli bir anını bildiren sözcük."},
+"word-lifetime": {"w":"ömür","forms":{"acc":"ömrü","poss3":"ömrü"},"def":"Bir insanın doğumundan ölümüne kadar geçen süre."}
+}

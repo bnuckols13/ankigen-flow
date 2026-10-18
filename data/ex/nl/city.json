@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"De bruiloft is zaterdag in het {stadhuis}."},{"t":"Je kunt het formulier bij het {gemeentehuis} halen."},{"t":"De burgemeester werkt in het {stadhuis}."}],
+"word-fire-station": [{"t":"De {brandweerkazerne} ligt naast de school."},{"t":"De kinderen bezochten vrijdag de {brandweerkazerne}."},{"t":"Er is een nieuwe {brandweerkazerne} in onze stad."}],
+"word-mosque": [{"t":"Ze gaan elke vrijdag naar de {moskee}."},{"t":"De {moskee} heeft een prachtige blauwe koepel."},{"t":"Tijdens onze reis bezochten we een beroemde {moskee}."}],
+"word-synagogue": [{"t":"De {synagoge} staat op de hoek van de Hoofdstraat."},{"t":"Zijn familie gaat op zaterdag naar de {synagoge}."},{"t":"De oude {synagoge} is in 1890 gebouwd."}],
+"word-cathedral": [{"t":"De {kathedraal} is het oudste gebouw van de stad."},{"t":"We beklommen de toren van de {kathedraal}."},{"t":"Honderden mensen kwamen voor het concert naar de {kathedraal}."}],
+"word-laundromat": [{"t":"Mijn wasmachine is kapot, dus ik ga naar de {wasserette}."},{"t":"Aan de overkant van de straat is een {wasserette}."},{"t":"Neem wat munten mee naar de {wasserette}."}],
+"word-art-gallery": [{"t":"We brachten de middag door in de {kunstgalerie}."},{"t":"De {kunstgalerie} is op zondag gratis."},{"t":"Ze heeft een schilderij in een kleine {galerie} in het centrum."}],
+"word-nightclub": [{"t":"Ze dansten de hele nacht in de {nachtclub}."},{"t":"Je moet ouder dan eenentwintig zijn om de {nachtclub} in te mogen."},{"t":"De {nachtclub} gaat om tien uur open en om vier uur dicht."}],
+"word-old-town": [{"t":"Na de lunch wandelden we door de {oude binnenstad}."},{"t":"De {oude binnenstad} heeft smalle straatjes en kleine cafés."},{"t":"Veel toeristen verblijven in de {oude binnenstad}."}],
+"word-skyscraper": [{"t":"Vanaf die {wolkenkrabber} kun je de hele stad zien."},{"t":"Ze bouwen een nieuwe {wolkenkrabber} in het centrum."},{"t":"Mijn kantoor ligt op de veertigste verdieping van een {wolkenkrabber}."}],
+"word-apartment-block": [{"t":"Wij wonen in een groot {flatgebouw} bij het park."},{"t":"Het {flatgebouw} heeft een lift."},{"t":"In dit {flatgebouw} wonen twintig gezinnen."}],
+"word-avenue": [{"t":"Het hotel ligt aan een brede {laan} met veel bomen."},{"t":"Sla aan het einde van de {laan} linksaf."},{"t":"We fietsten over de {laan} naar het park.","p":0}],
+"word-pedestrian-zone": [{"t":"Het stadscentrum is een {voetgangersgebied}."},{"t":"Auto's mogen het {voetgangersgebied} niet in."},{"t":"We dronken koffie in het {voetgangersgebied}."}],
+"word-bench": [{"t":"Laten we even op die {bank} gaan zitten."},{"t":"Een oude man zat in het park op een {bank} te lezen."},{"t":"De {bank} was nat van de regen."}],
+"word-fountain": [{"t":"Kinderen speelden bij de {fontein}."},{"t":"Op het hoofdplein staat een prachtige {fontein}."},{"t":"We gooiden munten in de {fontein}."}],
+"word-opposite": [{"t":"De bank is {tegenover} het postkantoor."},{"t":"Ze zat aan tafel {tegenover} mij."},{"t":"Er is een bakkerij {tegenover} ons huis."}],
+"word-city-block": [{"t":"De winkel is twee {huizenblokken} hier vandaan."},{"t":"We liepen een stukje om het {blok} om frisse lucht te krijgen."},{"t":"De bushalte is bij het volgende {blok}."}],
+"word-tourist-information": [{"t":"Laten we bij de {toeristeninformatie} een plattegrond vragen."},{"t":"De {toeristeninformatie} ligt naast het treinstation."},{"t":"De {toeristeninformatie} sluit om vijf uur."}],
+"word-landmark": [{"t":"De toren is de bekendste {bezienswaardigheid} van de stad."},{"t":"Gebruik die grote kerk als {herkenningspunt}."},{"t":"We maakten tijdens de rondleiding foto's van elke {bezienswaardigheid}."}],
+"word-outskirts": [{"t":"Ze wonen aan de {stadsrand}."},{"t":"Het vliegveld ligt aan de {stadsrand}."},{"t":"Aan de {stadsrand} zijn de huizen goedkoper."}]
+}

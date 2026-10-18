@@ -148,7 +148,7 @@ What lint checks:
 - **Structure:** JSON validity, canonical format, allowed keys, enums.
 - **IDs:** ID syntax, uniqueness, retired IDs, references (`mods`, `ant`, `rel`, `only`), entries in the right file.
 - **Groups and bands:** core-band exclusivity, groups not split across bands.
-- **Word entries:** ownership (`w` vs `gl`), script per language, Russian stress, gender and article rules, form keys and required forms, readings and romanization formats, collisions → hints, definitions present and not containing the headword.
+- **Word entries:** ownership (`w` vs `gl`), script per language, full-width punctuation in Chinese and Japanese text (examples too), Russian stress, gender and article rules, form keys and required forms, readings and romanization formats, collisions → hints, definitions present and not containing the headword.
 - **Examples:** slot rules, target braces, parallel slots having an English source, furigana syntax, pinyin.
 - **Optional layers:** IPA charset, etymology syntax.
 - **Labels:** completeness.

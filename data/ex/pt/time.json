@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"Amanhã é o meu {dia de folga}."},{"t":"Ela tem um {dia de folga} todas as quartas-feiras."},{"t":"Preciso de um {dia de folga} para descansar."}],
+"word-working-day": [{"t":"A segunda-feira é o primeiro {dia útil} da semana."},{"t":"Um {dia de trabalho} normal tem oito horas."},{"t":"A encomenda chegará dentro de três {dias úteis}."}],
+"word-on-time": [{"t":"O comboio chegou {a horas}."},{"t":"Por favor, tenta chegar {a horas} à reunião."},{"t":"Ela paga sempre a renda {a horas}."}],
+"word-date-of-birth": [{"t":"Escreva a sua {data de nascimento} no formulário."},{"t":"A minha {data de nascimento} é 4 de maio de 1990."},{"t":"Pediram-me o nome e a {data de nascimento}."}],
+"word-time-zone": [{"t":"Nova Iorque tem um {fuso horário} diferente de Los Angeles."},{"t":"Tive dificuldade em dormir depois de mudar de {fuso horário}."},{"t":"Em que {fuso horário} estás?"}],
+"word-o-clock": [{"t":"O filme começa às oito {em ponto}."},{"t":"Agora são exatamente cinco horas {em ponto}."},{"t":"Almoçamos às doze {em ponto}."}],
+"word-lifetime": [{"t":"Ele viu muitas mudanças durante a sua {vida}."},{"t":"Esta é a viagem de uma {vida}."},{"t":"Ela passou a {vida} inteira na mesma cidade."}]
+}

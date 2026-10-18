@@ -12,7 +12,7 @@
    "Romanization": "mizu",
    "Examples": "<div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ja-JP\"><b class=\"t\"><ruby>水<rt>みず</rt></ruby></b>を<ruby>一杯<rt>いっぱい</rt></ruby>ください。</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ja-JP\">この<ruby>湖<rt>みずうみ</rt></ruby>の<b class=\"t\"><ruby>水<rt>みず</rt></ruby></b>はとても<ruby>冷<rt>つめ</rt></ruby>たいです。</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>植物<rt>しょくぶつ</rt></ruby>には<b class=\"t\"><ruby>水<rt>みず</rt></ruby></b>と<ruby>日光<rt>にっこう</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>です。</div></div>",
    "Related": "<span class=\"rel\">→ 飲む</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "Emoji": "💧",
    "ConceptId": "word-water",
    "Reverse": "1"
@@ -29,10 +29,10 @@
    "TypeTarget": "食べる",
    "Translation": "物を口に入れ、かんでのみこむ。",
    "Romanization": "taberu",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">class</span> ichidan (ru-verb)</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">polite</span> 食べます</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">te-form</span> 食べて</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">negative</span> 食べない</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">活用の種類</span> 一段活用</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">ます形</span> 食べます</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">て形</span> 食べて</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">ない形</span> 食べない</span>",
    "Examples": "<div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>私<rt>わたし</rt></ruby>たちはいつも<ruby>七時<rt>しちじ</rt></ruby>に<ruby>夕飯<rt>ゆうはん</rt></ruby>を<b class=\"t\"><ruby>食<rt>た</rt></ruby>べます</b>。</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>私<rt>わたし</rt></ruby>は<ruby>肉<rt>にく</rt></ruby>を<b class=\"t\"><ruby>食<rt>た</rt></ruby>べません</b>。</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>朝<rt>あさ</rt></ruby>ごはんに<ruby>何<rt>なに</rt></ruby>を<b class=\"t\"><ruby>食<rt>た</rt></ruby>べました</b>か。</div></div>",
    "Related": "<span class=\"rel\">→ 飲む</span>",
-   "POS": "verb",
+   "POS": "動詞",
    "Emoji": "🍽️",
    "ConceptId": "word-eat",
    "Reverse": "1"
@@ -49,9 +49,9 @@
    "TypeTarget": "飲む",
    "Translation": "液体を口に入れて、のどを通す。",
    "Romanization": "nomu",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">class</span> godan (u-verb)</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">polite</span> 飲みます</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">te-form</span> 飲んで</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">negative</span> 飲まない</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">活用の種類</span> 五段活用</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">ます形</span> 飲みます</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">て形</span> 飲んで</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">ない形</span> 飲まない</span>",
    "Related": "<span class=\"rel\">→ 食べる, 水</span>",
-   "POS": "verb",
+   "POS": "動詞",
    "ConceptId": "word-drink",
    "Reverse": "1"
   }
@@ -67,9 +67,9 @@
    "TypeTarget": "大きい",
    "Translation": "サイズや量が普通より上回っているさま。",
    "Romanization": "ōkii",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">type</span> i-adjective</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">negative</span> 大きくない</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">種類</span> イ形容詞</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">否定形</span> 大きくない</span>",
    "Related": "<span class=\"ant\">↔ 小さい</span>",
-   "POS": "adjective",
+   "POS": "形容詞",
    "ConceptId": "word-big",
    "Reverse": "1"
   }
@@ -85,9 +85,9 @@
    "TypeTarget": "小さい",
    "Translation": "サイズや量が普通より少ないさま。",
    "Romanization": "chiisai",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">type</span> i-adjective</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">negative</span> 小さくない</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">種類</span> イ形容詞</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">否定形</span> 小さくない</span>",
    "Related": "<span class=\"ant\">↔ 大きい</span>",
-   "POS": "adjective",
+   "POS": "形容詞",
    "ConceptId": "word-small",
    "Reverse": "1"
   }
@@ -104,7 +104,7 @@
    "Translation": "同じ親から先に生まれた男のきょうだい。",
    "Romanization": "ani",
    "Related": "<span class=\"syn\">= お兄さん</span> · <span class=\"rel\">→ 弟</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-brother-older",
    "Reverse": "1"
   }
@@ -121,7 +121,7 @@
    "Translation": "同じ親から後に生まれた男のきょうだい。",
    "Romanization": "otōto",
    "Related": "<span class=\"rel\">→ 兄</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-brother-younger",
    "Reverse": "1"
   }
@@ -139,7 +139,7 @@
    "Romanization": "te",
    "Examples": "<div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>夕食<rt>ゆうしょく</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<b class=\"t\"><ruby>手<rt>て</rt></ruby></b>を<ruby>洗<rt>あら</rt></ruby>って。</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>左<rt>ひだり</rt></ruby>の<b class=\"t\"><ruby>手<rt>て</rt></ruby></b>にカップを<ruby>持<rt>も</rt></ruby>っていた。</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>質問<rt>しつもん</rt></ruby>があれば<b class=\"t\"><ruby>手<rt>て</rt></ruby></b>を<ruby>挙<rt>あ</rt></ruby>げてください。</div></div>",
    "Related": "<span class=\"rel\">→ 腕</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "Emoji": "✋",
    "ConceptId": "word-hand",
    "Reverse": "1"
@@ -158,8 +158,7 @@
    "Romanization": "ude",
    "Examples": "<div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼<rt>かれ</rt></ruby>はサッカーで<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>を<ruby>折<rt>お</rt></ruby>った。</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>赤<rt>あか</rt></ruby>ちゃんを<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>に<ruby>抱<rt>だ</rt></ruby>いていた。</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>泳<rt>およ</rt></ruby>いだので<b class=\"t\"><ruby>腕<rt>うで</rt></ruby></b>が<ruby>疲<rt>つか</rt></ruby>れた。</div></div>",
    "Related": "<span class=\"rel\">→ 手</span>",
-   "Etymology": "腕 = ⺼ + 宛",
-   "POS": "noun",
+   "POS": "名詞",
    "Emoji": "💪",
    "ConceptId": "word-arm",
    "Reverse": "1"
@@ -176,7 +175,7 @@
    "TypeTarget": "月曜日",
    "Translation": "一週間のうち、日曜日の次の日。",
    "Romanization": "getsuyōbi",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-monday",
    "Reverse": "1"
   }
@@ -192,7 +191,7 @@
    "TypeTarget": "火曜日",
    "Translation": "一週間のうち、月曜日の次の日。",
    "Romanization": "kayōbi",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-tuesday",
    "Reverse": "1"
   }
@@ -210,7 +209,7 @@
    "Romanization": "arigatō",
    "Examples": "<div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ja-JP\"><ruby>手伝<rt>てつだ</rt></ruby>ってくれて<b class=\"t\">ありがとう</b>！</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ja-JP\">プレゼント、<ruby>本当<rt>ほんとう</rt></ruby>に<b class=\"t\">ありがとうございます</b>。</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"ja-JP\"><b class=\"t\">ありがとう</b>、また<ruby>明日<rt>あした</rt></ruby>！</div></div>",
    "Related": "<span class=\"syn\">= ありがとうございます</span>",
-   "POS": "phrase",
+   "POS": "句",
    "Emoji": "🙏",
    "ConceptId": "phrase-thank-you",
    "Reverse": "1"
@@ -227,7 +226,7 @@
    "TypeTarget": "在留許可",
    "Translation": "外国人がその国に住むことを認める許可。",
    "Romanization": "zairyū kyoka",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-residence-permit",
    "Reverse": "1"
   }
@@ -243,7 +242,7 @@
    "TypeTarget": "住民票",
    "Translation": "住所や世帯を市区町村が証明する書類。",
    "Romanization": "jūminhyō",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-residence-record-jp",
    "Reverse": "1"
   }

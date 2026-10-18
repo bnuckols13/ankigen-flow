@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"mairie","g":"f","alt":["hôtel de ville"],"def":"Bâtiment où travaillent le maire et les services de la commune."},
+"word-fire-station": {"w":"caserne de pompiers","g":"f","alt":["caserne"],"def":"Bâtiment où les pompiers et leurs camions attendent les urgences."},
+"word-mosque": {"w":"mosquée","g":"f","def":"Bâtiment où les musulmans vont prier."},
+"word-synagogue": {"w":"synagogue","g":"f","def":"Bâtiment où les juifs vont prier et étudier."},
+"word-cathedral": {"w":"cathédrale","g":"f","def":"Très grande et importante église dirigée par un évêque."},
+"word-laundromat": {"w":"laverie automatique","g":"f","alt":["laverie"],"def":"Lieu public où l'on nettoie et sèche son linge dans des machines payantes."},
+"word-art-gallery": {"w":"galerie d'art","g":"f","alt":["galerie"],"def":"Lieu où l'on montre au public des tableaux et d'autres œuvres."},
+"word-nightclub": {"w":"boîte de nuit","g":"f","alt":["discothèque"],"def":"Lieu ouvert tard le soir, avec de la musique, de la danse et des boissons."},
+"word-old-town": {"w":"vieille ville","g":"f","alt":["centre historique"],"def":"Partie la plus ancienne d'une ville, avec souvent des bâtiments historiques et des rues étroites."},
+"word-skyscraper": {"w":"gratte-ciel","g":"m","forms":{"pl":"gratte-ciel"},"def":"Bâtiment très haut, avec de nombreux étages."},
+"word-apartment-block": {"w":"immeuble","g":"m","art":"l'","def":"Grand bâtiment divisé en plusieurs logements répartis sur différents étages."},
+"word-avenue": {"w":"avenue","g":"f","art":"l'","alt":["boulevard"],"def":"Large rue d'une ville, souvent bordée d'arbres."},
+"word-pedestrian-zone": {"w":"zone piétonne","g":"f","def":"Partie d'une ville interdite aux voitures, où l'on peut marcher en sécurité."},
+"word-bench": {"w":"banc","g":"m","def":"Siège long où plusieurs personnes peuvent s'asseoir, souvent en plein air."},
+"word-fountain": {"w":"fontaine","g":"f","def":"Construction d'où l'eau jaillit, souvent dans un parc ou sur une place."},
+"word-opposite": {"w":"en face de","alt":["face à"],"def":"De l'autre côté de quelque chose, en le regardant."},
+"word-city-block": {"w":"pâté de maisons","g":"m","def":"Groupe de bâtiments entouré de rues sur ses quatre côtés."},
+"word-tourist-information": {"w":"office de tourisme","g":"m","art":"l'","alt":["office du tourisme"],"def":"Bureau où les visiteurs reçoivent des cartes et des conseils sur une région."},
+"word-landmark": {"w":"monument","g":"m","alt":["point de repère"],"def":"Bâtiment ou lieu célèbre et facile à reconnaître.","hint":"repère"},
+"word-outskirts": {"w":"banlieue","g":"f","alt":["périphérie"],"def":"Les quartiers situés loin du centre d'une ville.","hint":"périphérie"}
+}

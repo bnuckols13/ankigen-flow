@@ -7,22 +7,24 @@
 //   node tools/gen/batch.mjs submit   [filters] [--max N] [--dry-run]
 //   node tools/gen/batch.mjs status   [batchId]           status of one batch, or of all batches in tmp/batches
 //   node tools/gen/batch.mjs collect  <batchId>           download results, merge them, record failures
-//   node tools/gen/batch.mjs retry    <batchId> [--dry-run]   resubmit failures (lint feedback / split if truncated)
+//   node tools/gen/batch.mjs retry    <batchId> [--dry-run] [--incomplete]   resubmit failures (lint feedback / split if truncated)
 //   node tools/gen/batch.mjs sync     <unit> [--repairs 2]    one unit via the plain Messages API, with repair rounds
 //   node tools/gen/batch.mjs auto     [filters] [--max N]  submit → wait → collect → retry (≤ 2 rounds);
 //                                                          concepts/review units run one by one via sync
 //   node tools/gen/batch.mjs auto --batch <batchId>        resume waiting on a submitted batch (no new submit)
-// filters:  --type concepts|labels|lang|review|ipa   --lang <code>   --module <id>
+// filters:  --type concepts|labels|landing|lang|review|ipa   --lang <code>   --module <id>
 // options:  --model claude-sonnet-5-5  --max-tokens 64000  --price-in 1 --price-out 5 (USD per M tokens, batch)
 //           --data <dir> (default data)
+//           --incomplete (retry, auto): resubmit only units still missing entries; their review units fix lint errors
 //
 // Files: tmp/batches/<batchId>.json (manifest), tmp/<unit>.json (outputs, then merged by merge-unit.mjs).
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { context, loadProgress, availableUnits, findUnit, repoRoot } from './units.mjs';
+import { context, loadProgress, availableUnits, findUnit, unitDone, repoRoot } from './units.mjs';
 import { buildInput, compact, systemBlocks, outputPath } from './inputs.mjs';
+import { parseOutput } from './output.mjs';
 
 const ROOT = repoRoot();
 loadDotEnv(path.join(ROOT, '.env'));
@@ -41,7 +43,7 @@ const API = process.env.ANKIGEN_API_BASE || 'https://api.anthropic.com/v1'; // o
 const argv = process.argv.slice(2);
 const opt = (name, def) => { const i = argv.indexOf(name); return i >= 0 ? argv[i + 1] : def; };
 const flag = (name) => argv.includes(name);
-const positional = argv.filter((a, i) => !a.startsWith('--') && !(i > 0 && argv[i - 1].startsWith('--') && !['--dry-run'].includes(argv[i - 1])));
+const positional = argv.filter((a, i) => !a.startsWith('--') && !(i > 0 && argv[i - 1].startsWith('--') && !['--dry-run', '--incomplete'].includes(argv[i - 1])));
 const [cmd, arg] = positional;
 
 const MODEL = opt('--model', process.env.ANKIGEN_MODEL || 'claude-sonnet-5-5');
@@ -56,7 +58,7 @@ fs.mkdirSync(BATCH_DIR, { recursive: true });
 
 const commands = { estimate, submit, status, collect, retry, sync, auto };
 if (!commands[cmd]) {
-  console.log(fs.readFileSync(new URL(import.meta.url), 'utf8').split('\n').slice(1, 20).join('\n'));
+  console.log(fs.readFileSync(new URL(import.meta.url), 'utf8').split('\n').slice(1, 21).join('\n'));
   process.exit(cmd ? 1 : 0);
 }
 await commands[cmd]();
@@ -123,6 +125,7 @@ function expectedOutput(u, subset) {
     case 'lang': return n * (['ja', 'zh'].includes(u.lang) ? 300 : 220);
     case 'ipa': return n * 20;
     case 'labels': return 2000;
+    case 'landing': return 12000;
     case 'concepts': return 250 * 50;
     case 'review': return 8000;
     default: return 5000;
@@ -282,7 +285,7 @@ function handleResult(r, result, usage) {
 
 function mergeOutput(r, raw) {
   let obj;
-  try { obj = parseJson(raw); } catch (e) { return { ok: false, kind: 'parse', errors: [`invalid JSON: ${e.message}`], previous: raw }; }
+  try { obj = parseOutput(raw); } catch (e) { return { ok: false, kind: 'parse', errors: [`invalid JSON: ${e.message}`], previous: raw }; }
   obj.unit = r.unit;
   const file = path.join(ROOT, partFile(r.unit, r.part));
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -294,15 +297,6 @@ function mergeOutput(r, raw) {
   if (p.status === 0) return { ok: true, file: path.relative(ROOT, file) };
   const errors = out.split('\n').filter((l) => l.startsWith('ERROR')).map((l) => l.replace(/^ERROR\s+/, ''));
   return { ok: false, kind: 'lint', errors: errors.length ? errors : [out.slice(-2000)], previous: raw, file: path.relative(ROOT, file) };
-}
-
-function parseJson(raw) {
-  let s = raw.trim().replace(/^```(?:json)?\s*/, '').replace(/```\s*$/, '');
-  try { return JSON.parse(s); } catch {
-    const a = s.indexOf('{'), b = s.lastIndexOf('}');
-    if (a >= 0 && b > a) return JSON.parse(s.slice(a, b + 1));
-    throw new Error('no JSON object found');
-  }
 }
 
 // When every part of a split unit merged fine, run a final non-partial merge (completeness check + progress).
@@ -338,13 +332,17 @@ function report(m) {
 }
 
 function retryRequests(m, ctx) {
+  // --incomplete: a failed unit whose entries all merged is left to its language's review unit,
+  // which fixes lint errors (mostly shared words that need a hint) for a fraction of a whole-unit retry.
+  const prog = flag('--incomplete') ? loadProgress(ROOT) : null;
   const out = [];
   for (const r of m.requests) {
     const x = m.results[r.customId];
     if (x?.ok) continue;
-    if (r.attempt >= MAX_ATTEMPTS) { console.log(`  giving up on ${r.customId} after ${r.attempt} attempts — fix in an interactive session`); continue; }
     const u = findUnit(ctx, r.unit);
     if (!u) continue;
+    if (prog && unitDone(ctx, prog, u)) continue;
+    if (r.attempt >= MAX_ATTEMPTS) { console.log(`  giving up on ${r.customId} after ${r.attempt} attempts — fix in an interactive session`); continue; }
     if (x?.kind === 'truncated' && (u.type === 'lang' || u.type === 'ipa')) {
       const ids = r.subset || u.slice || u.ids;
       const half = Math.ceil(ids.length / 2);

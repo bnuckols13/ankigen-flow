@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"まる一日、昼と夜を合わせた24時間"},
+"word-day-off": {"w":"休み","read":"やすみ","rom":"yasumi","alt":["休日"],"def":"仕事や学校に行かなくてよい日。"},
+"word-working-day": {"w":"平日","read":"へいじつ","rom":"heijitsu","alt":["営業日"],"def":"多くの人が仕事をする、月曜日から金曜日までの日。"},
+"word-on-time": {"w":"時間通りに","read":"じかんどおりに","rom":"jikan dōri ni","alt":["定刻に"],"def":"決められた時刻に合わせて、遅れも早すぎもしないで。"},
+"word-date-of-birth": {"w":"生年月日","read":"せいねんがっぴ","rom":"seinengappi","alt":["誕生日"],"def":"その人が生まれた年と月と日。"},
+"word-time-zone": {"w":"時間帯","read":"じかんたい","rom":"jikantai","alt":["タイムゾーン"],"def":"世界で同じ時刻を使う地域の区分。"},
+"word-o-clock": {"w":"時","read":"じ","rom":"ji","def":"数のあとにつけて、時計の何時かを言う言葉。"},
+"word-lifetime": {"w":"一生","read":"いっしょう","rom":"isshō","alt":["生涯"],"def":"人が生まれてから死ぬまでの全部の期間。"}
+}

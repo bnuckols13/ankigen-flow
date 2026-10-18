@@ -186,8 +186,20 @@ html:not(.js) .layout {
   text-underline-offset: 3px;
 }
 
+/* The label, then the two buttons; on a narrow screen the buttons wrap together, below the label. */
+.site-foot .support,
+.site-foot .support span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .site-foot .support {
-  margin-bottom: 0.9rem;
+  margin: 0 0 0.9rem;
+}
+
+.site-foot .support .button {
   border-color: var(--accent);
   color: var(--accent-ink);
   font-weight: 600;

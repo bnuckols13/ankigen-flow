@@ -1,0 +1,396 @@
+{
+  "source": "b51d9543e112",
+  "texts": {
+    "decks": "Decks",
+    "cta": "Créer votre deck",
+    "ctaNote": "Ouvre AnkiGen avec cette paire de langues et le module {module} sélectionné.",
+    "deck": "Deck Anki : {deck}",
+    "intro": "AnkiGen crée des decks Anki gratuits directement dans votre navigateur : des mots classés par thème, chacun avec sa traduction et des exemples. Choisissez les modules et ce que montre chaque carte, puis téléchargez un fichier .apkg pour Anki ou AnkiDroid. Pas de compte, rien à installer.",
+    "cardsHeading": "Ce que montrent les cartes",
+    "cardsIntro": "Chaque carte montre le mot que vous apprenez et sa traduction. Vous choisissez ce qu'elle affiche en plus, et de quel côté :",
+    "captions": "Les légendes des cartes, comme « {caption} », sont en français.",
+    "modulesHeading": "Modules",
+    "modulesIntro": "Un mot qui appartient à plusieurs modules n'apparaît qu'une seule fois dans le deck. Chaque module ouvre AnkiGen avec uniquement ce module sélectionné ; vous pouvez en ajouter d'autres ensuite.",
+    "sampleWords": "Exemples de mots",
+    "local": "Mots propres à cette langue : {count}, par exemple {example}. Les autres langues n'ont pas de mot équivalent exact, c'est pourquoi vos cartes les expliquent en français.",
+    "howHeading": "Comment ça marche",
+    "step1": "Choisissez les modules qui vous intéressent. Chacun indique combien de mots il contient pour votre paire de langues.",
+    "step2": "Choisissez ce que montre chaque carte, et de quel côté. L'aperçu affiche de vraies cartes au fur et à mesure.",
+    "step3": "Téléchargez le fichier .apkg et ouvrez-le avec Anki (File → Import), ou touchez-le sur votre téléphone pour l'ouvrir dans AnkiDroid.",
+    "update": "Vous avez modifié des champs, ajouté des modules ou voulez des données plus récentes ? Téléchargez à nouveau et importez le nouveau fichier dans Anki (File → Import) avec les options par défaut. Anki met à jour vos notes existantes et leur mise en page, ajoute les nouveaux mots au même deck et conserve votre progression.",
+    "aboutHeading": "À propos du vocabulaire",
+    "about": "Les mots, les traductions et les phrases d'exemple ont été rédigés avec un modèle d'IA et sont vérifiés par des personnes, langue par langue. Si quelque chose vous semble erroné, sélectionnez-le sur une carte d'aperçu dans AnkiGen et appuyez sur Ctrl+Entrée (⌘+Entrée sur Mac), ou utilisez le bouton Feedback. Chaque signalement aide à corriger le deck pour tout le monde.",
+    "moreHeading": "Autres decks",
+    "moreForYou": "Autres decks pour francophones",
+    "allDecks": "Tous les decks par paire de langues",
+    "support": "Soutenir ce projet :",
+    "source": "Code source sur GitHub",
+    "license": "Code sous licence {mit} ; vocabulaire sous {cc}.",
+    "versions": "Données {data} · Application {app}"
+  },
+  "languages": {
+    "en": "Anglais",
+    "ru": "Russe",
+    "sr": "Serbe",
+    "ja": "Japonais",
+    "zh": "Chinois",
+    "de": "Allemand",
+    "es": "Espagnol",
+    "pt": "Portugais",
+    "pl": "Polonais",
+    "ko": "Coréen",
+    "nl": "Néerlandais",
+    "fr": "Français",
+    "hy": "Arménien",
+    "tr": "Turc",
+    "el": "Grec"
+  },
+  "categories": {
+    "foundations": "Bases",
+    "communication": "Communication",
+    "daily-life": "Vie quotidienne",
+    "getting-around": "Se déplacer",
+    "living-abroad": "Vivre à l'étranger",
+    "health-safety": "Santé et sécurité",
+    "interests": "Centres d'intérêt",
+    "adult": "18+"
+  },
+  "modules": {
+    "core-1": {
+      "name": "Fondamental I",
+      "desc": "Les ~500 mots les plus fréquents, communs à toutes les langues."
+    },
+    "core-2": {
+      "name": "Fondamental II",
+      "desc": "Les ~500 mots les plus fréquents suivants."
+    },
+    "core-3": {
+      "name": "Fondamental III",
+      "desc": "Les ~800 mots les plus fréquents suivants."
+    },
+    "numbers": {
+      "name": "Nombres et maths",
+      "desc": "Nombres cardinaux et ordinaux, fractions, calcul, mesures."
+    },
+    "time": {
+      "name": "Temps et calendrier",
+      "desc": "Jours, mois, saisons, heure, dates, fréquence."
+    },
+    "phrases": {
+      "name": "Phrases de survie",
+      "desc": "Salutations, politesse et phrases entières pour les situations du quotidien."
+    },
+    "countries": {
+      "name": "Pays, nationalités et langues",
+      "desc": "Grands pays, leurs habitants, adjectifs et langues."
+    },
+    "language-learning": {
+      "name": "Apprentissage des langues",
+      "desc": "Parler de la langue : termes de grammaire, prononciation, demander de l'aide."
+    },
+    "family": {
+      "name": "Famille et relations",
+      "desc": "Parents, partenaires, amis, événements de la vie."
+    },
+    "feelings": {
+      "name": "Sentiments et caractère",
+      "desc": "Émotions, humeurs, traits de personnalité."
+    },
+    "food": {
+      "name": "Nourriture et boissons",
+      "desc": "Courses, plats, boissons, restaurant."
+    },
+    "cooking": {
+      "name": "Cuisine et ustensiles",
+      "desc": "Verbes de cuisine, ustensiles, appareils, recettes."
+    },
+    "shopping": {
+      "name": "Achats et vêtements",
+      "desc": "Magasins, paiement, tailles, vêtements, retours."
+    },
+    "housing": {
+      "name": "Logement et location",
+      "desc": "Location, contrats, propriétaires, charges, pièces."
+    },
+    "household": {
+      "name": "Maison et réparations",
+      "desc": "Tâches ménagères, meubles, outils, réparations, plomberie, électricité."
+    },
+    "nature": {
+      "name": "Météo et nature",
+      "desc": "Météo, climat, paysages, plantes."
+    },
+    "animals": {
+      "name": "Animaux de compagnie et animaux",
+      "desc": "Animaux de compagnie, soins, visites chez le vétérinaire, animaux courants."
+    },
+    "city": {
+      "name": "Ville et orientation",
+      "desc": "Lieux en ville, demander et donner son chemin."
+    },
+    "transport": {
+      "name": "Transports et voyage",
+      "desc": "Transports en commun, billets, aéroports, hôtels, bagages."
+    },
+    "driving": {
+      "name": "Conduite et code de la route",
+      "desc": "Pièces de voiture, règles de circulation, panneaux, examens du permis, amendes, accidents."
+    },
+    "signs": {
+      "name": "Panneaux et avis",
+      "desc": "Ce qu'on lit sur les portes, les magasins et dans la rue : Poussez, Sortie, Hors service."
+    },
+    "residence": {
+      "name": "Résidence et démarches légales",
+      "desc": "Visas, titres de séjour, enregistrement, documents, administrations — et des termes propres à chaque pays."
+    },
+    "money": {
+      "name": "Argent et banque",
+      "desc": "Comptes, cartes, virements, impôts, prêts."
+    },
+    "work": {
+      "name": "Travail et emploi",
+      "desc": "Métiers, contrats, salaire, vie de bureau, recherche d'emploi."
+    },
+    "telecom": {
+      "name": "Poste, téléphone et internet",
+      "desc": "Colis, cartes SIM, forfaits mobiles, internet, comptes."
+    },
+    "education": {
+      "name": "Éducation",
+      "desc": "École, université, cours, examens."
+    },
+    "health": {
+      "name": "Santé et médecine",
+      "desc": "Corps, symptômes, médecins, pharmacie, assurance."
+    },
+    "emergencies": {
+      "name": "Urgences",
+      "desc": "Police, pompiers, ambulance, accidents, catastrophes."
+    },
+    "hobbies": {
+      "name": "Loisirs",
+      "desc": "Passe-temps courants, bricolage, collections, activités de plein air."
+    },
+    "sports": {
+      "name": "Sports",
+      "desc": "Sports, équipement, compétitions, remise en forme."
+    },
+    "music": {
+      "name": "Musique",
+      "desc": "Instruments, genres, jouer et écouter."
+    },
+    "video-games": {
+      "name": "Jeux vidéo",
+      "desc": "Vocabulaire du jeu pour jouer et discuter."
+    },
+    "tabletop": {
+      "name": "Jeux de société",
+      "desc": "Dés, cartes, tours de jeu et règles — pour vos soirées jeux."
+    },
+    "tech": {
+      "name": "Technologie et informatique",
+      "desc": "Appareils, logiciels, web, dépannage."
+    },
+    "science": {
+      "name": "Sciences",
+      "desc": "Vocabulaire de base de la physique, de la chimie, de la biologie et de l'astronomie."
+    },
+    "profanity": {
+      "name": "Gros mots",
+      "desc": "Jurons et insultes, associés d'une langue à l'autre selon leur force."
+    }
+  },
+  "fields": {
+    "gender": {
+      "label": "Genre / article",
+      "help": "Affiche l'article (der Tisch, la mesa) ou une marque de genre (m/f/n) à côté du mot."
+    },
+    "stress": {
+      "label": "Accents toniques",
+      "help": "Marque la voyelle accentuée (молоко́). S'applique au mot, à ses formes et au mot mis en évidence dans les exemples."
+    },
+    "reading": {
+      "label": "Lecture (furigana)",
+      "help": "Lecture en kana au-dessus des kanji. Contrôle aussi les furigana dans les phrases d'exemple."
+    },
+    "romanization": {
+      "label": "Romanisation",
+      "help": "Le mot en lettres latines : Hepburn (japonais), pinyin (chinois), romanisation révisée (coréen), translittération (russe, arménien, grec). Pour le chinois, contrôle aussi le pinyin dans les phrases d'exemple."
+    },
+    "otherScript": {
+      "label": "Autre alphabet",
+      "help": "Affiche le mot dans l'autre alphabet serbe (latin si le deck utilise le cyrillique, et inversement)."
+    },
+    "measureWord": {
+      "label": "Spécificatif / classificateur",
+      "help": "Le classificateur utilisé pour compter ce nom (一本书, 鉛筆を三本)."
+    },
+    "hanja": {
+      "label": "Hanja",
+      "help": "Caractères chinois à l'origine des mots sino-coréens (은행 → 銀行). Affichés uniquement pour les mots qui en ont."
+    },
+    "forms": {
+      "label": "Formes clés",
+      "help": "Les quelques formes utiles pour employer le mot : pluriel, génitif, passé, partenaire d'aspect, classe du verbe… pas de tableaux complets."
+    },
+    "ipa": {
+      "label": "IPA",
+      "help": "Prononciation en alphabet phonétique international."
+    },
+    "examples": {
+      "label": "Exemples",
+      "help": "Phrases d'exemple avec le mot mis en évidence. Le curseur permet de choisir leur nombre (0–3)."
+    },
+    "exampleTranslations": {
+      "label": "Traductions des exemples",
+      "help": "Affiche chaque exemple en français lorsqu'une traduction existe. Certains exemples sont rédigés directement dans la langue et n'ont pas de traduction."
+    },
+    "related": {
+      "label": "Contraires et mots liés",
+      "help": "Contraires et mots proches, dans la langue que vous apprenez."
+    },
+    "pos": {
+      "label": "Classe grammaticale",
+      "help": "nom, verbe, adjectif…"
+    },
+    "register": {
+      "label": "Registre",
+      "help": "Signale les mots familiers, soutenus, vulgaires ou offensants."
+    },
+    "emoji": {
+      "label": "Emoji",
+      "help": "Un indice visuel pour les mots concrets (💧 eau). La plupart des mots abstraits n'en ont pas."
+    },
+    "conceptId": {
+      "label": "ID du concept",
+      "help": "Un petit code en bas de la carte (par ex. word-water). Si vous trouvez une erreur en étudiant dans Anki, indiquez ce code dans votre signalement pour que nous retrouvions l'entrée exacte."
+    }
+  },
+  "options": {
+    "reverse": {
+      "label": "Cartes inversées",
+      "help": "Ajoute une seconde carte par mot : votre langue → la langue que vous apprenez. Sur les cartes inversées, tout ce qui concerne le mot appris passe du côté réponse, pour que rien ne donne la solution."
+    },
+    "typeAnswer": {
+      "label": "Saisir la réponse",
+      "help": "Sur les cartes inversées, vous tapez le mot au lieu de simplement vous en souvenir. Anki compare votre orthographe avec la forme principale (articles compris, accents toniques ignorés)."
+    },
+    "srScript": {
+      "label": "Alphabet serbe",
+      "help": "Le serbe s'écrit en cyrillique comme en latin. Choisissez celui qui sera utilisé sur vos cartes."
+    }
+  },
+  "pairs": {
+    "en": {
+      "name": "Anglais pour francophones",
+      "title": "Anglais pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent l'anglais : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots d'anglais avec traductions en français, créé dans votre navigateur.",
+      "others": "Anglais pour les locuteurs d'autres langues"
+    },
+    "ru": {
+      "name": "Russe pour francophones",
+      "title": "Russe pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le russe : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de russe avec traductions en français, créé dans votre navigateur.",
+      "others": "Russe pour les locuteurs d'autres langues"
+    },
+    "sr": {
+      "name": "Serbe pour francophones",
+      "title": "Serbe pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le serbe : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de serbe avec traductions en français, créé dans votre navigateur.",
+      "others": "Serbe pour les locuteurs d'autres langues"
+    },
+    "ja": {
+      "name": "Japonais pour francophones",
+      "title": "Japonais pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le japonais : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de japonais avec traductions en français, créé dans votre navigateur.",
+      "others": "Japonais pour les locuteurs d'autres langues"
+    },
+    "zh": {
+      "name": "Chinois pour francophones",
+      "title": "Chinois pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le chinois : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de chinois avec traductions en français, créé dans votre navigateur.",
+      "others": "Chinois pour les locuteurs d'autres langues"
+    },
+    "de": {
+      "name": "Allemand pour francophones",
+      "title": "Allemand pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent l'allemand : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots d'allemand avec traductions en français, créé dans votre navigateur.",
+      "others": "Allemand pour les locuteurs d'autres langues"
+    },
+    "es": {
+      "name": "Espagnol pour francophones",
+      "title": "Espagnol pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent l'espagnol : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots d'espagnol avec traductions en français, créé dans votre navigateur.",
+      "others": "Espagnol pour les locuteurs d'autres langues"
+    },
+    "pt": {
+      "name": "Portugais pour francophones",
+      "title": "Portugais pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le portugais : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de portugais avec traductions en français, créé dans votre navigateur.",
+      "others": "Portugais pour les locuteurs d'autres langues"
+    },
+    "pl": {
+      "name": "Polonais pour francophones",
+      "title": "Polonais pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le polonais : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de polonais avec traductions en français, créé dans votre navigateur.",
+      "others": "Polonais pour les locuteurs d'autres langues"
+    },
+    "ko": {
+      "name": "Coréen pour francophones",
+      "title": "Coréen pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le coréen : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de coréen avec traductions en français, créé dans votre navigateur.",
+      "others": "Coréen pour les locuteurs d'autres langues"
+    },
+    "nl": {
+      "name": "Néerlandais pour francophones",
+      "title": "Néerlandais pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le néerlandais : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de néerlandais avec traductions en français, créé dans votre navigateur.",
+      "others": "Néerlandais pour les locuteurs d'autres langues"
+    },
+    "hy": {
+      "name": "Arménien pour francophones",
+      "title": "Arménien pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent l'arménien : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots d'arménien avec traductions en français, créé dans votre navigateur.",
+      "others": "Arménien pour les locuteurs d'autres langues"
+    },
+    "tr": {
+      "name": "Turc pour francophones",
+      "title": "Turc pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le turc : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de turc avec traductions en français, créé dans votre navigateur.",
+      "others": "Turc pour les locuteurs d'autres langues"
+    },
+    "el": {
+      "name": "Grec pour francophones",
+      "title": "Grec pour francophones, deck Anki gratuit — AnkiGen",
+      "description": "Deck Anki gratuit pour francophones qui apprennent le grec : {words} dans {modules}, avec traductions et exemples, pour Anki et AnkiDroid.",
+      "lede": "Un deck Anki gratuit de mots de grec avec traductions en français, créé dans votre navigateur.",
+      "others": "Grec pour les locuteurs d'autres langues"
+    }
+  },
+  "plural": {
+    "word": {
+      "one": "{n} mot",
+      "many": "{n} de mots",
+      "other": "{n} mots"
+    },
+    "module": {
+      "one": "{n} module",
+      "many": "{n} de modules",
+      "other": "{n} modules"
+    }
+  }
+}

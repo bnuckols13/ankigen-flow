@@ -17,7 +17,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { createLoader } from '../src/data/loader.js';
-import { DECKS_DIR, landingSite } from './landing.mjs';
+import { DECKS_DIR, appMeta, landingSite, readTranslations, translatedLanguages } from './landing.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 
@@ -37,12 +37,7 @@ function readJson(file) {
  * @param {string} dataDir @param {string} metaDir
  */
 export function makeBundles(dataDir, metaDir) {
-  /** @type {Record<string, any>} */
-  const meta = {};
-  for (const name of ['languages', 'modules', 'fields', 'labels', 'version']) {
-    meta[name] = readJson(path.join(metaDir, `${name}.json`));
-    if (!meta[name]) throw new Error(`missing ${path.join(metaDir, `${name}.json`)}`);
-  }
+  const meta = appMeta(metaDir);
   if (!meta.version.data) throw new Error('version.json has no data version');
   const modules = meta.modules.categories.flatMap((/** @type {any} */ cat) => cat.modules.map((/** @type {any} */ m) => m.id));
 
@@ -102,12 +97,13 @@ export async function buildSite({ siteDir, dataDir, metaDir }) {
   const bundleDir = path.join(siteDir, 'bundles', version);
   fs.mkdirSync(bundleDir, { recursive: true });
   for (const [name, text] of Object.entries(files)) fs.writeFileSync(path.join(bundleDir, name), text);
-  const pages = await landingSite(siteLoader(siteDir));
+  const translations = readTranslations(dataDir);
+  const pages = await landingSite(siteLoader(siteDir), translations);
   for (const [name, text] of Object.entries(pages)) {
     fs.mkdirSync(path.dirname(path.join(siteDir, name)), { recursive: true });
     fs.writeFileSync(path.join(siteDir, name), text);
   }
-  return { version, files, pages };
+  return { version, files, pages, translated: translatedLanguages(appMeta(metaDir), translations) };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -120,12 +116,13 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const dataDir = path.resolve(opt('--data', 'data'));
   const dirs = { siteDir: path.resolve(opt('--site', '_site')), dataDir, metaDir: path.resolve(opt('--meta', path.join(ROOT, 'data', 'meta'))) };
   try {
-    const { version, files, pages } = await buildSite(dirs);
+    const { version, files, pages, translated } = await buildSite(dirs);
     const kb = (/** @type {number} */ n) => `${Math.round(n / 1024).toLocaleString('en-US')} KB`;
     const sizes = Object.entries(files).map(([name, text]) => `${name} ${kb(Buffer.byteLength(text))} (${kb(zlib.gzipSync(text).length)} gzipped)`);
     const landing = Object.keys(pages).filter((name) => name.startsWith(DECKS_DIR) && name !== `${DECKS_DIR}index.html`).length;
     console.log(`${path.relative(process.cwd(), dirs.siteDir) || '.'}: data ${version}, from ${path.relative(process.cwd(), dataDir) || '.'}\n  ${sizes.join('\n  ')}`);
     console.log(`  ${DECKS_DIR}: ${landing} landing page${landing === 1 ? '' : 's'} and the hub; sitemap.xml`);
+    console.log(`  landing pages in the visitor's language: ${translated.join(', ') || 'none yet'} (others in English)`);
   } catch (error) {
     console.error(`tools/bundle.mjs: ${/** @type {Error} */ (error).message}`);
     process.exit(1);

@@ -12,11 +12,13 @@
 //   lang:     {"unit","lang":{id:entry},"ex":{id:[{t,p?,r?}]},"patch":{otherId:{field:value|null}}}
 //   review:   {"unit","patch":{id:{field:value|null}},"lang":{id:entry},"ex":{id:[...]}}
 //   ipa:      {"unit","ipa":{id:"ipa"}}
+//   landing:  {"unit","landing":{texts,plural,languages,categories,modules,fields,options,pairs}} → data/landing/<code>.json
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { readJson, writeCanonical, stringifyLabels, labelOrder, lint, exists } from '../lib/data.mjs';
 import { context, findUnit, loadProgress, saveProgress, repoRoot, owns } from './units.mjs';
+import { appMeta, canonicalTexts, checkTexts } from '../landing.mjs';
 
 const ROOT = repoRoot();
 const argv = process.argv.slice(2);
@@ -140,13 +142,25 @@ switch (unit.type) {
     upsert('ipa', unit.lang, out.ipa, new Set(unit.ids));
     break;
   }
+  case 'landing': {
+    const meta = appMeta(ctx.p.meta);
+    problems.push(...checkTexts(out.landing, meta, unit.lang));
+    const f = path.join(dataDir, 'landing', `${unit.lang}.json`);
+    fs.mkdirSync(path.dirname(f), { recursive: true });
+    fs.writeFileSync(f, JSON.stringify(canonicalTexts(out.landing, meta, unit.lang), null, 2) + '\n', 'utf8');
+    touchedFiles.add(`landing/${unit.lang}.json`);
+    break;
+  }
   default:
     die(`unit type ${unit.type} cannot be merged`);
 }
 
-// Lint and report only what this unit touched
+// Lint and report only what this unit touched. Concept IDs are shared by all languages, so problems in another
+// language's files belong to that language's units: this unit can't fix them (its patches stay in its language).
 const { issues } = lint({ dataDir, metaDir: ctx.p.meta });
+const otherLanguage = (file) => Boolean(unit.lang) && /^(lang|ex|ipa|etym)\//.test(file ?? '') && file.split('/')[1] !== unit.lang;
 const relevant = issues.filter((i) => {
+  if (otherLanguage(i.file)) return false;
   if (!touchedFiles.has(i.file)) return touchedIds.has(i.id) || [...touchedIds].some((id) => i.msg.includes(id));
   return i.id === null || touchedIds.has(i.id) || unit.type === 'labels';
 });

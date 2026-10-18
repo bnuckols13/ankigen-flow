@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"하루 24시간, 낮과 밤을 합친 온전한 하루"},
+"word-day-off": {"w":"쉬는 날","rom":"swineun nal","alt":["휴무일"],"def":"일하거나 학교에 가지 않아도 되는 날."},
+"word-working-day": {"w":"근무일","hanja":"勤務日","rom":"geunmuil","alt":["평일"],"def":"대부분의 사람이 일하러 가는 날로, 보통 월요일부터 금요일까지이다."},
+"word-on-time": {"w":"제시간에","rom":"jesigane","alt":["정시에"],"def":"늦지도 이르지도 않게 알맞은 때에."},
+"word-date-of-birth": {"w":"생년월일","hanja":"生年月日","rom":"saengnyeonworil","def":"사람이 태어난 해와 달과 날."},
+"word-time-zone": {"w":"시간대","hanja":"時間帶","rom":"sigandae","def":"세계에서 모든 시계가 같은 시각을 가리키는 지역."},
+"word-o-clock": {"w":"시","hanja":"時","rom":"si","def":"숫자 뒤에 붙여 시계가 가리키는 정각을 말할 때 쓰는 말.","hint":"시각"},
+"word-lifetime": {"w":"평생","hanja":"平生","rom":"pyeongsaeng","alt":["일생"],"def":"사람이 태어나서 죽을 때까지의 모든 기간."}
+}

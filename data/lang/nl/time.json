@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"een volledige dag van 24 uur, dag en nacht samen"},
+"word-day-off": {"w":"vrije dag","g":"c","forms":{"pl":"vrije dagen"},"def":"Een dag zonder werk of school, waarop je kunt doen wat je wilt."},
+"word-working-day": {"w":"werkdag","g":"c","forms":{"pl":"werkdagen"},"def":"Een dag van de week waarop de meeste mensen aan de slag zijn, meestal van maandag tot vrijdag."},
+"word-on-time": {"w":"op tijd","alt":["stipt"],"def":"Op het afgesproken moment, niet te laat en niet te vroeg."},
+"word-date-of-birth": {"w":"geboortedatum","g":"c","forms":{"pl":"geboortedata"},"def":"De dag, de maand en het jaar waarop een mens ter wereld kwam."},
+"word-time-zone": {"w":"tijdzone","g":"c","forms":{"pl":"tijdzones"},"def":"Een gebied op aarde waar alle klokken dezelfde uren aanwijzen."},
+"word-o-clock": {"w":"uur","hint":"op de klok","def":"Woord dat na een getal staat om een exact heel tijdstip op de klok aan te geven."},
+"word-lifetime": {"w":"levensduur","g":"c","def":"De periode dat een mens, dier of ding bestaat of bruikbaar blijft."}
+}

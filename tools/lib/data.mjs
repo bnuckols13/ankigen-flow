@@ -197,6 +197,41 @@ export function scriptStats(str, script) {
   return { expected, foreign: [...foreign] };
 }
 
+// ---------- Full-width punctuation ----------
+
+// Chinese and Japanese prose takes full-width punctuation. An ASCII , : ; ! ? next to a character (looking
+// through brackets, braces and quotes), or ( ) next to a character or around text with characters, is a slip.
+const CJK = '\\p{Script=Han}\\p{Script=Hiragana}\\p{Script=Katakana}ー';
+const CJK_LEFT = `[${CJK}][\\]}）」』”]*`;
+const CJK_RIGHT = `[\\[{（「『“]*[${CJK}]`;
+const MARK = '[,:;!?]';
+const PARENS_AFTER = `([${CJK}])\\s*\\(([^()]*)\\)`;
+const PARENS_BEFORE = `\\(([^()]*)\\)(?=[${CJK}。，、；：！？])`;
+const CJK_PARENS = `\\(([^()]*[${CJK}][^()]*)\\)`;
+const ASCII_PUNCT_RE = new RegExp(`${CJK_LEFT}${MARK}|${MARK}\\s*${CJK_RIGHT}|${PARENS_AFTER}|${PARENS_BEFORE}|${CJK_PARENS}`, 'u');
+const FULL_WIDTH = { ',': '，', ':': '：', ';': '；', '!': '！', '?': '？' };
+
+/** Whether a language writes its prose with full-width punctuation (registry entry). */
+export function fullWidthLang(lang) { return lang.script === 'Han' || lang.script === 'Japanese'; }
+
+export function hasAsciiPunctuation(str) { return ASCII_PUNCT_RE.test(str); }
+
+/** The same text with full-width punctuation; the space after a converted mark goes. */
+export function fullWidthPunctuation(str) {
+  return str
+    .replace(new RegExp(PARENS_AFTER, 'gu'), '$1（$2）')
+    .replace(new RegExp(PARENS_BEFORE, 'gu'), '（$1）')
+    .replace(new RegExp(CJK_PARENS, 'gu'), '（$1）')
+    .replace(new RegExp(`(${CJK_LEFT})(${MARK})\\s*`, 'gu'), (_, before, mark) => before + FULL_WIDTH[mark])
+    .replace(new RegExp(`(${MARK})\\s*(?=${CJK_RIGHT})`, 'gu'), (_, mark) => FULL_WIDTH[mark]);
+}
+
+function checkPunctuation(file, id, str, lang, issues, what) {
+  if (fullWidthLang(lang) && typeof str === 'string' && hasAsciiPunctuation(str)) {
+    issues.push(err(file, id, `${what}: ASCII punctuation in ${lang.name} text; use full-width ，：；！？（）`));
+  }
+}
+
 export function stripStress(s) { return s.normalize('NFD').replace(/́/g, '').normalize('NFC'); }
 
 export function foldForCompare(s) {
@@ -440,6 +475,7 @@ function lintLangEntries(code, map, reg, concepts, issues) {
     if (!owned) {
       if (e.w !== undefined) issues.push(err(file, id, `concept is only for ${c.only.join(',')}; give a descriptive "gl", not "w"`));
       if (typeof e.gl !== 'string' || !e.gl.trim()) issues.push(err(file, id, 'gl (descriptive gloss) required'));
+      checkPunctuation(file, id, e.gl, lang, issues, 'gl');
       for (const k of Object.keys(e)) if (!['gl', 'st'].includes(k)) issues.push(err(file, id, `only "gl" is allowed for a gloss entry (found "${k}")`));
       continue;
     }
@@ -448,6 +484,7 @@ function lintLangEntries(code, map, reg, concepts, issues) {
     if (e.w !== e.w.trim() || /\s{2,}/.test(e.w)) issues.push(err(file, id, 'w has stray whitespace'));
     if (e.w !== e.w.normalize('NFC') && !lang.stress) issues.push(err(file, id, 'w must be NFC-normalized'));
     checkScript(file, id, e.w, lang, issues, 'w');
+    for (const k of ['w', 'hint', 'def']) checkPunctuation(file, id, e[k], lang, issues, k);
     if (lang.stress) for (const pr of russianStressProblems(e.w)) issues.push(err(file, id, `w: ${pr}`));
     if (e.alt !== undefined) {
       if (!Array.isArray(e.alt) || e.alt.length === 0 || e.alt.some((a) => typeof a !== 'string' || !a.trim())) issues.push(err(file, id, 'alt must be a non-empty array of strings'));
@@ -455,6 +492,7 @@ function lintLangEntries(code, map, reg, concepts, issues) {
         if (new Set(e.alt).size !== e.alt.length || e.alt.includes(e.w)) issues.push(err(file, id, 'alt has duplicates or repeats w'));
         for (const a of e.alt) {
           checkScript(file, id, a, lang, issues, 'alt');
+          checkPunctuation(file, id, a, lang, issues, 'alt');
           if (lang.stress) for (const pr of russianStressProblems(a)) issues.push(err(file, id, `alt: ${pr}`));
         }
       }
@@ -570,6 +608,7 @@ function lintExamples(code, map, reg, concepts, layers, issues) {
       for (const k of Object.keys(ex)) if (!EXAMPLE_KEYS.includes(k)) issues.push(err(file, id, `${where}: unknown key "${k}"`));
       if (typeof ex.t !== 'string' || !ex.t.trim()) { issues.push(err(file, id, `${where}: t (sentence) required`)); return; }
       if (ex.t.length > 180) issues.push(err(file, id, `${where}: sentence longer than 180 chars`));
+      checkPunctuation(file, id, ex.t, lang, issues, where);
       const spans = targetSpans(ex.t);
       if (spans.length !== 1 || !spans[0].trim()) issues.push(err(file, id, `${where}: mark the target word with exactly one {…}`));
       if ((ex.t.match(/[{}]/g) || []).length !== 2) issues.push(err(file, id, `${where}: unbalanced braces`));

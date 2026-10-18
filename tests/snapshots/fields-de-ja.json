@@ -8,12 +8,11 @@
    "Word": "<span class=\"art\">das</span> Wasser",
    "TypeTarget": "das Wasser",
    "Translation": "水",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">gen.</span> Wassers</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">属格</span> Wassers</span>",
    "IPA": "/ˈvasɐ/",
    "Examples": "<div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"de-DE\">Kann ich bitte ein Glas <b class=\"t\">Wasser</b> haben?</div><div class=\"ex-tr\" lang=\"ja-JP\">水を一杯ください。</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"de-DE\">Das <b class=\"t\">Wasser</b> in diesem See ist sehr kalt.</div><div class=\"ex-tr\" lang=\"ja-JP\">この湖の水はとても冷たいです。</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"de-DE\">Pflanzen brauchen <b class=\"t\">Wasser</b> und Sonnenlicht.</div><div class=\"ex-tr\" lang=\"ja-JP\">植物には水と日光が必要です。</div></div>",
    "Related": "<span class=\"rel\">→ trinken</span>",
-   "Etymology": "gem-pro:*watōr → goh:wazzar → de:Wasser",
-   "POS": "noun",
+   "POS": "名詞",
    "Emoji": "💧",
    "ConceptId": "word-water",
    "Reverse": "1"
@@ -28,10 +27,10 @@
    "Word": "essen",
    "TypeTarget": "essen",
    "Translation": "食べる",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">he/she</span> isst</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">preterite</span> aß</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">perfect</span> hat gegessen</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">彼/彼女</span> isst</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">過去形</span> aß</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">完了形</span> hat gegessen</span>",
    "Examples": "<div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"de-DE\">Wir <b class=\"t\">essen</b> normalerweise um sieben zu Abend.</div><div class=\"ex-tr\" lang=\"ja-JP\">私たちはいつも七時に夕飯を食べます。</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"de-DE\">Ich <b class=\"t\">esse</b> kein Fleisch.</div><div class=\"ex-tr\" lang=\"ja-JP\">私は肉を食べません。</div></div><div class=\"ex\" data-concept=\"word-eat\"><div class=\"ex-t\" lang=\"de-DE\">Was hast du zum Frühstück <b class=\"t\">gegessen</b>?</div><div class=\"ex-tr\" lang=\"ja-JP\">朝ごはんに何を食べましたか。</div></div>",
    "Related": "<span class=\"rel\">→ trinken</span>",
-   "POS": "verb",
+   "POS": "動詞",
    "Emoji": "🍽️",
    "ConceptId": "word-eat",
    "Reverse": "1"
@@ -46,9 +45,9 @@
    "Word": "trinken",
    "TypeTarget": "trinken",
    "Translation": "飲む",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">he/she</span> trinkt</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">preterite</span> trank</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">perfect</span> hat getrunken</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">彼/彼女</span> trinkt</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">過去形</span> trank</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">完了形</span> hat getrunken</span>",
    "Related": "<span class=\"rel\">→ essen, Wasser</span>",
-   "POS": "verb",
+   "POS": "動詞",
    "ConceptId": "word-drink",
    "Reverse": "1"
   }
@@ -62,9 +61,9 @@
    "Word": "groß",
    "TypeTarget": "groß",
    "Translation": "大きい",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">comp.</span> größer</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">superl.</span> am größten</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">比較級</span> größer</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">最上級</span> am größten</span>",
    "Related": "<span class=\"ant\">↔ klein</span>",
-   "POS": "adjective",
+   "POS": "形容詞",
    "ConceptId": "word-big",
    "Reverse": "1"
   }
@@ -78,9 +77,9 @@
    "Word": "klein",
    "TypeTarget": "klein",
    "Translation": "小さい",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">comp.</span> kleiner</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">superl.</span> am kleinsten</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">比較級</span> kleiner</span> · <span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">最上級</span> am kleinsten</span>",
    "Related": "<span class=\"ant\">↔ groß</span>",
-   "POS": "adjective",
+   "POS": "形容詞",
    "ConceptId": "word-small",
    "Reverse": "1"
   }
@@ -95,9 +94,9 @@
    "Word": "<span class=\"art\">der</span> Bruder",
    "TypeTarget": "der Bruder",
    "Translation": "<span class=\"m\">兄 <span class=\"alt\">· お兄さん</span>;</span> <span class=\"m\">弟</span>",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">pl.</span> Brüder</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">複数形</span> Brüder</span>",
    "Related": "<span class=\"syn\">= großer Bruder, kleiner Bruder</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-brother-older, word-brother-younger",
    "Reverse": "1"
   }
@@ -111,11 +110,11 @@
    "Word": "<span class=\"art\">die</span> Hand",
    "TypeTarget": "die Hand",
    "Translation": "手",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">pl.</span> Hände</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">複数形</span> Hände</span>",
    "IPA": "/hant/",
    "Examples": "<div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"de-DE\">Wasch dir vor dem Essen die <b class=\"t\">Hände</b>.</div><div class=\"ex-tr\" lang=\"ja-JP\">夕食の前に手を洗って。</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"de-DE\">Sie hielt eine Tasse in der linken <b class=\"t\">Hand</b>.</div><div class=\"ex-tr\" lang=\"ja-JP\">彼女は左の手にカップを持っていた。</div></div><div class=\"ex\" data-concept=\"word-hand\"><div class=\"ex-t\" lang=\"de-DE\">Heb die <b class=\"t\">Hand</b>, wenn du eine Frage hast.</div><div class=\"ex-tr\" lang=\"ja-JP\">質問があれば手を挙げてください。</div></div>",
    "Related": "<span class=\"rel\">→ Arm</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "Emoji": "✋",
    "ConceptId": "word-hand",
    "Reverse": "1"
@@ -130,11 +129,11 @@
    "Word": "<span class=\"art\">der</span> Arm",
    "TypeTarget": "der Arm",
    "Translation": "腕",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">pl.</span> Arme</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">複数形</span> Arme</span>",
    "IPA": "/aʁm/",
    "Examples": "<div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"de-DE\">Er hat sich beim Fußballspielen den <b class=\"t\">Arm</b> gebrochen.</div><div class=\"ex-tr\" lang=\"ja-JP\">彼はサッカーで腕を折った。</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"de-DE\">Sie trug das Baby auf dem <b class=\"t\">Arm</b>.</div><div class=\"ex-tr\" lang=\"ja-JP\">彼女は赤ちゃんを腕に抱いていた。</div></div><div class=\"ex\" data-concept=\"word-arm\"><div class=\"ex-t\" lang=\"de-DE\">Meine <b class=\"t\">Arme</b> sind vom Schwimmen müde.</div><div class=\"ex-tr\" lang=\"ja-JP\">泳いだので腕が疲れた。</div></div>",
    "Related": "<span class=\"rel\">→ Hand</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "Emoji": "💪",
    "ConceptId": "word-arm",
    "Reverse": "1"
@@ -149,8 +148,8 @@
    "Word": "<span class=\"art\">der</span> Montag",
    "TypeTarget": "der Montag",
    "Translation": "月曜日",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">pl.</span> Montage</span>",
-   "POS": "noun",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">複数形</span> Montage</span>",
+   "POS": "名詞",
    "ConceptId": "word-monday",
    "Reverse": "1"
   }
@@ -164,8 +163,8 @@
    "Word": "<span class=\"art\">der</span> Dienstag",
    "TypeTarget": "der Dienstag",
    "Translation": "火曜日",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">pl.</span> Dienstage</span>",
-   "POS": "noun",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">複数形</span> Dienstage</span>",
+   "POS": "名詞",
    "ConceptId": "word-tuesday",
    "Reverse": "1"
   }
@@ -181,7 +180,7 @@
    "Translation": "ありがとう <span class=\"alt\">· ありがとうございます</span>",
    "Examples": "<div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"de-DE\"><b class=\"t\">Danke</b> für deine Hilfe!</div><div class=\"ex-tr\" lang=\"ja-JP\">手伝ってくれてありがとう！</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"de-DE\"><b class=\"t\">Vielen Dank</b> für das Geschenk.</div><div class=\"ex-tr\" lang=\"ja-JP\">プレゼント、本当にありがとうございます。</div></div><div class=\"ex\" data-concept=\"phrase-thank-you\"><div class=\"ex-t\" lang=\"de-DE\"><b class=\"t\">Danke</b>, bis morgen!</div><div class=\"ex-tr\" lang=\"ja-JP\">ありがとう、また明日！</div></div>",
    "Related": "<span class=\"syn\">= vielen Dank</span>",
-   "POS": "phrase",
+   "POS": "句",
    "Emoji": "🙏",
    "ConceptId": "phrase-thank-you",
    "Reverse": "1"
@@ -196,9 +195,9 @@
    "Word": "<span class=\"art\">der</span> Aufenthaltstitel",
    "TypeTarget": "der Aufenthaltstitel",
    "Translation": "在留許可",
-   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">pl.</span> Aufenthaltstitel</span>",
+   "Forms": "<span class=\"f\"><span class=\"fk\" lang=\"ja-JP\">複数形</span> Aufenthaltstitel</span>",
    "Related": "<span class=\"syn\">= Aufenthaltserlaubnis</span>",
-   "POS": "noun",
+   "POS": "名詞",
    "ConceptId": "word-residence-permit",
    "Reverse": "1"
   }

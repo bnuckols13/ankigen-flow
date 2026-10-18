@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"Die Hochzeit findet am Samstag im {Rathaus} statt."},{"t":"Das Formular bekommst du im {Rathaus}."},{"t":"Der Bürgermeister arbeitet im {Rathaus}."}],
+"word-fire-station": [{"t":"Die {Feuerwache} liegt neben der Schule."},{"t":"Die Kinder haben am Freitag die {Feuerwache} besucht."},{"t":"In unserer Stadt gibt es eine neue {Feuerwache}."}],
+"word-mosque": [{"t":"Sie gehen jeden Freitag in die {Moschee}."},{"t":"Die {Moschee} hat eine schöne blaue Kuppel."},{"t":"Auf unserer Reise haben wir eine berühmte {Moschee} besucht."}],
+"word-synagogue": [{"t":"Die {Synagoge} liegt an der Ecke der Hauptstraße."},{"t":"Seine Familie geht samstags in die {Synagoge}."},{"t":"Die alte {Synagoge} wurde 1890 gebaut."}],
+"word-cathedral": [{"t":"Die {Kathedrale} ist das älteste Gebäude der Stadt."},{"t":"Wir sind auf den Turm der {Kathedrale} gestiegen."},{"t":"Hunderte Menschen kamen zum Konzert in die {Kathedrale}."}],
+"word-laundromat": [{"t":"Meine Waschmaschine ist kaputt, deshalb gehe ich in den {Waschsalon}."},{"t":"Auf der anderen Straßenseite gibt es einen {Waschsalon}."},{"t":"Nimm ein paar Münzen mit in den {Waschsalon}."}],
+"word-art-gallery": [{"t":"Wir haben den Nachmittag in der {Kunstgalerie} verbracht."},{"t":"Die {Kunstgalerie} ist sonntags kostenlos."},{"t":"Sie hat ein Bild in einer kleinen {Galerie} in der Innenstadt."}],
+"word-nightclub": [{"t":"Sie haben die ganze Nacht im {Nachtclub} getanzt."},{"t":"Man muss über achtzehn sein, um in den {Nachtclub} zu kommen."},{"t":"Der {Nachtclub} öffnet um zehn und schließt um vier."}],
+"word-old-town": [{"t":"Nach dem Mittagessen sind wir durch die {Altstadt} gelaufen."},{"t":"Die {Altstadt} hat enge Gassen und kleine Cafés."},{"t":"Viele Touristen übernachten in der {Altstadt}."}],
+"word-skyscraper": [{"t":"Von diesem {Wolkenkratzer} sieht man die ganze Stadt."},{"t":"In der Innenstadt wird ein neuer {Wolkenkratzer} gebaut."},{"t":"Mein Büro liegt im vierzigsten Stock eines {Wolkenkratzers}."}],
+"word-apartment-block": [{"t":"Wir wohnen in einem großen {Mehrfamilienhaus} in der Nähe des Parks."},{"t":"Das {Mehrfamilienhaus} hat einen Aufzug."},{"t":"In diesem {Wohnblock} wohnen zwanzig Familien."}],
+"word-avenue": [{"t":"Das Hotel liegt an einer breiten {Allee} mit vielen Bäumen."},{"t":"Biegen Sie am Ende der {Allee} links ab."},{"t":"Die Champs-Élysées ist eine berühmte {Allee} in Paris.","p":0}],
+"word-pedestrian-zone": [{"t":"Die Innenstadt ist eine {Fußgängerzone}."},{"t":"Autos dürfen nicht in die {Fußgängerzone} fahren."},{"t":"Wir haben in der {Fußgängerzone} Kaffee getrunken."}],
+"word-bench": [{"t":"Setzen wir uns kurz auf die {Bank}."},{"t":"Ein alter Mann las auf einer {Bank} im Park."},{"t":"Die {Bank} war vom Regen nass."}],
+"word-fountain": [{"t":"Kinder spielten am {Springbrunnen}."},{"t":"Auf dem Hauptplatz steht ein schöner {Springbrunnen}."},{"t":"Wir haben Münzen in den {Springbrunnen} geworfen."}],
+"word-opposite": [{"t":"Die Bank ist der Post {gegenüber}."},{"t":"Sie saß mir am Tisch {gegenüber}."},{"t":"{Gegenüber} unserem Haus gibt es eine Bäckerei."}],
+"word-city-block": [{"t":"Der Laden ist nur zwei {Blocks} von hier entfernt."},{"t":"Wir sind einmal um den {Block} gelaufen, um frische Luft zu schnappen."},{"t":"Die Bushaltestelle ist im nächsten {Häuserblock}."}],
+"word-tourist-information": [{"t":"Fragen wir in der {Touristeninformation} nach einem Stadtplan."},{"t":"Die {Touristeninformation} ist neben dem Bahnhof."},{"t":"Die {Touristeninformation} schließt um fünf."}],
+"word-landmark": [{"t":"Der Turm ist das berühmteste {Wahrzeichen} der Stadt."},{"t":"Das Brandenburger Tor ist ein bekanntes {Wahrzeichen} von Berlin.","p":0},{"t":"Bei der Tour haben wir jedes {Wahrzeichen} fotografiert."}],
+"word-outskirts": [{"t":"Sie wohnen am {Stadtrand}."},{"t":"Der Flughafen liegt am {Stadtrand}."},{"t":"Am {Stadtrand} sind die Häuser billiger."}]
+}

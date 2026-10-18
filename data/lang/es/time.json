@@ -1,0 +1,10 @@
+{
+"word-day-24h": {"gl":"un día completo de 24 horas, día y noche juntos"},
+"word-day-off": {"w":"día libre","g":"m","alt":["día de descanso"],"def":"Día en que no hay que ir a trabajar ni a clase."},
+"word-working-day": {"w":"día laborable","g":"m","alt":["día hábil"],"def":"Día en que la mayoría de la gente trabaja, normalmente de lunes a viernes."},
+"word-on-time": {"w":"a tiempo","alt":["puntualmente"],"def":"En el momento adecuado, sin llegar tarde ni demasiado pronto."},
+"word-date-of-birth": {"w":"fecha de nacimiento","g":"f","def":"Día, mes y año en que nació una persona."},
+"word-time-zone": {"w":"huso horario","g":"m","alt":["zona horaria"],"def":"Región del mundo donde todos los relojes marcan la misma hora."},
+"word-o-clock": {"w":"en punto","def":"Expresión que se usa tras la hora para indicar que es exacta, sin minutos."},
+"word-lifetime": {"w":"vida","g":"f","hint":"duración","alt":["toda una vida"],"def":"Todo el tiempo que una persona está viva, desde que nace hasta que muere."}
+}

@@ -13,7 +13,6 @@
    "IPA": "/vɐˈda/",
    "Examples": "<div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ru-RU\">Можно мне стакан <b class=\"t\">воды́</b>, пожалуйста?</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ru-RU\"><b class=\"t\">Вода́</b> в этом озере очень холодная.</div></div><div class=\"ex\" data-concept=\"word-water\"><div class=\"ex-t\" lang=\"ru-RU\">Растениям нужны <b class=\"t\">вода́</b> и солнечный свет.</div></div>",
    "Related": "<span class=\"rel\">→ пить</span>",
-   "Etymology": "ine-pro:*wódr̥ → sla-pro:*voda → ru:вода",
    "POS": "сущ.",
    "Emoji": "💧",
    "ConceptId": "word-water",

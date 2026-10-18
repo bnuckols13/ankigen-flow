@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"Ślub odbędzie się w {ratuszu} w sobotę."},{"t":"Formularz można dostać w {ratuszu}."},{"t":"Burmistrz pracuje w {ratuszu}."}],
+"word-fire-station": [{"t":"{Remiza strażacka} jest obok szkoły."},{"t":"Dzieci w piątek zwiedzały {remizę strażacką}."},{"t":"W naszym mieście jest nowa {remiza strażacka}."}],
+"word-mosque": [{"t":"Co piątek chodzą do {meczetu}."},{"t":"{Meczet} ma piękną niebieską kopułę."},{"t":"Podczas wycieczki zwiedziliśmy słynny {meczet}."}],
+"word-synagogue": [{"t":"{Synagoga} stoi na rogu ulicy Głównej."},{"t":"Jego rodzina chodzi w soboty do {synagogi}."},{"t":"Starą {synagogę} zbudowano w 1890 roku."}],
+"word-cathedral": [{"t":"{Katedra} to najstarszy budynek w mieście."},{"t":"Weszliśmy na wieżę {katedry}."},{"t":"Na koncert w {katedrze} przyszły setki ludzi."}],
+"word-laundromat": [{"t":"Moja pralka się zepsuła, więc chodzę do {pralni samoobsługowej}."},{"t":"Po drugiej stronie ulicy jest {pralnia samoobsługowa}."},{"t":"Weź ze sobą monety do {pralni samoobsługowej}."}],
+"word-art-gallery": [{"t":"Spędziliśmy popołudnie w {galerii sztuki}."},{"t":"W niedziele wstęp do {galerii sztuki} jest bezpłatny."},{"t":"Ma obraz w małej {galerii sztuki} w centrum."}],
+"word-nightclub": [{"t":"Tańczyli całą noc w {klubie nocnym}."},{"t":"Żeby wejść do {klubu nocnego}, trzeba mieć ponad dwadzieścia jeden lat."},{"t":"{Klub nocny} otwiera się o dziesiątej, a zamyka o czwartej."}],
+"word-old-town": [{"t":"Po obiedzie spacerowaliśmy po {Starym Mieście}."},{"t":"{Stare Miasto} ma wąskie uliczki i małe kawiarnie."},{"t":"Wielu turystów mieszka na {Starym Mieście}."}],
+"word-skyscraper": [{"t":"Z tego {wieżowca} widać całe miasto."},{"t":"W centrum buduje się nowy {wieżowiec}."},{"t":"Moje biuro jest na czterdziestym piętrze {wieżowca}."}],
+"word-apartment-block": [{"t":"Mieszkamy w dużym {bloku} niedaleko parku."},{"t":"W {bloku} jest winda."},{"t":"W tym {bloku} mieszka dwadzieścia rodzin."}],
+"word-avenue": [{"t":"Hotel stoi przy szerokiej {alei} z wieloma drzewami."},{"t":"Na końcu {alei} skręć w lewo."},{"t":"Piąta {Aleja} to słynna ulica w Nowym Jorku."}],
+"word-pedestrian-zone": [{"t":"Centrum miasta to {strefa piesza}."},{"t":"Samochody nie mogą wjeżdżać do {strefy pieszej}."},{"t":"Piliśmy kawę w {strefie pieszej}."}],
+"word-bench": [{"t":"Usiądźmy na chwilę na tej {ławce}."},{"t":"Starszy pan czytał na {ławce} w parku."},{"t":"{Ławka} była mokra od deszczu."}],
+"word-fountain": [{"t":"Dzieci bawiły się przy {fontannie}."},{"t":"Na głównym placu stoi piękna {fontanna}."},{"t":"Wrzucaliśmy monety do {fontanny}."}],
+"word-opposite": [{"t":"Bank jest {naprzeciwko} poczty."},{"t":"Usiadła {naprzeciwko} mnie przy stole."},{"t":"{Naprzeciwko} naszego domu jest piekarnia."}],
+"word-city-block": [{"t":"Sklep jest dwie {przecznice} stąd."},{"t":"Przeszliśmy się wokół {kwartału}, żeby zaczerpnąć powietrza."},{"t":"Przystanek jest na następnej {przecznicy}."}],
+"word-tourist-information": [{"t":"Zapytajmy w {informacji turystycznej} o mapę."},{"t":"{Informacja turystyczna} jest obok dworca kolejowego."},{"t":"{Informacja turystyczna} zamyka się o piątej."}],
+"word-landmark": [{"t":"Ta wieża to najsłynniejszy {symbol miasta}."},{"t":"Użyj tego dużego kościoła jako {punktu orientacyjnego}."},{"t":"Na wycieczce zrobiliśmy zdjęcia przy każdym {punkcie orientacyjnym}."}],
+"word-outskirts": [{"t":"Mieszkają na {peryferiach} miasta."},{"t":"Lotnisko jest na {peryferiach} miasta."},{"t":"Na {peryferiach} domy są tańsze."}]
+}

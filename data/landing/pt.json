@@ -1,0 +1,396 @@
+{
+  "source": "d3f044c6aaa9",
+  "texts": {
+    "decks": "Baralhos",
+    "cta": "Cria o teu baralho",
+    "ctaNote": "Abre o AnkiGen com este par de línguas e o módulo «{module}» selecionado.",
+    "deck": "Baralho Anki: {deck}",
+    "intro": "O AnkiGen cria baralhos Anki gratuitos diretamente no navegador: palavras por tema, cada uma com tradução e frases de exemplo. Escolhe os módulos e o que cada cartão mostra e descarrega um ficheiro .apkg para o Anki ou o AnkiDroid. Sem conta e sem nada para instalar.",
+    "cardsHeading": "O que mostram os cartões",
+    "cardsIntro": "Cada cartão mostra a palavra que estás a aprender e a respetiva tradução. Tu escolhes o que mais aparece e em que lado:",
+    "captions": "As legendas dos cartões, como «{caption}», estão em português.",
+    "modulesHeading": "Módulos",
+    "modulesIntro": "Uma palavra que pertence a vários módulos aparece só uma vez no baralho. Cada módulo abre o AnkiGen apenas com esse módulo selecionado; podes juntar mais lá.",
+    "sampleWords": "Exemplos de palavras",
+    "local": "Palavras que só esta língua tem: {count}, como {example}. As outras línguas não têm uma palavra exata para estas, por isso os teus cartões explicam-nas em português.",
+    "howHeading": "Como funciona",
+    "step1": "Escolhe os módulos que queres. Cada um mostra quantas palavras tem para o teu par de línguas.",
+    "step2": "Escolhe o que cada cartão mostra e em que lado. A pré-visualização mostra cartões reais à medida que escolhes.",
+    "step3": "Descarrega o ficheiro .apkg e abre-o com o Anki (File → Import) ou toca nele no telemóvel para o abrir no AnkiDroid.",
+    "update": "Alteraste campos, juntaste módulos ou queres dados mais recentes? Descarrega de novo e importa o novo ficheiro no Anki (File → Import) com as opções predefinidas. O Anki atualiza as notas existentes e o respetivo aspeto, adiciona as palavras novas ao mesmo baralho e mantém o teu progresso de revisão.",
+    "aboutHeading": "Sobre o vocabulário",
+    "about": "As palavras, as traduções e as frases de exemplo foram redigidas com um modelo de IA e estão a ser verificadas por pessoas, língua a língua. Se algo parecer errado, seleciona-o num cartão de pré-visualização no AnkiGen e prime Ctrl+Enter (⌘+Enter num Mac) ou usa o botão Feedback aí. Cada comunicação ajuda a corrigir o baralho para todos.",
+    "moreHeading": "Mais baralhos",
+    "moreForYou": "Mais baralhos para falantes de português",
+    "allDecks": "Todos os baralhos por par de línguas",
+    "support": "Apoiar este projeto:",
+    "source": "Código-fonte no GitHub",
+    "license": "Código sob a licença {mit}; vocabulário sob {cc}.",
+    "versions": "Dados {data} · App {app}"
+  },
+  "languages": {
+    "en": "Inglês",
+    "ru": "Russo",
+    "sr": "Sérvio",
+    "ja": "Japonês",
+    "zh": "Chinês",
+    "de": "Alemão",
+    "es": "Espanhol",
+    "pt": "Português",
+    "pl": "Polaco",
+    "ko": "Coreano",
+    "nl": "Neerlandês",
+    "fr": "Francês",
+    "hy": "Arménio",
+    "tr": "Turco",
+    "el": "Grego"
+  },
+  "categories": {
+    "foundations": "Fundamentos",
+    "communication": "Comunicação",
+    "daily-life": "Dia a dia",
+    "getting-around": "Deslocações",
+    "living-abroad": "Viver no estrangeiro",
+    "health-safety": "Saúde e segurança",
+    "interests": "Interesses",
+    "adult": "18+"
+  },
+  "modules": {
+    "core-1": {
+      "name": "Core I",
+      "desc": "As ~500 palavras mais frequentes, comuns a todas as línguas."
+    },
+    "core-2": {
+      "name": "Core II",
+      "desc": "As ~500 palavras mais frequentes a seguir."
+    },
+    "core-3": {
+      "name": "Core III",
+      "desc": "As ~800 palavras mais frequentes a seguir."
+    },
+    "numbers": {
+      "name": "Números e matemática",
+      "desc": "Números cardinais e ordinais, frações, aritmética, medidas."
+    },
+    "time": {
+      "name": "Tempo e calendário",
+      "desc": "Dias, meses, estações do ano, horas, datas, frequência."
+    },
+    "phrases": {
+      "name": "Frases de sobrevivência",
+      "desc": "Cumprimentos, cortesia e frases completas para situações do dia a dia."
+    },
+    "countries": {
+      "name": "Países, nacionalidades e línguas",
+      "desc": "Principais países, os seus povos, adjetivos e línguas."
+    },
+    "language-learning": {
+      "name": "Aprendizagem de línguas",
+      "desc": "Falar sobre a língua: termos de gramática, pronúncia, pedir ajuda."
+    },
+    "family": {
+      "name": "Família e relações",
+      "desc": "Parentes, parceiros, amigos, acontecimentos da vida."
+    },
+    "feelings": {
+      "name": "Sentimentos e personalidade",
+      "desc": "Emoções, estados de espírito, traços de personalidade."
+    },
+    "food": {
+      "name": "Comida e bebidas",
+      "desc": "Mercearia, pratos, bebidas, comer fora."
+    },
+    "cooking": {
+      "name": "Cozinha e culinária",
+      "desc": "Verbos de cozinhar, utensílios, eletrodomésticos, receitas."
+    },
+    "shopping": {
+      "name": "Compras e roupa",
+      "desc": "Lojas, pagamento, tamanhos, roupa, devoluções."
+    },
+    "housing": {
+      "name": "Habitação e arrendamento",
+      "desc": "Arrendamento, contratos, senhorios, serviços, divisões da casa."
+    },
+    "household": {
+      "name": "Casa e reparações",
+      "desc": "Tarefas domésticas, mobília, ferramentas, reparações, canalização, eletricidade."
+    },
+    "nature": {
+      "name": "Meteorologia e natureza",
+      "desc": "Tempo, clima, paisagem, plantas."
+    },
+    "animals": {
+      "name": "Animais de estimação e animais",
+      "desc": "Animais de estimação, cuidados, idas ao veterinário, animais comuns."
+    },
+    "city": {
+      "name": "Cidade e direções",
+      "desc": "Locais da cidade, pedir e dar indicações."
+    },
+    "transport": {
+      "name": "Transportes e viagens",
+      "desc": "Transportes públicos, bilhetes, aeroportos, hotéis, bagagem."
+    },
+    "driving": {
+      "name": "Condução e código da estrada",
+      "desc": "Peças do carro, regras de trânsito, sinais, exames de condução, multas, acidentes."
+    },
+    "signs": {
+      "name": "Sinais e avisos",
+      "desc": "O que se lê em portas, lojas e ruas: Empurrar, Saída, Avariado."
+    },
+    "residence": {
+      "name": "Residência e legalização",
+      "desc": "Vistos, autorizações, registo, documentos, repartições — e termos específicos de cada país."
+    },
+    "money": {
+      "name": "Dinheiro e banca",
+      "desc": "Contas, cartões, transferências, impostos, empréstimos."
+    },
+    "work": {
+      "name": "Trabalho e emprego",
+      "desc": "Profissões, contratos, salário, vida de escritório, procura de emprego."
+    },
+    "telecom": {
+      "name": "Correio, telefone e internet",
+      "desc": "Encomendas, cartões SIM, tarifários móveis, internet, contas."
+    },
+    "education": {
+      "name": "Educação",
+      "desc": "Escola, universidade, cursos, exames."
+    },
+    "health": {
+      "name": "Saúde e medicina",
+      "desc": "Corpo, sintomas, médicos, farmácia, seguros."
+    },
+    "emergencies": {
+      "name": "Emergências",
+      "desc": "Polícia, bombeiros, ambulância, acidentes, catástrofes."
+    },
+    "hobbies": {
+      "name": "Passatempos",
+      "desc": "Passatempos comuns, artesanato, coleções, atividades ao ar livre."
+    },
+    "sports": {
+      "name": "Desporto",
+      "desc": "Modalidades, equipamento, competições, exercício físico."
+    },
+    "music": {
+      "name": "Música",
+      "desc": "Instrumentos, géneros, tocar e ouvir."
+    },
+    "video-games": {
+      "name": "Videojogos",
+      "desc": "Vocabulário de jogos para jogar e conversar."
+    },
+    "tabletop": {
+      "name": "Jogos de tabuleiro",
+      "desc": "Dados, cartas, vezes de jogar e regras — para noites de jogos."
+    },
+    "tech": {
+      "name": "Tecnologia e informática",
+      "desc": "Dispositivos, software, a web, resolução de problemas."
+    },
+    "science": {
+      "name": "Ciência",
+      "desc": "Vocabulário básico de física, química, biologia, astronomia."
+    },
+    "profanity": {
+      "name": "Palavrões",
+      "desc": "Palavrões e insultos, emparelhados por intensidade entre línguas."
+    }
+  },
+  "fields": {
+    "gender": {
+      "label": "Género / artigo",
+      "help": "Mostra o artigo (der Tisch, la mesa) ou uma marca de género (m/f/n) junto à palavra."
+    },
+    "stress": {
+      "label": "Marcas de acento",
+      "help": "Marca a vogal tónica (молоко́). Aplica-se à palavra, às suas formas e à palavra destacada nos exemplos."
+    },
+    "reading": {
+      "label": "Leitura (furigana)",
+      "help": "Leitura em kana por cima dos kanji. Controla também o furigana nas frases de exemplo."
+    },
+    "romanization": {
+      "label": "Romanização",
+      "help": "A palavra em letras latinas: Hepburn (japonês), pinyin (chinês), Romanização Revista (coreano), transliteração (russo, arménio, grego). No chinês controla também o pinyin nas frases de exemplo."
+    },
+    "otherScript": {
+      "label": "Outra escrita",
+      "help": "Mostra a palavra na outra escrita do sérvio (latina se o baralho usa cirílica, e vice-versa)."
+    },
+    "measureWord": {
+      "label": "Classificador / contador",
+      "help": "O classificador usado ao contar este substantivo (一本书, 鉛筆を三本)."
+    },
+    "hanja": {
+      "label": "Hanja",
+      "help": "Carateres chineses por trás das palavras sino-coreanas (은행 → 銀行). Só aparece nas palavras que os têm."
+    },
+    "forms": {
+      "label": "Formas principais",
+      "help": "As poucas formas de que precisas para usar a palavra: plural, genitivo, passado, par aspetual, classe do verbo… não são tabelas completas."
+    },
+    "ipa": {
+      "label": "IPA",
+      "help": "Pronúncia no Alfabeto Fonético Internacional."
+    },
+    "examples": {
+      "label": "Exemplos",
+      "help": "Frases de exemplo com a palavra destacada. Usa o cursor para escolher quantas (0–3)."
+    },
+    "exampleTranslations": {
+      "label": "Traduções dos exemplos",
+      "help": "Mostra cada exemplo na tua língua quando existe uma tradução correspondente. Alguns exemplos são escritos de raiz na língua e não têm tradução."
+    },
+    "related": {
+      "label": "Antónimos e relacionadas",
+      "help": "Opostos e palavras muito próximas, na língua que estás a aprender."
+    },
+    "pos": {
+      "label": "Classe gramatical",
+      "help": "substantivo, verbo, adjetivo…"
+    },
+    "register": {
+      "label": "Registo",
+      "help": "Assinala palavras informais, formais, vulgares ou ofensivas."
+    },
+    "emoji": {
+      "label": "Emoji",
+      "help": "Uma imagem de apoio para palavras concretas (💧 água). A maioria das palavras abstratas não tem."
+    },
+    "conceptId": {
+      "label": "ID do conceito",
+      "help": "Um pequeno código no fundo do cartão (p. ex. word-water). Se encontrares um erro enquanto estudas no Anki, inclui este código na tua comunicação para podermos encontrar a entrada exata."
+    }
+  },
+  "options": {
+    "reverse": {
+      "label": "Cartões invertidos",
+      "help": "Acrescenta um segundo cartão por palavra: a tua língua → a língua que aprendes. Nos cartões invertidos, tudo o que diz respeito à palavra aprendida passa para o verso, para que nada revele a resposta."
+    },
+    "typeAnswer": {
+      "label": "Escrever a resposta",
+      "help": "Nos cartões invertidos escreves a palavra em vez de apenas a recordares. O Anki compara a tua grafia com a forma principal (artigos incluídos, marcas de acento ignoradas)."
+    },
+    "srScript": {
+      "label": "Escrita do sérvio",
+      "help": "O sérvio escreve-se em cirílico e em latino. Escolhe a que é usada nos teus cartões."
+    }
+  },
+  "pairs": {
+    "en": {
+      "name": "Inglês para falantes de português",
+      "title": "Baralho de inglês para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de inglês para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de inglês com traduções em português, criado no teu navegador.",
+      "others": "Inglês para falantes de outras línguas"
+    },
+    "ru": {
+      "name": "Russo para falantes de português",
+      "title": "Baralho de russo para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de russo para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de russo com traduções em português, criado no teu navegador.",
+      "others": "Russo para falantes de outras línguas"
+    },
+    "sr": {
+      "name": "Sérvio para falantes de português",
+      "title": "Baralho de sérvio para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de sérvio para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de sérvio com traduções em português, criado no teu navegador.",
+      "others": "Sérvio para falantes de outras línguas"
+    },
+    "ja": {
+      "name": "Japonês para falantes de português",
+      "title": "Baralho de japonês para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de japonês para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de japonês com traduções em português, criado no teu navegador.",
+      "others": "Japonês para falantes de outras línguas"
+    },
+    "zh": {
+      "name": "Chinês para falantes de português",
+      "title": "Baralho de chinês para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de chinês para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de chinês com traduções em português, criado no teu navegador.",
+      "others": "Chinês para falantes de outras línguas"
+    },
+    "de": {
+      "name": "Alemão para falantes de português",
+      "title": "Baralho de alemão para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de alemão para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de alemão com traduções em português, criado no teu navegador.",
+      "others": "Alemão para falantes de outras línguas"
+    },
+    "es": {
+      "name": "Espanhol para falantes de português",
+      "title": "Baralho de espanhol para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de espanhol para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de espanhol com traduções em português, criado no teu navegador.",
+      "others": "Espanhol para falantes de outras línguas"
+    },
+    "pl": {
+      "name": "Polaco para falantes de português",
+      "title": "Baralho de polaco para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de polaco para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de polaco com traduções em português, criado no teu navegador.",
+      "others": "Polaco para falantes de outras línguas"
+    },
+    "ko": {
+      "name": "Coreano para falantes de português",
+      "title": "Baralho de coreano para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de coreano para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de coreano com traduções em português, criado no teu navegador.",
+      "others": "Coreano para falantes de outras línguas"
+    },
+    "nl": {
+      "name": "Neerlandês para falantes de português",
+      "title": "Baralho de neerlandês para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de neerlandês para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de neerlandês com traduções em português, criado no teu navegador.",
+      "others": "Neerlandês para falantes de outras línguas"
+    },
+    "fr": {
+      "name": "Francês para falantes de português",
+      "title": "Baralho de francês para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de francês para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de francês com traduções em português, criado no teu navegador.",
+      "others": "Francês para falantes de outras línguas"
+    },
+    "hy": {
+      "name": "Arménio para falantes de português",
+      "title": "Baralho de arménio para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de arménio para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de arménio com traduções em português, criado no teu navegador.",
+      "others": "Arménio para falantes de outras línguas"
+    },
+    "tr": {
+      "name": "Turco para falantes de português",
+      "title": "Baralho de turco para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de turco para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de turco com traduções em português, criado no teu navegador.",
+      "others": "Turco para falantes de outras línguas"
+    },
+    "el": {
+      "name": "Grego para falantes de português",
+      "title": "Baralho de grego para falantes de português — AnkiGen",
+      "description": "Baralho Anki gratuito de grego para falantes de português: {words} em {modules}, com traduções e exemplos. Para Anki e AnkiDroid.",
+      "lede": "Um baralho Anki gratuito de palavras de grego com traduções em português, criado no teu navegador.",
+      "others": "Grego para falantes de outras línguas"
+    }
+  },
+  "plural": {
+    "word": {
+      "one": "{n} palavra",
+      "many": "{n} de palavras",
+      "other": "{n} palavras"
+    },
+    "module": {
+      "one": "{n} módulo",
+      "many": "{n} de módulos",
+      "other": "{n} módulos"
+    }
+  }
+}

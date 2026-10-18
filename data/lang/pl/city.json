@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"ratusz","g":"m","alt":["urząd miasta"],"forms":{"gen":"ratusza","pl":"ratusze"},"def":"Budynek, w którym urzędują lokalne władze dużej miejscowości."},
+"word-fire-station": {"w":"remiza strażacka","g":"f","alt":["remiza"],"forms":{"gen":"remizy strażackiej","pl":"remizy strażackie"},"def":"Budynek, w którym stoją wozy gaśnicze i czekają ludzie gotowi jechać do pożaru."},
+"word-mosque": {"w":"meczet","g":"m","forms":{"gen":"meczetu","pl":"meczety"},"def":"Budynek, w którym muzułmanie się modlą."},
+"word-synagogue": {"w":"synagoga","g":"f","forms":{"gen":"synagogi","pl":"synagogi"},"def":"Budynek, w którym Żydzi się modlą i uczą."},
+"word-cathedral": {"w":"katedra","g":"f","forms":{"gen":"katedry","pl":"katedry"},"def":"Bardzo duży i ważny kościół, w którym urzęduje biskup."},
+"word-laundromat": {"w":"pralnia samoobsługowa","g":"f","forms":{"gen":"pralni samoobsługowej","pl":"pralnie samoobsługowe"},"def":"Miejsce, gdzie klienci sami piorą i suszą ubrania w maszynach na monety lub żetony."},
+"word-art-gallery": {"w":"galeria sztuki","g":"f","alt":["galeria"],"forms":{"gen":"galerii sztuki","pl":"galerie sztuki"},"def":"Miejsce, w którym publiczność może oglądać obrazy, rzeźby i inne prace artystów."},
+"word-nightclub": {"w":"klub nocny","g":"m","alt":["dyskoteka"],"forms":{"gen":"klubu nocnego","pl":"kluby nocne"},"def":"Lokal otwarty do późna w nocy, w którym gra muzyka, tańczy się i pije."},
+"word-old-town": {"w":"Stare Miasto","g":"n","forms":{"gen":"Starego Miasta"},"def":"Najstarsza, zabytkowa dzielnica dużej miejscowości, z wąskimi uliczkami."},
+"word-skyscraper": {"w":"wieżowiec","g":"m","alt":["drapacz chmur"],"forms":{"gen":"wieżowca","pl":"wieżowce"},"def":"Bardzo wysoki budynek z wieloma piętrami."},
+"word-apartment-block": {"w":"blok","g":"m","alt":["blok mieszkalny"],"forms":{"gen":"bloku","pl":"bloki"},"def":"Duży budynek podzielony na wiele mieszkań na różnych piętrach."},
+"word-avenue": {"w":"aleja","g":"f","forms":{"gen":"alei","pl":"aleje"},"def":"Szeroka ulica w mieście, często obsadzona po bokach drzewami."},
+"word-pedestrian-zone": {"w":"strefa piesza","g":"f","alt":["deptak"],"forms":{"gen":"strefy pieszej","pl":"strefy piesze"},"def":"Część miasta zamknięta dla samochodów, gdzie ludzie mogą spokojnie chodzić."},
+"word-bench": {"w":"ławka","g":"f","forms":{"gen":"ławki","pl":"ławki"},"def":"Długie siedzenie dla kilku osób, zwykle na dworze."},
+"word-fountain": {"w":"fontanna","g":"f","forms":{"gen":"fontanny","pl":"fontanny"},"def":"Urządzenie, które wyrzuca wodę w górę, zwykle w parku lub na placu."},
+"word-opposite": {"w":"naprzeciwko","def":"Po drugiej stronie czegoś, twarzą do tego."},
+"word-city-block": {"w":"kwartał","g":"m","hint":"w mieście","alt":["przecznica"],"forms":{"gen":"kwartału","pl":"kwartały"},"def":"Obszar zabudowy otoczony z czterech stron ulicami."},
+"word-tourist-information": {"w":"informacja turystyczna","g":"f","forms":{"gen":"informacji turystycznej","pl":"informacje turystyczne"},"def":"Biuro, w którym odwiedzający dostają mapy i porady o okolicy."},
+"word-landmark": {"w":"punkt orientacyjny","g":"m","alt":["symbol miasta"],"forms":{"gen":"punktu orientacyjnego","pl":"punkty orientacyjne"},"def":"Budynek lub miejsce znane wszystkim i łatwe do rozpoznania."},
+"word-outskirts": {"w":"peryferie","g":"pl","alt":["obrzeża"],"forms":{"gen":"peryferii"},"def":"Części miasta najbardziej oddalone od centrum."}
+}

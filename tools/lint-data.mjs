@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Lint the vocabulary data: structure, IDs, references, scripts, forms, collisions, examples.
+// Lint the vocabulary data: structure, IDs, references, scripts, forms, collisions, examples; and the landing
+// pages' translations in data/landing (tools/landing.mjs).
 // Usage:
 //   node tools/lint-data.mjs [--data data] [--meta data/meta] [--fix] [--report] [--warnings] [--filter ru/] [--json] [--gate]
 // Exit code 1 if any error remains. --gate (the deploy gate, ARCHITECTURE §12) also fails unless every active
@@ -8,6 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { lint, coverage, moduleSizes, readJson, writeCanonical, stringifyLabels, labelOrder, listDirs, listJson, LAYERS, paths, loadRegistry, loadConcepts } from './lib/data.mjs';
+import { appMeta, landingIssues } from './landing.mjs';
 
 const args = process.argv.slice(2);
 const opt = (name, def) => {
@@ -23,6 +25,7 @@ const filter = opt('--filter', null);
 if (flag('--fix')) fix(dataDir, metaDir);
 
 const { issues, ctx } = lint({ dataDir, metaDir });
+issues.push(...landingIssues(dataDir, appMeta(metaDir)));
 const shown = issues.filter((i) => !filter || (i.file || '').includes(filter) || i.id === filter);
 const errors = shown.filter((i) => i.level === 'error');
 const warnings = shown.filter((i) => i.level === 'warning');

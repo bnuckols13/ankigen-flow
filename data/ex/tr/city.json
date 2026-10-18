@@ -1,0 +1,22 @@
+{
+"word-town-hall": [{"t":"Düğün cumartesi günü {belediye binasında} olacak."},{"t":"Formu {belediye binasından} alabilirsiniz."},{"t":"Belediye başkanı {belediye binasında} çalışıyor."}],
+"word-fire-station": [{"t":"{İtfaiye istasyonu} okulun yanında."},{"t":"Çocuklar cuma günü {itfaiye istasyonunu} ziyaret etti."},{"t":"Kasabamızda yeni bir {itfaiye istasyonu} var."}],
+"word-mosque": [{"t":"Her cuma {camiye} gidiyorlar."},{"t":"{Caminin} güzel mavi bir kubbesi var."},{"t":"Gezimizde ünlü bir {camiyi} ziyaret ettik."}],
+"word-synagogue": [{"t":"{Sinagog} Ana Cadde'nin köşesinde."},{"t":"Ailesi cumartesileri {sinagoga} gidiyor."},{"t":"Eski {sinagog} 1890'da yapıldı."}],
+"word-cathedral": [{"t":"{Katedral} şehrin en eski binası."},{"t":"{Katedralin} kulesine tırmandık."},{"t":"Konser için {katedrale} yüzlerce kişi geldi."}],
+"word-laundromat": [{"t":"Çamaşır makinem bozuk, o yüzden {çamaşırhaneye} gidiyorum."},{"t":"Karşı sokakta bir {çamaşırhane} var."},{"t":"{Çamaşırhaneye} biraz bozuk para getir."}],
+"word-art-gallery": [{"t":"Öğleden sonrayı {sanat galerisinde} geçirdik."},{"t":"{Sanat galerisi} pazar günleri ücretsiz."},{"t":"Şehir merkezindeki küçük bir {sanat galerisinde} onun bir tablosu var."}],
+"word-nightclub": [{"t":"Sabaha kadar {gece kulübünde} dans ettiler."},{"t":"{Gece kulübüne} girmek için yirmi bir yaşından büyük olmalısın."},{"t":"{Gece kulübü} saat onda açılıp dörtte kapanıyor."}],
+"word-old-town": [{"t":"Öğle yemeğinden sonra {eski şehirde} yürüdük."},{"t":"{Eski şehrin} dar sokakları ve küçük kafeleri var."},{"t":"Birçok turist {eski şehirde} kalıyor."}],
+"word-skyscraper": [{"t":"Bütün şehri o {gökdelenden} görebilirsin."},{"t":"Şehir merkezinde yeni bir {gökdelen} yapıyorlar."},{"t":"Ofisim bir {gökdelenin} kırkıncı katında."}],
+"word-apartment-block": [{"t":"Parkın yakınındaki büyük bir {apartmanda} oturuyoruz."},{"t":"{Apartmanın} asansörü var."},{"t":"Bu {apartmanda} yirmi aile yaşıyor."}],
+"word-avenue": [{"t":"Otel, ağaçlarla dolu geniş bir {caddede}."},{"t":"{Caddenin} sonunda sola dön."},{"t":"Beşinci {Cadde} New York'taki ünlü bir sokaktır."}],
+"word-pedestrian-zone": [{"t":"Şehir merkezi bir {yaya bölgesi}."},{"t":"Arabalar {yaya bölgesine} giremez."},{"t":"Kahvemizi {yaya bölgesinde} içtik."}],
+"word-bench": [{"t":"Şu {bankta} bir dakika oturalım."},{"t":"Yaşlı bir adam parktaki {bankta} kitap okuyordu."},{"t":"{Bank} yağmurdan ıslaktı."}],
+"word-fountain": [{"t":"Çocuklar {çeşmenin} yanında oynuyordu."},{"t":"Ana meydanda çok güzel bir {çeşme} var."},{"t":"{Çeşmeye} bozuk para attık."}],
+"word-opposite": [{"t":"Banka postanenin {karşısında}."},{"t":"Masada tam {karşımda} oturdu.","p":0},{"t":"Evimizin {karşısında} bir fırın var."}],
+"word-city-block": [{"t":"Mağaza buradan iki {ada} ötede."},{"t":"Biraz hava almak için {adanın} çevresinde yürüdük."},{"t":"Otobüs durağı bir sonraki {adada}."}],
+"word-tourist-information": [{"t":"Harita için {turizm danışma bürosuna} soralım."},{"t":"{Turizm danışma bürosu} tren garının yanında."},{"t":"{Turizm danışma bürosu} beşte kapanıyor."}],
+"word-landmark": [{"t":"Kule, şehrin en ünlü {simge yapısı}."},{"t":"O büyük kiliseyi bir {simge yapı} olarak kullanabilirsin."},{"t":"Turda her {simge yapının} fotoğrafını çektik."}],
+"word-outskirts": [{"t":"{Şehir kenarında} oturuyorlar."},{"t":"Havalimanı {şehir kenarında}."},{"t":"{Şehir kenarında} evler daha ucuz."}]
+}

@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"câmara municipal","g":"f","alt":["paços do concelho"],"def":"Edifício onde trabalham os responsáveis pela administração de uma cidade ou concelho."},
+"word-fire-station": {"w":"quartel dos bombeiros","g":"m","alt":["quartel de bombeiros"],"forms":{"pl":"quartéis dos bombeiros"},"def":"Edifício onde ficam as pessoas e os camiões que combatem incêndios."},
+"word-mosque": {"w":"mesquita","g":"f","def":"Edifício onde os muçulmanos vão rezar."},
+"word-synagogue": {"w":"sinagoga","g":"f","def":"Edifício onde os judeus rezam e estudam."},
+"word-cathedral": {"w":"catedral","g":"f","def":"Igreja muito grande e importante, onde fica a cadeira de um bispo."},
+"word-laundromat": {"w":"lavandaria self-service","g":"f","alt":["lavandaria automática"],"def":"Local público onde se lava e seca a roupa em máquinas que funcionam com moedas."},
+"word-art-gallery": {"w":"galeria de arte","g":"f","alt":["galeria"],"def":"Edifício ou sala onde se mostram ao público pinturas e outras obras."},
+"word-nightclub": {"w":"discoteca","g":"f","alt":["clube noturno"],"def":"Local que fica aberto até tarde, com música, dança e bebidas."},
+"word-old-town": {"w":"centro histórico","g":"m","alt":["zona histórica"],"def":"A parte mais antiga de uma cidade, com edifícios do passado e ruas estreitas."},
+"word-skyscraper": {"w":"arranha-céus","g":"m","forms":{"pl":"arranha-céus"},"def":"Edifício altíssimo com muitos andares."},
+"word-apartment-block": {"w":"prédio","g":"m","alt":["edifício de apartamentos"],"def":"Construção grande dividida em várias casas, em andares diferentes."},
+"word-avenue": {"w":"avenida","g":"f","def":"Rua larga de uma cidade, muitas vezes com árvores dos lados."},
+"word-pedestrian-zone": {"w":"zona pedonal","g":"f","alt":["área pedonal"],"def":"Parte de uma cidade onde os carros não podem entrar, para as pessoas andarem em segurança."},
+"word-bench": {"w":"banco","g":"m","hint":"de jardim","def":"Assento comprido para várias pessoas, geralmente ao ar livre."},
+"word-fountain": {"w":"chafariz","g":"m","alt":["fonte"],"def":"Estrutura que lança água para o ar, geralmente num jardim ou numa praça."},
+"word-opposite": {"w":"em frente de","alt":["em frente a"],"def":"Situado do outro lado de algo, a olhar para isso.","hint":"do outro lado"},
+"word-city-block": {"w":"quarteirão","g":"m","forms":{"pl":"quarteirões"},"def":"Zona de edifícios com ruas nos quatro lados."},
+"word-tourist-information": {"w":"posto de turismo","g":"m","alt":["turismo","centro de informação turística"],"def":"Escritório onde os visitantes pedem mapas e conselhos sobre um lugar."},
+"word-landmark": {"w":"ponto de referência","g":"m","alt":["marco"],"def":"Edifício ou lugar muito conhecido e fácil de reconhecer."},
+"word-outskirts": {"w":"arredores","g":"m.pl","alt":["periferia"],"def":"As zonas de uma cidade mais afastadas do centro."}
+}

@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"Morgen ist mein {freier Tag}."},{"t":"Sie nimmt jeden Mittwoch einen {freien Tag}."},{"t":"Ich brauche einen {freien Tag}, um mich auszuruhen."}],
+"word-working-day": [{"t":"Montag ist der erste {Arbeitstag} der Woche."},{"t":"Ein normaler {Arbeitstag} hat acht Stunden."},{"t":"Das Paket kommt in drei {Arbeitstagen} an."}],
+"word-on-time": [{"t":"Der Zug kam {pünktlich} an."},{"t":"Bitte versuche, {pünktlich} zum Treffen zu kommen."},{"t":"Sie zahlt ihre Miete immer {pünktlich}."}],
+"word-date-of-birth": [{"t":"Bitte schreiben Sie Ihr {Geburtsdatum} auf das Formular."},{"t":"Mein {Geburtsdatum} ist der 4. Mai 1990."},{"t":"Sie fragten mich nach meinem Namen und {Geburtsdatum}."}],
+"word-time-zone": [{"t":"New York liegt in einer anderen {Zeitzone} als Los Angeles."},{"t":"Nach dem Wechsel der {Zeitzonen} konnte ich schlecht schlafen."},{"t":"In welcher {Zeitzone} bist du?"}],
+"word-o-clock": [{"t":"Der Film beginnt um acht {Uhr}."},{"t":"Es ist jetzt genau fünf {Uhr}."},{"t":"Wir essen um zwölf {Uhr} zu Mittag."}],
+"word-lifetime": [{"t":"Er hat in seiner {Lebenszeit} viele Veränderungen erlebt."},{"t":"Das ist die Reise {eines Lebens}.","p":0},{"t":"Sie hat ihr ganzes {Leben} in derselben Stadt verbracht.","p":0}]
+}

@@ -1,0 +1,392 @@
+{
+  "source": "9e26488fca74",
+  "texts": {
+    "decks": "牌组",
+    "cta": "制作你的牌组",
+    "ctaNote": "打开 AnkiGen，并选好这个语言组合和“{module}”模块。",
+    "deck": "Anki 牌组：{deck}",
+    "intro": "AnkiGen 可以直接在浏览器中免费生成 Anki 牌组：按主题整理单词，每个词都附有释义和例句。选择模块和卡片要显示的内容，然后下载 .apkg 文件，导入 Anki 或 AnkiDroid 即可。无需注册，无需安装。",
+    "cardsHeading": "卡片显示什么",
+    "cardsIntro": "每张卡片都会显示你要学的单词及其释义。其他内容由你选择是否显示，以及显示在哪一面：",
+    "captions": "卡片上的标题，例如“{caption}”，使用中文。",
+    "modulesHeading": "模块",
+    "modulesIntro": "同一个词属于多个模块时，牌组中只会出现一次。每个模块都会打开 AnkiGen 并只选中该模块，你可以在那里继续添加其他模块。",
+    "sampleWords": "示例单词",
+    "local": "这门语言独有的词：{count}，例如 {example}。其他语言中没有与之完全对应的词，所以卡片会用中文来解释。",
+    "howHeading": "使用方法",
+    "step1": "选择你想要的模块。每个模块都会显示它为你的语言组合提供了多少单词。",
+    "step2": "选择每张卡片显示的内容以及显示在哪一面。预览会随时展示真实的卡片效果。",
+    "step3": "下载 .apkg 文件，用 Anki 打开（File → Import）；在手机上点击该文件，即可用 AnkiDroid 打开。",
+    "update": "改了字段、添加了模块，或者想要更新的数据？重新下载，再用默认选项把新文件导入 Anki（File → Import）。Anki 会更新你现有的笔记及其版式，把新单词加入同一个牌组，并保留你的复习进度。",
+    "aboutHeading": "关于词汇",
+    "about": "单词、释义和例句由 AI 模型起草，目前正由真人逐个语言进行审核。如果发现错误，请在 AnkiGen 的预览卡片上选中有问题的内容，然后按 Ctrl+Enter（Mac 上按 ⌘+Enter），或使用那里的反馈按钮。每一条反馈都有助于为所有人改进牌组。",
+    "moreHeading": "更多牌组",
+    "moreForYou": "更多适合中文用户的牌组",
+    "allDecks": "按语言组合浏览全部牌组",
+    "support": "支持这个项目：",
+    "source": "GitHub 上的源代码",
+    "license": "代码采用 {mit} 许可；词汇采用 {cc} 许可。",
+    "versions": "数据 {data} · 应用 {app}"
+  },
+  "languages": {
+    "en": "英语",
+    "ru": "俄语",
+    "sr": "塞尔维亚语",
+    "ja": "日语",
+    "zh": "中文",
+    "de": "德语",
+    "es": "西班牙语",
+    "pt": "葡萄牙语",
+    "pl": "波兰语",
+    "ko": "韩语",
+    "nl": "荷兰语",
+    "fr": "法语",
+    "hy": "亚美尼亚语",
+    "tr": "土耳其语",
+    "el": "希腊语"
+  },
+  "categories": {
+    "foundations": "基础",
+    "communication": "交流",
+    "daily-life": "日常生活",
+    "getting-around": "出行",
+    "living-abroad": "海外生活",
+    "health-safety": "健康与安全",
+    "interests": "兴趣爱好",
+    "adult": "18+"
+  },
+  "modules": {
+    "core-1": {
+      "name": "核心 I",
+      "desc": "所有语言通用的最常用的约 500 个词。"
+    },
+    "core-2": {
+      "name": "核心 II",
+      "desc": "接下来最常用的约 500 个词。"
+    },
+    "core-3": {
+      "name": "核心 III",
+      "desc": "再接下来最常用的约 800 个词。"
+    },
+    "numbers": {
+      "name": "数字与数学",
+      "desc": "基数词和序数词、分数、算术、度量。"
+    },
+    "time": {
+      "name": "时间与日历",
+      "desc": "星期、月份、季节、钟点、日期、频率。"
+    },
+    "phrases": {
+      "name": "生存短语",
+      "desc": "问候、礼貌用语，以及日常情境中的完整句子。"
+    },
+    "countries": {
+      "name": "国家、国籍与语言",
+      "desc": "主要国家、其人民、相关形容词和语言。"
+    },
+    "language-learning": {
+      "name": "语言学习",
+      "desc": "谈论语言：语法术语、发音、求助。"
+    },
+    "family": {
+      "name": "家庭与人际关系",
+      "desc": "亲戚、伴侣、朋友、人生大事。"
+    },
+    "feelings": {
+      "name": "情感与性格",
+      "desc": "情绪、心情、性格特点。"
+    },
+    "food": {
+      "name": "饮食",
+      "desc": "食品杂货、菜肴、饮品、外出就餐。"
+    },
+    "cooking": {
+      "name": "烹饪与厨房",
+      "desc": "烹饪动词、厨具、电器、食谱。"
+    },
+    "shopping": {
+      "name": "购物与服装",
+      "desc": "商店、付款、尺码、衣服、退货。"
+    },
+    "housing": {
+      "name": "住房与租房",
+      "desc": "租房、合同、房东、水电燃气、房间。"
+    },
+    "household": {
+      "name": "家务与维修",
+      "desc": "家务、家具、工具、维修、水管、电路。"
+    },
+    "nature": {
+      "name": "天气与自然",
+      "desc": "天气、气候、地貌、植物。"
+    },
+    "animals": {
+      "name": "宠物与动物",
+      "desc": "宠物、宠物护理、看兽医、常见动物。"
+    },
+    "city": {
+      "name": "城市与问路",
+      "desc": "城里的各种地点、问路和指路。"
+    },
+    "transport": {
+      "name": "交通与旅行",
+      "desc": "公共交通、车票、机场、酒店、行李。"
+    },
+    "driving": {
+      "name": "驾驶与交通规则",
+      "desc": "汽车部件、交规、路标、驾照考试、罚款、事故。"
+    },
+    "signs": {
+      "name": "标识与告示",
+      "desc": "门、商店和街道上能看到的字样：推、出口、故障。"
+    },
+    "residence": {
+      "name": "居留与合法化",
+      "desc": "签证、许可、登记、证件、办事机构，以及各国特有的术语。"
+    },
+    "money": {
+      "name": "金钱与银行",
+      "desc": "账户、银行卡、转账、税务、贷款。"
+    },
+    "work": {
+      "name": "工作与就业",
+      "desc": "职业、合同、薪资、办公室生活、求职。"
+    },
+    "telecom": {
+      "name": "邮政、电话与网络",
+      "desc": "包裹、SIM 卡、手机套餐、网络、账号。"
+    },
+    "education": {
+      "name": "教育",
+      "desc": "学校、大学、课程、考试。"
+    },
+    "health": {
+      "name": "健康与医学",
+      "desc": "身体、症状、医生、药店、保险。"
+    },
+    "emergencies": {
+      "name": "紧急情况",
+      "desc": "警察、消防、救护车、事故、灾害。"
+    },
+    "hobbies": {
+      "name": "爱好",
+      "desc": "常见消遣、手工、收藏、户外活动。"
+    },
+    "sports": {
+      "name": "体育",
+      "desc": "运动项目、器材、比赛、健身。"
+    },
+    "music": {
+      "name": "音乐",
+      "desc": "乐器、曲风、演奏与聆听。"
+    },
+    "video-games": {
+      "name": "电子游戏",
+      "desc": "玩游戏和聊游戏时用的词汇。"
+    },
+    "tabletop": {
+      "name": "桌游",
+      "desc": "骰子、纸牌、回合和规则，适合桌游之夜。"
+    },
+    "tech": {
+      "name": "科技与电脑",
+      "desc": "设备、软件、网络、故障排除。"
+    },
+    "science": {
+      "name": "科学",
+      "desc": "物理、化学、生物、天文的基础词汇。"
+    },
+    "profanity": {
+      "name": "脏话",
+      "desc": "粗口与辱骂用语，按强度在各语言间对应。"
+    }
+  },
+  "fields": {
+    "gender": {
+      "label": "性 / 冠词",
+      "help": "在单词旁显示冠词（der Tisch、la mesa）或性别标记（m/f/n）。"
+    },
+    "stress": {
+      "label": "重音标记",
+      "help": "标出重读元音（молоко́）。适用于单词、其变化形式以及例句中突出显示的词。"
+    },
+    "reading": {
+      "label": "读音（振假名）",
+      "help": "在汉字上方标注假名读音。同时控制例句中的振假名。"
+    },
+    "romanization": {
+      "label": "拉丁转写",
+      "help": "用拉丁字母写出单词：日语用平文式罗马字，中文用拼音，韩语用修订罗马字，俄语、亚美尼亚语、希腊语用转写。对中文来说，它同时控制例句中的拼音。"
+    },
+    "otherScript": {
+      "label": "另一种文字",
+      "help": "用塞尔维亚语的另一种文字显示单词（牌组用西里尔字母时显示拉丁字母，反之亦然）。"
+    },
+    "measureWord": {
+      "label": "量词",
+      "help": "数这个名词时使用的量词（一本书、鉛筆を三本）。"
+    },
+    "hanja": {
+      "label": "汉字词（Hanja）",
+      "help": "汉字词背后的汉字（은행 → 銀行）。仅对有汉字写法的词显示。"
+    },
+    "forms": {
+      "label": "关键变化形式",
+      "help": "使用该词所需的几种形式：复数、属格、过去式、体的对应词、动词类别等，不含完整变位表。"
+    },
+    "ipa": {
+      "label": "IPA",
+      "help": "用国际音标标注发音。"
+    },
+    "examples": {
+      "label": "例句",
+      "help": "突出显示该词的例句。用滑块选择数量（0–3）。"
+    },
+    "exampleTranslations": {
+      "label": "例句翻译",
+      "help": "有对应翻译时，用你的语言显示每个例句。有些例句是用目标语言直接写的，没有翻译。"
+    },
+    "related": {
+      "label": "反义词与相关词",
+      "help": "反义词和紧密相关的词，用你所学的语言显示。"
+    },
+    "pos": {
+      "label": "词性",
+      "help": "名词、动词、形容词……"
+    },
+    "register": {
+      "label": "语体",
+      "help": "标出口语、正式、粗俗或冒犯性的词。"
+    },
+    "emoji": {
+      "label": "表情符号",
+      "help": "为具体的词提供图片提示（💧 水）。大多数抽象词没有。"
+    },
+    "conceptId": {
+      "label": "概念 ID",
+      "help": "卡片底部的一小段代码（例如 word-water）。如果你在 Anki 中学习时发现错误，请在反馈中附上这段代码，方便我们找到确切的条目。"
+    }
+  },
+  "options": {
+    "reverse": {
+      "label": "反向卡片",
+      "help": "为每个词再添加一张卡片：你的语言 → 你所学的语言。在反向卡片上，与所学单词有关的内容都放在答案面，以免提前泄露答案。"
+    },
+    "typeAnswer": {
+      "label": "输入答案",
+      "help": "在反向卡片上，你需要输入单词，而不只是回想。Anki 会把你的拼写与主要形式比对（包括冠词，忽略重音标记）。"
+    },
+    "srScript": {
+      "label": "塞尔维亚语文字",
+      "help": "塞尔维亚语同时使用西里尔字母和拉丁字母。请选择你的卡片所用的那一种。"
+    }
+  },
+  "pairs": {
+    "en": {
+      "name": "中文用户学英语",
+      "title": "免费英语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习英语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费英语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学英语"
+    },
+    "ru": {
+      "name": "中文用户学俄语",
+      "title": "免费俄语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习俄语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费俄语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学俄语"
+    },
+    "sr": {
+      "name": "中文用户学塞尔维亚语",
+      "title": "免费塞尔维亚语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习塞尔维亚语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费塞尔维亚语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学塞尔维亚语"
+    },
+    "ja": {
+      "name": "中文用户学日语",
+      "title": "免费日语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习日语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费日语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学日语"
+    },
+    "de": {
+      "name": "中文用户学德语",
+      "title": "免费德语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习德语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费德语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学德语"
+    },
+    "es": {
+      "name": "中文用户学西班牙语",
+      "title": "免费西班牙语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习西班牙语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费西班牙语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学西班牙语"
+    },
+    "pt": {
+      "name": "中文用户学葡萄牙语",
+      "title": "免费葡萄牙语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习葡萄牙语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费葡萄牙语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学葡萄牙语"
+    },
+    "pl": {
+      "name": "中文用户学波兰语",
+      "title": "免费波兰语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习波兰语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费波兰语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学波兰语"
+    },
+    "ko": {
+      "name": "中文用户学韩语",
+      "title": "免费韩语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习韩语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费韩语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学韩语"
+    },
+    "nl": {
+      "name": "中文用户学荷兰语",
+      "title": "免费荷兰语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习荷兰语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费荷兰语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学荷兰语"
+    },
+    "fr": {
+      "name": "中文用户学法语",
+      "title": "免费法语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习法语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费法语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学法语"
+    },
+    "hy": {
+      "name": "中文用户学亚美尼亚语",
+      "title": "免费亚美尼亚语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习亚美尼亚语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费亚美尼亚语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学亚美尼亚语"
+    },
+    "tr": {
+      "name": "中文用户学土耳其语",
+      "title": "免费土耳其语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习土耳其语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费土耳其语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学土耳其语"
+    },
+    "el": {
+      "name": "中文用户学希腊语",
+      "title": "免费希腊语 Anki 牌组，中文用户适用 — AnkiGen",
+      "description": "免费 Anki 牌组，供中文用户学习希腊语：{words}，涵盖 {modules}，附中文释义和例句，适用于 Anki 和 AnkiDroid。",
+      "lede": "在浏览器中生成的免费希腊语 Anki 牌组，单词附中文释义。",
+      "others": "其他语言用户学希腊语"
+    }
+  },
+  "plural": {
+    "word": {
+      "other": "{n} 个词"
+    },
+    "module": {
+      "other": "{n} 个模块"
+    }
+  }
+}

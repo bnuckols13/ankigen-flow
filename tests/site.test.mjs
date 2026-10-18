@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
+import { BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
 import { DECKS_DIR } from '../tools/landing.mjs';
 import { head as headOf } from './helpers/html.mjs';
 import { staticGraph } from './helpers/modules.mjs';
@@ -18,7 +18,7 @@ const active = /** @type {string[]} */ (registry.active);
 const head = (attr, value) => headOf(html, attr, value);
 
 test('every absolute URL in the static files comes from src/config.js', () => {
-  const allowed = [SITE_URL, REPO_URL, PATREON_URL, DATA_LICENSE_URL, 'https://schema.org'];
+  const allowed = [SITE_URL, REPO_URL, PATREON_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, 'https://schema.org'];
   for (const file of ['index.html', '404.html', 'robots.txt']) {
     for (const [url] of read(file).matchAll(/https?:\/\/[^\s"'<>)]+/g)) {
       assert.ok(allowed.some((prefix) => url.startsWith(prefix)), `${file}: ${url} is not in src/config.js`);
@@ -27,7 +27,7 @@ test('every absolute URL in the static files comes from src/config.js', () => {
   assert.equal(head('rel', 'canonical'), SITE_URL);
   assert.equal(head('property', 'og:url'), SITE_URL);
   assert.equal(head('property', 'og:image'), `${SITE_URL}og-image.png`);
-  for (const url of [PATREON_URL, REPO_URL, DATA_LICENSE_URL]) assert.ok(html.includes(`href="${url}"`), `the footer links to ${url}`);
+  for (const url of [PATREON_URL, BUY_ME_A_COFFEE_URL, REPO_URL, DATA_LICENSE_URL]) assert.ok(html.includes(`href="${url}"`), `the footer links to ${url}`);
   assert.match(read('404.html'), new RegExp(`var home = '${SITE_URL}'`));
   assert.match(read('robots.txt'), new RegExp(`Sitemap: ${SITE_URL}sitemap.xml`)); // written by the build (tests/landing.test.mjs)
 });

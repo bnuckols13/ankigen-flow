@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"belediye binası","alt":["belediye"],"forms":{"acc":"belediye binasını"},"def":"Bir kentin yerel yönetiminin çalıştığı büyük resmî yapı."},
+"word-fire-station": {"w":"itfaiye istasyonu","alt":["itfaiye"],"forms":{"acc":"itfaiye istasyonunu"},"def":"Yangınları söndüren görevlilerin ve araçlarının acil çağrıyı beklediği yapı."},
+"word-mosque": {"w":"cami","forms":{"acc":"camiyi","pl":"camiler"},"def":"Müslümanların namaz kılmak için gittiği ibadet yeri."},
+"word-synagogue": {"w":"sinagog","forms":{"acc":"sinagogu"},"def":"Yahudilerin dua etmek ve ders görmek için gittiği ibadet yeri."},
+"word-cathedral": {"w":"katedral","forms":{"acc":"katedrali"},"def":"Bir piskoposun yönettiği çok büyük ve önemli kilise."},
+"word-laundromat": {"w":"çamaşırhane","forms":{"acc":"çamaşırhaneyi"},"def":"Para atılan makinelerde kıyafetlerin yıkanıp kurutulduğu herkese açık yer."},
+"word-art-gallery": {"w":"sanat galerisi","alt":["galeri"],"forms":{"acc":"sanat galerisini"},"def":"Resimlerin ve diğer eserlerin halka gösterildiği bina veya salon."},
+"word-nightclub": {"w":"gece kulübü","alt":["diskotek"],"forms":{"acc":"gece kulübünü"},"def":"Müzik, dans ve içkinin olduğu, geç saatlere kadar açık kalan eğlence yeri."},
+"word-old-town": {"w":"eski şehir","alt":["tarihî merkez"],"forms":{"acc":"eski şehri"},"def":"Bir kentin tarihî yapılarla ve dar sokaklarla dolu en eski bölümü."},
+"word-skyscraper": {"w":"gökdelen","forms":{"acc":"gökdeleni"},"def":"Çok sayıda katı olan çok yüksek bina."},
+"word-apartment-block": {"w":"apartman","alt":["apartman binası"],"forms":{"acc":"apartmanı"},"def":"Farklı katlarda birçok dairesi olan büyük bina."},
+"word-avenue": {"w":"cadde","alt":["bulvar"],"forms":{"acc":"caddeyi"},"def":"Kentte, kenarlarında çoğu zaman ağaçlar bulunan geniş yol."},
+"word-pedestrian-zone": {"w":"yaya bölgesi","alt":["yaya alanı"],"forms":{"acc":"yaya bölgesini"},"def":"Arabaların giremediği, insanların güvenle yürüdüğü kent kesimi."},
+"word-bench": {"w":"bank","forms":{"acc":"bankı","pl":"bankları"},"def":"Genellikle dışarıda bulunan, birkaç kişinin oturabileceği uzun oturak."},
+"word-fountain": {"w":"çeşme","alt":["fıskiye"],"forms":{"acc":"çeşmeyi"},"def":"Suyun havaya fışkırdığı veya aktığı, genellikle park ya da meydandaki yapı."},
+"word-opposite": {"w":"karşısında","alt":["karşı tarafında"],"def":"Bir şeyin öbür yanında, ona bakacak biçimde."},
+"word-city-block": {"w":"ada","hint":"sokaklarla çevrili","forms":{"acc":"adayı"},"def":"Dört yanı sokakla çevrili bina grubu."},
+"word-tourist-information": {"w":"turizm danışma bürosu","alt":["turist bilgi ofisi"],"forms":{"acc":"turizm danışma bürosunu"},"def":"Ziyaretçilerin bir yer hakkında harita ve öneri alabildiği ofis."},
+"word-landmark": {"w":"simge yapı","forms":{"acc":"simge yapıyı"},"def":"Bir yerin tanınmış ve kolayca fark edilen binası ya da noktası."},
+"word-outskirts": {"w":"şehir kenarı","forms":{"acc":"şehir kenarını"},"def":"Bir kentin merkezden en uzak bölümleri."}
+}

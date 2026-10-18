@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"Mañana es mi {día libre}."},{"t":"Ella se toma un {día libre} todos los miércoles."},{"t":"Necesito un {día libre} para descansar."}],
+"word-working-day": [{"t":"El lunes es el primer {día laborable} de la semana."},{"t":"Una {jornada laboral} normal dura ocho horas.","p":0},{"t":"El paquete llegará en tres {días laborables}."}],
+"word-on-time": [{"t":"El tren llegó {a tiempo}."},{"t":"Por favor, intenta llegar {a tiempo} a la reunión."},{"t":"Ella siempre paga el alquiler {a tiempo}."}],
+"word-date-of-birth": [{"t":"Escribe tu {fecha de nacimiento} en el formulario, por favor."},{"t":"Mi {fecha de nacimiento} es el 4 de mayo de 1990."},{"t":"Me pidieron mi nombre y mi {fecha de nacimiento}."}],
+"word-time-zone": [{"t":"Nueva York está en un {huso horario} distinto al de Los Ángeles."},{"t":"Me costó dormir después de cambiar de {huso horario}."},{"t":"¿En qué {huso horario} estás?"}],
+"word-o-clock": [{"t":"La película empieza a las ocho {en punto}."},{"t":"Ahora son las cinco {en punto}."},{"t":"Comemos a las doce {en punto}."}],
+"word-lifetime": [{"t":"Vio muchos cambios a lo largo de su {vida}."},{"t":"Este es el viaje de toda una {vida}."},{"t":"Pasó toda su {vida} en el mismo pueblo."}]
+}

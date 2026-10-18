@@ -1,0 +1,394 @@
+{
+  "source": "ddc947ca0acf",
+  "texts": {
+    "decks": "Desteler",
+    "cta": "Destenizi oluşturun",
+    "ctaNote": "AnkiGen'i bu dil çiftiyle ve “{module}” modülü seçili olarak açar.",
+    "deck": "Anki destesi: {deck}",
+    "intro": "AnkiGen, doğrudan tarayıcınızda ücretsiz Anki desteleri hazırlar: konulara göre kelimeler, her biri çevirisi ve örnek cümleleriyle. Modülleri ve kartlarda nelerin görüneceğini seçin, ardından Anki veya AnkiDroid için bir .apkg dosyası indirin. Hesap gerekmez, kurulacak bir şey yoktur.",
+    "cardsHeading": "Kartlarda neler var?",
+    "cardsIntro": "Her kartta öğrendiğiniz kelime ve çevirisi bulunur. Başka nelerin, hangi yüzde görüneceğini siz seçersiniz:",
+    "captions": "“{caption}” gibi kart başlıkları Türkçedir.",
+    "modulesHeading": "Modüller",
+    "modulesIntro": "Birden fazla modüle ait bir kelime destede yalnızca bir kez yer alır. Her modül, AnkiGen'i yalnızca o modül seçili olarak açar; orada dilediğiniz kadar modül ekleyebilirsiniz.",
+    "sampleWords": "Örnek kelimeler",
+    "local": "Yalnızca bu dilde bulunan kelimeler: {count}, örneğin {example}. Diğer dillerde bunların tam karşılığı yoktur; bu yüzden kartlarda Türkçe olarak açıklanırlar.",
+    "howHeading": "Nasıl çalışır?",
+    "step1": "İstediğiniz modülleri seçin. Her modül, dil çiftiniz için kaç kelime içerdiğini gösterir.",
+    "step2": "Her kartta nelerin görüneceğini ve hangi yüzde olacağını seçin. Önizleme, siz seçtikçe gerçek kartları gösterir.",
+    "step3": ".apkg dosyasını indirin ve Anki ile açın (File → Import); telefonunuzda ise dosyaya dokunarak AnkiDroid'de açabilirsiniz.",
+    "update": "Alanları mı değiştirdiniz, modül mü eklediniz ya da daha yeni veri mi istiyorsunuz? Yeniden indirin ve yeni dosyayı varsayılan seçeneklerle Anki'ye aktarın (File → Import). Anki mevcut notlarınızı ve düzenlerini günceller, yeni kelimeleri aynı desteye ekler ve tekrar ilerlemenizi korur.",
+    "aboutHeading": "Kelime hazinesi hakkında",
+    "about": "Kelimeler, çeviriler ve örnek cümleler bir yapay zekâ modeliyle taslak olarak hazırlandı ve dil dil insanlar tarafından kontrol ediliyor. Yanlış görünen bir şey olursa AnkiGen'de bir önizleme kartında onu seçip Ctrl+Enter'a (Mac'te ⌘+Enter) basın ya da oradaki geri bildirim düğmesini kullanın. Her bildirim, destenin herkes için düzeltilmesine yardımcı olur.",
+    "moreHeading": "Daha fazla deste",
+    "moreForYou": "Türkçe konuşanlar için daha fazla deste",
+    "allDecks": "Dil çiftine göre tüm desteler",
+    "support": "Bu projeyi destekleyin:",
+    "source": "GitHub'da kaynak kodu",
+    "license": "Kod {mit} lisansı altında; kelime hazinesi {cc} altında.",
+    "versions": "Veri {data} · Uygulama {app}"
+  },
+  "languages": {
+    "en": "İngilizce",
+    "ru": "Rusça",
+    "sr": "Sırpça",
+    "ja": "Japonca",
+    "zh": "Çince",
+    "de": "Almanca",
+    "es": "İspanyolca",
+    "pt": "Portekizce",
+    "pl": "Lehçe",
+    "ko": "Korece",
+    "nl": "Hollandaca",
+    "fr": "Fransızca",
+    "hy": "Ermenice",
+    "tr": "Türkçe",
+    "el": "Yunanca"
+  },
+  "categories": {
+    "foundations": "Temeller",
+    "communication": "İletişim",
+    "daily-life": "Günlük yaşam",
+    "getting-around": "Ulaşım ve yön bulma",
+    "living-abroad": "Yurtdışında yaşam",
+    "health-safety": "Sağlık ve güvenlik",
+    "interests": "İlgi alanları",
+    "adult": "18+"
+  },
+  "modules": {
+    "core-1": {
+      "name": "Temel I",
+      "desc": "Tüm dillerde ortak, en sık kullanılan ~500 kelime."
+    },
+    "core-2": {
+      "name": "Temel II",
+      "desc": "En sık kullanılan sonraki ~500 kelime."
+    },
+    "core-3": {
+      "name": "Temel III",
+      "desc": "En sık kullanılan sonraki ~800 kelime."
+    },
+    "numbers": {
+      "name": "Sayılar ve matematik",
+      "desc": "Asıl ve sıra sayıları, kesirler, aritmetik, ölçüler."
+    },
+    "time": {
+      "name": "Zaman ve takvim",
+      "desc": "Günler, aylar, mevsimler, saat, tarihler, sıklık."
+    },
+    "phrases": {
+      "name": "Hayatta kalma kalıpları",
+      "desc": "Selamlaşma, nezaket ifadeleri ve günlük durumlar için tam cümleler."
+    },
+    "countries": {
+      "name": "Ülkeler, uyruklar ve diller",
+      "desc": "Başlıca ülkeler, halkları, sıfatları ve dilleri."
+    },
+    "language-learning": {
+      "name": "Dil öğrenimi",
+      "desc": "Dil hakkında konuşmak: dil bilgisi terimleri, telaffuz, yardım isteme."
+    },
+    "family": {
+      "name": "Aile ve ilişkiler",
+      "desc": "Akrabalar, partnerler, arkadaşlar, yaşam olayları."
+    },
+    "feelings": {
+      "name": "Duygular ve karakter",
+      "desc": "Duygular, ruh halleri, kişilik özellikleri."
+    },
+    "food": {
+      "name": "Yiyecek ve içecek",
+      "desc": "Market alışverişi, yemekler, içecekler, dışarıda yemek."
+    },
+    "cooking": {
+      "name": "Yemek pişirme ve mutfak",
+      "desc": "Pişirme fiilleri, mutfak gereçleri, cihazlar, tarifler."
+    },
+    "shopping": {
+      "name": "Alışveriş ve giyim",
+      "desc": "Mağazalar, ödeme, bedenler, giysiler, iadeler."
+    },
+    "housing": {
+      "name": "Konut ve kiralama",
+      "desc": "Kiralama, sözleşmeler, ev sahipleri, faturalar, odalar."
+    },
+    "household": {
+      "name": "Ev işleri ve onarım",
+      "desc": "Ev işleri, mobilya, aletler, onarım, tesisat, elektrik."
+    },
+    "nature": {
+      "name": "Hava durumu ve doğa",
+      "desc": "Hava, iklim, manzara, bitkiler."
+    },
+    "animals": {
+      "name": "Evcil hayvanlar ve hayvanlar",
+      "desc": "Evcil hayvanlar, bakımları, veteriner ziyaretleri, yaygın hayvanlar."
+    },
+    "city": {
+      "name": "Şehir ve yön tarifi",
+      "desc": "Şehirdeki yerler, yön sorma ve tarif etme."
+    },
+    "transport": {
+      "name": "Ulaşım ve seyahat",
+      "desc": "Toplu taşıma, biletler, havalimanları, oteller, bagaj."
+    },
+    "driving": {
+      "name": "Sürücülük ve trafik kuralları",
+      "desc": "Araba parçaları, trafik kuralları, yol işaretleri, ehliyet sınavları, cezalar, kazalar."
+    },
+    "signs": {
+      "name": "Tabelalar ve duyurular",
+      "desc": "Kapılarda, dükkânlarda ve sokaklarda okuduklarınız: İtiniz, Çıkış, Arızalı."
+    },
+    "residence": {
+      "name": "Oturum ve yasal işlemler",
+      "desc": "Vizeler, izinler, kayıt, belgeler, resmî daireler — ayrıca ülkeye özgü terimler."
+    },
+    "money": {
+      "name": "Para ve bankacılık",
+      "desc": "Hesaplar, kartlar, havaleler, vergiler, krediler."
+    },
+    "work": {
+      "name": "İş ve istihdam",
+      "desc": "Meslekler, sözleşmeler, maaş, ofis hayatı, iş arama."
+    },
+    "telecom": {
+      "name": "Posta, telefon ve internet",
+      "desc": "Koliler, SIM kartlar, mobil tarifeler, internet, hesaplar."
+    },
+    "education": {
+      "name": "Eğitim",
+      "desc": "Okul, üniversite, kurslar, sınavlar."
+    },
+    "health": {
+      "name": "Sağlık ve tıp",
+      "desc": "Vücut, belirtiler, doktorlar, eczane, sigorta."
+    },
+    "emergencies": {
+      "name": "Acil durumlar",
+      "desc": "Polis, itfaiye, ambulans, kazalar, afetler."
+    },
+    "hobbies": {
+      "name": "Hobiler",
+      "desc": "Yaygın uğraşlar, el sanatları, koleksiyonculuk, açık hava etkinlikleri."
+    },
+    "sports": {
+      "name": "Spor",
+      "desc": "Sporlar, ekipman, müsabakalar, fitness."
+    },
+    "music": {
+      "name": "Müzik",
+      "desc": "Çalgılar, türler, çalma ve dinleme."
+    },
+    "video-games": {
+      "name": "Video oyunları",
+      "desc": "Oynarken ve sohbet ederken kullanılan oyun kelimeleri."
+    },
+    "tabletop": {
+      "name": "Masa oyunları",
+      "desc": "Zarlar, kartlar, sıralar ve kurallar — oyun geceleri için."
+    },
+    "tech": {
+      "name": "Teknoloji ve bilgisayar",
+      "desc": "Cihazlar, yazılım, web, sorun giderme."
+    },
+    "science": {
+      "name": "Bilim",
+      "desc": "Fizik, kimya, biyoloji ve astronominin temel kelimeleri."
+    },
+    "profanity": {
+      "name": "Küfür",
+      "desc": "Küfürler ve hakaretler, diller arasında şiddetlerine göre eşleştirilmiştir."
+    }
+  },
+  "fields": {
+    "gender": {
+      "label": "Cinsiyet / artikel",
+      "help": "Kelimenin yanında artikeli (der Tisch, la mesa) veya cinsiyet işaretini (m/f/n) gösterir."
+    },
+    "stress": {
+      "label": "Vurgu işaretleri",
+      "help": "Vurgulu ünlüyü işaretler (молоко́). Kelimeye, çekimlerine ve örneklerde vurgulanan kelimeye uygulanır."
+    },
+    "reading": {
+      "label": "Okunuş (furigana)",
+      "help": "Kanjinin üstünde kana okunuşu. Örnek cümlelerdeki furiganayı da denetler."
+    },
+    "romanization": {
+      "label": "Latin harfleriyle yazım",
+      "help": "Kelimenin Latin harfleriyle yazılışı: Hepburn (Japonca), pinyin (Çince), Revised Romanization (Korece), çeviri yazı (Rusça, Ermenice, Yunanca). Çincede örnek cümlelerdeki pinyini de denetler."
+    },
+    "otherScript": {
+      "label": "Diğer alfabe",
+      "help": "Kelimeyi Sırpçanın öbür alfabesiyle de gösterir (deste Kiril kullanıyorsa Latin, Latin kullanıyorsa Kiril)."
+    },
+    "measureWord": {
+      "label": "Ölçü sözcüğü / sayaç",
+      "help": "Bu ismi sayarken kullanılan sınıflandırıcı (一本书, 鉛筆を三本)."
+    },
+    "hanja": {
+      "label": "Hanja",
+      "help": "Çince kökenli Korece kelimelerin arkasındaki Çin karakterleri (은행 → 銀行). Yalnızca bunlara sahip kelimelerde gösterilir."
+    },
+    "forms": {
+      "label": "Temel biçimler",
+      "help": "Kelimeyi kullanmak için gereken birkaç biçim: çoğul, tamlayan hâli, geçmiş zaman, görünüş eşi, fiil sınıfı… tam çekim tabloları değil."
+    },
+    "ipa": {
+      "label": "IPA",
+      "help": "Uluslararası Fonetik Alfabe ile telaffuz."
+    },
+    "examples": {
+      "label": "Örnekler",
+      "help": "Kelimenin vurgulandığı örnek cümleler. Kaç tane olacağını kaydırıcıyla seçin (0–3)."
+    },
+    "exampleTranslations": {
+      "label": "Örnek çevirileri",
+      "help": "Karşılığı varsa her örneği kendi dilinizde de gösterir. Bazı örnekler doğrudan o dilde yazılmıştır ve çevirisi yoktur."
+    },
+    "related": {
+      "label": "Zıt ve ilgili kelimeler",
+      "help": "Zıt anlamlı ve yakından ilişkili kelimeler, öğrendiğiniz dilde."
+    },
+    "pos": {
+      "label": "Sözcük türü",
+      "help": "isim, fiil, sıfat…"
+    },
+    "register": {
+      "label": "Üslup",
+      "help": "Gayriresmî, resmî, kaba veya saldırgan kelimeleri işaretler."
+    },
+    "emoji": {
+      "label": "Emoji",
+      "help": "Somut kelimeler için resimli ipucu (💧 su). Çoğu soyut kelimede yoktur."
+    },
+    "conceptId": {
+      "label": "Kavram kimliği",
+      "help": "Kartın altındaki küçük bir kod (örn. word-water). Anki'de çalışırken bir hata bulursanız, doğru kaydı bulabilmemiz için bu kodu bildiriminize ekleyin."
+    }
+  },
+  "options": {
+    "reverse": {
+      "label": "Ters kartlar",
+      "help": "Her kelime için ikinci bir kart ekler: kendi diliniz → öğrendiğiniz dil. Ters kartlarda öğrenilen kelimeyle ilgili her şey cevap yüzüne taşınır; böylece hiçbir şey cevabı ele vermez."
+    },
+    "typeAnswer": {
+      "label": "Cevabı yazın",
+      "help": "Ters kartlarda kelimeyi yalnızca hatırlamak yerine yazarsınız. Anki yazdığınızı ana biçimle karşılaştırır (artikeller dâhil, vurgu işaretleri yok sayılır)."
+    },
+    "srScript": {
+      "label": "Sırpça alfabe",
+      "help": "Sırpça hem Kiril hem Latin alfabesiyle yazılır. Kartlarınızda kullanılacak olanı seçin."
+    }
+  },
+  "pairs": {
+    "en": {
+      "name": "Türkçe konuşanlar için İngilizce",
+      "title": "Türkçe konuşanlar için İngilizce Anki destesi — AnkiGen",
+      "description": "İngilizce öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili İngilizce kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için İngilizce"
+    },
+    "ru": {
+      "name": "Türkçe konuşanlar için Rusça",
+      "title": "Türkçe konuşanlar için Rusça Anki destesi — AnkiGen",
+      "description": "Rusça öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Rusça kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Rusça"
+    },
+    "sr": {
+      "name": "Türkçe konuşanlar için Sırpça",
+      "title": "Türkçe konuşanlar için Sırpça Anki destesi — AnkiGen",
+      "description": "Sırpça öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Sırpça kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Sırpça"
+    },
+    "ja": {
+      "name": "Türkçe konuşanlar için Japonca",
+      "title": "Türkçe konuşanlar için Japonca Anki destesi — AnkiGen",
+      "description": "Japonca öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Japonca kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Japonca"
+    },
+    "zh": {
+      "name": "Türkçe konuşanlar için Çince",
+      "title": "Türkçe konuşanlar için Çince Anki destesi — AnkiGen",
+      "description": "Çince öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Çince kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Çince"
+    },
+    "de": {
+      "name": "Türkçe konuşanlar için Almanca",
+      "title": "Türkçe konuşanlar için Almanca Anki destesi — AnkiGen",
+      "description": "Almanca öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Almanca kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Almanca"
+    },
+    "es": {
+      "name": "Türkçe konuşanlar için İspanyolca",
+      "title": "Türkçe konuşanlar için İspanyolca Anki destesi — AnkiGen",
+      "description": "İspanyolca öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili İspanyolca kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için İspanyolca"
+    },
+    "pt": {
+      "name": "Türkçe konuşanlar için Portekizce",
+      "title": "Türkçe konuşanlar için Portekizce Anki destesi — AnkiGen",
+      "description": "Portekizce öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Portekizce kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Portekizce"
+    },
+    "pl": {
+      "name": "Türkçe konuşanlar için Lehçe",
+      "title": "Türkçe konuşanlar için Lehçe Anki destesi — AnkiGen",
+      "description": "Lehçe öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Lehçe kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Lehçe"
+    },
+    "ko": {
+      "name": "Türkçe konuşanlar için Korece",
+      "title": "Türkçe konuşanlar için Korece Anki destesi — AnkiGen",
+      "description": "Korece öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Korece kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Korece"
+    },
+    "nl": {
+      "name": "Türkçe konuşanlar için Hollandaca",
+      "title": "Türkçe konuşanlar için Hollandaca Anki destesi — AnkiGen",
+      "description": "Hollandaca öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Hollandaca kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Hollandaca"
+    },
+    "fr": {
+      "name": "Türkçe konuşanlar için Fransızca",
+      "title": "Türkçe konuşanlar için Fransızca Anki destesi — AnkiGen",
+      "description": "Fransızca öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Fransızca kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Fransızca"
+    },
+    "hy": {
+      "name": "Türkçe konuşanlar için Ermenice",
+      "title": "Türkçe konuşanlar için Ermenice Anki destesi — AnkiGen",
+      "description": "Ermenice öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Ermenice kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Ermenice"
+    },
+    "el": {
+      "name": "Türkçe konuşanlar için Yunanca",
+      "title": "Türkçe konuşanlar için Yunanca Anki destesi — AnkiGen",
+      "description": "Yunanca öğrenen Türkçe konuşanlar için ücretsiz Anki destesi: {words}, {modules} içinde; çeviri ve örneklerle. Anki ve AnkiDroid için.",
+      "lede": "Tarayıcınızda hazırlanan, Türkçe çevirili Yunanca kelimelerden oluşan ücretsiz bir Anki destesi.",
+      "others": "Diğer dilleri konuşanlar için Yunanca"
+    }
+  },
+  "plural": {
+    "word": {
+      "one": "{n} kelime",
+      "other": "{n} kelime"
+    },
+    "module": {
+      "one": "{n} modül",
+      "other": "{n} modül"
+    }
+  }
+}

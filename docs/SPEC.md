@@ -2,7 +2,7 @@
 
 A free single-page web app on GitHub Pages that builds Anki decks (`.apkg`) entirely in the browser from curated vocabulary data. Output is **deterministic**: the same configuration and data version always give the same notes with the same IDs. Re-importing an updated deck updates existing cards and keeps review history.
 
-Repo: https://github.com/xenohunter/ankigen (branch `master`). Site: https://xenohunter.github.io/ankigen/. Support link: https://www.patreon.com/cw/blisstweeting
+Repo: https://github.com/xenohunter/ankigen (branch `master`). Site: https://xenohunter.github.io/ankigen/. Support links: https://www.patreon.com/cw/blisstweeting, https://buymeacoffee.com/blisstweeting
 
 ## 1. Languages
 
@@ -76,7 +76,6 @@ Each row is Off / Front / Back (some rows have fewer choices). Defaults are in `
 | Examples | Back | slider 0–3, default 2 |
 | Example translations | Back | bilingual mode only |
 | Antonyms & related | Back | |
-| Etymology | Back | shown when present |
 | Part of speech | Off | |
 | Register | Off | |
 | Emoji | Off | |
@@ -108,7 +107,7 @@ Always-visible elements:
 - **Cards sidebar:** every note of the would-be deck in a virtualized list, with a search box. Search ignores case, diacritics and stress, matches Serbian in both scripts, and finds Japanese/Chinese/Korean words by romanization. Each card has a "report" action. On mobile the sidebar becomes a drawer.
 - **Shareable state:** the full configuration lives in the URL hash, so a link reproduces the exact deck. The last configuration is also remembered locally.
 - **Footer:**
-  - a "Support this project" button → Patreon;
+  - "Support this project:" with two buttons, Patreon and Buy Me a Coffee;
   - data version and app version;
   - link to the GitHub repo.
 
@@ -132,7 +131,7 @@ Always-visible elements:
 - **Client limits** (overridable, just friction):
   - ≥ 15 s between sends, ≤ 5 per 10 min, ≤ 20 per day;
   - "garbage" detection (too short, no letters, repeated characters, duplicates);
-  - from the 10th garbage message on, the client silently stops sending but still says "Thanks".
+  - from the 10th garbage message on, the client silently stops sending garbage but still says "Thanks"; real reports are still sent.
 - **Server limits:**
   - payload ≤ 8 KB, schema check, honeypot;
   - ≤ 30 reports per client ID per rolling 6 h;
@@ -150,7 +149,7 @@ Always-visible elements:
 ## 7. Data
 
 - See `docs/DATA_FORMAT.md`. The data is concept-centric, with per-language layer files, permanent IDs, a linter, and a golden sample in `tests/fixtures/data`.
-- Data is generated in resumable units (`docs/GENERATION.md`). The site deploys once all 15 languages are complete. IPA comes last. Etymology content is deferred; the app supports it when present.
+- Data is generated in resumable units (`docs/GENERATION.md`). The site deploys once all 15 languages are complete. IPA comes last. Etymology is dropped for now: the note type keeps an empty Etymology field, so it can come back without changing the note type.
 
 ## 8. Non-goals (for now)
 

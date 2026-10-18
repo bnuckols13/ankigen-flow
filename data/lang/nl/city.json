@@ -1,0 +1,22 @@
+{
+"word-town-hall": {"w":"stadhuis","g":"n","alt":["gemeentehuis"],"forms":{"pl":"stadhuizen"},"def":"Gebouw waar het gemeentebestuur werkt en waar je bijvoorbeeld kunt trouwen."},
+"word-fire-station": {"w":"brandweerkazerne","g":"c","forms":{"pl":"brandweerkazernes"},"def":"Gebouw waar hulpverleners die branden blussen met hun wagens op een oproep wachten."},
+"word-mosque": {"w":"moskee","g":"c","forms":{"pl":"moskeeën"},"def":"Gebouw waar moslims bidden."},
+"word-synagogue": {"w":"synagoge","g":"c","forms":{"pl":"synagogen"},"def":"Gebouw waar Joodse mensen bidden en studeren."},
+"word-cathedral": {"w":"kathedraal","g":"c","forms":{"pl":"kathedralen"},"def":"Zeer grote, belangrijke kerk waar een bisschop de leiding heeft."},
+"word-laundromat": {"w":"wasserette","g":"c","forms":{"pl":"wasserettes"},"def":"Openbare zaak waar je met munten je kleren in machines wast en droogt."},
+"word-art-gallery": {"w":"kunstgalerie","g":"c","alt":["galerie"],"forms":{"pl":"kunstgalerieën"},"def":"Gebouw of ruimte waar schilderijen en ander werk van kunstenaars aan het publiek worden getoond."},
+"word-nightclub": {"w":"nachtclub","g":"c","alt":["club"],"forms":{"pl":"nachtclubs"},"def":"Zaak die 's avonds laat open is, met muziek, dansen en drankjes."},
+"word-old-town": {"w":"oude binnenstad","g":"c","alt":["historisch centrum"],"forms":{"pl":"oude binnensteden"},"def":"Het oudste deel van een stad, vaak met historische gebouwen en smalle straatjes."},
+"word-skyscraper": {"w":"wolkenkrabber","g":"c","forms":{"pl":"wolkenkrabbers"},"def":"Zeer hoog gebouw met heel veel verdiepingen."},
+"word-apartment-block": {"w":"flatgebouw","g":"n","alt":["appartementencomplex"],"forms":{"pl":"flatgebouwen"},"def":"Groot gebouw dat is verdeeld in veel woningen op verschillende verdiepingen."},
+"word-avenue": {"w":"laan","g":"c","alt":["boulevard"],"forms":{"pl":"lanen","dim":"laantje"},"def":"Brede straat in een stad, vaak met bomen aan weerszijden."},
+"word-pedestrian-zone": {"w":"voetgangersgebied","g":"n","forms":{"pl":"voetgangersgebieden"},"def":"Deel van een stad waar geen auto's mogen komen, zodat mensen veilig kunnen lopen."},
+"word-bench": {"w":"bank","g":"c","hint":"zitplaats","alt":["bankje"],"forms":{"pl":"banken","dim":"bankje"},"def":"Lang zitmeubel voor meerdere personen, meestal buiten."},
+"word-fountain": {"w":"fontein","g":"c","forms":{"pl":"fonteinen","dim":"fonteintje"},"def":"Constructie die water de lucht in spuit, meestal in een park of op een plein."},
+"word-opposite": {"w":"tegenover","def":"Aan de andere kant van iets, er met het gezicht naartoe."},
+"word-city-block": {"w":"huizenblok","g":"n","alt":["bouwblok","blok"],"forms":{"pl":"huizenblokken"},"def":"Groep gebouwen met aan alle vier de kanten een straat."},
+"word-tourist-information": {"w":"toeristeninformatie","g":"c","alt":["VVV-kantoor"],"def":"Kantoor waar bezoekers kaarten en advies over een plaats krijgen."},
+"word-landmark": {"w":"bezienswaardigheid","g":"c","alt":["herkenningspunt"],"forms":{"pl":"bezienswaardigheden"},"def":"Beroemd gebouw of beroemde plek die veel mensen komen bekijken."},
+"word-outskirts": {"w":"stadsrand","g":"c","alt":["buitenwijk"],"forms":{"pl":"stadsranden"},"def":"Het deel van een plaats dat het verst van het midden ligt."}
+}

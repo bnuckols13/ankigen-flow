@@ -1,0 +1,9 @@
+{
+"word-day-off": [{"t":"明天是我的{休息日}。","r":"Míngtiān shì wǒ de xiūxīrì."},{"t":"每个星期三都是她的{休息日}。","r":"Měi ge xīngqīsān dōu shì tā de xiūxīrì."},{"t":"我需要一个{休息日}来放松。","r":"Wǒ xūyào yī ge xiūxīrì lái fàngsōng."}],
+"word-working-day": [{"t":"星期一是一周的第一个{工作日}。","r":"Xīngqīyī shì yī zhōu de dì yī ge gōngzuòrì."},{"t":"正常的{工作日}是八个小时。","r":"Zhèngcháng de gōngzuòrì shì bā ge xiǎoshí."},{"t":"包裹将在三个{工作日}内送到。","r":"Bāoguǒ jiāng zài sān ge gōngzuòrì nèi sòngdào."}],
+"word-on-time": [{"t":"火车{准时}到了。","r":"Huǒchē zhǔnshí dào le."},{"t":"请尽量{准时}参加会议。","r":"Qǐng jǐnliàng zhǔnshí cānjiā huìyì."},{"t":"她总是{按时}交房租。","r":"Tā zǒngshì ànshí jiāo fángzū."}],
+"word-date-of-birth": [{"t":"请在表格上写下你的{出生日期}。","r":"Qǐng zài biǎogé shàng xiěxià nǐ de chūshēng rìqī."},{"t":"我的{出生日期}是1990年5月4日。","r":"Wǒ de chūshēng rìqī shì yī jiǔ jiǔ líng nián wǔ yuè sì rì."},{"t":"他们问了我的姓名和{出生日期}。","r":"Tāmen wènle wǒ de xìngmíng hé chūshēng rìqī."}],
+"word-time-zone": [{"t":"纽约和洛杉矶不在同一个{时区}。","r":"Niǔyuē hé Luòshānjī bù zài tóng yī ge shíqū."},{"t":"换了{时区}以后，我很难入睡。","r":"Huànle shíqū yǐhòu, wǒ hěn nán rùshuì."},{"t":"你在哪个{时区}？","r":"Nǐ zài nǎ ge shíqū?"}],
+"word-o-clock": [{"t":"电影八{点钟}开始。","r":"Diànyǐng bā diǎnzhōng kāishǐ."},{"t":"现在正好是五{点钟}。","r":"Xiànzài zhènghǎo shì wǔ diǎnzhōng."},{"t":"我们十二{点钟}吃午饭。","r":"Wǒmen shí'èr diǎnzhōng chī wǔfàn."}],
+"word-lifetime": [{"t":"他在{一生}中见证了许多变化。","r":"Tā zài yīshēng zhōng jiànzhèngle xǔduō biànhuà."},{"t":"这是{一生}难得一次的旅行。","r":"Zhè shì yīshēng nándé yī cì de lǚxíng."},{"t":"她{一生}都住在同一个小镇。","r":"Tā yīshēng dōu zhù zài tóng yī ge xiǎozhèn."}]
+}

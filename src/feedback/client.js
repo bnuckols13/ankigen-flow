@@ -7,7 +7,8 @@
 //   - at least 15 s between reports, at most 5 in 10 minutes and 20 in 24 hours;
 //   - "garbage" (no letters, a single letter, one short sequence repeated, or the same report again) is sent
 //     only after the user confirms it ("Send anyway");
-//   - from the 10th garbage report on, the client sends nothing at all, and still thanks the user.
+//   - from the 10th garbage report on, garbage is dropped without asking (the user is still thanked); real
+//     reports are still sent.
 
 import { fold } from '../text/normalize.js';
 
@@ -17,7 +18,7 @@ export const LIMITS = {
   burstMs: 10 * 60_000,
   daily: 20,
   dailyMs: 24 * 60 * 60_000,
-  /** garbage reports after which nothing is sent */
+  /** garbage reports after which garbage is no longer sent */
   garbage: 10,
   /** reports remembered for the duplicate check */
   recent: 20,
@@ -105,8 +106,8 @@ export function rateLimit(state, now, limits = LIMITS) {
 }
 
 /**
- * What to do with a report: wait (rate limit), confirm (looks like garbage), drop (say thanks, send
- * nothing) or send.
+ * What to do with a report: wait (rate limit), confirm (looks like garbage), drop (garbage from the 10th on:
+ * say thanks, send nothing) or send.
  * @param {FeedbackState} state @param {Report} report @param {number} now
  * @param {{ confirmed?: boolean, limits?: Limits }} [opts] confirmed: the user chose "Send anyway"
  * @returns {Decision}
@@ -115,10 +116,10 @@ export function decide(state, report, now, { confirmed = false, limits = LIMITS 
   const limit = rateLimit(state, now, limits);
   if (limit) return { action: 'wait', ...limit };
   const garbage = garbageReason(report, state);
-  if (state.garbage >= limits.garbage) return { action: 'drop', garbage: Boolean(garbage) };
-  if (garbage && !confirmed) return { action: 'confirm', reason: garbage };
-  if (garbage && state.garbage + 1 >= limits.garbage) return { action: 'drop', garbage: true };
-  return { action: 'send', garbage: Boolean(garbage) };
+  if (!garbage) return { action: 'send', garbage: false };
+  if (state.garbage >= limits.garbage) return { action: 'drop', garbage: true };
+  if (!confirmed) return { action: 'confirm', reason: garbage };
+  return { action: state.garbage + 1 >= limits.garbage ? 'drop' : 'send', garbage: true };
 }
 
 /**

@@ -4,12 +4,13 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { labelGroups, stringifyLabels } from '../tools/lib/data.mjs';
+import { fullWidthPunctuation, hasAsciiPunctuation, labelGroups, stringifyLabels } from '../tools/lib/data.mjs';
 import { loadSqlJs } from '../tools/lib/sqljs.mjs';
 import { buildApkg } from '../src/deck/apkg.js';
 import { apkgFileName } from '../src/deck/names.js';
 import { createLoader } from '../src/data/loader.js';
-import { landingSite } from '../tools/landing.mjs';
+import { appMeta, englishTexts, landingSite, textsSource } from '../tools/landing.mjs';
+import { parseOutput } from '../tools/gen/output.mjs';
 import { fixtureDeck, fixtureLoader } from './helpers/fixtures.mjs';
 
 const REPO = new URL('..', import.meta.url);
@@ -115,7 +116,7 @@ test('tools/bundle.mjs: the site serves the same data from its bundles as the so
     assert.ok(fetched.includes(`bundles/${version}/concepts.json`) && !fetched.some((p) => p.startsWith('data/concepts')), 'read from the bundles');
 
     // The landing pages and the sitemap, made from the bundles: the ones the source files give.
-    assert.match(stdout, /decks\/: 25 landing pages and the hub; sitemap\.xml/);
+    assert.match(stdout, /decks\/: 20 landing pages and the hub; sitemap\.xml/);
     for (const [name, text] of Object.entries(await landingSite(fromSource))) assert.equal(fs.readFileSync(path.join(site, name), 'utf8'), text, name);
 
     // Same data, same bytes; and the next build replaces the site.
@@ -143,6 +144,110 @@ test('tools/bundle.mjs never replaces a directory it did not build', () => {
   }
 });
 
+test('Chinese and Japanese text takes full-width punctuation; lint finds ASCII marks and the fix converts them', () => {
+  const cases = [
+    ['把{水壶}放上,我来泡点茶。', '把{水壶}放上，我来泡点茶。'],
+    ['你喜欢{吃饭}?', '你喜欢{吃饭}？'],
+    ['ギブドド: ロシアの交通警察', 'ギブドド：ロシアの交通警察'],
+    ['按 Ctrl+Enter(Mac 上按 ⌘+Enter),或者', '按 Ctrl+Enter（Mac 上按 ⌘+Enter），或者'],
+    ['显示冠词(der Tisch、la mesa)。', '显示冠词（der Tisch、la mesa）。'],
+    ['导入 Anki(File → Import)。', '导入 Anki（File → Import）。'],
+  ];
+  for (const [ascii, full] of cases) {
+    assert.ok(hasAsciiPunctuation(ascii), ascii);
+    assert.equal(fullWidthPunctuation(ascii), full);
+    assert.ok(!hasAsciiPunctuation(full), full);
+  }
+  for (const fine of ['10:30', 'der Tisch, la mesa', 'Ctrl+Enter, 1,000', 'Bǎ shuǐhú fàng shàng, wǒ lái pào diǎn chá.']) {
+    assert.ok(!hasAsciiPunctuation(fine), fine);
+    assert.equal(fullWidthPunctuation(fine), fine);
+  }
+});
+
+test('batch.mjs reads the unit from the reply, also when the model corrects itself after it', () => {
+  const unit = { unit: 'ipa:sr:time', ipa: { 'word-o-clock': 'ˈsati' } };
+  assert.deepEqual(parseOutput(JSON.stringify(unit)), unit);
+  assert.deepEqual(parseOutput('```json\n' + JSON.stringify(unit) + '\n```'), unit, 'in a code fence');
+  const first = { unit: 'ipa:sr:time', ipa: { 'word-o-clock': 'ˈsatі' } };
+  const reply = `${JSON.stringify(first)}\n\nWait — correcting "word-o-clock" (a Cyrillic і): {fixed}\n\n${JSON.stringify(unit)}\nDone.`;
+  assert.deepEqual(parseOutput(reply), unit, 'the last object that parses');
+  const braces = { unit: 'lang:ru:time:1', ex: { 'word-hour': [{ t: 'Прошёл {час}.' }] } };
+  assert.deepEqual(parseOutput(`Here it is: ${JSON.stringify(braces)}`), braces, 'braces inside strings');
+  assert.throws(() => parseOutput('no object here'), /no JSON object found/);
+});
+
+test('merge-unit holds a unit to its own language: other languages’ problems are not its errors', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ankigen-merge-'));
+  try {
+    fs.cpSync(new URL('tests/fixtures/data', REPO), dir, { recursive: true });
+    fs.cpSync(new URL('data/meta', REPO), path.join(dir, 'meta'), { recursive: true });
+    /** @param {string} layer @param {string} code @param {string} module */
+    const file = (layer, code, module) => path.join(dir, layer, code, `${module}.json`);
+    /** @param {string} f */
+    const readData = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
+    /** Merge a partial Russian core-1 unit with these entries. @param {Record<string, any>} lang */
+    const mergeRu = (lang) => {
+      const out = path.join(dir, 'out.json');
+      fs.writeFileSync(out, JSON.stringify({ unit: 'lang:ru:core-1:1', lang }));
+      return runStatus(['tools/gen/merge-unit.mjs', out, '--data', dir, '--partial']);
+    };
+
+    // Japanese gets a collision on word-hand (word-arm becomes 手 too, without hints).
+    const ja = readData(file('lang', 'ja', 'core-1'));
+    ja['word-arm'] = { ...ja['word-hand'] };
+    fs.writeFileSync(file('lang', 'ja', 'core-1'), JSON.stringify(ja));
+    const ru = readData(file('lang', 'ru', 'core-1'));
+    const clean = mergeRu({ 'word-hand': ru['word-hand'] });
+    assert.equal(clean.status, 0, clean.stdout);
+    assert.doesNotMatch(clean.stdout, /lang\/ja\//);
+
+    // A collision within Russian, with an entry in another file, still counts: the unit can patch that entry.
+    const clash = mergeRu({ 'word-water': { ...ru['word-water'], w: readData(file('lang', 'ru', 'time'))['word-day-24h'].w } });
+    assert.equal(clash.status, 1);
+    assert.match(clash.stdout, /lang\/ru\/time\.json word-day-24h: "су́тки" is also used by word-water: add a hint/);
+    assert.doesNotMatch(clash.stdout, /lang\/ja\//);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('merge-unit writes a landing translation and checks it, and lint-data checks data/landing', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ankigen-landing-'));
+  try {
+    fs.cpSync(new URL('tests/fixtures/data', REPO), dir, { recursive: true });
+    fs.cpSync(new URL('data/meta', REPO), path.join(dir, 'meta'), { recursive: true });
+    const meta = appMeta(path.join(dir, 'meta'));
+    /** @param {any} v @returns {any} */
+    const mark = (v) => (typeof v === 'string' ? `Ру ${v}` : Object.fromEntries(Object.entries(v).map(([k, x]) => [k, mark(x)])));
+    const { plural, ...texts } = englishTexts(meta, 'ru');
+    const forms = (/** @type {string} */ a, /** @type {string} */ b, /** @type {string} */ c) => ({ one: `{n} ${a}`, few: `{n} ${b}`, many: `{n} ${c}`, other: `{n} ${b}` });
+    const landing = { ...mark(texts), plural: { word: forms('слово', 'слова', 'слов'), module: forms('модуль', 'модуля', 'модулей') } };
+    const out = path.join(dir, 'out.json');
+    /** --partial: a landing unit merges in one go anyway, and this leaves the repository's progress file alone. @param {any} value */
+    const merge = (value) => {
+      fs.writeFileSync(out, JSON.stringify({ unit: 'landing:ru', landing: value }));
+      return runStatus(['tools/gen/merge-unit.mjs', out, '--data', dir, '--partial']);
+    };
+
+    const ok = merge(landing);
+    assert.equal(ok.status, 0, ok.stdout);
+    const saved = JSON.parse(fs.readFileSync(path.join(dir, 'landing', 'ru.json'), 'utf8'));
+    assert.deepEqual(Object.keys(saved), ['source', 'texts', 'languages', 'categories', 'modules', 'fields', 'options', 'pairs', 'plural']);
+    assert.equal(saved.source, textsSource(meta, 'ru'), 'records the English texts it translates');
+    assert.equal(runStatus(['tools/lint-data.mjs', '--data', dir]).status, 0);
+
+    const { cta, ...rest } = landing.texts;
+    const broken = merge({ ...landing, texts: rest });
+    assert.equal(broken.status, 1);
+    assert.match(broken.stdout, /ERROR {3}texts\.cta: missing/);
+    const lint = runStatus(['tools/lint-data.mjs', '--data', dir]);
+    assert.equal(lint.status, 1);
+    assert.match(lint.stdout, /ERROR {3}landing\/ru\.json: texts\.cta: missing/);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test('lint-data --gate: the deploy needs an entry for every concept in every active language', () => {
   const failing = runStatus(['tools/lint-data.mjs', '--data', 'tests/fixtures/data', '--meta', 'data/meta', '--gate']);
   assert.equal(failing.status, 1);
@@ -157,6 +262,9 @@ test('lint-data --gate: the deploy needs an entry for every concept in every act
     languages.deferred = [...languages.active.filter((/** @type {string} */ c) => !five.includes(c)), ...languages.deferred];
     languages.active = five;
     fs.writeFileSync(path.join(meta, 'languages.json'), JSON.stringify(languages));
+    // labels.json lists its languages in registry order, which this changes.
+    const labels = JSON.parse(fs.readFileSync(path.join(meta, 'labels.json'), 'utf8'));
+    fs.writeFileSync(path.join(meta, 'labels.json'), stringifyLabels(labels, [...languages.active, ...languages.deferred]));
     const passing = runStatus(['tools/lint-data.mjs', '--data', 'tests/fixtures/data', '--meta', meta, '--gate']);
     assert.match(passing.stdout, /Deploy gate: every active language has an entry for every concept/);
     assert.equal(passing.status, 0, passing.stdout);

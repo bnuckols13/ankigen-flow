@@ -1,0 +1,394 @@
+{
+  "source": "25755b72c30b",
+  "texts": {
+    "decks": "Decks",
+    "cta": "Maak je deck",
+    "ctaNote": "Opent AnkiGen met dit taalpaar en {module} gekozen.",
+    "deck": "Anki-deck: {deck}",
+    "intro": "AnkiGen maakt gratis Anki-decks direct in je browser: woorden per thema, elk met vertaling en voorbeeldzinnen. Kies de modules en wat elke kaart toont, en download een .apkg-bestand voor Anki of AnkiDroid. Geen account, niets te installeren.",
+    "cardsHeading": "Wat de kaarten tonen",
+    "cardsIntro": "Elke kaart toont het woord dat je leert en de vertaling ervan. Jij kiest wat er verder op staat en op welke kant:",
+    "captions": "Kaartlabels, zoals “{caption}”, zijn in het Nederlands.",
+    "modulesHeading": "Modules",
+    "modulesIntro": "Een woord dat in meerdere modules zit, komt maar één keer in het deck voor. Elke module opent AnkiGen met alleen die module gekozen; daar kun je er meer toevoegen.",
+    "sampleWords": "Voorbeeldwoorden",
+    "local": "Woorden die alleen deze taal heeft: {count}, zoals {example}. Andere talen hebben er geen exact woord voor, dus je kaarten leggen ze uit in je eigen taal.",
+    "howHeading": "Hoe het werkt",
+    "step1": "Kies de modules die je wilt. Bij elke module zie je hoeveel woorden die heeft voor jouw taalpaar.",
+    "step2": "Kies wat elke kaart toont en op welke kant. De voorbeeldweergave laat tijdens het kiezen echte kaarten zien.",
+    "step3": "Download het .apkg-bestand en open het met Anki (File → Import), of tik erop op je telefoon om het in AnkiDroid te openen.",
+    "update": "Velden gewijzigd, modules toegevoegd of nieuwere gegevens nodig? Download opnieuw en importeer het nieuwe bestand in Anki (File → Import) met de standaardopties. Anki werkt je bestaande notities en hun opmaak bij, voegt nieuwe woorden toe aan hetzelfde deck en behoudt je voortgang.",
+    "aboutHeading": "Over de woordenschat",
+    "about": "Woorden, vertalingen en voorbeeldzinnen zijn opgesteld met een AI-model en worden, taal voor taal, door mensen gecontroleerd. Ziet iets er verkeerd uit, selecteer het dan op een voorbeeldkaart in AnkiGen en druk op Ctrl+Enter (⌘+Enter op een Mac), of gebruik daar de knop Feedback. Elke melding helpt het deck voor iedereen te verbeteren.",
+    "moreHeading": "Meer decks",
+    "moreForYou": "Meer decks voor Nederlandstaligen",
+    "allDecks": "Alle decks per taalpaar",
+    "support": "Steun dit project:",
+    "source": "Broncode op GitHub",
+    "license": "Code onder de {mit}-licentie; woordenschat onder {cc}.",
+    "versions": "Data {data} · App {app}"
+  },
+  "languages": {
+    "en": "Engels",
+    "ru": "Russisch",
+    "sr": "Servisch",
+    "ja": "Japans",
+    "zh": "Chinees",
+    "de": "Duits",
+    "es": "Spaans",
+    "pt": "Portugees",
+    "pl": "Pools",
+    "ko": "Koreaans",
+    "nl": "Nederlands",
+    "fr": "Frans",
+    "hy": "Armeens",
+    "tr": "Turks",
+    "el": "Grieks"
+  },
+  "categories": {
+    "foundations": "Basis",
+    "communication": "Communicatie",
+    "daily-life": "Dagelijks leven",
+    "getting-around": "Onderweg",
+    "living-abroad": "Wonen in het buitenland",
+    "health-safety": "Gezondheid & veiligheid",
+    "interests": "Interesses",
+    "adult": "18+"
+  },
+  "modules": {
+    "core-1": {
+      "name": "Core I",
+      "desc": "De ~500 meest voorkomende woorden, gedeeld door alle talen."
+    },
+    "core-2": {
+      "name": "Core II",
+      "desc": "De volgende ~500 meest voorkomende woorden."
+    },
+    "core-3": {
+      "name": "Core III",
+      "desc": "De volgende ~800 meest voorkomende woorden."
+    },
+    "numbers": {
+      "name": "Getallen & rekenen",
+      "desc": "Hoofdtelwoorden en rangtelwoorden, breuken, rekenen, maten en gewichten."
+    },
+    "time": {
+      "name": "Tijd & kalender",
+      "desc": "Dagen, maanden, seizoenen, klokkijken, data, frequentie."
+    },
+    "phrases": {
+      "name": "Overlevingszinnen",
+      "desc": "Begroetingen, beleefdheden en hele zinnen voor alledaagse situaties."
+    },
+    "countries": {
+      "name": "Landen, nationaliteiten & talen",
+      "desc": "Belangrijke landen, hun inwoners, bijvoeglijke naamwoorden en talen."
+    },
+    "language-learning": {
+      "name": "Taal leren",
+      "desc": "Praten over taal: grammaticatermen, uitspraak, om hulp vragen."
+    },
+    "family": {
+      "name": "Familie & relaties",
+      "desc": "Familieleden, partners, vrienden, gebeurtenissen in het leven."
+    },
+    "feelings": {
+      "name": "Gevoelens & karakter",
+      "desc": "Emoties, stemmingen, persoonlijkheidskenmerken."
+    },
+    "food": {
+      "name": "Eten & drinken",
+      "desc": "Boodschappen, gerechten, drankjes, uit eten gaan."
+    },
+    "cooking": {
+      "name": "Koken & keuken",
+      "desc": "Kookwerkwoorden, keukengerei, apparaten, recepten."
+    },
+    "shopping": {
+      "name": "Winkelen & kleding",
+      "desc": "Winkels, betalen, maten, kleding, retourneren."
+    },
+    "housing": {
+      "name": "Wonen & huren",
+      "desc": "Huren, contracten, verhuurders, nutsvoorzieningen, kamers."
+    },
+    "household": {
+      "name": "Huishouden & reparatie",
+      "desc": "Klusjes, meubels, gereedschap, reparaties, loodgieterswerk, elektriciteit."
+    },
+    "nature": {
+      "name": "Weer & natuur",
+      "desc": "Weer, klimaat, landschap, planten."
+    },
+    "animals": {
+      "name": "Huisdieren & dieren",
+      "desc": "Huisdieren, verzorging, bezoek aan de dierenarts, veelvoorkomende dieren."
+    },
+    "city": {
+      "name": "Stad & de weg vragen",
+      "desc": "Plekken in de stad, de weg vragen en uitleggen."
+    },
+    "transport": {
+      "name": "Vervoer & reizen",
+      "desc": "Openbaar vervoer, tickets, luchthavens, hotels, bagage."
+    },
+    "driving": {
+      "name": "Autorijden & verkeersregels",
+      "desc": "Auto-onderdelen, verkeersregels, verkeersborden, rijexamens, boetes, ongelukken."
+    },
+    "signs": {
+      "name": "Borden & mededelingen",
+      "desc": "Wat je leest op deuren, winkels en straten: Duwen, Uitgang, Buiten werking."
+    },
+    "residence": {
+      "name": "Verblijf & legalisatie",
+      "desc": "Visa, vergunningen, inschrijving, documenten, loketten — plus landspecifieke termen."
+    },
+    "money": {
+      "name": "Geld & bankzaken",
+      "desc": "Rekeningen, pinpassen, overschrijvingen, belastingen, leningen."
+    },
+    "work": {
+      "name": "Werk & arbeid",
+      "desc": "Banen, contracten, salaris, kantoorleven, solliciteren."
+    },
+    "telecom": {
+      "name": "Post, telefoon & internet",
+      "desc": "Pakketten, simkaarten, mobiele abonnementen, internet, accounts."
+    },
+    "education": {
+      "name": "Onderwijs",
+      "desc": "School, universiteit, cursussen, examens."
+    },
+    "health": {
+      "name": "Gezondheid & geneeskunde",
+      "desc": "Lichaam, symptomen, artsen, apotheek, verzekering."
+    },
+    "emergencies": {
+      "name": "Noodgevallen",
+      "desc": "Politie, brandweer, ambulance, ongelukken, rampen."
+    },
+    "hobbies": {
+      "name": "Hobby’s",
+      "desc": "Gewone tijdverdrijven, knutselen, verzamelen, buitenactiviteiten."
+    },
+    "sports": {
+      "name": "Sport",
+      "desc": "Sporten, uitrusting, wedstrijden, fitness."
+    },
+    "music": {
+      "name": "Muziek",
+      "desc": "Instrumenten, genres, spelen en luisteren."
+    },
+    "video-games": {
+      "name": "Videogames",
+      "desc": "Gamewoordenschat om te spelen en te chatten."
+    },
+    "tabletop": {
+      "name": "Bordspellen",
+      "desc": "Dobbelstenen, kaarten, beurten en regels — voor spelletjesavonden."
+    },
+    "tech": {
+      "name": "Techniek & computers",
+      "desc": "Apparaten, software, het internet, problemen oplossen."
+    },
+    "science": {
+      "name": "Wetenschap",
+      "desc": "Basiswoordenschat van natuurkunde, scheikunde, biologie, sterrenkunde."
+    },
+    "profanity": {
+      "name": "Grof taalgebruik",
+      "desc": "Scheldwoorden en beledigingen, per sterkte op elkaar afgestemd tussen talen."
+    }
+  },
+  "fields": {
+    "gender": {
+      "label": "Geslacht / lidwoord",
+      "help": "Toont het lidwoord (der Tisch, la mesa) of een geslachtsaanduiding (m/f/n) naast het woord."
+    },
+    "stress": {
+      "label": "Klemtoonmarkering",
+      "help": "Markeert de beklemtoonde klinker (молоко́). Geldt voor het woord, de vormen ervan en het gemarkeerde woord in voorbeelden."
+    },
+    "reading": {
+      "label": "Leesvorm (furigana)",
+      "help": "Kana-leesvorm boven de kanji. Bepaalt ook de furigana in voorbeeldzinnen."
+    },
+    "romanization": {
+      "label": "Romanisering",
+      "help": "Het woord in Latijnse letters: Hepburn (Japans), pinyin (Chinees), Revised Romanization (Koreaans), transliteratie (Russisch, Armeens, Grieks). Bij Chinees bepaalt dit ook de pinyin in voorbeeldzinnen."
+    },
+    "otherScript": {
+      "label": "Ander schrift",
+      "help": "Toont het woord in het andere Servische schrift (Latijn als het deck cyrillisch gebruikt, en andersom)."
+    },
+    "measureWord": {
+      "label": "Maatwoord / telwoord",
+      "help": "Het telwoord dat bij dit zelfstandig naamwoord hoort als je telt (一本书, 鉛筆を三本)."
+    },
+    "hanja": {
+      "label": "Hanja",
+      "help": "Chinese tekens achter Sino-Koreaanse woorden (은행 → 銀行). Alleen getoond bij woorden die ze hebben."
+    },
+    "forms": {
+      "label": "Belangrijkste vormen",
+      "help": "De paar vormen die je nodig hebt om het woord te gebruiken: meervoud, genitief, verleden tijd, aspectpartner, werkwoordsklasse… geen volledige tabellen."
+    },
+    "ipa": {
+      "label": "IPA",
+      "help": "Uitspraak in het Internationaal Fonetisch Alfabet."
+    },
+    "examples": {
+      "label": "Voorbeelden",
+      "help": "Voorbeeldzinnen met het woord gemarkeerd. Kies met de schuifregelaar hoeveel (0–3)."
+    },
+    "exampleTranslations": {
+      "label": "Vertalingen van voorbeelden",
+      "help": "Toont elk voorbeeld in jouw taal als er een passende vertaling is. Sommige voorbeelden zijn direct in de doeltaal geschreven en hebben geen vertaling."
+    },
+    "related": {
+      "label": "Antoniemen & verwante woorden",
+      "help": "Tegenstellingen en nauw verwante woorden, in de taal die je leert."
+    },
+    "pos": {
+      "label": "Woordsoort",
+      "help": "zelfstandig naamwoord, werkwoord, bijvoeglijk naamwoord…"
+    },
+    "register": {
+      "label": "Register",
+      "help": "Markeert informele, formele, vulgaire of beledigende woorden."
+    },
+    "emoji": {
+      "label": "Emoji",
+      "help": "Een beeldhint bij concrete woorden (💧 water). De meeste abstracte woorden hebben er geen."
+    },
+    "conceptId": {
+      "label": "Concept-ID",
+      "help": "Een kleine code onderaan de kaart (bijv. word-water). Zie je tijdens het leren in Anki een fout, geef deze code dan door in je melding, zodat we de exacte vermelding kunnen vinden."
+    }
+  },
+  "options": {
+    "reverse": {
+      "label": "Omgekeerde kaarten",
+      "help": "Voegt per woord een tweede kaart toe: jouw taal → de taal die je leert. Op omgekeerde kaarten staat alles over het geleerde woord aan de antwoordkant, zodat niets het antwoord verraadt."
+    },
+    "typeAnswer": {
+      "label": "Antwoord typen",
+      "help": "Op omgekeerde kaarten typ je het woord in plaats van het alleen op te halen uit je geheugen. Anki vergelijkt je spelling met de hoofdvorm (lidwoorden inbegrepen, klemtoonmarkeringen genegeerd)."
+    },
+    "srScript": {
+      "label": "Servisch schrift",
+      "help": "Servisch wordt zowel in cyrillisch als in Latijns schrift geschreven. Kies het schrift dat op je kaarten wordt gebruikt."
+    }
+  },
+  "pairs": {
+    "en": {
+      "name": "Engels voor Nederlandstaligen",
+      "title": "Gratis Engels Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Engels te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Engelse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Engels voor sprekers van andere talen"
+    },
+    "ru": {
+      "name": "Russisch voor Nederlandstaligen",
+      "title": "Gratis Russisch Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Russisch te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Russische woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Russisch voor sprekers van andere talen"
+    },
+    "sr": {
+      "name": "Servisch voor Nederlandstaligen",
+      "title": "Gratis Servisch Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Servisch te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Servische woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Servisch voor sprekers van andere talen"
+    },
+    "ja": {
+      "name": "Japans voor Nederlandstaligen",
+      "title": "Gratis Japans Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Japans te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Japanse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Japans voor sprekers van andere talen"
+    },
+    "zh": {
+      "name": "Chinees voor Nederlandstaligen",
+      "title": "Gratis Chinees Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Chinees te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Chinese woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Chinees voor sprekers van andere talen"
+    },
+    "de": {
+      "name": "Duits voor Nederlandstaligen",
+      "title": "Gratis Duits Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Duits te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Duitse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Duits voor sprekers van andere talen"
+    },
+    "es": {
+      "name": "Spaans voor Nederlandstaligen",
+      "title": "Gratis Spaans Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Spaans te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Spaanse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Spaans voor sprekers van andere talen"
+    },
+    "pt": {
+      "name": "Portugees voor Nederlandstaligen",
+      "title": "Gratis Portugees Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Portugees te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Portugese woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Portugees voor sprekers van andere talen"
+    },
+    "pl": {
+      "name": "Pools voor Nederlandstaligen",
+      "title": "Gratis Pools Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Pools te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Poolse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Pools voor sprekers van andere talen"
+    },
+    "ko": {
+      "name": "Koreaans voor Nederlandstaligen",
+      "title": "Gratis Koreaans Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Koreaans te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Koreaanse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Koreaans voor sprekers van andere talen"
+    },
+    "fr": {
+      "name": "Frans voor Nederlandstaligen",
+      "title": "Gratis Frans Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Frans te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Franse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Frans voor sprekers van andere talen"
+    },
+    "hy": {
+      "name": "Armeens voor Nederlandstaligen",
+      "title": "Gratis Armeens Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Armeens te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Armeense woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Armeens voor sprekers van andere talen"
+    },
+    "tr": {
+      "name": "Turks voor Nederlandstaligen",
+      "title": "Gratis Turks Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Turks te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Turkse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Turks voor sprekers van andere talen"
+    },
+    "el": {
+      "name": "Grieks voor Nederlandstaligen",
+      "title": "Gratis Grieks Anki-deck voor Nederlandstaligen — AnkiGen",
+      "description": "Gratis Anki-deck om Grieks te leren: {words} in {modules}, met Nederlandse vertalingen en voorbeelden, voor Anki en AnkiDroid.",
+      "lede": "Een gratis Anki-deck met Griekse woorden en Nederlandse vertalingen, gemaakt in je browser.",
+      "others": "Grieks voor sprekers van andere talen"
+    }
+  },
+  "plural": {
+    "word": {
+      "one": "{n} woord",
+      "other": "{n} woorden"
+    },
+    "module": {
+      "one": "{n} module",
+      "other": "{n} modules"
+    }
+  }
+}

@@ -37,6 +37,7 @@ Definition style (all languages): one short sentence. English: lower-case start,
 - Adjectives: i-adjectives `type: "i"` + `neg` (高くない); na-adjectives `type: "na"`, `w` without な.
 - `mw` (counter) for countable nouns that have a specific common counter: 本, 枚, 匹, 台, 冊, 人, 軒, 着. Omit when only つ/個 would apply.
 - Phrases: the natural polite form where politeness matters (すみません, お願いします).
+- Definitions and glosses use full-width punctuation too: `ギブドド：ロシアの交通警察` (lint rejects ASCII , : ; ! ? ( ) next to Japanese text).
 - Examples: natural Japanese, consistent style per sentence (です/ます is the default). Full-width punctuation 。、！？. **Furigana syntax** (the same as Anki's): every kanji run is followed by its reading in square brackets, `日本[にほん]`. When a kanji run follows kana or other characters, put one space before it: `お 茶[ちゃ]を 飲[の]みます` (the space is invisible in the rendered card). The target goes in braces around the furigana: `{食[た]べます}`. Definitions (`def`) use plain text without furigana.
 
 ## zh — Chinese (Mandarin, Simplified, mainland)
@@ -44,6 +45,7 @@ Definition style (all languages): one short sentence. English: lower-case start,
 - `read`: pinyin with tone marks, syllables of one word joined (yínháng, xiǎoshuō); neutral tone unmarked (péngyou); dictionary (citation) tones for 一 and 不, no sandhi.
 - `mw`: the usual measure word for nouns (本, 张, 只, 条, 辆, 件, 把, 位); use 个 only when no more specific one is standard. Omit for uncountables.
 - No forms. Definitions in simple Chinese.
+- Hanzi text (`t`, `def`, `gl`) uses full-width punctuation ，。：；！？（）, also next to Latin words: `导入 Anki（File → Import）`. Only the pinyin `r` uses ASCII punctuation; lint rejects ASCII marks next to hanzi.
 - Examples: hanzi with the target in braces; `r` = pinyin of the whole sentence with tone marks, words separated by spaces, ASCII punctuation, no braces: `{"t":"我每天喝{水}。","r":"Wǒ měitiān hē shuǐ."}`.
 
 ## de — German (Germany)

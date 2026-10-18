@@ -46,7 +46,7 @@ To filter spam, sort or filter by `client_id`. Then fix the data, run lint, and 
 
 The client adds friction on top:
 - ≥ 15 s between sends, ≤ 5 per 10 minutes, ≤ 20 per day;
-- after 10 "garbage" messages it silently stops sending.
+- after 10 "garbage" messages it silently stops sending garbage (real reports still go through).
 
 ## Privacy note for the site (short)
 
