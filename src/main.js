@@ -3,6 +3,7 @@
 // the config in the URL hash and in localStorage, and re-render on every change. ?data=<dir> reads the
 // vocabulary from another directory (tests/fixtures/data while developing; meta always comes from data/meta).
 
+import { APP_VERSION } from './config.js';
 import { createLoader, safeDataDir } from './data/loader.js';
 import { decodeHash, encodeHash, loadConfig, saveConfig } from './state.js';
 import { createApp } from './ui/app.js';
@@ -65,7 +66,7 @@ async function main() {
   const app = createApp({ loader, meta, initial: loadConfig({ hash: location.hash, storage }, meta) });
 
   if (dataDir) document.body.prepend(h('p', { class: 'dev-banner' }, `Test data from ${dataDir}`));
-  byId('draft').append(help('the draft vocabulary', DRAFT_HELP));
+  byId('draft-help').replaceWith(help('the draft vocabulary', DRAFT_HELP));
 
   const steps = mountSteps({
     learn: byId('step-learn'),
@@ -144,11 +145,14 @@ async function main() {
   app.subscribe(render);
   render(app.view());
   syncUrl(app, meta, storage);
+  byId('versions').textContent = `Data ${meta.version.data} · App ${APP_VERSION}`;
 }
 
-main().catch((error) => {
-  console.error(error);
-  byId('steps').prepend(
-    h('p', { class: 'fatal', role: 'alert' }, 'AnkiGen could not load its word lists. Check your connection and reload the page.'),
-  );
-});
+main()
+  .catch((error) => {
+    console.error(error);
+    byId('steps').prepend(
+      h('p', { class: 'fatal', role: 'alert' }, 'AnkiGen could not load its word lists. Check your connection and reload the page.'),
+    );
+  })
+  .finally(() => document.documentElement.classList.add('ready')); // shows the footer (see index.html)

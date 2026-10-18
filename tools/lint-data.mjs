@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Lint the vocabulary data: structure, IDs, references, scripts, forms, collisions, examples.
 // Usage:
-//   node tools/lint-data.mjs [--data data] [--meta data/meta] [--fix] [--report] [--warnings] [--filter ru/] [--json]
-// Exit code 1 if any error remains.
+//   node tools/lint-data.mjs [--data data] [--meta data/meta] [--fix] [--report] [--warnings] [--filter ru/] [--json] [--gate]
+// Exit code 1 if any error remains. --gate (the deploy gate, ARCHITECTURE §12) also fails unless every active
+// language has an entry for every concept.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -34,7 +35,19 @@ if (flag('--json')) {
   if (flag('--report')) report(ctx);
   console.log(`\n${errors.length} error(s), ${warnings.length} warning(s)${flag('--warnings') ? '' : ' (use --warnings to list)'}`);
 }
-process.exit(errors.length ? 1 : 0);
+const gateOk = !flag('--gate') || gate(ctx);
+process.exit(errors.length || !gateOk ? 1 : 0);
+
+/** The deploy gate: every active language has an entry (a word or a gloss) for every concept. */
+function gate(ctx) {
+  const incomplete = coverage(ctx).filter((r) => r.entries < r.total);
+  if (incomplete.length) {
+    console.log(`Deploy gate: ${incomplete.length} active language(s) incomplete: ${incomplete.map((r) => `${r.code} ${r.entries}/${r.total}`).join(', ')}`);
+  } else {
+    console.log('Deploy gate: every active language has an entry for every concept.');
+  }
+  return !incomplete.length;
+}
 
 function fix(dataDir, metaDir) {
   const p = paths(dataDir, metaDir);

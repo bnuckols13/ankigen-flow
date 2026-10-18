@@ -15,14 +15,15 @@ Audience: the engineer (Claude Code) implementing the web app. Product decisions
 ## 2. Repository layout
 
 ```
-index.html              single page; semantic HTML, SEO meta, noscript description
-404.html                redirect to /
-robots.txt, sitemap.xml, og-image.png, favicon.svg
+index.html              single page; semantic HTML, SEO meta, modulepreload links, footer, noscript description
+404.html                redirect to the app (keeps a configuration hash)
+robots.txt, sitemap.xml, og-image.png (source: tools/og-image.html), favicon.svg, apple-touch-icon.png
+LICENSE                 MIT, for the code; data/LICENSE.md: CC BY-SA 4.0, for the vocabulary
 css/app.css             page styles (light/dark via prefers-color-scheme)
 css/card.css            card styles; SAME file is embedded into the Anki note type
 src/
   main.js               bootstrap, wiring
-  config.js             constants: feedback endpoint URL, repo URL, Patreon URL, app version
+  config.js             constants: site, repo, Patreon and data license URLs, feedback endpoint, app version
   state.js              config model, defaults, validation, URL-hash codec, localStorage
   data/loader.js        fetch meta, concepts, layer files or bundles; caching; graceful misses
   deck/select.js        which concepts become which notes, in which order (merges, disambiguators)
@@ -46,7 +47,7 @@ vendor/                 sql-wasm.js, sql-wasm.wasm, fflate.js (ES module) + ffla
                         checksums and LICENSE files in vendor/README.md)
 data/                   vocabulary (see DATA_FORMAT.md)
 tools/                  data lint + generation tooling, apkg.mjs (an .apkg from a config hash, in Node),
-                        bundle.mjs (new), sitemap/landing generator (new)
+                        bundle.mjs (the site with its data bundles), landing generator (phase 2)
 tests/                  node --test suites + fixtures (tests/fixtures/data exists)
 feedback/Code.gs        Apps Script backend (exists)
 .github/workflows/      ci.yml (lint + tests), pages.yml (bundle + deploy)
@@ -56,7 +57,12 @@ Keep pure logic (`state`, `deck/*`, `text/*`, `feedback/client` minus `fetch`) f
 
 ## 3. Data loading
 
-- **Production:** CI runs `tools/bundle.mjs` to produce `bundles/concepts.json`, `bundles/<code>.json` (all layers of one language merged: `{lang:{}, ex:{}, ipa:{}, etym:{}}`) and `bundles/meta.json`. File names include the data version for cache busting: `bundles/<version>/…`. A learning/known pair is then two or three requests, which gzip well (~0.5–1 MB per language over the wire).
+- **Production:** `node tools/bundle.mjs` builds the site in `_site/` with the data in `bundles/<data version>/`:
+  - `meta.json`: the meta files, as `getMeta()` returns them;
+  - `concepts.json`: `{module: {id: concept}}` in module tree order, without the authors' `note`s (a third of the file);
+  - `<code>.json`: all layers of one language, `{lang:{}, ex:{}, ipa:{}, etym:{}}`, for each language with data.
+
+  The loader reads `data/meta/version.json` without the cache (`no-cache`), then the bundles of that version. A language pair then takes five requests (version, meta, concepts and the two languages), which gzip well: English is 855 KB, 250 KB gzipped. The site leaves out the source vocabulary files (it keeps `data/meta/`), and the same data always gives the same bytes. `tools/bundle.mjs` replaces `_site/` as a whole, so it refuses any directory it did not build.
 - **Development / fallback:** if bundles are missing, load `data/meta/*`, all `data/concepts/*.json`, then per-module layer files for the two languages, in parallel. A missing file means empty; never throw.
 - Loader API (async, cached): `getMeta()`, `getConcepts()`, `getLanguage(code)` → `{lang: Map, ex: Map, ipa: Map, etym: Map}`.
 - Start prefetching a language when the user hovers or focuses its chip. Show a short inline status in the step while loading ("Loading Japanese words…"), and a message if loading fails.
@@ -259,9 +265,12 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 ## 10. SEO
 
 - `<title>`: "AnkiGen — free Anki vocabulary decks in 15 languages".
-- Meta description, canonical URL, Open Graph and Twitter card (with `og-image.png`).
+- Meta description, canonical URL, Open Graph and Twitter card (with `og-image.png`, 1200×630, rendered from `tools/og-image.html`).
 - JSON-LD `WebApplication` (free offer, `inLanguage` list).
 - Semantic headings, `noscript` text describing the tool, `robots.txt`, `sitemap.xml`.
+- These static files repeat URLs from `src/config.js` and the language count, because crawlers and link previews run no scripts. `tests/site.test.mjs` checks that they agree with `config.js` and `languages.json`.
+- Crawlers read `robots.txt` only at the root of a host. For a project site that is `xenohunter.github.io/robots.txt`, outside this repository, so submit `sitemap.xml` in Google Search Console instead. The file under `/ankigen/` is harmless.
+- **Speed:** `index.html` has a `modulepreload` link for every module of the first load (the test checks the list), so the browser fetches them all at once instead of in four rounds. The footer appears only after the first render, so it doesn't jump down while the steps appear.
 - **Optional, phase 2:** `tools/landing.mjs` generates static pages like `/decks/japanese-for-russian-speakers/`, each with a unique title and description, a short explanation, and a link into the app with a preset hash. Add them to the sitemap.
 
 ## 11. Testing
@@ -276,10 +285,12 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - **templates:** reverse rule moves learning fields to the back; type answer only on reverse.
   - **apkg:** build in Node with sql.js, reopen the DB, assert tables, IDs, fields, cards and the zip layout; byte-identical with a fixed clock; another clock changes only timestamps.
 - `tools/lint-data.mjs` on `data/` and on `tests/fixtures/data` in CI.
+- **site:** the static files agree with `src/config.js` and the registry; `modulepreload` matches the import graph; the first load stays within its budget.
+- **tools:** `tools/apkg.mjs` matches `buildApkg`; the site from `tools/bundle.mjs` loads the same data as the source files; `lint-data --gate` passes and fails as it should.
 - Optional Playwright smoke test (Chromium): pick ja ← ru, select Core I, toggle reverse, download, check the blob size is > 0.
 
 ## 12. CI/CD
 
 - `ci.yml` (push/PR): Node 22, `node tools/lint-data.mjs`, `node tools/lint-data.mjs --data tests/fixtures/data --meta data/meta`, `node --test`.
-- `pages.yml` (push to `master`): run tests, `node tools/bundle.mjs`, assemble `_site/` (app + vendor + bundles + data/meta + SEO files), deploy with `actions/deploy-pages`.
-- **Data gate:** the deploy job fails if any active language has < 100% entry coverage in `lint-data --report`, unless it is overridden with a workflow input. The site ships only when every language is complete.
+- `pages.yml` (push to `master`, or run by hand): lint, tests, the data gate, `node tools/bundle.mjs --site _site` (app + vendor + bundles + data/meta + SEO files), then `actions/upload-pages-artifact` and `actions/deploy-pages`. One-time setup: Settings → Pages → Source: GitHub Actions.
+- **Data gate:** `node tools/lint-data.mjs --gate` fails unless every active language has an entry for every concept, which is 100% in the `entries` column of `--report`. A failing gate fails the build, so nothing deploys. A manual run can skip it with the input "Deploy even if some languages are incomplete". The site ships only when every language is complete.

@@ -1,36 +1,79 @@
 # AnkiGen
 
-Free Anki vocabulary decks in 15 languages, generated entirely in your browser.
+Free Anki vocabulary decks in 15 languages, built right in your browser: **https://xenohunter.github.io/ankigen/**
 
-Repo: https://github.com/xenohunter/ankigen · Site: https://xenohunter.github.io/ankigen/
+Pick the language you're learning and one you speak, or short definitions in the same language. Choose topic modules, from the 500 most frequent words to food, housing, health, work and travel. Then choose what each card shows, and download an `.apkg` for Anki or AnkiDroid. The deck is built in your browser; nothing is uploaded.
 
-**Status:** the app runs locally (the page, the preview, the word list, feedback reports and the `.apkg` download); vocabulary is being generated (English is done).
+Languages: English, Russian, Serbian, Japanese, Chinese, German, Spanish, Portuguese, Polish, Korean, Dutch, French, Armenian, Turkish and Greek.
 
-Run it locally from the repo root, then open http://localhost:8000/ (add `?data=tests/fixtures/data` for the small test set in en/ru/ja/de/sr):
+Decks are deterministic: the same settings and data version always give the same notes with the same IDs. You can download again later with more modules, other fields or newer data, and import the new file over the old deck. Anki updates the notes and keeps your review history.
+
+**Status:** the app is complete. The vocabulary is being generated: English is done. The site goes live once all 15 languages are complete.
+
+The vocabulary is drafted with an AI model and partly reviewed by people. If something looks wrong, select it on a card and press Ctrl+Enter, or use the Feedback button on the page.
+
+## Run it locally
+
+No build step and no dependencies: serve the repository root and open http://localhost:8000/.
 
 ```
 python3 -m http.server 8000      # or: npx serve -l 8000
 ```
 
+- Add `?data=tests/fixtures/data` to the address for the small test set (15 words in English, Russian, Japanese, German and Serbian).
+- Downloading needs `https://` or `localhost`, because browsers hash note IDs only on secure pages. A phone opening the page by your computer's network address can do everything except download.
+
+## Checks
+
+```
+npm test                 # unit tests (node --test; Node 22)
+npm run lint:data        # validate data/
+npm run lint:fixtures    # validate the golden sample in tests/fixtures/data
+```
+
+## Build and deploy
+
+```
+node tools/bundle.mjs                   # build the site in _site/: the page, the data bundles, the SEO files
+python3 -m http.server -d _site 8000    # preview the production build
+```
+
+`.github/workflows/pages.yml` deploys to GitHub Pages on every push to `master`. It lints the data, runs the tests, checks the data gate, builds `_site/` and publishes it.
+
+- One-time setup: Settings → Pages → Source: **GitHub Actions**.
+- The data gate (`node tools/lint-data.mjs --gate`) fails until every active language has an entry for every concept, so nothing deploys before then.
+- To deploy anyway, run the workflow by hand: Actions → Pages → Run workflow, then tick "Deploy even if some languages are incomplete".
+- To release a data update: run the linter, bump `data` in `data/meta/version.json`, and push.
+
+## Data and feedback
+
+- `docs/DATA_FORMAT.md`: the data contract, implemented by `tools/lib/data.mjs` and `tools/lint-data.mjs`.
+- `docs/GENERATION.md`: how the vocabulary is generated in resumable units by an API batch runner (`tools/gen/batch.mjs`, which reads `ANKIGEN_API_KEY` from `.env`). `node tools/gen/plan.mjs status` shows progress.
+- `docs/FEEDBACK.md`: where error reports go (a Google Sheet through an Apps Script web app, `feedback/Code.gs`), and how to triage them.
+
+## Repository
+
 | Path | What |
 |---|---|
-| `CLAUDE.md` | rules for Claude Code (no commits, `master`, data rules) |
-| `docs/SPEC.md` | product specification (all decisions) |
-| `docs/ARCHITECTURE.md` | technical design for the app |
-| `docs/DATA_FORMAT.md` | vocabulary data contract |
-| `docs/GENERATION.md` | how the vocabulary is generated in resumable units, quota planning |
-| `docs/CLAUDE_CODE_PROMPT.md` | prompt to build the app with Claude Code |
-| `docs/FEEDBACK.md`, `feedback/Code.gs` | error-report backend (Google Sheet + Apps Script) |
-| `data/meta/` | languages, modules, field table, card labels |
-| `data/` | vocabulary (filled by generation units) |
-| `tools/lint-data.mjs` | data validator (`--report`, `--fix`, `--warnings`) |
-| `tools/apkg.mjs` | builds an `.apkg` in Node from a config hash (testing imports) |
+| `index.html`, `css/`, `src/` | the app: native ES modules, no framework, no build step |
+| `vendor/` | sql.js and fflate, pinned, with their licenses |
+| `data/` | the vocabulary: concepts, per-language layers, `meta/` (languages, modules, fields, labels, version) |
+| `tools/lint-data.mjs` | data validator (`--report`, `--fix`, `--warnings`, `--gate`) |
+| `tools/bundle.mjs` | builds the site with one data bundle per language |
+| `tools/apkg.mjs` | builds an `.apkg` in Node from a configuration hash (for testing imports) |
 | `tools/gen/` | generation planner, unit merger, API batch runner, prompts |
-| `tests/fixtures/data/` | golden sample dataset |
+| `tools/og-image.html` | source of `og-image.png`, the link preview picture |
+| `tests/` | `node --test` suites; `tests/fixtures/data/` is the golden sample |
+| `docs/SPEC.md`, `docs/ARCHITECTURE.md` | product decisions and technical design |
+| `docs/ANKI_CHECKLIST.md` | manual import checks in Anki and AnkiDroid |
+| `docs/CLAUDE_CODE_PROMPT.md`, `CLAUDE.md` | the build plan and the rules for Claude Code |
 
-```
-node tools/lint-data.mjs --data tests/fixtures/data --meta data/meta --report
-node tools/gen/plan.mjs status
-```
+## License
 
-Support: https://www.patreon.com/cw/blisstweeting
+- Code: [MIT](LICENSE).
+- Vocabulary in `data/`: [CC BY-SA 4.0](data/LICENSE.md).
+- `vendor/`: sql.js and fflate under their own licenses (MIT), see `vendor/README.md`.
+
+## Support
+
+If AnkiGen helps you, you can support it on [Patreon](https://www.patreon.com/cw/blisstweeting).

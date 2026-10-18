@@ -117,6 +117,13 @@ input[type="checkbox"] {
   font-size: 1.1rem;
 }
 
+/* Where a "?" button will be, so the line doesn't grow when it arrives. */
+.help-slot {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .draft {
   display: flex;
   flex-wrap: wrap;
@@ -145,9 +152,54 @@ input[type="checkbox"] {
 }
 
 .noscript {
-  max-width: 40rem;
-  margin: 1rem auto;
+  max-width: 86rem;
+  margin: 0 auto 1rem;
   padding: 0 1.5rem;
+}
+
+/* Without scripts the steps would stay empty: the noscript text describes the tool instead. */
+html:not(.js) .layout {
+  display: none;
+}
+
+.noscript p {
+  max-width: 40rem;
+}
+
+/* ------------------------------------------------------------------ footer */
+
+.site-foot {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Until the page has rendered (index.html adds .js, src/main.js .ready): it would jump as the steps appear. */
+.js:not(.ready) .site-foot {
+  display: none;
+}
+
+.site-foot a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.site-foot .support {
+  margin-bottom: 0.9rem;
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.foot-line {
+  margin: 0.3rem 0 0;
+}
+
+#versions:not(:empty)::before {
+  content: " · ";
 }
 
 /* ------------------------------------------------------------------ layout */
@@ -204,13 +256,10 @@ input[type="checkbox"] {
 }
 
 .status {
-  margin: 0.7rem 0 0;
+  min-height: 1.35em; /* keeps its line while empty, so "Loading … words" doesn't push the steps below */
+  margin: 0.6rem 0 0;
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-.status:empty {
-  display: none;
 }
 
 /* ------------------------------------------------------------------ controls */
@@ -688,8 +737,8 @@ input[type="checkbox"] {
 
 /* ------------------------------------------------------------------ preview and word list */
 
-/* The column beside the steps. With the word list it fills the window: the preview takes up to 60% of
-   it (scrolling inside when taller) and the list takes the rest. */
+/* The column beside the steps. With the word list it fills the window: the preview takes 60% of it
+   (scrolling inside when taller) and the list the rest, so the list stays put when the sample changes. */
 .side {
   position: sticky;
   top: 1rem;
@@ -710,7 +759,7 @@ input[type="checkbox"] {
 }
 
 .side:has(> .cards-panel:not([hidden])) > .preview-panel {
-  max-height: 60%;
+  flex: 0 0 60%;
 }
 
 .cards-panel {
@@ -1197,7 +1246,11 @@ input[type="checkbox"] {
 @media (max-width: 59.99rem) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
-    padding-bottom: 9rem;
+  }
+
+  /* Clear of the bottom bar and the Feedback button above it. */
+  .site-foot {
+    padding-bottom: calc(9rem + env(safe-area-inset-bottom));
   }
 
   .side {
@@ -1242,7 +1295,9 @@ input[type="checkbox"] {
 
 @media (max-width: 30rem) {
   .site-head,
-  .layout {
+  .layout,
+  .site-foot,
+  .noscript {
     padding-inline: 1rem;
   }
 

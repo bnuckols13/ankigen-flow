@@ -1,0 +1,61 @@
+# Deploy the site to GitHub Pages (ARCHITECTURE §12). One-time setup: Settings → Pages → Source: GitHub Actions.
+#
+# The data gate: the site ships only when every active language has an entry for every concept
+# (node tools/lint-data.mjs --gate). Until then a push to master fails at the gate and deploys nothing.
+# To deploy anyway (e.g. to try the live site), run the workflow by hand: Actions → Pages → Run workflow,
+# with "Deploy even if some languages are incomplete" ticked.
+name: Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      allow_incomplete:
+        description: Deploy even if some languages are incomplete
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push waits for the running one instead of cancelling it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Lint data
+        run: npm run lint:data
+      - name: Lint golden sample
+        run: npm run lint:fixtures
+      - name: Tests
+        run: npm test
+      - name: Data gate
+        if: ${{ !inputs.allow_incomplete }}
+        run: node tools/lint-data.mjs --gate
+      - name: Build the site
+        run: node tools/bundle.mjs --site _site
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

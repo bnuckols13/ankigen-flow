@@ -1,0 +1,87 @@
+<!doctype html>
+<!--
+  The source of og-image.png, the 1200×630 picture link previews show (index.html, og:image). To render it:
+    npx playwright screenshot --viewport-size "1200, 630" --wait-for-timeout 3000 "file://$PWD/tools/og-image.html" og-image.png
+  The fonts come from Google Fonts, so every script renders without a local font install. The colours are the
+  page's (css/app.css), the sample card is styled like the preview.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@500&family=Noto+Sans+KR:wght@500&family=Noto+Sans+Armenian:wght@500&display=block" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #f6f6f4;
+    color: #1d1f23;
+    font-family: "Noto Sans", sans-serif;
+  }
+  :lang(ja) { font-family: "Noto Sans JP", sans-serif; }
+  :lang(zh) { font-family: "Noto Sans SC", sans-serif; }
+  :lang(ko) { font-family: "Noto Sans KR", sans-serif; }
+  :lang(hy) { font-family: "Noto Sans Armenian", sans-serif; }
+  .wrap { display: grid; grid-template-columns: 700px 1fr; height: 100%; padding: 64px 0 56px 72px; }
+  .brand { display: flex; align-items: center; gap: 22px; }
+  .brand img { width: 76px; height: 76px; }
+  h1 { margin: 0; font-size: 76px; font-weight: 700; letter-spacing: -0.02em; }
+  .tagline { margin: 34px 0 0; font-size: 44px; line-height: 1.18; font-weight: 600; }
+  .sub { margin: 18px 0 0; color: #5d636d; font-size: 26px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; max-width: 690px; }
+  .chip { padding: 5px 14px; border: 1.5px solid #c4c7c2; border-radius: 999px; background: #fff; font-size: 20px; }
+  .chip.on { border-color: #2c6db0; background: #2c6db0; color: #fff; }
+  .url { position: absolute; left: 72px; bottom: 40px; color: #5d636d; font-size: 24px; }
+  .cards { position: relative; }
+  .card {
+    position: absolute;
+    width: 360px;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 18px 48px rgb(0 0 0 / 0.16);
+    text-align: center;
+  }
+  .back { top: 52px; left: 40px; height: 420px; background: #dbe8f6; transform: rotate(6deg); }
+  .front { top: 70px; left: 14px; padding: 40px 28px 34px; }
+  .word { font-size: 104px; line-height: 1.25; }
+  .word rt { font-size: 30px; color: #5d636d; }
+  hr { margin: 18px 10px 20px; border: 0; border-top: 2px solid #e2e3e0; }
+  .tr { font-size: 46px; }
+  .cap { margin-top: 24px; color: #8a8f97; font-size: 17px; font-weight: 600; letter-spacing: 0.1em; }
+  .ex { margin-top: 8px; font-size: 25px; }
+  .ex b { color: #2c6db0; }
+  .ex-tr { margin-top: 4px; color: #5d636d; font-size: 19px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <div class="brand"><img src="../favicon.svg" alt=""><h1>AnkiGen</h1></div>
+    <p class="tagline">Free Anki vocabulary decks<br>in 15 languages</p>
+    <p class="sub">Built in your browser · an .apkg for Anki and AnkiDroid</p>
+    <div class="chips">
+      <span class="chip" lang="en">English</span><span class="chip" lang="ru">Русский</span><span class="chip" lang="sr">Српски</span>
+      <span class="chip on" lang="ja">日本語</span><span class="chip" lang="zh">中文</span><span class="chip" lang="de">Deutsch</span>
+      <span class="chip" lang="es">Español</span><span class="chip" lang="pt">Português</span><span class="chip" lang="pl">Polski</span>
+      <span class="chip" lang="ko">한국어</span><span class="chip" lang="nl">Nederlands</span><span class="chip" lang="fr">Français</span>
+      <span class="chip" lang="hy">Հայերեն</span><span class="chip" lang="tr">Türkçe</span><span class="chip" lang="el">Ελληνικά</span>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="card back"></div>
+    <div class="card front">
+      <div class="word" lang="ja"><ruby>水<rt>みず</rt></ruby></div>
+      <hr>
+      <div class="tr">water</div>
+      <div class="cap">EXAMPLES</div>
+      <div class="ex" lang="ja"><b>水</b>を一杯ください。</div>
+      <div class="ex-tr">A glass of water, please.</div>
+    </div>
+  </div>
+</div>
+<div class="url">xenohunter.github.io/ankigen</div>
+</body>
+</html>

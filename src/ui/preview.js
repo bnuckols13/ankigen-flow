@@ -121,8 +121,11 @@ export function mountPreview(root, app, { id, isActive, onFrame, report }) {
   });
 
   return {
-    /** @param {View} view */
-    update: scheduled,
+    /** The first render is immediate, or the panel would show empty frames for a moment; later ones are debounced. @param {View} view */
+    update(view) {
+      if (stale) render(view);
+      else scheduled(view);
+    },
     /** Render now if updates were skipped while hidden. */
     show() {
       if (stale) render(app.view());

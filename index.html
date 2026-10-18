@@ -5,18 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AnkiGen — free Anki vocabulary decks in 15 languages</title>
 <meta name="description" content="Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.">
+<link rel="canonical" href="https://xenohunter.github.io/ankigen/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151618" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AnkiGen">
+<meta property="og:url" content="https://xenohunter.github.io/ankigen/">
+<meta property="og:title" content="AnkiGen — free Anki vocabulary decks in 15 languages">
+<meta property="og:description" content="Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.">
+<meta property="og:image" content="https://xenohunter.github.io/ankigen/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AnkiGen: free Anki vocabulary decks in 15 languages, with a sample card for the Japanese word 水, water.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AnkiGen",
+  "url": "https://xenohunter.github.io/ankigen/",
+  "image": "https://xenohunter.github.io/ankigen/og-image.png",
+  "description": "Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "inLanguage": ["en", "ru", "sr", "ja", "zh", "de", "es", "pt", "pl", "ko", "nl", "fr", "hy", "tr", "el"]
+}
+</script>
+<!-- With scripts the app renders its steps (without, the noscript text replaces them); the footer then waits
+     for the first render, so it does not jump down as the steps appear. -->
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="css/app.css">
 <script type="module" src="src/main.js"></script>
+<!-- Every module src/main.js imports, so the browser fetches them at once (tests/site.test.mjs keeps this list in sync). -->
+<link rel="modulepreload" href="src/config.js">
+<link rel="modulepreload" href="src/data/loader.js">
+<link rel="modulepreload" href="src/deck/deck.js">
+<link rel="modulepreload" href="src/deck/fields.js">
+<link rel="modulepreload" href="src/deck/names.js">
+<link rel="modulepreload" href="src/deck/render.js">
+<link rel="modulepreload" href="src/deck/search.js">
+<link rel="modulepreload" href="src/deck/select.js">
+<link rel="modulepreload" href="src/deck/templates.js">
+<link rel="modulepreload" href="src/state.js">
+<link rel="modulepreload" href="src/text/furigana.js">
+<link rel="modulepreload" href="src/text/html.js">
+<link rel="modulepreload" href="src/text/normalize.js">
+<link rel="modulepreload" href="src/text/translit.js">
+<link rel="modulepreload" href="src/ui/app.js">
+<link rel="modulepreload" href="src/ui/copy.js">
+<link rel="modulepreload" href="src/ui/dom.js">
+<link rel="modulepreload" href="src/ui/download.js">
+<link rel="modulepreload" href="src/ui/feedback.js">
+<link rel="modulepreload" href="src/ui/fields.js">
+<link rel="modulepreload" href="src/ui/format.js">
+<link rel="modulepreload" href="src/ui/languages.js">
+<link rel="modulepreload" href="src/ui/modules.js">
+<link rel="modulepreload" href="src/ui/options.js">
+<link rel="modulepreload" href="src/ui/popover.js">
+<link rel="modulepreload" href="src/ui/preview.js">
+<link rel="modulepreload" href="src/ui/sidebar.js">
+<link rel="modulepreload" href="src/ui/steps.js">
 </head>
 <body>
 <header class="site-head">
   <h1 class="logo">AnkiGen</h1>
   <p class="lede">Free Anki vocabulary decks in 15 languages, built right in your browser.</p>
-  <p class="draft" id="draft">The vocabulary is machine-drafted and only partly reviewed. Feedback is very welcome.</p>
+  <p class="draft">The vocabulary is machine-drafted and only partly reviewed. Feedback is very welcome.<span class="help-slot" id="draft-help"></span></p>
 </header>
+
+<noscript>
+  <div class="noscript">
+    <p>AnkiGen builds free Anki vocabulary decks right in your browser. You pick the language you are learning and one you speak, among English, Russian, Serbian, Japanese, Chinese, German, Spanish, Portuguese, Polish, Korean, Dutch, French, Armenian, Turkish and Greek. Then you choose topic modules, from the most frequent words to food, housing, health, work and travel, and what each card shows. AnkiGen gives you an .apkg file for Anki or AnkiDroid.</p>
+    <p>It needs JavaScript: please enable it and reload the page.</p>
+  </div>
+</noscript>
 
 <div class="layout">
   <main class="steps" id="steps">
@@ -89,6 +158,11 @@
   <div class="cl"></div>
 </dialog>
 
-<noscript><p class="noscript">AnkiGen builds Anki decks right in your browser, so it needs JavaScript. Please enable it and reload the page.</p></noscript>
+<footer class="site-foot">
+  <a class="button support" href="https://www.patreon.com/cw/blisstweeting" target="_blank" rel="noopener">Support this project</a>
+  <p class="foot-line"><a href="https://github.com/xenohunter/ankigen" target="_blank" rel="noopener">Source on GitHub</a><span id="versions"></span></p>
+  <p class="foot-line">Code under the <a href="https://github.com/xenohunter/ankigen/blob/master/LICENSE" target="_blank" rel="noopener">MIT license</a>; vocabulary under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>.</p>
+</footer>
+
 </body>
 </html>
