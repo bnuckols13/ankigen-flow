@@ -17,7 +17,7 @@ Audience: the engineer (Claude Code) implementing the web app. Product decisions
 ```
 index.html              single page; semantic HTML, SEO meta, modulepreload links, footer, noscript description
 404.html                redirect to the app (keeps a configuration hash)
-robots.txt, sitemap.xml, og-image.png (source: tools/og-image.html), favicon.svg, apple-touch-icon.png
+robots.txt, og-image.png (source: tools/og-image.html), favicon.svg, apple-touch-icon.png (sitemap.xml is built)
 LICENSE                 MIT, for the code; data/LICENSE.md: CC BY-SA 4.0, for the vocabulary
 css/app.css             page styles (light/dark via prefers-color-scheme)
 css/card.css            card styles; SAME file is embedded into the Anki note type
@@ -47,7 +47,7 @@ vendor/                 sql-wasm.js, sql-wasm.wasm, fflate.js (ES module) + ffla
                         checksums and LICENSE files in vendor/README.md)
 data/                   vocabulary (see DATA_FORMAT.md)
 tools/                  data lint + generation tooling, apkg.mjs (an .apkg from a config hash, in Node),
-                        bundle.mjs (the site with its data bundles), landing generator (phase 2)
+                        bundle.mjs (the site with its data bundles), landing.mjs (landing pages and sitemap)
 tests/                  node --test suites + fixtures (tests/fixtures/data exists)
 feedback/Code.gs        Apps Script backend (exists)
 .github/workflows/      ci.yml (lint + tests), pages.yml (bundle + deploy)
@@ -267,11 +267,19 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - `<title>`: "AnkiGen — free Anki vocabulary decks in 15 languages".
 - Meta description, canonical URL, Open Graph and Twitter card (with `og-image.png`, 1200×630, rendered from `tools/og-image.html`).
 - JSON-LD `WebApplication` (free offer, `inLanguage` list).
-- Semantic headings, `noscript` text describing the tool, `robots.txt`, `sitemap.xml`.
+- Semantic headings, `noscript` text describing the tool, `robots.txt`, and `sitemap.xml` (built with the landing pages).
 - These static files repeat URLs from `src/config.js` and the language count, because crawlers and link previews run no scripts. `tests/site.test.mjs` checks that they agree with `config.js` and `languages.json`.
 - Crawlers read `robots.txt` only at the root of a host. For a project site that is `xenohunter.github.io/robots.txt`, outside this repository, so submit `sitemap.xml` in Google Search Console instead. The file under `/ankigen/` is harmless.
 - **Speed:** `index.html` has a `modulepreload` link for every module of the first load (the test checks the list), so the browser fetches them all at once instead of in four rounds. The footer appears only after the first render, so it doesn't jump down while the steps appear.
-- **Optional, phase 2:** `tools/landing.mjs` generates static pages like `/decks/japanese-for-russian-speakers/`, each with a unique title and description, a short explanation, and a link into the app with a preset hash. Add them to the sitemap.
+- **Landing pages:** `tools/landing.mjs` makes them from the bundles `tools/bundle.mjs` has just built, so they describe the deck the site serves.
+  - `decks/<learning>-for-<known>-speakers/` for each bilingual pair, `decks/<learning>-monolingual/` for each same-language deck: 225 pages once all 15 languages are complete. A pair without words gets no page yet. The slugs come from the English names in `languages.json`, so renaming a language moves its pages.
+  - Each page has its own title and description and shows the deck with the app's own code:
+    - the word count, and the field rows and deck options the app shows for the pair, with their help texts;
+    - every module with words, with the count the module tree shows, up to three sample words and its country-specific words. Samples are the module's own single-meaning words first, never from an 18+ module and never vulgar or offensive.
+  - "Build your deck" opens the app with a preset hash (the pair with Core I), and each module opens it with only that module.
+  - `decks/` lists the pages by the language you speak, then the monolingual decks. The app's footer and noscript text link to it, and every page links to the other decks for the same speakers and for the same learned language.
+  - Plain HTML with the app's stylesheet and no scripts: canonical URL, Open Graph tags and a JSON-LD `BreadcrumbList`. English, like the app (UI localization is a non-goal).
+  - `sitemap.xml` lists the app, `decks/` and every page.
 
 ## 11. Testing
 
@@ -286,11 +294,12 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - **apkg:** build in Node with sql.js, reopen the DB, assert tables, IDs, fields, cards and the zip layout; byte-identical with a fixed clock; another clock changes only timestamps.
 - `tools/lint-data.mjs` on `data/` and on `tests/fixtures/data` in CI.
 - **site:** the static files agree with `src/config.js` and the registry; `modulepreload` matches the import graph; the first load stays within its budget.
-- **tools:** `tools/apkg.mjs` matches `buildApkg`; the site from `tools/bundle.mjs` loads the same data as the source files; `lint-data --gate` passes and fails as it should.
+- **tools:** `tools/apkg.mjs` matches `buildApkg`; the site from `tools/bundle.mjs` loads the same data as the source files, and its landing pages are the ones the source files give; `lint-data --gate` passes and fails as it should.
+- **landing:** a page for every pair with words, at its slug; unique titles and descriptions; every link resolves, and the app links decode to the page's pair; module counts match the deck; no 18+ or vulgar samples; the hub and the sitemap list exactly the pages; same data, same pages.
 - Optional Playwright smoke test (Chromium): pick ja ← ru, select Core I, toggle reverse, download, check the blob size is > 0.
 
 ## 12. CI/CD
 
 - `ci.yml` (push/PR): Node 22, `node tools/lint-data.mjs`, `node tools/lint-data.mjs --data tests/fixtures/data --meta data/meta`, `node --test`.
-- `pages.yml` (push to `master`, or run by hand): lint, tests, the data gate, `node tools/bundle.mjs --site _site` (app + vendor + bundles + data/meta + SEO files), then `actions/upload-pages-artifact` and `actions/deploy-pages`. One-time setup: Settings → Pages → Source: GitHub Actions.
+- `pages.yml` (push to `master`, or run by hand): lint, tests, the data gate, `node tools/bundle.mjs --site _site` (app + vendor + bundles + data/meta + SEO files + landing pages and sitemap), then `actions/upload-pages-artifact` and `actions/deploy-pages`. One-time setup: Settings → Pages → Source: GitHub Actions.
 - **Data gate:** `node tools/lint-data.mjs --gate` fails unless every active language has an entry for every concept, which is 100% in the `entries` column of `--report`. A failing gate fails the build, so nothing deploys. A manual run can skip it with the input "Deploy even if some languages are incomplete". The site ships only when every language is complete.

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Build the site for GitHub Pages (ARCHITECTURE §3, §12): the page, its code and styles, data/meta, the SEO
-// files, and the data bundles under bundles/<data version>/:
+// files, the data bundles under bundles/<data version>/, and the landing pages with the sitemap
+// (tools/landing.mjs, made from those bundles):
 //   meta.json      languages, modules, fields, labels and version, as src/data/loader.js reads them
 //   concepts.json  { module: { id: concept } } in module tree order, without the authors' notes
 //   <code>.json    one per language with data: all its layers, { lang, ex, ipa, etym }, keyed by concept ID
@@ -15,11 +16,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
+import { createLoader } from '../src/data/loader.js';
+import { DECKS_DIR, landingSite } from './landing.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 
 /** What the site is made of, relative to the repository root. Everything else (docs, tools, tests, .env) stays out. */
-export const SITE_FILES = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'og-image.png', 'favicon.svg', 'apple-touch-icon.png', 'css', 'src', 'vendor'];
+export const SITE_FILES = ['index.html', '404.html', 'robots.txt', 'og-image.png', 'favicon.svg', 'apple-touch-icon.png', 'css', 'src', 'vendor'];
 const LAYERS = ['lang', 'ex', 'ipa', 'etym'];
 /** Written into every site this tool builds; a directory without it is never replaced. */
 const MARKER = '.ankigen-site';
@@ -76,10 +79,15 @@ function checkReplaceable(siteDir) {
   }
 }
 
+/** The app's loader, reading a built site the way the browser does (so it takes the bundles). @param {string} siteDir */
+function siteLoader(siteDir) {
+  return createLoader({ fetchJson: async (p) => readJson(path.join(siteDir, ...p.split('/'))) });
+}
+
 /**
  * @param {{ siteDir: string, dataDir: string, metaDir: string }} dirs absolute paths
  */
-export function buildSite({ siteDir, dataDir, metaDir }) {
+export async function buildSite({ siteDir, dataDir, metaDir }) {
   checkReplaceable(siteDir);
   const { version, files } = makeBundles(dataDir, metaDir);
   fs.rmSync(siteDir, { recursive: true, force: true });
@@ -94,7 +102,12 @@ export function buildSite({ siteDir, dataDir, metaDir }) {
   const bundleDir = path.join(siteDir, 'bundles', version);
   fs.mkdirSync(bundleDir, { recursive: true });
   for (const [name, text] of Object.entries(files)) fs.writeFileSync(path.join(bundleDir, name), text);
-  return { version, files };
+  const pages = await landingSite(siteLoader(siteDir));
+  for (const [name, text] of Object.entries(pages)) {
+    fs.mkdirSync(path.dirname(path.join(siteDir, name)), { recursive: true });
+    fs.writeFileSync(path.join(siteDir, name), text);
+  }
+  return { version, files, pages };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -107,10 +120,12 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const dataDir = path.resolve(opt('--data', 'data'));
   const dirs = { siteDir: path.resolve(opt('--site', '_site')), dataDir, metaDir: path.resolve(opt('--meta', path.join(ROOT, 'data', 'meta'))) };
   try {
-    const { version, files } = buildSite(dirs);
+    const { version, files, pages } = await buildSite(dirs);
     const kb = (/** @type {number} */ n) => `${Math.round(n / 1024).toLocaleString('en-US')} KB`;
     const sizes = Object.entries(files).map(([name, text]) => `${name} ${kb(Buffer.byteLength(text))} (${kb(zlib.gzipSync(text).length)} gzipped)`);
+    const landing = Object.keys(pages).filter((name) => name.startsWith(DECKS_DIR) && name !== `${DECKS_DIR}index.html`).length;
     console.log(`${path.relative(process.cwd(), dirs.siteDir) || '.'}: data ${version}, from ${path.relative(process.cwd(), dataDir) || '.'}\n  ${sizes.join('\n  ')}`);
+    console.log(`  ${DECKS_DIR}: ${landing} landing page${landing === 1 ? '' : 's'} and the hub; sitemap.xml`);
   } catch (error) {
     console.error(`tools/bundle.mjs: ${/** @type {Error} */ (error).message}`);
     process.exit(1);

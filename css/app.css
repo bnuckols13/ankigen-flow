@@ -1241,6 +1241,208 @@ html:not(.js) .layout {
   }
 }
 
+/* ------------------------------------------------------------------ landing pages (tools/landing.mjs) */
+
+/* A reading column; the header and footer line up with it. */
+.lp-page .site-head,
+.lp-page .site-foot,
+.lp {
+  max-width: 52rem;
+}
+
+.lp-page .site-head {
+  padding-block: 1.25rem 0;
+}
+
+/* No bottom bar or Feedback button to clear. */
+.lp-page .site-foot {
+  padding-bottom: 2.5rem;
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  list-style: none;
+}
+
+.crumbs li + li::before {
+  content: "›";
+  margin-right: 0.5rem;
+}
+
+.crumbs a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.crumbs li:first-child a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.crumbs [aria-current="page"] {
+  text-decoration: none;
+}
+
+.lp {
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 1rem;
+}
+
+.lp a {
+  color: var(--accent-ink);
+  text-underline-offset: 3px;
+}
+
+.lp h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.lp h2 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.35rem;
+}
+
+.lp h3 {
+  margin: 1.5rem 0 0.6rem;
+  font-size: 1.05rem;
+}
+
+.lp > p,
+.lp > ol {
+  max-width: 42rem;
+}
+
+.lp-facts {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+}
+
+.lp-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin: 1.5rem 0;
+}
+
+.lp-cta .button {
+  text-decoration: none;
+}
+
+.lp-cta span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.lp-fields {
+  display: grid;
+  grid-template-columns: minmax(8rem, max-content) minmax(0, 1fr);
+  gap: 0.55rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.lp-fields dt {
+  font-weight: 600;
+}
+
+.lp-fields dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.lp-mods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lp-mod {
+  padding: 0.85rem 1rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.lp-mod h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.5rem;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.lp-count {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.lp-mod p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.lp-words {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0.6rem 0 0;
+  padding: 0.6rem 0 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+  list-style: none;
+}
+
+.lp-dis,
+.lp-tr {
+  color: var(--muted);
+}
+
+.lp-pairs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lp .lp-pairs a {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.lp .lp-pairs a:hover {
+  border-color: var(--accent);
+}
+
+.lp-native {
+  margin-left: 0.35rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
 /* ------------------------------------------------------------------ narrow screens */
 
 @media (max-width: 59.99rem) {
@@ -1297,8 +1499,18 @@ html:not(.js) .layout {
   .site-head,
   .layout,
   .site-foot,
-  .noscript {
+  .noscript,
+  .lp {
     padding-inline: 1rem;
+  }
+
+  .lp-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+
+  .lp-fields dd {
+    margin-bottom: 0.5rem;
   }
 
   .step {

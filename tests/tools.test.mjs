@@ -9,6 +9,7 @@ import { loadSqlJs } from '../tools/lib/sqljs.mjs';
 import { buildApkg } from '../src/deck/apkg.js';
 import { apkgFileName } from '../src/deck/names.js';
 import { createLoader } from '../src/data/loader.js';
+import { landingSite } from '../tools/landing.mjs';
 import { fixtureDeck, fixtureLoader } from './helpers/fixtures.mjs';
 
 const REPO = new URL('..', import.meta.url);
@@ -112,6 +113,10 @@ test('tools/bundle.mjs: the site serves the same data from its bundles as the so
       assert.deepEqual(await fromSite.getLanguage(code), await fromSource.getLanguage(code), code);
     }
     assert.ok(fetched.includes(`bundles/${version}/concepts.json`) && !fetched.some((p) => p.startsWith('data/concepts')), 'read from the bundles');
+
+    // The landing pages and the sitemap, made from the bundles: the ones the source files give.
+    assert.match(stdout, /decks\/: 25 landing pages and the hub; sitemap\.xml/);
+    for (const [name, text] of Object.entries(await landingSite(fromSource))) assert.equal(fs.readFileSync(path.join(site, name), 'utf8'), text, name);
 
     // Same data, same bytes; and the next build replaces the site.
     const before = fs.readFileSync(path.join(site, 'bundles', version, 'en.json'));

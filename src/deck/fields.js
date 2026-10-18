@@ -41,7 +41,7 @@ const unique = (values) => /** @type {string[]} */ ([...new Set(values.filter(Bo
  * subtag for Serbian.
  * @param {any} reg @param {string} code @param {'cyrl' | 'latn'} srScript
  */
-function langTag(reg, code, srScript) {
+export function langTag(reg, code, srScript) {
   if (code === 'sr') return srScript === 'latn' ? 'sr-Latn-RS' : 'sr-Cyrl-RS';
   return reg?.locale ?? code;
 }

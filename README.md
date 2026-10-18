@@ -22,6 +22,7 @@ python3 -m http.server 8000      # or: npx serve -l 8000
 
 - Add `?data=tests/fixtures/data` to the address for the small test set (15 words in English, Russian, Japanese, German and Serbian).
 - Downloading needs `https://` or `localhost`, because browsers hash note IDs only on secure pages. A phone opening the page by your computer's network address can do everything except download.
+- The landing pages under `decks/` exist only in the built site (below).
 
 ## Checks
 
@@ -34,9 +35,11 @@ npm run lint:fixtures    # validate the golden sample in tests/fixtures/data
 ## Build and deploy
 
 ```
-node tools/bundle.mjs                   # build the site in _site/: the page, the data bundles, the SEO files
-python3 -m http.server -d _site 8000    # preview the production build
+node tools/bundle.mjs                   # build the site in _site/: the page, the data bundles, the landing pages, the SEO files
+python3 -m http.server -d _site 8000    # preview the production build; the landing pages are at /decks/
 ```
+
+The landing pages are one static page per language pair with words, such as `decks/japanese-for-russian-speakers/`, for search engines: the deck's modules with word counts and sample words, and links that open the app with the pair chosen. `decks/` lists them, and `sitemap.xml` is written with them.
 
 `.github/workflows/pages.yml` deploys to GitHub Pages on every push to `master`. It lints the data, runs the tests, checks the data gate, builds `_site/` and publishes it.
 
@@ -60,6 +63,7 @@ python3 -m http.server -d _site 8000    # preview the production build
 | `data/` | the vocabulary: concepts, per-language layers, `meta/` (languages, modules, fields, labels, version) |
 | `tools/lint-data.mjs` | data validator (`--report`, `--fix`, `--warnings`, `--gate`) |
 | `tools/bundle.mjs` | builds the site with one data bundle per language |
+| `tools/landing.mjs` | the landing pages per language pair and the sitemap (`tools/bundle.mjs` writes them) |
 | `tools/apkg.mjs` | builds an `.apkg` in Node from a configuration hash (for testing imports) |
 | `tools/gen/` | generation planner, unit merger, API batch runner, prompts |
 | `tools/og-image.html` | source of `og-image.png`, the link preview picture |

@@ -4,6 +4,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
+import { DECKS_DIR } from '../tools/landing.mjs';
+import { head as headOf } from './helpers/html.mjs';
 import { staticGraph } from './helpers/modules.mjs';
 
 const ROOT = new URL('../', import.meta.url);
@@ -12,16 +14,12 @@ const read = (file) => fs.readFileSync(new URL(file, ROOT), 'utf8');
 const html = read('index.html');
 const registry = JSON.parse(read('data/meta/languages.json'));
 const active = /** @type {string[]} */ (registry.active);
-
-/** The content of <meta name|property="…"> or the href of <link rel="…">. @param {string} attr @param {string} value */
-function head(attr, value) {
-  const tag = html.match(new RegExp(`<(?:meta|link)[^>]*${attr}="${value}"[^>]*>`))?.[0] ?? '';
-  return tag.match(/(?:content|href)="([^"]*)"/)?.[1];
-}
+/** @param {string} attr @param {string} value */
+const head = (attr, value) => headOf(html, attr, value);
 
 test('every absolute URL in the static files comes from src/config.js', () => {
-  const allowed = [SITE_URL, REPO_URL, PATREON_URL, DATA_LICENSE_URL, 'https://schema.org', 'http://www.sitemaps.org/schemas/sitemap/0.9'];
-  for (const file of ['index.html', '404.html', 'robots.txt', 'sitemap.xml']) {
+  const allowed = [SITE_URL, REPO_URL, PATREON_URL, DATA_LICENSE_URL, 'https://schema.org'];
+  for (const file of ['index.html', '404.html', 'robots.txt']) {
     for (const [url] of read(file).matchAll(/https?:\/\/[^\s"'<>)]+/g)) {
       assert.ok(allowed.some((prefix) => url.startsWith(prefix)), `${file}: ${url} is not in src/config.js`);
     }
@@ -31,8 +29,7 @@ test('every absolute URL in the static files comes from src/config.js', () => {
   assert.equal(head('property', 'og:image'), `${SITE_URL}og-image.png`);
   for (const url of [PATREON_URL, REPO_URL, DATA_LICENSE_URL]) assert.ok(html.includes(`href="${url}"`), `the footer links to ${url}`);
   assert.match(read('404.html'), new RegExp(`var home = '${SITE_URL}'`));
-  assert.match(read('robots.txt'), new RegExp(`Sitemap: ${SITE_URL}sitemap.xml`));
-  assert.match(read('sitemap.xml'), new RegExp(`<loc>${SITE_URL}</loc>`));
+  assert.match(read('robots.txt'), new RegExp(`Sitemap: ${SITE_URL}sitemap.xml`)); // written by the build (tests/landing.test.mjs)
 });
 
 test('title, description and structured data agree, and count the active languages', () => {
@@ -61,11 +58,14 @@ test('the link preview image is 1200×630, and the icons exist', () => {
   assert.match(read('favicon.svg'), /^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
 });
 
-test('index.html preloads exactly the modules src/main.js imports, and every file it names exists', () => {
+test('index.html preloads exactly the modules src/main.js imports, and every file it names exists (or the build makes it)', () => {
   const preloaded = [...html.matchAll(/<link rel="modulepreload" href="([^"]+)">/g)].map((m) => m[1]).sort();
   const graph = [...staticGraph().keys()].filter((file) => file !== 'src/main.js').sort();
   const missing = graph.filter((file) => !preloaded.includes(file));
   const extra = preloaded.filter((file) => !graph.includes(file));
   assert.deepEqual({ missing, extra }, { missing: [], extra: [] }, 'update the modulepreload links in index.html');
-  for (const [, file] of html.matchAll(/(?:href|src)="(?!https?:|#)([^"]+)"/g)) assert.ok(fs.existsSync(new URL(file, ROOT)), `index.html names ${file}`);
+  for (const [, file] of html.matchAll(/(?:href|src)="(?!https?:|#)([^"]+)"/g)) {
+    assert.ok(file === DECKS_DIR || fs.existsSync(new URL(file, ROOT)), `index.html names ${file}`);
+  }
+  assert.equal([...html.matchAll(new RegExp(`href="${DECKS_DIR}"`, 'g'))].length, 2, 'the footer and the noscript text link to the landing pages');
 });

@@ -11,8 +11,9 @@ export const PATREON_URL = 'https://www.patreon.com/cw/blisstweeting';
 /** The vocabulary's license (the code is MIT, see LICENSE). */
 export const DATA_LICENSE_URL = 'https://creativecommons.org/licenses/by-sa/4.0/';
 
-// index.html, 404.html, robots.txt and sitemap.xml carry these URLs too, for crawlers and link previews that
-// run no scripts; tests/site.test.mjs checks that they agree with this file.
+// index.html, 404.html and robots.txt carry these URLs too, for crawlers and link previews that run no scripts;
+// tests/site.test.mjs checks that they agree with this file. The landing pages and the sitemap
+// (tools/landing.mjs) import them.
 
 /** Apps Script web app (docs/FEEDBACK.md). Public by design: the script enforces its own limits. */
 export const FEEDBACK_ENDPOINT =
