@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "Le vocabulaire a été rédigé par une machine et n'est que partiellement relu. Vos retours sont les bienvenus.",
     "head.draftTopic": "le vocabulaire en brouillon",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "Toujours au recto",
     "fields.alwaysBack": "Toujours au verso",
     "fields.examples": "Nombre d'exemples",
+    "fields.more": "Plus…",
     "options.cyrl": "Cyrillique",
     "options.latn": "Latin",
     "download.deck": "Deck",
@@ -86,13 +87,22 @@
     "list.open": "Liste des mots : {size}",
     "feedback.button": "Commentaires",
     "feedback.title": "Commentaires ({shortcut})",
+    "langs.title": "Langues disponibles — AnkiGen",
+    "langs.heading": "Langues disponibles",
+    "langs.extras": "Les cartes peuvent aussi afficher : {fields}",
+    "langs.build": "Créer un deck",
+    "langs.askTitle": "Il manque une langue ?",
+    "langs.askText": "Dites-nous quelle langue vous aimeriez apprendre ou utiliser sur ce site. Les demandes nous aident à choisir les prochaines langues.",
+    "langs.ask": "Demander une langue",
     "foot.decks": "Decks par paire de langues",
+    "foot.languages": "Langues disponibles",
     "foot.source": "Code source sur GitHub",
     "foot.license": "Code sous licence {mit} ; vocabulaire sous {cc}.",
     "foot.author": "Créé par {name}",
     "fb.title": "Commentaires",
     "fb.close": "Fermer",
     "fb.about": "À propos de {word}",
+    "fb.newLanguage": "Quelle langue aimeriez-vous voir ici ? Dites-nous aussi quelle langue vous parlez.",
     "fb.message": "Message",
     "fb.category": "Catégorie",
     "fb.choose": "Choisir…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "Faute de frappe",
     "fb.category.wrong-form": "Mauvaise forme",
     "fb.category.bad-example": "Mauvais exemple",
+    "fb.category.new-language": "Nouvelle langue",
     "fb.category.suggestion": "Suggestion",
     "fb.category.other": "Autre",
     "fb.email": "E-mail",
@@ -163,6 +174,16 @@
       "one": "Créez des decks de vocabulaire Anki gratuits directement dans votre navigateur : {n} langue, des modules thématiques et les champs de carte de votre choix. Téléchargez un .apkg pour Anki ou AnkiDroid.",
       "many": "Créez des decks de vocabulaire Anki gratuits directement dans votre navigateur : {n} de langues, des modules thématiques et les champs de carte de votre choix. Téléchargez un .apkg pour Anki ou AnkiDroid.",
       "other": "Créez des decks de vocabulaire Anki gratuits directement dans votre navigateur : {n} langues, des modules thématiques et les champs de carte de votre choix. Téléchargez un .apkg pour Anki ou AnkiDroid."
+    },
+    "langsLede": {
+      "one": "AnkiGen crée des decks Anki en {n} langue, avec des définitions dans la même langue.",
+      "many": "AnkiGen crée des decks Anki en {n} de langues. Apprenez chacune d'elles avec des traductions dans n'importe quelle autre, ou avec des définitions dans la même langue.",
+      "other": "AnkiGen crée des decks Anki en {n} langues. Apprenez chacune d'elles avec des traductions dans n'importe quelle autre, ou avec des définitions dans la même langue."
+    },
+    "langsDescription": {
+      "one": "La {n} langue dans laquelle AnkiGen crée des decks de vocabulaire Anki gratuits, et comment en demander une autre.",
+      "many": "Les {n} de langues dans lesquelles AnkiGen crée des decks de vocabulaire Anki gratuits, et comment en demander une autre.",
+      "other": "Les {n} langues dans lesquelles AnkiGen crée des decks de vocabulaire Anki gratuits, et comment en demander une autre."
     },
     "word": {
       "one": "{n} mot",

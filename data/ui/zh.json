@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "词汇由 AI 起草，目前只有一部分经过人工审核。非常欢迎你的反馈。",
     "head.draftTopic": "词汇草稿",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "始终在正面",
     "fields.alwaysBack": "始终在背面",
     "fields.examples": "例句数量",
+    "fields.more": "更多…",
     "options.cyrl": "西里尔字母",
     "options.latn": "拉丁字母",
     "download.deck": "牌组",
@@ -86,13 +87,22 @@
     "list.open": "单词列表：{size}",
     "feedback.button": "反馈",
     "feedback.title": "反馈（{shortcut}）",
+    "langs.title": "支持的语言 — AnkiGen",
+    "langs.heading": "支持的语言",
+    "langs.extras": "卡片还可以显示：{fields}",
+    "langs.build": "制作牌组",
+    "langs.askTitle": "没有你需要的语言？",
+    "langs.askText": "告诉我们你想学习哪种语言，或希望这个网站使用哪种语言。你的请求会帮助我们决定接下来添加哪些语言。",
+    "langs.ask": "请求添加语言",
     "foot.decks": "按语言组合浏览牌组",
+    "foot.languages": "支持的语言",
     "foot.source": "GitHub 上的源代码",
     "foot.license": "代码采用 {mit} 许可；词汇采用 {cc} 许可。",
     "foot.author": "作者：{name}",
     "fb.title": "反馈",
     "fb.close": "关闭",
     "fb.about": "单词：{word}",
+    "fb.newLanguage": "你希望这里增加哪种语言？也请告诉我们你说哪种语言。",
     "fb.message": "留言",
     "fb.category": "类别",
     "fb.choose": "请选择…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "拼写错误",
     "fb.category.wrong-form": "词形错误",
     "fb.category.bad-example": "例句不当",
+    "fb.category.new-language": "新语言",
     "fb.category.suggestion": "建议",
     "fb.category.other": "其他",
     "fb.email": "电子邮件",
@@ -157,6 +168,12 @@
     },
     "description": {
       "other": "直接在浏览器中生成免费的 Anki 词汇牌组：{n} 种语言、按主题划分的模块，卡片字段随你选择。下载适用于 Anki 或 AnkiDroid 的 .apkg 文件。"
+    },
+    "langsLede": {
+      "other": "AnkiGen 可以制作 {n} 种语言的 Anki 牌组。每种语言都可以借助其他任一语言的翻译来学，也可以用同一语言的释义来学。"
+    },
+    "langsDescription": {
+      "other": "AnkiGen 可以制作免费 Anki 词汇牌组的 {n} 种语言，以及如何请求添加其他语言。"
     },
     "word": {
       "other": "{n} 个词"

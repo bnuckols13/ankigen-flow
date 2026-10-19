@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "Das Vokabular wurde maschinell entworfen und ist erst teilweise geprüft. Feedback ist sehr willkommen.",
     "head.draftTopic": "Vokabular-Entwurf",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "Immer auf der Vorderseite",
     "fields.alwaysBack": "Immer auf der Rückseite",
     "fields.examples": "Anzahl der Beispiele",
+    "fields.more": "Mehr…",
     "options.cyrl": "Kyrillisch",
     "options.latn": "Lateinisch",
     "download.deck": "Deck",
@@ -86,13 +87,22 @@
     "list.open": "Wortliste: {size}",
     "feedback.button": "Feedback",
     "feedback.title": "Feedback ({shortcut})",
+    "langs.title": "Unterstützte Sprachen — AnkiGen",
+    "langs.heading": "Unterstützte Sprachen",
+    "langs.extras": "Karten können auch zeigen: {fields}",
+    "langs.build": "Deck erstellen",
+    "langs.askTitle": "Fehlt eine Sprache?",
+    "langs.askText": "Sag uns, welche Sprache du lernen oder auf dieser Seite nutzen möchtest. Anfragen helfen bei der Entscheidung, welche Sprachen als Nächstes kommen.",
+    "langs.ask": "Sprache vorschlagen",
     "foot.decks": "Decks nach Sprachpaar",
+    "foot.languages": "Unterstützte Sprachen",
     "foot.source": "Quellcode auf GitHub",
     "foot.license": "Code unter der {mit}-Lizenz; Vokabular unter {cc}.",
     "foot.author": "Erstellt von {name}",
     "fb.title": "Feedback",
     "fb.close": "Schließen",
     "fb.about": "Zum Wort {word}",
+    "fb.newLanguage": "Welche Sprache möchtest du hier sehen? Sag uns auch, welche Sprache du sprichst.",
     "fb.message": "Nachricht",
     "fb.category": "Kategorie",
     "fb.choose": "Auswählen…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "Tippfehler",
     "fb.category.wrong-form": "Falsche Form",
     "fb.category.bad-example": "Schlechtes Beispiel",
+    "fb.category.new-language": "Neue Sprache",
     "fb.category.suggestion": "Vorschlag",
     "fb.category.other": "Sonstiges",
     "fb.email": "E-Mail",
@@ -160,6 +171,14 @@
     "description": {
       "one": "Erstelle kostenlose Anki-Vokabeldecks direkt im Browser: {n} Sprache, Themenmodule und die Kartenfelder, die du willst. Lade eine .apkg-Datei für Anki oder AnkiDroid herunter.",
       "other": "Erstelle kostenlose Anki-Vokabeldecks direkt im Browser: {n} Sprachen, Themenmodule und die Kartenfelder, die du willst. Lade eine .apkg-Datei für Anki oder AnkiDroid herunter."
+    },
+    "langsLede": {
+      "one": "AnkiGen erstellt Anki-Decks in {n} Sprache, mit Definitionen in derselben Sprache.",
+      "other": "AnkiGen erstellt Anki-Decks in {n} Sprachen. Lerne jede davon mit Übersetzungen in jede andere oder mit Definitionen in derselben Sprache."
+    },
+    "langsDescription": {
+      "one": "Die {n} Sprache, in der AnkiGen kostenlose Anki-Vokabeldecks erstellt, und wie du eine weitere vorschlägst.",
+      "other": "Die {n} Sprachen, in denen AnkiGen kostenlose Anki-Vokabeldecks erstellt, und wie du eine weitere vorschlägst."
     },
     "word": {
       "one": "{n} Wort",

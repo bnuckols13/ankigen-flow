@@ -59,6 +59,7 @@ The landing pages are one static page per language pair with words, such as `dec
 | Path | What |
 |---|---|
 | `index.html`, `css/`, `src/` | the app: native ES modules, no framework, no build step |
+| `languages.html` | the supported languages, with "Request a language" |
 | `vendor/` | sql.js and fflate, pinned, with their licenses |
 | `data/` | the vocabulary: concepts, per-language layers, `meta/` (languages, modules, fields, labels, version), `landing/` (the landing pages' translations), `ui/` (the page's translations) |
 | `img/flags/` | the interface languages' flags |

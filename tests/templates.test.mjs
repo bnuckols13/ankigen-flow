@@ -12,7 +12,7 @@ const beforeAnswer = (tpl) => tpl.split('<hr id=answer>')[0];
 const afterAnswer = (tpl) => tpl.split('<hr id=answer>')[1] ?? '';
 
 // Every learning-side row placed on Front, to prove the reverse question still hides them.
-const ALL_FRONT = { reverse: true, fields: { romanization: 'front', forms: 'front', ipa: 'front', pos: 'front', register: 'front', emoji: 'front' } };
+const ALL_FRONT = { reverse: true, fields: { romanization: 'front', forms: 'front', ipa: 'front', related: 'back', pos: 'front', register: 'front', emoji: 'front' } };
 
 test('forward: Front rows ask, Back rows answer', async () => {
   const { noteType } = await fixtureDeck({ learn: 'ru', know: 'en', ...ALL_FRONT });

@@ -15,6 +15,9 @@
   --accent-ink: #1f5592;
   --card-bg: #ffffff;
   --danger: #b3261e;
+  --support: #e07a24;
+  --support-ink: #a94f0c;
+  --support-soft: #fdf1e6;
   --radius: 10px;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Hiragino Sans",
     "PingFang SC", "Microsoft YaHei", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans CJK JP", sans-serif;
@@ -34,6 +37,9 @@
     --accent-ink: #a9cff6;
     --card-bg: #1e1f22;
     --danger: #e46962;
+    --support: #ec9346;
+    --support-ink: #f4b072;
+    --support-soft: #35251a;
   }
 }
 
@@ -244,6 +250,17 @@ html:not(.js) .layout {
   justify-content: flex-end;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+/* At the top, in orange: they stand apart from the steps' blue. */
+.head-support .button {
+  border-color: var(--support);
+  color: var(--support-ink);
+}
+
+.head-support .button:hover {
+  border-color: var(--support);
+  background: var(--support-soft);
 }
 
 /* After the first download (ui/support.js), while its place in the header is out of view: pinned to the top of
@@ -857,6 +874,32 @@ html:has(.is-pinned) {
   font-size: 0.9rem;
 }
 
+/* The rarely used rows (ui/fields.js), closed by default. */
+.f-more {
+  border-top: 1px solid var(--line);
+}
+
+.f-more > summary {
+  padding-block: 0.55rem;
+  color: var(--accent-ink);
+  cursor: pointer;
+}
+
+.f-more > summary + .f-row {
+  border-top: 1px solid var(--line);
+}
+
+/* Closed, it names the rows that are on. */
+.f-more-on {
+  margin-left: 0.3rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.f-more[open] .f-more-on {
+  display: none;
+}
+
 /* ------------------------------------------------------------------ options, download */
 
 .opts {
@@ -933,6 +976,11 @@ html:has(.is-pinned) {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* The link buttons, then the sites. */
+.share-row + .share-row {
+  margin-top: 0.75rem;
 }
 
 .share-copy .icon,
@@ -1711,6 +1759,81 @@ html:has(.is-pinned) .side:has(> .cards-panel:not([hidden])) {
   margin-left: 0.35rem;
   color: var(--muted);
   font-weight: 400;
+}
+
+/* ------------------------------------------------------------------ languages page (languages.html) */
+
+/* The Feedback button sits in the corner here, as in the app. */
+.langs-page .site-foot {
+  padding-bottom: 4.5rem;
+}
+
+.lang-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 0.75rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lang {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.lang .flag {
+  flex: none;
+  margin-top: 0.3rem;
+}
+
+.lang p {
+  margin: 0;
+}
+
+.lang-native {
+  font-weight: 600;
+}
+
+.lang-name {
+  margin-left: 0.45rem;
+  color: var(--muted);
+}
+
+.lang-extras {
+  margin-top: 0.15rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.lp .lang-build {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+}
+
+/* Translated names wait for their translation, like the texts marked data-t. */
+.i18n-pending:not(.ready) .lang-name,
+.i18n-pending:not(.ready) .lang-extras {
+  visibility: hidden;
+}
+
+.lang-ask {
+  margin-top: 2.5rem;
+}
+
+.lang-ask h2 {
+  margin-top: 0;
+}
+
+/* Without scripts there is no dialog to ask in. */
+html:not(.js) .lang-ask {
+  display: none;
 }
 
 /* ------------------------------------------------------------------ narrow screens */

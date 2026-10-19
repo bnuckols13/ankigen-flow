@@ -10,14 +10,16 @@ import { staticGraph } from './helpers/modules.mjs';
 
 const BUDGET = 60 * 1024;
 
-test('initial JS: within 60 KB gzipped, without the download-only modules', () => {
-  const graph = staticGraph();
-  const files = [...graph.keys()];
+test('initial JS: within 60 KB gzipped, without the download-only modules (the app and the languages page)', () => {
   const lazy = [
     'src/deck/apkg.js', 'vendor/fflate.js', 'vendor/sql-wasm.js', 'src/ui/feedback-dialog.js', 'src/feedback/client.js',
     'src/ui/sidebar.js', 'src/deck/search.js', 'src/ui/locale.js', 'src/ui/share.js', 'src/ui/share-icons.js', 'src/ui/support.js',
   ];
-  for (const file of lazy) assert.ok(!files.includes(file), `${file} is loaded up front`);
-  const gzipped = [...graph.values()].reduce((sum, source) => sum + zlib.gzipSync(source).length, 0);
-  assert.ok(gzipped <= BUDGET, `initial JS is ${(gzipped / 1024).toFixed(1)} KB gzipped (budget 60 KB)`);
+  for (const entry of ['src/main.js', 'src/languages-page.js']) {
+    const graph = staticGraph(entry);
+    const files = [...graph.keys()];
+    for (const file of lazy) assert.ok(!files.includes(file), `${entry}: ${file} is loaded up front`);
+    const gzipped = [...graph.values()].reduce((sum, source) => sum + zlib.gzipSync(source).length, 0);
+    assert.ok(gzipped <= BUDGET, `${entry}: initial JS is ${(gzipped / 1024).toFixed(1)} KB gzipped (budget 60 KB)`);
+  }
 });

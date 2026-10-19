@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "語彙は AI で下書きしたもので、確認はまだ一部だけです。ご意見をお待ちしています。",
     "head.draftTopic": "語彙の下書き",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "常に表面",
     "fields.alwaysBack": "常に裏面",
     "fields.examples": "例文の数",
+    "fields.more": "その他…",
     "options.cyrl": "キリル文字",
     "options.latn": "ラテン文字",
     "download.deck": "デッキ",
@@ -86,13 +87,22 @@
     "list.open": "単語リスト：{size}",
     "feedback.button": "フィードバック",
     "feedback.title": "フィードバック（{shortcut}）",
+    "langs.title": "対応言語 — AnkiGen",
+    "langs.heading": "対応言語",
+    "langs.extras": "カードには次の項目も表示できます：{fields}",
+    "langs.build": "デッキを作成",
+    "langs.askTitle": "希望の言語がありませんか？",
+    "langs.askText": "学びたい言語や、このサイトで使いたい言語を教えてください。リクエストは、次に追加する言語を決める参考になります。",
+    "langs.ask": "言語をリクエスト",
     "foot.decks": "言語ペア別のデッキ",
+    "foot.languages": "対応言語",
     "foot.source": "GitHub のソースコード",
     "foot.license": "コードは{mit}ライセンス、語彙は{cc}で公開しています。",
     "foot.author": "作成：{name}",
     "fb.title": "フィードバック",
     "fb.close": "閉じる",
     "fb.about": "単語：{word}",
+    "fb.newLanguage": "どの言語を追加してほしいですか？ あなたが話す言語も教えてください。",
     "fb.message": "メッセージ",
     "fb.category": "カテゴリー",
     "fb.choose": "選択…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "誤字",
     "fb.category.wrong-form": "語形の誤り",
     "fb.category.bad-example": "不適切な例文",
+    "fb.category.new-language": "新しい言語",
     "fb.category.suggestion": "提案",
     "fb.category.other": "その他",
     "fb.email": "メールアドレス",
@@ -157,6 +168,12 @@
     },
     "description": {
       "other": "無料の Anki 単語デッキをブラウザ上で作成できます。{n}言語に対応し、トピック別のモジュールとカードのフィールドを自由に選べます。Anki や AnkiDroid 用の .apkg ファイルをダウンロードできます。"
+    },
+    "langsLede": {
+      "other": "AnkiGen では{n}言語の Anki デッキを作成できます。どの言語も、ほかのどの言語の訳でも、同じ言語の定義でも学べます。"
+    },
+    "langsDescription": {
+      "other": "AnkiGen が無料の Anki 単語デッキを作成できる{n}言語と、ほかの言語をリクエストする方法。"
     },
     "word": {
       "other": "{n}語"

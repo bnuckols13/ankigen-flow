@@ -26,7 +26,7 @@ import { readUiTexts, uiBundle } from './ui-texts.mjs';
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 
 /** What the site is made of, relative to the repository root. Everything else (docs, tools, tests, .env) stays out. */
-export const SITE_FILES = ['index.html', '404.html', 'robots.txt', 'og-image.png', 'favicon.svg', 'apple-touch-icon.png', 'css', 'img', 'src', 'vendor'];
+export const SITE_FILES = ['index.html', 'languages.html', '404.html', 'robots.txt', 'og-image.png', 'favicon.svg', 'apple-touch-icon.png', 'css', 'img', 'src', 'vendor'];
 const LAYERS = ['lang', 'ex', 'ipa', 'etym'];
 /** Written into every site this tool builds; a directory without it is never replaced. */
 const MARKER = '.ankigen-site';

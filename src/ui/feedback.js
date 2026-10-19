@@ -21,8 +21,17 @@ import { t } from './i18n.js';
  */
 
 /**
- * Open the dialog about `fallback`, unless text is selected on a card (or anywhere, without a fallback).
- * @typedef {(fallback?: ReportContext | null, opts?: { useSelection?: boolean }) => void} ReportFn
+ * Open the dialog about `fallback`, unless text is selected on a card (or anywhere, without a fallback);
+ * `category` is chosen to start with.
+ * @typedef {(fallback?: ReportContext | null, opts?: { useSelection?: boolean, category?: string }) => void} ReportFn
+ */
+
+/**
+ * What a report tells about the page: the deck's config (and the learned language's tag, for the word in the
+ * dialog) and the data version. The app is one; the languages page has no deck view.
+ * @typedef {object} ReportSource
+ * @property {any} meta
+ * @property {() => { config: import('../state.js').Config, ctx?: { learn: { tag: string } } | null }} view
  */
 
 /**
@@ -57,7 +66,7 @@ function readSelection(doc) {
 }
 
 /**
- * @param {{ app: import('./app.js').App, storage: Storage | null }} opts
+ * @param {{ app: ReportSource, storage: Storage | null }} opts
  */
 export function mountFeedback({ app, storage }) {
   const shortcut = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent) ? '⌘+Enter' : 'Ctrl+Enter';
@@ -88,12 +97,12 @@ export function mountFeedback({ app, storage }) {
   const current = () => frameSelection?.context ?? readSelection(document);
 
   /** @type {ReportFn} */
-  function open(fallback = null, { useSelection = true } = {}) {
+  function open(fallback = null, { useSelection = true, category } = {}) {
     const taken = pending && Date.now() - pending.time < PENDING_MS ? pending.context : current();
     pending = null;
     const selection = useSelection ? taken : null;
     const context = selection && (selection.conceptId || selection.direction || !fallback) ? selection : fallback;
-    loadDialog().then((d) => d.show(context), () => {});
+    loadDialog().then((d) => d.show(context, { category }), () => {});
   }
 
   /** Ctrl/Cmd+Enter: report the selection, else the card in focus (a list row), else just feedback. */

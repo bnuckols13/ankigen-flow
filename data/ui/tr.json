@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "Kelime hazinesi makine tarafından taslak olarak hazırlandı ve yalnızca kısmen kontrol edildi. Geri bildirimlerinizi bekliyoruz.",
     "head.draftTopic": "taslak kelime hazinesi",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "Her zaman ön yüzde",
     "fields.alwaysBack": "Her zaman arka yüzde",
     "fields.examples": "Örnek sayısı",
+    "fields.more": "Daha fazla…",
     "options.cyrl": "Kiril",
     "options.latn": "Latin",
     "download.deck": "Deste",
@@ -86,13 +87,22 @@
     "list.open": "Kelime listesi: {size}",
     "feedback.button": "Geri bildirim",
     "feedback.title": "Geri bildirim ({shortcut})",
+    "langs.title": "Desteklenen diller — AnkiGen",
+    "langs.heading": "Desteklenen diller",
+    "langs.extras": "Kartlarda ayrıca gösterilebilir: {fields}",
+    "langs.build": "Deste oluştur",
+    "langs.askTitle": "Aradığınız dil yok mu?",
+    "langs.askText": "Hangi dili öğrenmek ya da bu sitede hangi dili kullanmak istediğinizi bize yazın. Talepler, sırada hangi dillerin ekleneceğine karar vermemize yardımcı olur.",
+    "langs.ask": "Dil öner",
     "foot.decks": "Dil çiftlerine göre desteler",
+    "foot.languages": "Desteklenen diller",
     "foot.source": "GitHub'da kaynak kodu",
     "foot.license": "Kod {mit} lisansı altında; kelime hazinesi {cc} altında.",
     "foot.author": "Hazırlayan: {name}",
     "fb.title": "Geri bildirim",
     "fb.close": "Kapat",
     "fb.about": "Kelime: {word}",
+    "fb.newLanguage": "Burada hangi dili görmek istersiniz? Hangi dili konuştuğunuzu da yazın.",
     "fb.message": "Mesaj",
     "fb.category": "Kategori",
     "fb.choose": "Seçin…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "Yazım hatası",
     "fb.category.wrong-form": "Yanlış biçim",
     "fb.category.bad-example": "Kötü örnek",
+    "fb.category.new-language": "Yeni dil",
     "fb.category.suggestion": "Öneri",
     "fb.category.other": "Diğer",
     "fb.email": "E-posta",
@@ -160,6 +171,14 @@
     "description": {
       "one": "Ücretsiz Anki kelime destelerini doğrudan tarayıcınızda hazırlayın: {n} dil, konu modülleri ve istediğiniz kart alanları. Anki veya AnkiDroid için bir .apkg dosyası indirin.",
       "other": "Ücretsiz Anki kelime destelerini doğrudan tarayıcınızda hazırlayın: {n} dil, konu modülleri ve istediğiniz kart alanları. Anki veya AnkiDroid için bir .apkg dosyası indirin."
+    },
+    "langsLede": {
+      "one": "AnkiGen {n} dilde, aynı dildeki tanımlarla Anki desteleri hazırlar.",
+      "other": "AnkiGen {n} dilde Anki desteleri hazırlar. Herhangi birini başka herhangi bir dildeki çevirilerle ya da aynı dildeki tanımlarla öğrenin."
+    },
+    "langsDescription": {
+      "one": "AnkiGen'in ücretsiz Anki kelime desteleri hazırladığı {n} dil ve yeni bir dili nasıl önerebileceğiniz.",
+      "other": "AnkiGen'in ücretsiz Anki kelime desteleri hazırladığı {n} dil ve yeni bir dili nasıl önerebileceğiniz."
     },
     "word": {
       "one": "{n} kelime",

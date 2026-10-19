@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "Słownictwo zostało przygotowane maszynowo i jest tylko częściowo sprawdzone. Uwagi są bardzo mile widziane.",
     "head.draftTopic": "wstępna wersja słownictwa",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "Zawsze na przodzie",
     "fields.alwaysBack": "Zawsze na tyle",
     "fields.examples": "Liczba przykładów",
+    "fields.more": "Więcej…",
     "options.cyrl": "Cyrylica",
     "options.latn": "Łacinka",
     "download.deck": "Talia",
@@ -86,13 +87,22 @@
     "list.open": "Lista słów: {size}",
     "feedback.button": "Opinia",
     "feedback.title": "Opinia ({shortcut})",
+    "langs.title": "Obsługiwane języki — AnkiGen",
+    "langs.heading": "Obsługiwane języki",
+    "langs.extras": "Karty mogą też pokazywać: {fields}",
+    "langs.build": "Utwórz talię",
+    "langs.askTitle": "Brakuje jakiegoś języka?",
+    "langs.askText": "Napisz, którego języka chcesz się uczyć albo w jakim języku chcesz korzystać z tej strony. Prośby pomagają nam zdecydować, które języki dodać w następnej kolejności.",
+    "langs.ask": "Zaproponuj język",
     "foot.decks": "Talie według par języków",
+    "foot.languages": "Obsługiwane języki",
     "foot.source": "Kod źródłowy na GitHubie",
     "foot.license": "Kod na licencji {mit}; słownictwo na licencji {cc}.",
     "foot.author": "Autor: {name}",
     "fb.title": "Opinia",
     "fb.close": "Zamknij",
     "fb.about": "Słowo: {word}",
+    "fb.newLanguage": "Jaki język chcesz tu zobaczyć? Napisz też, jakim językiem mówisz.",
     "fb.message": "Wiadomość",
     "fb.category": "Kategoria",
     "fb.choose": "Wybierz…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "Literówka",
     "fb.category.wrong-form": "Błędna forma",
     "fb.category.bad-example": "Zły przykład",
+    "fb.category.new-language": "Nowy język",
     "fb.category.suggestion": "Sugestia",
     "fb.category.other": "Inne",
     "fb.email": "E-mail",
@@ -166,6 +177,18 @@
       "few": "Twórz darmowe talie słownictwa do Anki prosto w przeglądarce: {n} języki, moduły tematyczne i wybrane przez ciebie pola fiszek. Pobierz plik .apkg dla Anki lub AnkiDroid.",
       "many": "Twórz darmowe talie słownictwa do Anki prosto w przeglądarce: {n} języków, moduły tematyczne i wybrane przez ciebie pola fiszek. Pobierz plik .apkg dla Anki lub AnkiDroid.",
       "other": "Twórz darmowe talie słownictwa do Anki prosto w przeglądarce: {n} języka, moduły tematyczne i wybrane przez ciebie pola fiszek. Pobierz plik .apkg dla Anki lub AnkiDroid."
+    },
+    "langsLede": {
+      "one": "AnkiGen tworzy talie Anki w {n} języku, z definicjami w tym samym języku.",
+      "few": "AnkiGen tworzy talie Anki w {n} językach. Ucz się dowolnego z nich z tłumaczeniami na dowolny inny albo z definicjami w tym samym języku.",
+      "many": "AnkiGen tworzy talie Anki w {n} językach. Ucz się dowolnego z nich z tłumaczeniami na dowolny inny albo z definicjami w tym samym języku.",
+      "other": "AnkiGen tworzy talie Anki w {n} języka. Ucz się dowolnego z nich z tłumaczeniami na dowolny inny albo z definicjami w tym samym języku."
+    },
+    "langsDescription": {
+      "one": "{n} język, w którym AnkiGen tworzy darmowe talie słownictwa do Anki, i jak zaproponować kolejny.",
+      "few": "{n} języki, w których AnkiGen tworzy darmowe talie słownictwa do Anki, i jak zaproponować kolejny.",
+      "many": "{n} języków, w których AnkiGen tworzy darmowe talie słownictwa do Anki, i jak zaproponować kolejny.",
+      "other": "{n} języka, w których AnkiGen tworzy darmowe talie słownictwa do Anki, i jak zaproponować kolejny."
     },
     "word": {
       "one": "{n} słowo",

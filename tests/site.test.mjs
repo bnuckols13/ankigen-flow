@@ -6,7 +6,9 @@ import fs from 'node:fs';
 import { AUTHOR_NAME, AUTHOR_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
 import { UI_LANGUAGES } from '../src/ui/i18n.js';
 import { PLURALS, STRINGS } from '../src/ui/strings.js';
-import { DECKS_DIR } from '../tools/landing.mjs';
+import { langTag } from '../src/deck/fields.js';
+import { decodeHash } from '../src/state.js';
+import { DECKS_DIR, LANGUAGES_PAGE, appMeta } from '../tools/landing.mjs';
 import { head as headOf } from './helpers/html.mjs';
 import { staticGraph } from './helpers/modules.mjs';
 
@@ -21,7 +23,7 @@ const head = (attr, value) => headOf(html, attr, value);
 
 test('every absolute URL in the static files comes from src/config.js', () => {
   const allowed = [SITE_URL, REPO_URL, PATREON_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, AUTHOR_URL, 'https://schema.org'];
-  for (const file of ['index.html', '404.html', 'robots.txt']) {
+  for (const file of ['index.html', LANGUAGES_PAGE, '404.html', 'robots.txt']) {
     for (const [url] of read(file).matchAll(/https?:\/\/[^\s"'<>)]+/g)) {
       assert.ok(allowed.some((prefix) => url.startsWith(prefix)), `${file}: ${url} is not in src/config.js`);
     }
@@ -82,25 +84,71 @@ test('index.html preloads exactly the modules src/main.js imports, and every fil
   assert.equal([...html.matchAll(new RegExp(`href="${DECKS_DIR}"`, 'g'))].length, 2, 'the footer and the noscript text link to the landing pages');
 });
 
-test('the texts of index.html are the English of src/ui/strings.js, and the early language check knows the languages', () => {
+/**
+ * A page's texts are the English of src/ui/strings.js, and its early language check knows the languages.
+ * @param {string} page @returns {number} how many data-t texts it has
+ */
+function checkPageTexts(page) {
   /** The text of an element's inner HTML, with its data-part elements as {placeholders}. @param {string} inner */
   const text = (inner) =>
     inner
       .replace(/<a data-part="(\w+)"[^>]*>.*?<\/a>/g, '{$1}')
       .replace(/<[^>]+>/g, '')
       .replaceAll('&nbsp;', '\u00a0');
-  const keys = [...html.matchAll(/<(\w+)[^>]* data-t="([^"]+)"[^>]*>([\s\S]*?)<\/\1>/g)];
-  assert.ok(keys.length > 15);
+  const keys = [...page.matchAll(/<(\w+)[^>]* data-t="([^"]+)"[^>]*>([\s\S]*?)<\/\1>/g)];
   for (const [, , key, inner] of keys) {
     assert.ok(key in STRINGS, `${key} is a text of src/ui/strings.js`);
     assert.equal(text(inner), STRINGS[/** @type {keyof typeof STRINGS} */ (key)], key);
   }
-  for (const [, key, inner] of html.matchAll(/<p[^>]* data-plural="([^"]+)"[^>]*>([\s\S]*?)<\/p>/g)) {
+  for (const [, key, inner] of page.matchAll(/<p[^>]* data-plural="([^"]+)"[^>]*>([\s\S]*?)<\/p>/g)) {
     assert.equal(inner, PLURALS[/** @type {keyof typeof PLURALS} */ (key)].other.replace('{n}', String(active.length)), key);
   }
+  // The inline script that hides the English while a translation loads (pickLanguage's rule).
+  assert.equal(page.match(/var ui = '([^']+)'/)?.[1], UI_LANGUAGES.join(' '));
+  return keys.length;
+}
+
+test('the texts of index.html are the English of src/ui/strings.js, and the early language check knows the languages', () => {
+  assert.ok(checkPageTexts(html) > 15);
   assert.equal(html.match(/<title>([^<]*)<\/title>/)?.[1], PLURALS.title.other.replace('{n}', String(active.length)));
   assert.equal(head('name', 'description'), PLURALS.description.other.replace('{n}', String(active.length)));
-  // The inline script that hides the English while a translation loads (pickLanguage's rule).
-  assert.equal(html.match(/var ui = '([^']+)'/)?.[1], UI_LANGUAGES.join(' '));
   assert.ok(UI_LANGUAGES.every((code) => active.includes(code)), 'every interface language is active');
+});
+
+test('the languages page lists the active languages, as src/languages-page.js translates them', () => {
+  const page = read(LANGUAGES_PAGE);
+  const meta = appMeta(new URL('data/meta', ROOT).pathname);
+  const pageHead = (/** @type {string} */ attr, /** @type {string} */ value) => headOf(page, attr, value);
+  assert.ok(checkPageTexts(page) > 8);
+  const title = page.match(/<title>([^<]*)<\/title>/)?.[1];
+  const description = PLURALS.langsDescription.other.replace('{n}', String(active.length));
+  assert.equal(title, STRINGS['langs.title']);
+  assert.equal(pageHead('name', 'description'), description);
+  assert.deepEqual([pageHead('property', 'og:title'), pageHead('property', 'og:description')], [title, description]);
+  assert.equal(pageHead('rel', 'canonical'), SITE_URL + LANGUAGES_PAGE);
+  assert.equal(pageHead('property', 'og:url'), SITE_URL + LANGUAGES_PAGE);
+  assert.equal(page.match(/<footer[\s\S]*<\/footer>/)?.[0], html.match(/<footer[\s\S]*<\/footer>/)?.[0], 'the footer of index.html');
+
+  const items = [...page.matchAll(/<li class="lang" data-code="(\w+)">([\s\S]*?)<\/li>/g)];
+  assert.deepEqual(items.map((m) => m[1]), active, 'every active language, in their order');
+  for (const [, code, item] of items) {
+    const reg = registry.languages[code];
+    assert.match(item, new RegExp(`<img class="flag" src="img/flags/${reg.country.toLowerCase()}\\.svg"`), `${code}: its flag`);
+    assert.match(item, new RegExp(`<span class="lang-native" lang="${langTag(reg, code, 'cyrl')}">${reg.native}</span>`), `${code}: its native name`);
+    assert.match(item, new RegExp(`<span class="lang-name"${reg.native === reg.name ? ' hidden' : ''}>${reg.name}</span>`), `${code}: its English name`);
+    const extras = meta.fields.fields.filter((/** @type {any} */ d) => !d.fixed && Array.isArray(d.langs) && d.langs.includes(code)).map((/** @type {any} */ d) => d.label);
+    assert.ok(item.includes(`<p class="lang-extras">${STRINGS['langs.extras'].replace('{fields}', extras.join(' · '))}</p>`), `${code}: the rows only some languages have`);
+    const href = item.match(/<a class="lang-build" href="([^"]+)"/)?.[1].replaceAll('&amp;', '&') ?? '';
+    assert.equal(decodeHash(href.slice(href.indexOf('#')), meta)?.learn, code, `${code}: the link starts a deck in it`);
+  }
+  const graph = JSON.parse(/** @type {string} */ (page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1]))['@graph'];
+  const list = graph[0].mainEntity;
+  assert.equal(list.numberOfItems, active.length);
+  assert.deepEqual(list.itemListElement.map((/** @type {any} */ i) => [i.item.name, i.item.alternateName]), active.map((code) => [registry.languages[code].name, code]));
+  assert.deepEqual([graph[0].url, graph[0].description], [SITE_URL + LANGUAGES_PAGE, description]);
+
+  const preloaded = [...page.matchAll(/<link rel="modulepreload" href="([^"]+)">/g)].map((m) => m[1]).sort();
+  assert.deepEqual(preloaded, [...staticGraph('src/languages-page.js').keys()].filter((file) => file !== 'src/languages-page.js').sort(), 'update the modulepreload links');
+  for (const [, file] of page.matchAll(/(?:href|src)="(?!https?:)([^"#?]+)/g)) assert.ok(file === './' || file === DECKS_DIR || fs.existsSync(new URL(file, ROOT)), `${LANGUAGES_PAGE} names ${file}`);
+  assert.match(html, new RegExp(`<a href="${LANGUAGES_PAGE}" data-keep-lang data-t="foot.languages">`), 'the app links to it');
 });

@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "De woordenschat is machinaal opgesteld en nog maar deels gecontroleerd. Feedback is heel welkom.",
     "head.draftTopic": "de conceptwoordenschat",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "Altijd op de voorkant",
     "fields.alwaysBack": "Altijd op de achterkant",
     "fields.examples": "Aantal voorbeelden",
+    "fields.more": "Meer…",
     "options.cyrl": "Cyrillisch",
     "options.latn": "Latijns",
     "download.deck": "Deck",
@@ -86,13 +87,22 @@
     "list.open": "Woordenlijst: {size}",
     "feedback.button": "Feedback",
     "feedback.title": "Feedback ({shortcut})",
+    "langs.title": "Ondersteunde talen — AnkiGen",
+    "langs.heading": "Ondersteunde talen",
+    "langs.extras": "Kaarten kunnen ook tonen: {fields}",
+    "langs.build": "Deck maken",
+    "langs.askTitle": "Mis je een taal?",
+    "langs.askText": "Laat ons weten welke taal je wilt leren of op deze site wilt gebruiken. Verzoeken helpen ons kiezen welke talen als volgende komen.",
+    "langs.ask": "Taal aanvragen",
     "foot.decks": "Decks per taalpaar",
+    "foot.languages": "Ondersteunde talen",
     "foot.source": "Broncode op GitHub",
     "foot.license": "Code onder de {mit}-licentie; woordenschat onder {cc}.",
     "foot.author": "Gemaakt door {name}",
     "fb.title": "Feedback",
     "fb.close": "Sluiten",
     "fb.about": "Over {word}",
+    "fb.newLanguage": "Welke taal zou je hier graag zien? Laat ons ook weten welke taal je spreekt.",
     "fb.message": "Bericht",
     "fb.category": "Categorie",
     "fb.choose": "Kies…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "Typfout",
     "fb.category.wrong-form": "Verkeerde vorm",
     "fb.category.bad-example": "Slecht voorbeeld",
+    "fb.category.new-language": "Nieuwe taal",
     "fb.category.suggestion": "Suggestie",
     "fb.category.other": "Anders",
     "fb.email": "E-mail",
@@ -160,6 +171,14 @@
     "description": {
       "one": "Maak gratis Anki-woordenschatdecks direct in je browser: {n} taal, themamodules en de kaartvelden die je wilt. Download een .apkg voor Anki of AnkiDroid.",
       "other": "Maak gratis Anki-woordenschatdecks direct in je browser: {n} talen, themamodules en de kaartvelden die je wilt. Download een .apkg voor Anki of AnkiDroid."
+    },
+    "langsLede": {
+      "one": "AnkiGen maakt Anki-decks in {n} taal, met definities in dezelfde taal.",
+      "other": "AnkiGen maakt Anki-decks in {n} talen. Leer elk ervan met vertalingen in elke andere taal, of met definities in dezelfde taal."
+    },
+    "langsDescription": {
+      "one": "De {n} taal waarin AnkiGen gratis Anki-woordenschatdecks maakt, en hoe je een andere aanvraagt.",
+      "other": "De {n} talen waarin AnkiGen gratis Anki-woordenschatdecks maakt, en hoe je een andere aanvraagt."
     },
     "word": {
       "one": "{n} woord",

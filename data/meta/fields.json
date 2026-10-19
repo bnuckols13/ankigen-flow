@@ -1,5 +1,5 @@
 {
-  "$comment": "Field table shown in step 4, in this order. placements: subset of off|front|back|on|word. 'side': learning = describes the learned word (always moved to the back of reverse cards); known = in the user's language; concept = language-neutral. 'langs': learning languages for which the row is shown ('*' = all active). 'modes': bilingual|same. Defaults may differ per learning language via 'defaultByLang'.",
+  "$comment": "Field table shown in step 4, in this order. placements: subset of off|front|back|on|word. 'side': learning = describes the learned word (always moved to the back of reverse cards); known = in the user's language; concept = language-neutral. 'langs': learning languages for which the row is shown ('*' = all active). 'modes': bilingual|same. Defaults may differ per learning language via 'defaultByLang'. 'more': the row is under \"More…\", closed by default.",
   "fields": [
     { "id": "word", "label": "Word", "side": "learning", "langs": "*", "modes": ["bilingual", "same"], "placements": ["front"], "default": "front", "fixed": true,
       "help": "The word you are learning. Always on the question side of forward cards." },
@@ -27,15 +27,15 @@
       "help": "Example sentences with the word highlighted. Use the slider to choose how many (0–3)." },
     { "id": "exampleTranslations", "label": "Example translations", "side": "known", "langs": "*", "modes": ["bilingual"], "placements": ["off", "back"], "default": "back",
       "help": "Shows each example in your language when a matching translation exists. Some examples are written natively and have no translation." },
-    { "id": "related", "label": "Antonyms & related", "side": "learning", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "back"], "default": "back",
+    { "id": "related", "label": "Antonyms & related", "side": "learning", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "back"], "default": "off", "more": true,
       "help": "Opposites and closely related words, in the language you are learning." },
-    { "id": "pos", "label": "Part of speech", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off",
+    { "id": "pos", "label": "Part of speech", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off", "more": true,
       "help": "noun, verb, adjective…" },
-    { "id": "register", "label": "Register", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off",
+    { "id": "register", "label": "Register", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off", "more": true,
       "help": "Marks informal, formal, vulgar or offensive words." },
-    { "id": "emoji", "label": "Emoji", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off",
+    { "id": "emoji", "label": "Emoji", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "front", "back"], "default": "off", "more": true,
       "help": "A picture hint for concrete words (💧 water). Most abstract words have none." },
-    { "id": "conceptId", "label": "Concept ID", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "back"], "default": "off",
+    { "id": "conceptId", "label": "Concept ID", "side": "concept", "langs": "*", "modes": ["bilingual", "same"], "placements": ["off", "back"], "default": "off", "more": true,
       "help": "A tiny code at the bottom of the card (e.g. word-water). If you find a mistake while studying in Anki, include this code in your report so we can find the exact entry." }
   ],
   "deckOptions": [

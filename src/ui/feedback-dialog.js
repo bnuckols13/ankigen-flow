@@ -11,17 +11,21 @@ import { bind, fillNodes, h, msg } from './dom.js';
 import { addEnglish, plural, t } from './i18n.js';
 
 /** @typedef {import('./feedback.js').ReportContext} ReportContext */
+/** @typedef {import('./feedback.js').ReportSource} ReportSource */
 
 // ---------------------------------------------------------------- text
 
 /** The values sent to the sheet; the labels are fb.category.<value>. */
-export const CATEGORIES = /** @type {const} */ (['wrong-translation', 'typo', 'wrong-form', 'bad-example', 'suggestion', 'other']);
+export const CATEGORIES = /** @type {const} */ (['wrong-translation', 'typo', 'wrong-form', 'bad-example', 'new-language', 'suggestion', 'other']);
+/** What the dialog asks when it opens with a category chosen (the languages page's "Request a language"). @type {Record<string, string>} */
+const PROMPTS = { 'new-language': 'fb.newLanguage' };
 
 /** The dialog's English texts (see ui/strings.js). fb.privacy is docs/FEEDBACK.md's "Privacy note for the site". */
 export const DIALOG_STRINGS = {
   'fb.title': 'Feedback',
   'fb.close': 'Close',
   'fb.about': 'About {word}',
+  'fb.newLanguage': 'Which language would you like to see here? Tell us which language you speak, too.',
   'fb.message': 'Message',
   'fb.category': 'Category',
   'fb.choose': 'Choose…',
@@ -29,6 +33,7 @@ export const DIALOG_STRINGS = {
   'fb.category.typo': 'Typo',
   'fb.category.wrong-form': 'Wrong form',
   'fb.category.bad-example': 'Bad example',
+  'fb.category.new-language': 'New language',
   'fb.category.suggestion': 'Suggestion',
   'fb.category.other': 'Other',
   'fb.email': 'Email',
@@ -134,7 +139,7 @@ function field(id, label, control, { optional = false, hint } = {}) {
 }
 
 /**
- * @param {{ app: import('./app.js').App, storage: Storage | null, shortcut: string, onSent: (context: ReportContext | null) => void }} opts
+ * @param {{ app: ReportSource, storage: Storage | null, shortcut: string, onSent: (context: ReportContext | null) => void }} opts
  *   onSent: after a report went out (or was dropped silently)
  */
 export function createDialog({ app, storage, shortcut, onSent }) {
@@ -209,12 +214,13 @@ export function createDialog({ app, storage, shortcut, onSent }) {
     focus?.focus();
   }
 
-  /** @param {ReportContext | null} next */
-  function reset(next) {
+  /** @param {ReportContext | null} next @param {string} preset the category to start with */
+  function reset(next, preset) {
     form.reset();
     email.value = lastEmail;
     message.value = next?.selectedText ? `“${next.selectedText}”\n` : '';
-    const line = aboutLine(next);
+    category.value = preset;
+    const line = PROMPTS[preset] ? [t(PROMPTS[preset])] : aboutLine(next);
     about.replaceChildren(...line);
     about.hidden = !line.length;
     say('');
@@ -299,11 +305,11 @@ export function createDialog({ app, storage, shortcut, onSent }) {
 
   return {
     isOpen: () => dialog.open,
-    /** @param {ReportContext | null} next */
-    show(next) {
+    /** @param {ReportContext | null} next @param {{ category?: string }} [opts] category: chosen to start with */
+    show(next, { category: preset = '' } = {}) {
       if (dialog.open) return;
-      const key = JSON.stringify(next ?? {});
-      if (sent || key !== draftKey) reset(next);
+      const key = JSON.stringify({ ...next, preset });
+      if (sent || key !== draftKey) reset(next, preset);
       draftKey = key;
       context = next;
       dialog.showModal();

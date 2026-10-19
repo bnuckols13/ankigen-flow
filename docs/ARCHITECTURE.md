@@ -17,6 +17,8 @@ Audience: the engineer (Claude Code) implementing the web app. Product decisions
 ```
 index.html              single page; semantic HTML, SEO meta, modulepreload links, footer, noscript description; its
                         texts are marked data-t / data-plural for the interface language
+languages.html          the supported languages (SPEC §4): the list in English for crawlers, translated by
+                        src/languages-page.js; "Request a language"
 404.html                redirect to the app (keeps a configuration hash and ?lang=)
 robots.txt, og-image.png (source: tools/og-image.html), favicon.svg, apple-touch-icon.png (sitemap.xml is built)
 img/flags/<cc>.svg      the interface languages' flags (4:3), by country code of languages.json
@@ -25,6 +27,7 @@ css/app.css             page styles (light/dark via prefers-color-scheme)
 css/card.css            card styles; SAME file is embedded into the Anki note type
 src/
   main.js               bootstrap, wiring
+  languages-page.js     languages.html: translates its list, the language menu, the feedback dialog for requests
   config.js             constants: site, repo, Patreon, Buy Me a Coffee and data license URLs, feedback endpoint, app version
   state.js              config model, defaults, validation, URL-hash codec, localStorage
   data/loader.js        fetch meta, concepts, layer files or bundles; caching; graceful misses
@@ -45,6 +48,7 @@ src/
   ui/feedback-dialog.js the feedback dialog and its English texts (loaded on first use, with feedback/client.js)
   ui/strings.js         the page's English texts: the master of the translations in data/ui
   ui/i18n.js            the interface language: texts, plurals, numbers, the language to start with (no DOM)
+  ui/page.js            what the two pages share: the starting language, their texts, the language menu
   ui/locale.js          the interface language menu (loaded after the first render)
   ui/support.js         the header's support links, sticky after the first download (loaded then)
   ui/share.js ui/share-icons.js   the Share block and the sites' logos (loaded when it appears)
@@ -258,6 +262,7 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - The page can't read the preview frames (§8), so each frame posts its selection and its Ctrl/Cmd+Enter; the newer of the page's and a frame's selection wins, and a frame that loads a new face drops its old selection. Each frame's body carries the note's concept IDs and word.
   - Capture on `pointerdown` of the corner button (and of the preview's Report button), because on mobile tapping clears the selection before `click`.
   - Without a selection, the preview's Report button and the word list's flags report their note; Ctrl/Cmd+Enter reports the focused list row, if any. After a report is sent, its quote is deselected.
+- **A chosen category:** `open(context, { category })` starts the dialog with that category, and with its question in place of the card line (`fb.newLanguage` for `new-language`: the languages page's "Request a language"). The dialog needs only `meta` and `view().config` from the page (`ReportSource`), so `languages-page.js` passes those (the last saved config) instead of an app, which would load the vocabulary.
 - **Loading:** the dialog (`ui/feedback-dialog.js`) and `feedback/client.js` load when the browser is idle, or on first use, so they are not part of the initial JS.
 - **Request:** `POST` to the Apps Script `/exec` URL with `Content-Type: text/plain;charset=utf-8` (a simple request, so no CORS preflight), body = JSON:
 
@@ -286,6 +291,7 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - These static files repeat URLs from `src/config.js` and the language count, because crawlers and link previews run no scripts. `tests/site.test.mjs` checks that they agree with `config.js` and `languages.json`.
 - Crawlers read `robots.txt` only at the root of a host. For a project site that is `xenohunter.github.io/robots.txt`, outside this repository, so submit `sitemap.xml` in Google Search Console instead. The file under `/ankigen/` is harmless.
 - **Speed:** `index.html` has a `modulepreload` link for every module of the first load (the test checks the list), so the browser fetches them all at once instead of in four rounds. The footer appears only after the first render, so it doesn't jump down while the steps appear.
+- **Languages page:** `languages.html` has its own title, description, canonical URL and JSON-LD (a `WebPage` with its `BreadcrumbList` and an `ItemList` of the languages as `Language`), and the list itself in its HTML, in English; `tests/site.test.mjs` checks them against `languages.json` and `fields.json`, its modulepreload links against `src/languages-page.js`, and its footer against `index.html`'s.
 - The canonical URL is the bare app address; `?lang=` addresses are the same page in another interface language (§13), not separate pages. Search engines get the languages from the landing pages, which are written in their visitors' languages.
 - **Landing pages:** `tools/landing.mjs` makes them from the bundles `tools/bundle.mjs` has just built, so they describe the deck the site serves.
   - `decks/<learning>-for-<known>-speakers/` for each bilingual pair: 210 pages once all 15 languages are complete. Same-language decks get no pages, and a pair without words gets none yet. The slugs come from the English names in `languages.json`, so renaming a language moves its pages.
@@ -298,7 +304,8 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - The pages for one learned language that are written in their visitors' language name each other with `<link rel="alternate" hreflang>` (the known language's code), with the English speakers' page as `x-default`. A page in English only because its translation is missing names none and is named by none.
   - A page is written in the language its visitors speak. `data/landing/<code>.json` (unit `landing:<code>`, `docs/GENERATION.md`) translates `englishTexts()`: the page texts, module, field and option texts, language names, and per pair the heading, title, description and lede. Counts use the translation's CLDR plural forms. A page uses its translation only when that is complete and made from the current English texts (it records their hash); otherwise it is in English, as English speakers' pages are. `lang` and `og:locale` follow. The hub stays in English, but names each page in that page's language.
   - The footer is the app's, in the page's language from `data/ui` (§13): support links, the decks and the source, the licenses, the author. The landing texts don't repeat it.
-  - `sitemap.xml` lists the app, `decks/` and every page.
+  - The footer also links to `languages.html?lang=<the page's language>`.
+  - `sitemap.xml` lists the app, `languages.html`, `decks/` and every page.
 
 ## 11. Testing
 
@@ -316,7 +323,7 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - **tools:** `tools/apkg.mjs` matches `buildApkg`; the site from `tools/bundle.mjs` loads the same data as the source files, and its landing pages are the ones the source files give; `lint-data --gate` passes and fails as it should.
 - **landing:** a page for every pair with words, at its slug; unique titles and descriptions; every link resolves, and the app links decode to the page's pair in its visitors' language; module counts match the deck; no 18+ or vulgar samples; the hub and the sitemap list exactly the pages; same data, same pages; hreflang only among pages in their own language; the structured data.
 - **i18n:** the language a visitor gets; texts, plurals and numbers per language, and the English fallback; every `data/ui` translation complete and current; the bundle gives the same texts as the source files; the page's address.
-- **site** also checks that `index.html`'s texts are the English of `src/ui/strings.js`, and that its early language check knows the interface languages.
+- **site** also checks that the texts of `index.html` and `languages.html` are the English of `src/ui/strings.js`, that their early language check knows the interface languages, and the languages page's list.
 - Optional Playwright smoke test (Chromium): pick ja ← ru, select Core I, toggle reverse, download, check the blob size is > 0.
 
 ## 12. CI/CD
@@ -336,8 +343,9 @@ The page speaks the 15 languages (SPEC §4). `src/ui/i18n.js` holds the language
   - `{placeholders}` are filled in at run time. A sentence is never assembled from pieces in English order; a text with a number is one whole text per plural category ("{n} words here exist only in…").
 - **Which language:** `pickLanguage`: the address's `?lang=`, else the last choice (`localStorage` `ankigen:lang`), else the first of `navigator.languages` the page speaks (by primary subtag: `zh-TW` → `zh`, `sr-Latn` → `sr`), else English. `UI_LANGUAGES` lists them, in the order of the chips; the inline script in `index.html` repeats the rule to hide the English texts (`i18n-pending`) until a translation arrives, so a non-English visitor never sees English first. English visitors see the static text at once.
 - **Loading:** the translation loads with the meta files (`getUiTexts`, one bundle `ui-<code>.json` of about 7 KB gzipped), before the first render. Switching loads the new one, then relabels the page in place: focus, scroll, open sections and the search box are kept.
+- **Two pages:** `ui/page.js` holds what `main.js` and `languages-page.js` share: the starting language and its texts (`startPage`, with the page's own title and description), the `data-t` / `data-plural` texts, links marked `data-keep-lang` (they carry `?lang=`, so the page they open speaks the same language), and the language menu (`mountMenu`).
 - **Live texts** (`ui/dom.js`): `h()` takes `msg(key)` or `live(fn)` for a text node or an attribute; `relabel()` redoes them all after a switch (nodes are held weakly, so removed ones drop out). Texts a part computes in `update()` are redone by the re-render that follows; parts that keep built rows (the field table, the word list) rebuild them when `languageEpoch()` changes. `index.html` marks its texts with `data-t="key"` (a `{placeholder}` keeps its element, marked `data-part`) and `data-plural="key"` (counted by the number of languages).
 - **Also switched:** `<html lang>` (the language's tag; Serbian in Cyrillic), the title and the description, number formats and plural rules, the frames' type-the-answer label, and the share text. Card captions don't change: they follow the known language (`labels.json`).
 - **The menu** (`ui/locale.js`): a button with the current language's flag and code, and a popover of the languages (two columns, read down) with flags and native names, arrow keys, Home/End, Esc and Tab to leave. Flags are images, `img/flags/<country>.svg` for the `country` of `languages.json`: Windows shows no flag emoji. Simplified where an emblem would not read at 20 px (Spain's and Serbia's civil flags, Portugal's sphere and shield).
 - **Checks:** `tools/ui-texts.mjs check` (also in `lint-data`): every English text present and non-empty, the same `{placeholders}`, every plural category with exactly one `{n}`, no HTML, full-width punctuation in Chinese and Japanese, prose not left in English and in the language's script, no unknown keys. Each file records the hash of the English it follows (`source`); when the English changes, lint warns until the translation is updated and stamped again (`tools/ui-texts.mjs stamp <code>`, which also writes it in canonical order). The translations are written by hand (or by Claude Code), not by the API pipeline.
-- **Adding an interface language:** a complete `data/ui/<code>.json` (stamped), the language in `UI_LANGUAGES` and in `index.html`'s early check, its landing translation for the module texts, and a flag if its country is new.
+- **Adding an interface language:** a complete `data/ui/<code>.json` (stamped), the language in `UI_LANGUAGES` and in the early check of `index.html` and `languages.html`, its landing translation for the module texts, and a flag if its country is new. A newly active language also goes into `languages.html`'s list (the site test says what to write).

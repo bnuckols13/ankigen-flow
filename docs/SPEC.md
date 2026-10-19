@@ -75,11 +75,13 @@ Each row is Off / Front / Back (some rows have fewer choices). Defaults are in `
 | IPA | Back | all but zh ja |
 | Examples | Back | slider 0–3, default 2 |
 | Example translations | Back | bilingual mode only |
-| Antonyms & related | Back | |
-| Part of speech | Off | |
-| Register | Off | |
-| Emoji | Off | |
-| Concept ID | Off | with a "?" popup explaining it is for error reports |
+| Antonyms & related | Off | under "More…" |
+| Part of speech | Off | under "More…" |
+| Register | Off | under "More…" |
+| Emoji | Off | under "More…" |
+| Concept ID | Off | under "More…"; with a "?" popup explaining it is for error reports |
+
+- **More…:** the last five rows are in a section that is closed until the user opens it, or until one of them is on (from a link). Closed, it names the rows that are on.
 
 - **Deck options:** Reverse cards (off), Type the answer (off; needs reverse), Serbian script (Cyrillic/Latin; shown when Serbian is on either side).
 - No audio, no color coding, no listening or cloze cards (explicitly out of scope).
@@ -92,14 +94,14 @@ Minimal, clean, fast. Card captions use the language the user speaks, via `label
 - The language is in the address (`?lang=ru`), so a shared link opens in it. Without one, the page takes the visitor's last choice, else the browser's language when the page speaks it, else English.
 - Module, field and option texts and the language names come from the landing pages' translations (`data/landing`); the page's own texts are in `data/ui`. A text a translation lacks is shown in English.
 
-1. **Title + short description**, plus a one-line disclaimer: vocabulary is machine-drafted and partly unreviewed, and feedback is welcome. Top right, beside the interface language: "Support this project:" with Patreon and Buy Me a Coffee (as in the footer).
+1. **Title + short description**, plus a one-line disclaimer: vocabulary is machine-drafted and partly unreviewed, and feedback is welcome. Top right, beside the interface language: "Support this project:" with Patreon and Buy Me a Coffee (as in the footer, but outlined in orange there).
 2. **I'm learning:** language chips with native names (Српски, 日本語, Հայերեն) and the names in the interface language as tooltips.
 3. **I speak:** first a **Same language** button on a row of its own, with "— word definitions" in muted text (the interface language's clearest phrase: ru «толковый словарь»), set apart from the language chips below by a thin line.
 4. **Modules:** a tree with expand/collapse and checkboxes at module and category level, a selected count, and an 18+ badge on Profanity.
-5. **Card fields:** the field table and examples slider.
+5. **Card fields:** the field table and examples slider; the rarely used rows under "More…" (§3).
 6. **Reverse cards / Type the answer** toggles.
 7. **Download:** summary plus the button.
-8. **Share** (no number, no card background), with Download: "Copy link" first (the page's address: the deck and the interface language), then the system share sheet where the browser has one, X, Facebook, Reddit, Telegram, WhatsApp, VK (Russian interface), LINE (Japanese), Weibo (Chinese), Bluesky and email.
+8. **Share** (no number, no card background), with Download. First row: "Copy link" (the page's address: the deck and the interface language) and the system share sheet where the browser has one. Second row: X, Facebook, Reddit, Telegram, WhatsApp, VK (Russian interface), LINE (Japanese), Weibo (Chinese), Bluesky and email.
 
 How the steps behave:
 - Each step's block appears once the previous step has a choice.
@@ -114,9 +116,11 @@ Always-visible elements:
 - **Shareable state:** the full configuration lives in the URL hash, so a link reproduces the exact deck. The last configuration is also remembered locally.
 - **Footer:**
   - "Support this project:" with two buttons, Patreon and Buy Me a Coffee;
-  - links to the decks by language pair and the GitHub repo;
+  - links to the decks by language pair, the supported languages and the GitHub repo;
   - the licenses;
   - "Created by Phil Filippak", the name linking to https://x.com/blisstweeting.
+
+**Supported languages** (`languages.html`, linked from the footer): the languages, each with its flag, native name, name in the interface language, the field rows only some languages have ("Cards can also show: Reading (furigana) · Romanization · …") and "Build a deck", which opens the app with it as the learned language. Below: "Missing a language?" with **Request a language**, which opens the feedback dialog with the category New language chosen and a question in place of the card line ("Which language would you like to see here? Tell us which language you speak, too."). Same header language menu, footer and Feedback button as the app.
 
 ## 5. Feedback and error reports
 
@@ -124,7 +128,7 @@ Always-visible elements:
 - **Dialog fields:**
   - Message (required; prefilled with the quote).
   - Email (optional; "If you want us to get back to you, leave your email").
-  - Category (optional): Wrong translation / Typo / Wrong form / Bad example / Suggestion / Other.
+  - Category (optional): Wrong translation / Typo / Wrong form / Bad example / New language / Suggestion / Other.
   - Hidden honeypot field.
   - One-line privacy note.
 - **Attached automatically:**

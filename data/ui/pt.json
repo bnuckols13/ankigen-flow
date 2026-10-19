@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "O vocabulário foi redigido por uma máquina e só está revisto em parte. As tuas sugestões são muito bem-vindas.",
     "head.draftTopic": "o vocabulário em rascunho",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "Sempre na frente",
     "fields.alwaysBack": "Sempre no verso",
     "fields.examples": "Número de exemplos",
+    "fields.more": "Mais…",
     "options.cyrl": "Cirílico",
     "options.latn": "Latino",
     "download.deck": "Baralho",
@@ -86,13 +87,22 @@
     "list.open": "Lista de palavras: {size}",
     "feedback.button": "Comentários",
     "feedback.title": "Comentários ({shortcut})",
+    "langs.title": "Línguas disponíveis — AnkiGen",
+    "langs.heading": "Línguas disponíveis",
+    "langs.extras": "Os cartões também podem mostrar: {fields}",
+    "langs.build": "Criar um baralho",
+    "langs.askTitle": "Falta alguma língua?",
+    "langs.askText": "Diz-nos que língua gostarias de aprender ou de usar neste site. Os pedidos ajudam-nos a decidir que línguas chegam a seguir.",
+    "langs.ask": "Pedir uma língua",
     "foot.decks": "Baralhos por par de línguas",
+    "foot.languages": "Línguas disponíveis",
     "foot.source": "Código-fonte no GitHub",
     "foot.license": "Código sob a licença {mit}; vocabulário sob {cc}.",
     "foot.author": "Criado por {name}",
     "fb.title": "Comentários",
     "fb.close": "Fechar",
     "fb.about": "Sobre {word}",
+    "fb.newLanguage": "Que língua gostarias de ver aqui? Diz-nos também que língua falas.",
     "fb.message": "Mensagem",
     "fb.category": "Categoria",
     "fb.choose": "Escolhe…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "Gralha",
     "fb.category.wrong-form": "Forma errada",
     "fb.category.bad-example": "Mau exemplo",
+    "fb.category.new-language": "Nova língua",
     "fb.category.suggestion": "Sugestão",
     "fb.category.other": "Outro",
     "fb.email": "E-mail",
@@ -163,6 +174,16 @@
       "one": "Cria baralhos de vocabulário gratuitos para o Anki diretamente no navegador: {n} língua, módulos temáticos e os campos de cartão que quiseres. Descarrega um .apkg para o Anki ou o AnkiDroid.",
       "many": "Cria baralhos de vocabulário gratuitos para o Anki diretamente no navegador: {n} de línguas, módulos temáticos e os campos de cartão que quiseres. Descarrega um .apkg para o Anki ou o AnkiDroid.",
       "other": "Cria baralhos de vocabulário gratuitos para o Anki diretamente no navegador: {n} línguas, módulos temáticos e os campos de cartão que quiseres. Descarrega um .apkg para o Anki ou o AnkiDroid."
+    },
+    "langsLede": {
+      "one": "O AnkiGen cria baralhos do Anki em {n} língua, com definições na mesma língua.",
+      "many": "O AnkiGen cria baralhos do Anki em {n} de línguas. Aprende qualquer uma delas com traduções para qualquer outra, ou com definições na mesma língua.",
+      "other": "O AnkiGen cria baralhos do Anki em {n} línguas. Aprende qualquer uma delas com traduções para qualquer outra, ou com definições na mesma língua."
+    },
+    "langsDescription": {
+      "one": "A {n} língua em que o AnkiGen cria baralhos de vocabulário gratuitos para o Anki, e como pedir outra.",
+      "many": "As {n} de línguas em que o AnkiGen cria baralhos de vocabulário gratuitos para o Anki, e como pedir outra.",
+      "other": "As {n} línguas em que o AnkiGen cria baralhos de vocabulário gratuitos para o Anki, e como pedir outra."
     },
     "word": {
       "one": "{n} palavra",

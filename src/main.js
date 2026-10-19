@@ -5,25 +5,24 @@
 // (tests/fixtures/data while developing; meta always comes from data/meta).
 
 import { createLoader, safeDataDir } from './data/loader.js';
-import { langTag } from './deck/fields.js';
 import { decodeHash, encodeHash, loadConfig, saveConfig } from './state.js';
 import { createApp } from './ui/app.js';
 import { deckSize } from './ui/copy.js';
-import { bind, debounce, fillNodes, h, icon, msg, relabel } from './ui/dom.js';
+import { debounce, h, icon, msg } from './ui/dom.js';
 import { mountDownload } from './ui/download.js';
 import { mountFeedback } from './ui/feedback.js';
 import { mountFields } from './ui/fields.js';
-import { LANGUAGE_KEY, UI_LANGUAGES, languageTag, pickLanguage, plural, t, useLanguage } from './ui/i18n.js';
+import { plural, t } from './ui/i18n.js';
 import { mountLanguages } from './ui/languages.js';
 import { mountModules } from './ui/modules.js';
 import { mountOptions } from './ui/options.js';
+import { localStore, startPage } from './ui/page.js';
 import { help } from './ui/popover.js';
 import { mountPreview } from './ui/preview.js';
 import { mountSteps, shownSteps } from './ui/steps.js';
 
 /** @typedef {import('./ui/app.js').App} App */
 /** @typedef {import('./ui/app.js').View} View */
-/** @typedef {import('./ui/i18n.js').Translation} Translation */
 /** @typedef {ReturnType<typeof import('./ui/sidebar.js').mountCardList>} ListPart */
 
 /** @param {string} id */
@@ -31,53 +30,8 @@ const byId = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
 /** @param {Element} root @param {string} selector */
 const inside = (root, selector) => /** @type {HTMLElement} */ (root.querySelector(selector));
 
-function localStore() {
-  try {
-    return window.localStorage;
-  } catch {
-    return null; // storage disabled: the URL hash still holds the config
-  }
-}
-
-/** @param {Storage | null} storage @param {string} key */
-function stored(storage, key) {
-  try {
-    return storage?.getItem(key) ?? null;
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Switch the page's texts to a language: the strings, the lang attribute, the title and description.
- * @param {any} meta @param {string} code @param {Translation | null} translation
- */
-function useTexts(meta, code, translation) {
-  const reg = meta.languages.languages[code];
-  useLanguage(code, { tag: code === 'en' ? 'en' : langTag(reg, code, 'cyrl'), locale: reg?.locale ?? code }, translation);
-  const languages = meta.languages.active.length;
-  document.documentElement.lang = languageTag();
-  document.title = plural('title', languages);
-  document.querySelector('meta[name="description"]')?.setAttribute('content', plural('description', languages));
-}
-
-/**
- * The texts of index.html follow the language: data-t="key" names a text of ui/strings.js (its {placeholders}
- * are the elements marked data-part), data-plural="key" one counted by the number of languages.
- * @param {any} meta
- */
-function bindPage(meta) {
-  for (const el of document.querySelectorAll('[data-t]')) {
-    const key = /** @type {string} */ (/** @type {HTMLElement} */ (el).dataset.t);
-    const parts = Object.fromEntries([...el.querySelectorAll('[data-part]')].map((p) => [/** @type {HTMLElement} */ (p).dataset.part, p]));
-    if (Object.keys(parts).length) bind(el, (node) => node.replaceChildren(...fillNodes(t(key), parts)));
-    else bind(el, (node) => (node.textContent = t(key)));
-  }
-  for (const el of document.querySelectorAll('[data-plural]')) {
-    const key = /** @type {string} */ (/** @type {HTMLElement} */ (el).dataset.plural);
-    bind(el, (node) => (node.textContent = plural(key, meta.languages.active.length)));
-  }
-}
+/** @param {any} meta */
+const head = (meta) => ({ title: plural('title', meta.languages.active.length), description: plural('description', meta.languages.active.length) });
 
 /**
  * The config lives in the URL hash and the interface language in ?lang= (replaceState, so neither fills the
@@ -114,12 +68,8 @@ async function main() {
   const dataDir = safeDataDir(params.get('data'));
   const loader = createLoader({ dataDir });
   const storage = localStore();
-  const wanted = pickLanguage({ param: params.get('lang'), saved: stored(storage, LANGUAGE_KEY), browser: navigator.languages ?? [navigator.language] });
-  const [meta, loaded] = await Promise.all([loader.getMeta(), wanted === 'en' ? null : loader.getUiTexts(wanted)]);
-  // A translation that could not load leaves the page in English.
-  const translation = loaded?.ui ? loaded : null;
-  useTexts(meta, translation ? wanted : 'en', translation);
-  bindPage(meta);
+  const page = await startPage({ loader, storage, head });
+  const { meta } = page;
   const app = createApp({ loader, meta, initial: loadConfig({ hash: location.hash, storage }, meta) });
 
   if (dataDir) document.body.prepend(h('p', { class: 'dev-banner' }, `Test data from ${dataDir}`));
@@ -247,30 +197,11 @@ async function main() {
   render(app.view());
   const url = syncUrl(app, meta, storage);
 
-  /** Switch the page to another interface language, and remember it. @param {string} code */
-  async function choose(code) {
-    const next = code === 'en' ? null : await loader.getUiTexts(code);
-    if (next && !next.ui) throw new Error(`could not load the ${code} texts`); // the page stays as it is
-    useTexts(meta, code, next);
-    relabel();
-    render(app.view());
-    try {
-      storage?.setItem(LANGUAGE_KEY, code);
-    } catch {
-      // storage disabled: the address still names the language
-    }
-    url.named();
-  }
   // The language menu comes right after the first render; its place in the header is kept for it.
-  const registry = meta.languages.languages;
-  const choices = UI_LANGUAGES.filter((code) => registry[code]).map((code) => ({
-    code,
-    native: registry[code].native,
-    name: registry[code].name,
-    country: registry[code].country,
-    tag: langTag(registry[code], code, 'cyrl'),
-  }));
-  import('./ui/locale.js').then(({ mountLocale }) => mountLocale(byId('locale'), { choices, choose }), () => {});
+  page.mountMenu(byId('locale'), () => {
+    render(app.view());
+    url.named();
+  });
 }
 
 main()

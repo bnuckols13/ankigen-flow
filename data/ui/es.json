@@ -1,5 +1,5 @@
 {
-  "source": "dac76c54ff4f",
+  "source": "2818d618c9b0",
   "texts": {
     "head.draft": "El vocabulario lo ha redactado una máquina y solo está revisado en parte. Tus comentarios son muy bienvenidos.",
     "head.draftTopic": "el vocabulario en borrador",
@@ -37,6 +37,7 @@
     "fields.alwaysFront": "Siempre en el anverso",
     "fields.alwaysBack": "Siempre en el reverso",
     "fields.examples": "Número de ejemplos",
+    "fields.more": "Más…",
     "options.cyrl": "Cirílico",
     "options.latn": "Latino",
     "download.deck": "Mazo",
@@ -86,13 +87,22 @@
     "list.open": "Lista de palabras: {size}",
     "feedback.button": "Comentarios",
     "feedback.title": "Comentarios ({shortcut})",
+    "langs.title": "Idiomas disponibles — AnkiGen",
+    "langs.heading": "Idiomas disponibles",
+    "langs.extras": "Las tarjetas también pueden mostrar: {fields}",
+    "langs.build": "Crear un mazo",
+    "langs.askTitle": "¿Falta algún idioma?",
+    "langs.askText": "Dinos qué idioma te gustaría aprender o usar en este sitio. Las solicitudes nos ayudan a decidir qué idiomas añadir a continuación.",
+    "langs.ask": "Solicitar un idioma",
     "foot.decks": "Mazos por pareja de idiomas",
+    "foot.languages": "Idiomas disponibles",
     "foot.source": "Código en GitHub",
     "foot.license": "Código con licencia {mit}; vocabulario con licencia {cc}.",
     "foot.author": "Creado por {name}",
     "fb.title": "Comentarios",
     "fb.close": "Cerrar",
     "fb.about": "Sobre {word}",
+    "fb.newLanguage": "¿Qué idioma te gustaría ver aquí? Dinos también qué idioma hablas.",
     "fb.message": "Mensaje",
     "fb.category": "Categoría",
     "fb.choose": "Elige…",
@@ -100,6 +110,7 @@
     "fb.category.typo": "Errata",
     "fb.category.wrong-form": "Forma incorrecta",
     "fb.category.bad-example": "Mal ejemplo",
+    "fb.category.new-language": "Nuevo idioma",
     "fb.category.suggestion": "Sugerencia",
     "fb.category.other": "Otro",
     "fb.email": "Correo electrónico",
@@ -163,6 +174,16 @@
       "one": "Crea mazos de vocabulario gratuitos para Anki directamente en tu navegador: {n} idioma, módulos temáticos y los campos de tarjeta que quieras. Descarga un .apkg para Anki o AnkiDroid.",
       "many": "Crea mazos de vocabulario gratuitos para Anki directamente en tu navegador: {n} de idiomas, módulos temáticos y los campos de tarjeta que quieras. Descarga un .apkg para Anki o AnkiDroid.",
       "other": "Crea mazos de vocabulario gratuitos para Anki directamente en tu navegador: {n} idiomas, módulos temáticos y los campos de tarjeta que quieras. Descarga un .apkg para Anki o AnkiDroid."
+    },
+    "langsLede": {
+      "one": "AnkiGen crea mazos de Anki en {n} idioma, con definiciones en el mismo idioma.",
+      "many": "AnkiGen crea mazos de Anki en {n} de idiomas. Aprende cualquiera de ellos con traducciones a cualquier otro, o con definiciones en el mismo idioma.",
+      "other": "AnkiGen crea mazos de Anki en {n} idiomas. Aprende cualquiera de ellos con traducciones a cualquier otro, o con definiciones en el mismo idioma."
+    },
+    "langsDescription": {
+      "one": "El {n} idioma en el que AnkiGen crea mazos de vocabulario gratuitos para Anki, y cómo pedir otro.",
+      "many": "Los {n} de idiomas en los que AnkiGen crea mazos de vocabulario gratuitos para Anki, y cómo pedir otro.",
+      "other": "Los {n} idiomas en los que AnkiGen crea mazos de vocabulario gratuitos para Anki, y cómo pedir otro."
     },
     "word": {
       "one": "{n} palabra",

@@ -22,7 +22,7 @@ One row per report, with these columns:
 - `received_at`, `client_time`, `tz_offset_min`
 - `client_id` (a random ID stored in the user's browser; no fingerprinting)
 - `category`, `message`, `email`, `selected_text`
-  - `category` is empty or one of `wrong-translation`, `typo`, `wrong-form`, `bad-example`, `suggestion`, `other`.
+  - `category` is empty or one of `wrong-translation`, `typo`, `wrong-form`, `bad-example`, `new-language`, `suggestion`, `other`. `new-language` comes from "Request a language" on the languages page; such a row has no card context, and `browser_lang` hints at the visitor's own language.
   - `message` starts with the quoted selection, if there was one.
 - `concept_id`, `direction`, `side`, `field`
   - `concept_id` is one ID, or a merged note's IDs separated by commas.

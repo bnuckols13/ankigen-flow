@@ -54,10 +54,14 @@ import { fullWidthLang, hasAsciiPunctuation } from './lib/data.mjs';
  * @property {any} ui       the app's texts in that language (data/ui), or null for English
  * @property {boolean} own  the pages are in their visitors' language (translated, or for English speakers)
  * @property {string} tag   lang attribute
+ * @property {string} lang  the interface language its links open the app in (?lang=)
  * @property {string} locale
  * @property {Intl.PluralRules} plural
  * @property {Intl.NumberFormat} number
  */
+
+/** The languages page (languages.html, in the repository), relative to the site root. */
+export const LANGUAGES_PAGE = 'languages.html';
 
 /** The hub, relative to the site root; the pages are its subdirectories. */
 export const DECKS_DIR = 'decks/';
@@ -285,6 +289,7 @@ function voice(meta, know, translation, ui = null) {
     ui: translation ? ui : null,
     own: Boolean(translation) || know === 'en',
     tag,
+    lang: UI_LANGUAGES.includes(know) ? know : 'en',
     locale,
     plural: new Intl.PluralRules(locale),
     number: new Intl.NumberFormat(locale),
@@ -364,7 +369,7 @@ export function landingFiles(input) {
   const files = {};
   for (const pair of list) files[`${pair.dir}index.html`] = pairHtml(pair, list, meta, voices, siblings(pair, list, voices));
   files[`${DECKS_DIR}index.html`] = hubHtml(list, meta, voices);
-  files['sitemap.xml'] = sitemapXml(['', DECKS_DIR, ...list.map((p) => p.dir)]);
+  files['sitemap.xml'] = sitemapXml(['', LANGUAGES_PAGE, DECKS_DIR, ...list.map((p) => p.dir)]);
   return files;
 }
 
@@ -457,7 +462,7 @@ ${body}
 
 <footer class="site-foot">
   <p class="support">${escapeHtml(appText(v, 'support'))} <span><a class="button" href="${PATREON_URL}" ${EXTERNAL}>Patreon</a> <a class="button" href="${BUY_ME_A_COFFEE_URL}" ${EXTERNAL}>Buy Me a Coffee</a></span></p>
-  <p class="foot-line"><a href="${root}${DECKS_DIR}">${escapeHtml(appText(v, 'foot.decks'))}</a> · <a href="${REPO_URL}" ${EXTERNAL}>${escapeHtml(appText(v, 'foot.source'))}</a></p>
+  <p class="foot-line"><a href="${root}${DECKS_DIR}">${escapeHtml(appText(v, 'foot.decks'))}</a> · <a href="${root}${LANGUAGES_PAGE}?lang=${v.lang}">${escapeHtml(appText(v, 'foot.languages'))}</a> · <a href="${REPO_URL}" ${EXTERNAL}>${escapeHtml(appText(v, 'foot.source'))}</a></p>
   <p class="foot-line">${license}</p>
   <p class="foot-line">${author}</p>
 </footer>

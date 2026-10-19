@@ -52,6 +52,7 @@ export const STRINGS = {
   'fields.alwaysFront': 'Always on the front',
   'fields.alwaysBack': 'Always on the back',
   'fields.examples': 'Number of examples',
+  'fields.more': 'More…',
 
   'options.cyrl': 'Cyrillic',
   'options.latn': 'Latin',
@@ -110,7 +111,16 @@ export const STRINGS = {
   'feedback.button': 'Feedback',
   'feedback.title': 'Feedback ({shortcut})',
 
+  'langs.title': 'Supported languages — AnkiGen',
+  'langs.heading': 'Supported languages',
+  'langs.extras': 'Cards can also show: {fields}',
+  'langs.build': 'Build a deck',
+  'langs.askTitle': 'Missing a language?',
+  'langs.askText': 'Tell us which language you would like to learn, or to use this site in. Requests help decide which languages come next.',
+  'langs.ask': 'Request a language',
+
   'foot.decks': 'Decks by language pair',
+  'foot.languages': 'Supported languages',
   'foot.source': 'Source on GitHub',
   'foot.license': 'Code under the {mit} license; vocabulary under {cc}.',
   'foot.author': 'Created by {name}',
@@ -126,6 +136,14 @@ export const PLURALS = {
   description: {
     one: 'Build free Anki vocabulary decks right in your browser: {n} language, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.',
     other: 'Build free Anki vocabulary decks right in your browser: {n} languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.',
+  },
+  langsLede: {
+    one: 'AnkiGen makes Anki decks in {n} language, with definitions in the same language.',
+    other: 'AnkiGen makes Anki decks in {n} languages. Learn any of them from any other, or on its own with definitions in the same language.',
+  },
+  langsDescription: {
+    one: 'The {n} language AnkiGen makes free Anki vocabulary decks in, and how to ask for another one.',
+    other: 'The {n} languages AnkiGen makes free Anki vocabulary decks in, and how to ask for another one.',
   },
   word: { one: '{n} word', other: '{n} words' },
   note: { one: '{n} note', other: '{n} notes' },

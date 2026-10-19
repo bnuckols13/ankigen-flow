@@ -82,7 +82,7 @@ export function mountShare(root, app) {
   });
   const email = h('a', { class: 'share-site', 'aria-label': msg('share.email'), title: msg('share.email') }, ownIcon('mail'));
 
-  root.append(h('div', { class: 'share-row' }, copyButton, native, ...sites.map((s) => s.link), email), status);
+  root.append(h('div', { class: 'share-row' }, copyButton, native), h('div', { class: 'share-row' }, ...sites.map((s) => s.link), email), status);
 
   return {
     /** The links point at the page as it is now. */

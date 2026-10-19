@@ -36,6 +36,7 @@
  * @property {Placement} default
  * @property {Record<string, Placement>} [defaultByLang]
  * @property {boolean} [fixed]
+ * @property {boolean} [more]   under "More…" in the field table
  * @property {{ min: number, max: number, default: number }} [count]
  * @property {string} help
  */

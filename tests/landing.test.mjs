@@ -7,7 +7,7 @@ import { AUTHOR_NAME, AUTHOR_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON
 import { decodeHash, moduleIds, validate } from '../src/state.js';
 import { assembleConcepts, moduleOrder } from '../src/data/loader.js';
 import { moduleCounts, selectNotes } from '../src/deck/select.js';
-import { DECKS_DIR, checkTexts, englishTexts, landingFiles, landingSite, pairPage, slug, textsSource } from '../tools/landing.mjs';
+import { DECKS_DIR, LANGUAGES_PAGE, checkTexts, englishTexts, landingFiles, landingSite, pairPage, slug, textsSource } from '../tools/landing.mjs';
 import { fixtureLoader } from './helpers/fixtures.mjs';
 import { head } from './helpers/html.mjs';
 
@@ -49,7 +49,7 @@ test('pairs without words get no page; the hub and the sitemap list exactly the 
   const sitemap = files['sitemap.xml'];
   assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>\n<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">\n/);
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.deepEqual(locs, [SITE_URL, SITE_URL + DECKS_DIR, ...pages.map((file) => SITE_URL + dirOf(file))]);
+  assert.deepEqual(locs, [SITE_URL, SITE_URL + LANGUAGES_PAGE, SITE_URL + DECKS_DIR, ...pages.map((file) => SITE_URL + dirOf(file))]);
 });
 
 test('every page has its own title and description, its canonical address and breadcrumb', () => {
@@ -214,7 +214,7 @@ test('with a translation, the pages for its speakers are in their language', asy
   assert.match(html, /<dt>Ру Reading \(furigana\)<\/dt>/);
   assert.match(html, /<li><a href="\.\.\/">Ру Decks<\/a><\/li>/, 'the breadcrumb');
   assert.match(html, /<p class="support">Ру Support this project: <span><a class="button" href="[^"]+" [^>]*>Patreon<\/a> <a class="button" href="[^"]+" [^>]*>Buy Me a Coffee<\/a><\/span><\/p>/, 'brand names stay as they are');
-  assert.match(html, /<a href="\.\.\/\.\.\/decks\/">Ру Decks by language pair<\/a> · <a href="[^"]+" [^>]*>Source on GitHub<\/a>/, 'the footer, from data/ui; English where it has no text');
+  assert.match(html, /<a href="\.\.\/\.\.\/decks\/">Ру Decks by language pair<\/a> · <a href="\.\.\/\.\.\/languages\.html\?lang=ru">Supported languages<\/a> · <a href="[^"]+" [^>]*>Source on GitHub<\/a>/, 'the footer, from data/ui; English where it has no text');
   assert.match(html, new RegExp(`Ру Created by <a href="${AUTHOR_URL}"[^>]*>${AUTHOR_NAME}</a>`));
   assert.match(out['decks/japanese-for-english-speakers/index.html'], /<p class="support">Support this project: /, 'pages in English have the English footer');
   assert.match(html, /<a href="\.\.\/english-for-russian-speakers\/" lang="ru-RU">Ру English<\/a>/, 'decks for the same speakers, named in their language');

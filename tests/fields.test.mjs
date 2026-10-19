@@ -101,12 +101,14 @@ test('Serbian script covers word, forms, examples, definitions, translations and
 });
 
 test('related words: synonyms, antonyms, related, in the learned language', async () => {
-  const small = fieldsOf(await fixtureDeck({ learn: 'ru', know: 'en' }), 'word-small').Related;
+  const on = { related: /** @type {const} */ ('back') };
+  const small = fieldsOf(await fixtureDeck({ learn: 'ru', know: 'en', fields: on }), 'word-small').Related;
   assert.equal(stripHtml(small), '= небольшо́й · ↔ большо́й');
-  const hand = fieldsOf(await fixtureDeck({ learn: 'ru', know: 'en' }), 'word-hand').Related;
+  const hand = fieldsOf(await fixtureDeck({ learn: 'ru', know: 'en', fields: on }), 'word-hand').Related;
   assert.equal(hand, '', 'hand and arm are the same Russian note');
-  const water = fieldsOf(await fixtureDeck({ learn: 'de', know: 'en' }), 'word-water').Related;
+  const water = fieldsOf(await fixtureDeck({ learn: 'de', know: 'en', fields: on }), 'word-water').Related;
   assert.equal(stripHtml(water), '→ trinken');
+  assert.equal(fieldsOf(await fixtureDeck({ learn: 'ru', know: 'en' }), 'word-small').Related, '', 'off by default');
 });
 
 test('concept rows: POS, register, emoji, ID in the known language', async () => {
@@ -133,7 +135,7 @@ test('missing layers render nothing', async () => {
 // Golden snapshots: every field of every note for a spread of pairs, with all rows switched on.
 const ALL_ON = {
   examples: 3, reverse: true, type: true,
-  fields: { romanization: 'back', otherScript: 'back', pos: 'front', register: 'back', emoji: 'front', conceptId: 'back' },
+  fields: { romanization: 'back', otherScript: 'back', related: 'back', pos: 'front', register: 'back', emoji: 'front', conceptId: 'back' },
 };
 const PAIRS = [['ru', 'en'], ['en', 'ru'], ['ja', 'de'], ['de', 'ja'], ['sr', 'en'], ['en', 'sr', { srScript: 'latn' }], ['ja', '='], ['ru', '=']];
 
