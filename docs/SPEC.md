@@ -111,7 +111,7 @@ How the steps behave:
 
 Always-visible elements:
 - **Live counter:** "1,734 notes · 3,468 cards".
-- **Live preview:** up to 4 rendered card faces (forward front/back, reverse front/back when reverse is on), using a sample concept. A "random sample" button cycles samples. Clicking a card in the sidebar makes it the sample.
+- **Live preview:** up to 4 rendered card faces (forward front/back, reverse front/back when reverse is on), using a sample concept. A "random sample" button cycles samples. Clicking a card in the sidebar makes it the sample. Beside it, "Reset all" asks "Are you sure?" and then starts over: default settings, no language chosen, nothing saved (the interface language stays).
 - **Cards sidebar:** every note of the would-be deck in a virtualized list, with a search box. Search ignores case, diacritics and stress, matches Serbian in both scripts, and finds Japanese/Chinese/Korean words by romanization. Each card has a "report" action. On mobile the sidebar becomes a drawer.
 - **Shareable state:** the full configuration lives in the URL hash, so a link reproduces the exact deck. The last configuration is also remembered locally.
 - **Footer:**

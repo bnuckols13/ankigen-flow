@@ -9,7 +9,7 @@ Audience: the engineer (Claude Code) implementing the web app. Product decisions
   - `sql.js` (WASM SQLite)
   - `fflate` (zip)
 - **Deterministic** deck content: same data version and same config give the same notes, fields, GUIDs and order. Only export timestamps vary, including the note and card ids derived from them (see §7.2, §7.4).
-- **Fast**: initial page JS ≤ 60 KB gzipped (excluding sql.js, which is lazy-loaded; so are the word list, the language menu, the Share block and the feedback dialog, which load after the first render or on first use). First paint < 1 s on a mid-range phone.
+- **Fast**: initial page JS ≤ 60 KB gzipped (excluding sql.js, which is lazy-loaded; so are the word list, the language menu, the Share block, the Reset all dialog and the feedback dialog, which load after the first render or on first use). First paint < 1 s on a mid-range phone.
 - Works offline once loaded (nice-to-have: a tiny service worker caching app + fetched data).
 
 ## 2. Repository layout
@@ -51,6 +51,7 @@ src/
   ui/page.js            what the two pages share: the starting language, their texts, the language menu
   ui/locale.js          the interface language menu (loaded after the first render)
   ui/support.js         the header's support links, sticky after the first download (loaded then)
+  ui/reset.js           "Reset all": the "Are you sure?" dialog, then a reload with the defaults (loaded on first use)
   ui/share.js ui/share-icons.js   the Share block and the sites' logos (loaded when it appears)
   ui/dom.js ui/copy.js  element helper, live texts, icons; texts put together from ui/strings.js
   feedback/client.js    rate limits, garbage heuristics, payload, POST to Apps Script
@@ -241,6 +242,7 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - Why not `allow-same-origin` without scripts: browser extensions inject scripts into every frame, and in such a frame Chrome blocks them and logs "Blocked script execution in 'about:srcdoc'…" for each face. With `allow-scripts` alone the extensions run, nothing is logged, and the frames stay isolated from the page. (Both flags together would let the frames lift their own sandbox.)
   - A face never scrolls: its frame takes the face's whole height (plus the frame's borders), and the frame's document hides overflow. When the faces don't fit, the panel scrolls them under its heading and buttons.
   - The sample is the richest of the first 40 notes, and it is kept while it stays in the deck. "Another word" picks a random note.
+  - "Reset all" (shown once a language is chosen) asks "Are you sure?" in a small dialog, then removes the saved config (`ankigen:config`), drops the hash from the address and reloads: the defaults, with nothing loaded. The interface language (`?lang=`, `ankigen:lang`) and the feedback client's state stay.
   - Wide screens show front and back side by side in a sticky panel; phones open the preview as a sheet from a bar at the bottom.
 - **Word list (the sidebar, `ui/sidebar.js`):** a virtualized list with a fixed row height that renders only the rows in view (13 in the DOM for the 3,341-note English deck).
   - Each row shows the word as the card does (article or gender mark, stress, script) and the translation or definition.
@@ -260,8 +262,8 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - **Selection capture:**
   - Listen to `selectionchange` and keep the last non-empty selection with its context: `closest('[data-concept]')`, `[data-field]`, and direction/side from the card container.
   - The page can't read the preview frames (§8), so each frame posts its selection and its Ctrl/Cmd+Enter; the newer of the page's and a frame's selection wins, and a frame that loads a new face drops its old selection. Each frame's body carries the note's concept IDs and word.
-  - Capture on `pointerdown` of the corner button (and of the preview's Report button), because on mobile tapping clears the selection before `click`.
-  - Without a selection, the preview's Report button and the word list's flags report their note; Ctrl/Cmd+Enter reports the focused list row, if any. After a report is sent, its quote is deselected.
+  - Capture on `pointerdown` of the corner button (and of the word list's flags), because on mobile tapping clears the selection before `click`.
+  - Without a selection, the word list's flags report their note; Ctrl/Cmd+Enter reports the focused list row, if any. After a report is sent, its quote is deselected.
 - **A chosen category:** `open(context, { category })` starts the dialog with that category, and with its question in place of the card line (`fb.newLanguage` for `new-language`: the languages page's "Request a language"). The dialog needs only `meta` and `view().config` from the page (`ReportSource`), so `languages-page.js` passes those (the last saved config) instead of an app, which would load the vocabulary.
 - **Loading:** the dialog (`ui/feedback-dialog.js`) and `feedback/client.js` load when the browser is idle, or on first use, so they are not part of the initial JS.
 - **Request:** `POST` to the Apps Script `/exec` URL with `Content-Type: text/plain;charset=utf-8` (a simple request, so no CORS preflight), body = JSON:
@@ -286,6 +288,7 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - `<title>`: "AnkiGen — free Anki vocabulary decks in 15 languages".
 - Meta description, canonical URL, Open Graph and Twitter card (with `og-image.png`, 1200×630, rendered from `tools/og-image.html`).
 - `<meta name="author">` and `twitter:creator` for the author (`AUTHOR_NAME`, `AUTHOR_URL` in `src/config.js`).
+- `<meta name="google-site-verification">` on the app page, for Search Console (`docs/AFTER_LAUNCH.md`).
 - JSON-LD `@graph`: the `WebApplication` (free offer, `inLanguage` list, `featureList`, screenshot, license, author), the `WebSite` it is part of, and the author as a `Person` with `sameAs` (X, Patreon, Buy Me a Coffee).
 - Semantic headings, `noscript` text describing the tool, `robots.txt`, and `sitemap.xml` (built with the landing pages).
 - These static files repeat URLs from `src/config.js` and the language count, because crawlers and link previews run no scripts. `tests/site.test.mjs` checks that they agree with `config.js` and `languages.json`.

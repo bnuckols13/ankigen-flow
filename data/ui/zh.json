@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "词汇由 AI 起草，目前只有一部分经过人工审核。非常欢迎你的反馈。",
     "head.draftTopic": "词汇草稿",
@@ -65,8 +65,6 @@
     "share.email": "电子邮件",
     "preview.heading": "预览",
     "preview.another": "换一个词",
-    "preview.report": "报告问题",
-    "preview.reportTitle": "报告这张卡片的问题",
     "preview.forward": "正向卡片",
     "preview.reverse": "反向卡片",
     "preview.front": "正面",
@@ -78,6 +76,10 @@
     "preview.pickModules": "选择模块后，这里会显示卡片示例。",
     "preview.empty": "所选模块中暂时还没有这两种语言的单词。",
     "preview.close": "关闭",
+    "reset.button": "全部重置",
+    "reset.title": "确定要重置吗？",
+    "reset.text": "语言、模块和卡片设置将恢复为默认值。",
+    "reset.cancel": "取消",
     "list.heading": "单词",
     "list.search": "搜索单词",
     "list.label": "牌组中的单词",

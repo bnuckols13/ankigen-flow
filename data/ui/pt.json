@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "O vocabulário foi redigido por uma máquina e só está revisto em parte. As tuas sugestões são muito bem-vindas.",
     "head.draftTopic": "o vocabulário em rascunho",
@@ -65,8 +65,6 @@
     "share.email": "E-mail",
     "preview.heading": "Pré-visualização",
     "preview.another": "Outra palavra",
-    "preview.report": "Comunicar",
-    "preview.reportTitle": "Comunicar um problema com este cartão",
     "preview.forward": "Cartão direto",
     "preview.reverse": "Cartão invertido",
     "preview.front": "Frente",
@@ -78,6 +76,10 @@
     "preview.pickModules": "Escolhe módulos para ver aqui cartões de exemplo.",
     "preview.empty": "Ainda não há palavras para estas línguas nos módulos escolhidos.",
     "preview.close": "Fechar",
+    "reset.button": "Repor tudo",
+    "reset.title": "Tens a certeza?",
+    "reset.text": "As línguas, os módulos e as definições dos cartões voltam aos valores predefinidos.",
+    "reset.cancel": "Cancelar",
     "list.heading": "Palavras",
     "list.search": "Pesquisar palavras",
     "list.label": "Palavras do baralho",

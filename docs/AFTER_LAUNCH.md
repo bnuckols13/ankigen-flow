@@ -2,9 +2,10 @@
 
 Things to do once the site is live at https://xenohunter.github.io/ankigen/.
 
-1. **Search Console.** Add the property `https://xenohunter.github.io/ankigen/` (type "URL prefix"). Google gives you a verification file or a meta tag: send it to Claude Code to add to the site. Then submit `https://xenohunter.github.io/ankigen/sitemap.xml` under Sitemaps. A few days later, check under Pages that the `decks/` pages are indexed.
+1. **Search Console.** Add the property `https://xenohunter.github.io/ankigen/` (type "URL prefix"). The verification meta tag is in `index.html` (`google-site-verification`), so press Verify once it is deployed. Then submit `https://xenohunter.github.io/ankigen/sitemap.xml` under Sitemaps. A few days later, check under Pages that the `decks/` pages are indexed.
 2. **Phone check**, on an iPhone (Safari) and on Android (Chrome):
-   - pick a pair and a module, open Preview, select a word on a card and tap Report: the dialog should quote it;
+   - pick a pair and a module, open Preview, select a word on a card and tap Feedback (the corner button): the dialog should quote it;
+   - tap Reset all, then Cancel, then Reset all again and confirm: the page should come back with nothing chosen;
    - tap Download: the file should open in AnkiDroid (or AnkiMobile) and import.
 3. **Feedback.** Send one real report from the live site. A row should appear in the sheet within a minute. `docs/FEEDBACK.md` explains the columns and triage.
 4. **Blank cards in AnkiDroid** (see below): find where AnkiDroid keeps "Empty cards", and tell Claude Code the menu path.

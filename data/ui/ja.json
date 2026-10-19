@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "語彙は AI で下書きしたもので、確認はまだ一部だけです。ご意見をお待ちしています。",
     "head.draftTopic": "語彙の下書き",
@@ -65,8 +65,6 @@
     "share.email": "メール",
     "preview.heading": "プレビュー",
     "preview.another": "別の単語",
-    "preview.report": "報告",
-    "preview.reportTitle": "このカードの問題を報告",
     "preview.forward": "順方向カード",
     "preview.reverse": "逆方向カード",
     "preview.front": "表面",
@@ -78,6 +76,10 @@
     "preview.pickModules": "モジュールを選ぶと、ここにカードの例が表示されます。",
     "preview.empty": "選んだモジュールには、この言語の組み合わせの単語がまだありません。",
     "preview.close": "閉じる",
+    "reset.button": "すべてリセット",
+    "reset.title": "よろしいですか？",
+    "reset.text": "言語、モジュール、カードの設定が既定の状態に戻ります。",
+    "reset.cancel": "キャンセル",
     "list.heading": "単語",
     "list.search": "単語を検索",
     "list.label": "デッキの単語",

@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "El vocabulario lo ha redactado una máquina y solo está revisado en parte. Tus comentarios son muy bienvenidos.",
     "head.draftTopic": "el vocabulario en borrador",
@@ -65,8 +65,6 @@
     "share.email": "Correo electrónico",
     "preview.heading": "Vista previa",
     "preview.another": "Otra palabra",
-    "preview.report": "Avisar",
-    "preview.reportTitle": "Avisar de un problema con esta tarjeta",
     "preview.forward": "Tarjeta directa",
     "preview.reverse": "Tarjeta inversa",
     "preview.front": "Anverso",
@@ -78,6 +76,10 @@
     "preview.pickModules": "Elige módulos para ver aquí tarjetas de ejemplo.",
     "preview.empty": "Todavía no hay palabras para estos idiomas en los módulos elegidos.",
     "preview.close": "Cerrar",
+    "reset.button": "Restablecer todo",
+    "reset.title": "¿Quieres restablecerlo todo?",
+    "reset.text": "Los idiomas, los módulos y los ajustes de las tarjetas volverán a los valores predeterminados.",
+    "reset.cancel": "Cancelar",
     "list.heading": "Palabras",
     "list.search": "Buscar palabras",
     "list.label": "Palabras del mazo",

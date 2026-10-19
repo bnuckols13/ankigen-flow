@@ -1,8 +1,8 @@
 // ARCHITECTURE §1: the page's initial JS stays within 60 KB gzipped. sql.js, fflate and the packager are
 // loaded only on download, the feedback dialog with its client on first use (or when the browser is idle),
 // the word list once the deck has modules, the language menu after the first render, the Share block when it
-// appears and the pinned support links after a download, so they must not be reachable through static
-// imports from src/main.js.
+// appears, the pinned support links after a download and the Reset all dialog on first use, so they must not
+// be reachable through static imports from src/main.js.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import zlib from 'node:zlib';
@@ -14,6 +14,7 @@ test('initial JS: within 60 KB gzipped, without the download-only modules (the a
   const lazy = [
     'src/deck/apkg.js', 'vendor/fflate.js', 'vendor/sql-wasm.js', 'src/ui/feedback-dialog.js', 'src/feedback/client.js',
     'src/ui/sidebar.js', 'src/deck/search.js', 'src/ui/locale.js', 'src/ui/share.js', 'src/ui/share-icons.js', 'src/ui/support.js',
+    'src/ui/reset.js',
   ];
   for (const entry of ['src/main.js', 'src/languages-page.js']) {
     const graph = staticGraph(entry);

@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "Das Vokabular wurde maschinell entworfen und ist erst teilweise geprüft. Feedback ist sehr willkommen.",
     "head.draftTopic": "Vokabular-Entwurf",
@@ -65,8 +65,6 @@
     "share.email": "E-Mail",
     "preview.heading": "Vorschau",
     "preview.another": "Anderes Wort",
-    "preview.report": "Melden",
-    "preview.reportTitle": "Ein Problem mit dieser Karte melden",
     "preview.forward": "Vorwärtskarte",
     "preview.reverse": "Umgekehrte Karte",
     "preview.front": "Vorderseite",
@@ -78,6 +76,10 @@
     "preview.pickModules": "Wähle Module, um hier Beispielkarten zu sehen.",
     "preview.empty": "In den gewählten Modulen gibt es für diese Sprachen noch keine Wörter.",
     "preview.close": "Schließen",
+    "reset.button": "Alles zurücksetzen",
+    "reset.title": "Bist du sicher?",
+    "reset.text": "Sprachen, Module und Karteneinstellungen werden auf die Standardwerte zurückgesetzt.",
+    "reset.cancel": "Abbrechen",
     "list.heading": "Wörter",
     "list.search": "Wörter suchen",
     "list.label": "Wörter im Deck",

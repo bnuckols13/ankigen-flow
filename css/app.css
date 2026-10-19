@@ -163,10 +163,20 @@ input[type="checkbox"] {
   font-size: 0.9rem;
 }
 
+/* Smaller than the other "?" buttons, so the line keeps its height, and centred on the capitals:
+   vertical-align: middle alone centres it on the lower-case letters, which looks low. */
 .draft .help,
 .draft .help-slot {
-  margin-left: 0.4rem;
+  position: relative;
+  top: -0.09rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-left: 0.35rem;
   vertical-align: middle;
+}
+
+.draft .help {
+  font-size: 0.65rem;
 }
 
 .dev-banner {
@@ -491,6 +501,17 @@ html:has(.is-pinned) {
   background: var(--accent);
   color: var(--accent-text);
   font-weight: 600;
+}
+
+.button.danger {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: var(--surface);
+  font-weight: 600;
+}
+
+.button.danger:hover:not(:disabled) {
+  border-color: var(--danger);
 }
 
 .button:disabled {
@@ -1107,9 +1128,6 @@ html:has(.is-pinned) .side:has(> .cards-panel:not([hidden])) {
   margin-left: auto;
 }
 
-.pv-report .icon {
-  color: var(--accent);
-}
 
 .pv-empty {
   margin: 0.5rem 0 0;
@@ -1417,8 +1435,43 @@ html:has(.is-pinned) .side:has(> .cards-panel:not([hidden])) {
   box-shadow: 0 20px 50px rgb(0 0 0 / 0.25);
 }
 
-.fb::backdrop {
+.fb::backdrop,
+.confirm::backdrop {
   background: rgb(0 0 0 / 0.45);
+}
+
+/* "Are you sure?" before Reset all (ui/reset.js). */
+.confirm {
+  width: min(25rem, calc(100vw - 2rem));
+  padding: 1.1rem 1.25rem 1.25rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.25);
+}
+
+.confirm h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.confirm p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.confirm-actions .button {
+  white-space: nowrap;
 }
 
 .fb-form,

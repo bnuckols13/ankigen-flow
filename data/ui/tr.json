@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "Kelime hazinesi makine tarafından taslak olarak hazırlandı ve yalnızca kısmen kontrol edildi. Geri bildirimlerinizi bekliyoruz.",
     "head.draftTopic": "taslak kelime hazinesi",
@@ -65,8 +65,6 @@
     "share.email": "E-posta",
     "preview.heading": "Önizleme",
     "preview.another": "Başka kelime",
-    "preview.report": "Bildir",
-    "preview.reportTitle": "Bu kartla ilgili bir sorun bildirin",
     "preview.forward": "Düz kart",
     "preview.reverse": "Ters kart",
     "preview.front": "Ön yüz",
@@ -78,6 +76,10 @@
     "preview.pickModules": "Örnek kartları burada görmek için modül seçin.",
     "preview.empty": "Seçilen modüllerde bu diller için henüz kelime yok.",
     "preview.close": "Kapat",
+    "reset.button": "Tümünü sıfırla",
+    "reset.title": "Emin misiniz?",
+    "reset.text": "Diller, modüller ve kart ayarları varsayılanlara döner.",
+    "reset.cancel": "İptal",
     "list.heading": "Kelimeler",
     "list.search": "Kelime ara",
     "list.label": "Destedeki kelimeler",

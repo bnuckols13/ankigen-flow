@@ -86,8 +86,6 @@ export const STRINGS = {
 
   'preview.heading': 'Preview',
   'preview.another': 'Another word',
-  'preview.report': 'Report',
-  'preview.reportTitle': 'Report a problem with this card',
   'preview.forward': 'Forward card',
   'preview.reverse': 'Reverse card',
   'preview.front': 'Front',
@@ -99,6 +97,11 @@ export const STRINGS = {
   'preview.pickModules': 'Choose modules to see sample cards here.',
   'preview.empty': 'No words for these languages in the chosen modules yet.',
   'preview.close': 'Close',
+
+  'reset.button': 'Reset all',
+  'reset.title': 'Are you sure?',
+  'reset.text': 'Your languages, modules and card settings go back to the defaults.',
+  'reset.cancel': 'Cancel',
 
   'list.heading': 'Words',
   'list.search': 'Search words',

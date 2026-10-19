@@ -10,7 +10,7 @@ import { noteFields } from '../deck/fields.js';
 import { renderCard } from '../deck/render.js';
 import { escapeAttr, stripHtml } from '../text/html.js';
 import { deckSize } from './copy.js';
-import { debounce, h, icon, live, msg } from './dom.js';
+import { debounce, h, live, msg } from './dom.js';
 import { t } from './i18n.js';
 
 /** @typedef {import('./app.js').View} View */
@@ -94,21 +94,14 @@ function emptyText({ config, ready, notes }) {
 /**
  * @param {HTMLElement} root
  * @param {import('./app.js').App} app
- * @param {{ id: string, isActive: () => boolean, report: import('./feedback.js').ReportFn, frames: import('./feedback.js').FrameReports }} opts
- *   id: prefix for heading ids; isActive: whether the preview is on screen; report: open the feedback dialog;
- *   frames: where the frames' selections and shortcuts go
+ * @param {{ id: string, isActive: () => boolean, frames: import('./feedback.js').FrameReports, onReset: () => void }} opts
+ *   id: prefix for heading ids; isActive: whether the preview is on screen; frames: where the frames' selections
+ *   and shortcuts go; onReset: "Reset all" (ui/reset.js asks first)
  */
-export function mountPreview(root, app, { id, isActive, report, frames }) {
+export function mountPreview(root, app, { id, isActive, frames, onReset }) {
   const counter = h('p', { class: 'pv-count', 'aria-live': 'polite' });
   const another = h('button', { type: 'button', class: 'button pv-another', onclick: () => app.randomSample() }, msg('preview.another'));
-  /** What the Report button is about when no text is selected on a card. @type {{ conceptId: string, word: string } | null} */
-  let shownNote = null;
-  const reportButton = h(
-    'button',
-    { type: 'button', class: 'button pv-report', 'data-report': true, title: msg('preview.reportTitle'), onclick: () => report(shownNote) },
-    icon('flag'),
-    msg('preview.report'),
-  );
+  const resetButton = h('button', { type: 'button', class: 'button pv-reset', title: msg('reset.text'), onclick: onReset }, msg('reset.button'));
   const empty = h('p', { class: 'pv-empty' });
   /** @type {{ ord: number, side: 'front' | 'back', frame: HTMLIFrameElement, doc: string }[]} */
   const faces = [];
@@ -126,7 +119,7 @@ export function mountPreview(root, app, { id, isActive, report, frames }) {
     directions.push(section);
   }
   const body = h('div', { class: 'pv-faces' }, ...directions);
-  root.append(h('div', { class: 'pv-tools' }, counter, h('div', { class: 'pv-actions' }, another, reportButton)), empty, body);
+  root.append(h('div', { class: 'pv-tools' }, counter, h('div', { class: 'pv-actions' }, another, resetButton)), empty, body);
 
   window.addEventListener('message', (event) => {
     const face = faces.find((f) => f.frame.contentWindow === event.source);
@@ -161,12 +154,11 @@ export function mountPreview(root, app, { id, isActive, report, frames }) {
     body.hidden = Boolean(message);
     another.hidden = Boolean(message);
     another.disabled = view.notes.length < 2;
-    reportButton.hidden = Boolean(message);
+    resetButton.hidden = !view.config.learn; // nothing chosen yet: nothing to reset
     if (message || !view.sample || !view.ctx || !view.noteType) return;
     const fields = noteFields(view.sample, view.ctx);
     const css = view.noteType.css;
     const note = { concept: view.sample.conceptIds.join(','), word: stripHtml(fields.Word) };
-    shownNote = { conceptId: note.concept, word: note.word };
     directions[1].hidden = !view.config.reverse;
     for (const face of faces) {
       const card = renderCard(view.noteType, fields, face.ord, { typeLabel: t('preview.typeAnswer') });

@@ -128,9 +128,11 @@ async function main() {
   const previewSheet = /** @type {HTMLDialogElement} */ (byId('preview-dialog'));
   const cardsSheet = /** @type {HTMLDialogElement} */ (byId('cards-dialog'));
   const cardsPanel = byId('cards-panel');
-  const reports = { report: feedback.open, frames: feedback.frames };
-  const panel = mountPreview(inside(byId('preview-panel'), '.pv'), app, { id: 'panel', isActive: () => wide.matches, ...reports });
-  const sheet = mountPreview(inside(previewSheet, '.pv'), app, { id: 'sheet', isActive: () => previewSheet.open, ...reports });
+  // "Reset all" asks first (ui/reset.js, loaded on the first click), then reloads the page with the defaults.
+  const onReset = () => void import('./ui/reset.js').then((m) => m.askReset(storage), () => {});
+  const shared = { frames: feedback.frames, onReset };
+  const panel = mountPreview(inside(byId('preview-panel'), '.pv'), app, { id: 'panel', isActive: () => wide.matches, ...shared });
+  const sheet = mountPreview(inside(previewSheet, '.pv'), app, { id: 'sheet', isActive: () => previewSheet.open, ...shared });
   const openPreview = () => {
     previewSheet.showModal();
     sheet.show();

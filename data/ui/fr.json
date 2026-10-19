@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "Le vocabulaire a été rédigé par une machine et n'est que partiellement relu. Vos retours sont les bienvenus.",
     "head.draftTopic": "le vocabulaire en brouillon",
@@ -65,8 +65,6 @@
     "share.email": "E-mail",
     "preview.heading": "Aperçu",
     "preview.another": "Un autre mot",
-    "preview.report": "Signaler",
-    "preview.reportTitle": "Signaler un problème sur cette carte",
     "preview.forward": "Carte directe",
     "preview.reverse": "Carte inversée",
     "preview.front": "Recto",
@@ -78,6 +76,10 @@
     "preview.pickModules": "Choisissez des modules pour voir ici des exemples de cartes.",
     "preview.empty": "Pas encore de mots pour ces langues dans les modules choisis.",
     "preview.close": "Fermer",
+    "reset.button": "Tout réinitialiser",
+    "reset.title": "Tout réinitialiser ?",
+    "reset.text": "Les langues, les modules et les réglages des cartes reviennent aux valeurs par défaut.",
+    "reset.cancel": "Annuler",
     "list.heading": "Mots",
     "list.search": "Rechercher des mots",
     "list.label": "Mots du deck",

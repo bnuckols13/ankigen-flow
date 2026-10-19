@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "De woordenschat is machinaal opgesteld en nog maar deels gecontroleerd. Feedback is heel welkom.",
     "head.draftTopic": "de conceptwoordenschat",
@@ -65,8 +65,6 @@
     "share.email": "E-mail",
     "preview.heading": "Voorbeeld",
     "preview.another": "Ander woord",
-    "preview.report": "Melden",
-    "preview.reportTitle": "Een probleem met deze kaart melden",
     "preview.forward": "Gewone kaart",
     "preview.reverse": "Omgekeerde kaart",
     "preview.front": "Voorkant",
@@ -78,6 +76,10 @@
     "preview.pickModules": "Kies modules om hier voorbeeldkaarten te zien.",
     "preview.empty": "Er zijn in de gekozen modules nog geen woorden voor deze talen.",
     "preview.close": "Sluiten",
+    "reset.button": "Alles resetten",
+    "reset.title": "Weet je het zeker?",
+    "reset.text": "Talen, modules en kaartinstellingen gaan terug naar de standaardwaarden.",
+    "reset.cancel": "Annuleren",
     "list.heading": "Woorden",
     "list.search": "Woorden zoeken",
     "list.label": "Woorden in het deck",

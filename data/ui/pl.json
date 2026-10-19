@@ -1,5 +1,5 @@
 {
-  "source": "2818d618c9b0",
+  "source": "839990bb5d81",
   "texts": {
     "head.draft": "Słownictwo zostało przygotowane maszynowo i jest tylko częściowo sprawdzone. Uwagi są bardzo mile widziane.",
     "head.draftTopic": "wstępna wersja słownictwa",
@@ -65,8 +65,6 @@
     "share.email": "E-mail",
     "preview.heading": "Podgląd",
     "preview.another": "Inne słowo",
-    "preview.report": "Zgłoś",
-    "preview.reportTitle": "Zgłoś problem z tą fiszką",
     "preview.forward": "Fiszka zwykła",
     "preview.reverse": "Fiszka odwrotna",
     "preview.front": "Przód",
@@ -78,6 +76,10 @@
     "preview.pickModules": "Wybierz moduły, aby zobaczyć tu przykładowe fiszki.",
     "preview.empty": "W wybranych modułach nie ma jeszcze słów dla tych języków.",
     "preview.close": "Zamknij",
+    "reset.button": "Resetuj wszystko",
+    "reset.title": "Na pewno?",
+    "reset.text": "Języki, moduły i ustawienia fiszek wrócą do wartości domyślnych.",
+    "reset.cancel": "Anuluj",
     "list.heading": "Słowa",
     "list.search": "Szukaj słów",
     "list.label": "Słowa w talii",
