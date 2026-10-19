@@ -51,3 +51,5 @@ The client adds friction on top:
 ## Privacy note for the site (short)
 
 > Reports are stored in a private spreadsheet and used only to fix the vocabulary and, if you leave an email, to reply to you. We store a random ID kept in your browser to filter spam. No tracking, no analytics.
+
+The dialog shows it in the interface language (`fb.privacy` in `src/ui/feedback-dialog.js`, translated in `data/ui/`); keep the translations saying the same when this changes.

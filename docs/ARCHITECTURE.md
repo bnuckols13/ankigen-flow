@@ -9,15 +9,17 @@ Audience: the engineer (Claude Code) implementing the web app. Product decisions
   - `sql.js` (WASM SQLite)
   - `fflate` (zip)
 - **Deterministic** deck content: same data version and same config give the same notes, fields, GUIDs and order. Only export timestamps vary, including the note and card ids derived from them (see §7.2, §7.4).
-- **Fast**: initial page JS ≤ 60 KB gzipped (excluding sql.js, which is lazy-loaded). First paint < 1 s on a mid-range phone.
+- **Fast**: initial page JS ≤ 60 KB gzipped (excluding sql.js, which is lazy-loaded; so are the word list, the language menu, the Share block and the feedback dialog, which load after the first render or on first use). First paint < 1 s on a mid-range phone.
 - Works offline once loaded (nice-to-have: a tiny service worker caching app + fetched data).
 
 ## 2. Repository layout
 
 ```
-index.html              single page; semantic HTML, SEO meta, modulepreload links, footer, noscript description
-404.html                redirect to the app (keeps a configuration hash)
+index.html              single page; semantic HTML, SEO meta, modulepreload links, footer, noscript description; its
+                        texts are marked data-t / data-plural for the interface language
+404.html                redirect to the app (keeps a configuration hash and ?lang=)
 robots.txt, og-image.png (source: tools/og-image.html), favicon.svg, apple-touch-icon.png (sitemap.xml is built)
+img/flags/<cc>.svg      the interface languages' flags (4:3), by country code of languages.json
 LICENSE                 MIT, for the code; data/LICENSE.md: CC BY-SA 4.0, for the vocabulary
 css/app.css             page styles (light/dark via prefers-color-scheme)
 css/card.css            card styles; SAME file is embedded into the Anki note type
@@ -37,17 +39,24 @@ src/
   text/translit.js      ru → Latin, sr Cyrillic ↔ Latin, hy → Latin (BGN/PCGN), el → Latin (ELOT 743)
   text/normalize.js     search folding (case, diacritics, stress, scripts)
   text/furigana.js      Anki-style furigana → <ruby>; target braces → <b>
-  ui/app.js             the page's model: config store, loaded data, derived deck view (no DOM)
+  ui/app.js             the page's model: config store, loaded data, derived deck view, its address (no DOM)
   ui/steps.js ui/languages.js ui/modules.js ui/fields.js ui/options.js
   ui/preview.js ui/sidebar.js ui/feedback.js ui/popover.js ui/download.js
-  ui/feedback-dialog.js the feedback dialog and its text (loaded on first use, with feedback/client.js)
-  ui/dom.js ui/format.js ui/copy.js   element helper, icons, counts, UI text not in data/meta
+  ui/feedback-dialog.js the feedback dialog and its English texts (loaded on first use, with feedback/client.js)
+  ui/strings.js         the page's English texts: the master of the translations in data/ui
+  ui/i18n.js            the interface language: texts, plurals, numbers, the language to start with (no DOM)
+  ui/locale.js          the interface language menu (loaded after the first render)
+  ui/support.js         the header's support links, sticky after the first download (loaded then)
+  ui/share.js ui/share-icons.js   the Share block and the sites' logos (loaded when it appears)
+  ui/dom.js ui/copy.js  element helper, live texts, icons; texts put together from ui/strings.js
   feedback/client.js    rate limits, garbage heuristics, payload, POST to Apps Script
 vendor/                 sql-wasm.js, sql-wasm.wasm, fflate.js (ES module) + fflate.d.ts (pinned; versions,
                         checksums and LICENSE files in vendor/README.md)
-data/                   vocabulary (see DATA_FORMAT.md)
+data/                   vocabulary (see DATA_FORMAT.md); landing/ and ui/: translations of the landing pages' and the
+                        page's texts (§10, §13)
 tools/                  data lint + generation tooling, apkg.mjs (an .apkg from a config hash, in Node),
-                        bundle.mjs (the site with its data bundles), landing.mjs (landing pages and sitemap)
+                        bundle.mjs (the site with its data bundles), landing.mjs (landing pages and sitemap),
+                        ui-texts.mjs (checks and stamps data/ui)
 tests/                  node --test suites + fixtures (tests/fixtures/data exists)
 feedback/Code.gs        Apps Script backend (exists)
 .github/workflows/      ci.yml (lint + tests), pages.yml (bundle + deploy)
@@ -60,11 +69,12 @@ Keep pure logic (`state`, `deck/*`, `text/*`, `feedback/client` minus `fetch`) f
 - **Production:** `node tools/bundle.mjs` builds the site in `_site/` with the data in `bundles/<data version>/`:
   - `meta.json`: the meta files, as `getMeta()` returns them;
   - `concepts.json`: `{module: {id: concept}}` in module tree order, without the authors' `note`s (a third of the file);
-  - `<code>.json`: all layers of one language, `{lang:{}, ex:{}, ipa:{}, etym:{}}`, for each language with data.
+  - `<code>.json`: all layers of one language, `{lang:{}, ex:{}, ipa:{}, etym:{}}`, for each language with data;
+  - `ui-<code>.json`: the page's texts in an interface language (§13): `{ui, landing}`, from `data/ui/<code>.json` and the parts of `data/landing/<code>.json` the page shows.
 
   The loader reads `data/meta/version.json` without the cache (`no-cache`), then the bundles of that version. A language pair then takes five requests (version, meta, concepts and the two languages), which gzip well: English is 855 KB, 250 KB gzipped. The site leaves out the source vocabulary files (it keeps `data/meta/`), and the same data always gives the same bytes. `tools/bundle.mjs` replaces `_site/` as a whole, so it refuses any directory it did not build.
 - **Development / fallback:** if bundles are missing, load `data/meta/*`, all `data/concepts/*.json`, then per-module layer files for the two languages, in parallel. A missing file means empty; never throw.
-- Loader API (async, cached): `getMeta()`, `getConcepts()`, `getLanguage(code)` → `{lang: Map, ex: Map, ipa: Map, etym: Map}`.
+- Loader API (async, cached): `getMeta()`, `getConcepts()`, `getLanguage(code)` → `{lang: Map, ex: Map, ipa: Map, etym: Map}`, `getUiTexts(code)` → `{ui, landing}` (the bundle, or the two source files).
 - Start prefetching a language when the user hovers or focuses its chip. Show a short inline status in the step while loading ("Loading Japanese words…"), and a message if loading fails.
 
 ## 4. State and URL
@@ -75,6 +85,7 @@ Keep pure logic (`state`, `deck/*`, `text/*`, `feedback/client` minus `fetch`) f
   - Only non-default field placements are written.
   - Unknown keys are ignored. Invalid values fall back to defaults, keeping the rest.
 - The config is also saved to localStorage (try/catch). On load, the precedence is hash > localStorage > defaults.
+- The interface language is the `lang` query parameter: `?lang=ru#v1&l=ja&k=ru…` (§13). The address names it once there is a config or the user chose a language; other parameters (the dev `?data=`) stay. `app.address(href)` builds the address, for the URL and for the Share block.
 - `state.js` exposes `subscribe()`. `ui/app.js` derives the deck view (notes, counts, sample) on each change; it takes a few milliseconds even for the full English deck.
   - Controls update at once.
   - The preview frames re-render debounced (about 60 ms), and the URL hash and localStorage are written after about 150 ms.
@@ -212,7 +223,7 @@ What re-importing does was checked against the Anki backend itself: the `anki` P
   - Without "Merge note types": notes are not updated, and Anki adds an unused copy "AnkiGen … +" of the incoming note type.
   - With it: notes update, but the user's extra field is emptied.
 
-The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-facing summary of all this is the "?" next to Download (`UPDATE_HELP` in `src/ui/copy.js`).
+The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-facing summary of all this is the "?" next to Download (`update.*` in `src/ui/strings.js`).
 
 ## 8. Preview and sidebar
 
@@ -221,8 +232,10 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - `{{type:F}}` renders as a disabled input.
 
   What the user sees is what Anki shows.
-- **Preview:** each face is rendered in an `<iframe srcdoc sandbox="allow-same-origin">` with `card.css`, inside `<body class="card">` like Anki's reviewer. Light/dark follows the page (`nightMode` on the body).
-  - No scripts run in the frames. `allow-same-origin` only lets the page size each frame to its content and read selections in it.
+- **Preview:** each face is rendered in an `<iframe srcdoc sandbox="allow-scripts">` with `card.css`, inside `<body class="card">` like Anki's reviewer. Light/dark follows the page (`nightMode` on the body).
+  - The frames have an opaque origin: they can't reach the page, its storage or its address, and the page can't read them. Their only script is a small bridge (`bridge` in `ui/preview.js`) that posts `{ankigen: 1, type}` messages to the page: `size` (the body's height, on load, resize and when fonts arrive), `selection` (the selected text and where it is, or null) and `shortcut` (Ctrl/Cmd+Enter). The page answers `clear` after a report quoted the selection. The page accepts messages only from its own frames and keeps only the fields and lengths a report uses.
+  - Why not `allow-same-origin` without scripts: browser extensions inject scripts into every frame, and in such a frame Chrome blocks them and logs "Blocked script execution in 'about:srcdoc'…" for each face. With `allow-scripts` alone the extensions run, nothing is logged, and the frames stay isolated from the page. (Both flags together would let the frames lift their own sandbox.)
+  - A face never scrolls: its frame takes the face's whole height (plus the frame's borders), and the frame's document hides overflow. When the faces don't fit, the panel scrolls them under its heading and buttons.
   - The sample is the richest of the first 40 notes, and it is kept while it stays in the deck. "Another word" picks a random note.
   - Wide screens show front and back side by side in a sticky panel; phones open the preview as a sheet from a bar at the bottom.
 - **Word list (the sidebar, `ui/sidebar.js`):** a virtualized list with a fixed row height that renders only the rows in view (13 in the DOM for the 3,341-note English deck).
@@ -242,7 +255,7 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
   - Corner button: a fixed ⚑ in the bottom-right.
 - **Selection capture:**
   - Listen to `selectionchange` and keep the last non-empty selection with its context: `closest('[data-concept]')`, `[data-field]`, and direction/side from the card container.
-  - The preview frames run no scripts, so they can't post their selection. Instead the page listens to `selectionchange` and `keydown` on each frame's document itself, which `allow-same-origin` permits. Each frame's body carries the note's concept IDs and word.
+  - The page can't read the preview frames (§8), so each frame posts its selection and its Ctrl/Cmd+Enter; the newer of the page's and a frame's selection wins, and a frame that loads a new face drops its old selection. Each frame's body carries the note's concept IDs and word.
   - Capture on `pointerdown` of the corner button (and of the preview's Report button), because on mobile tapping clears the selection before `click`.
   - Without a selection, the preview's Report button and the word list's flags report their note; Ctrl/Cmd+Enter reports the focused list row, if any. After a report is sent, its quote is deselected.
 - **Loading:** the dialog (`ui/feedback-dialog.js`) and `feedback/client.js` load when the browser is idle, or on first use, so they are not part of the initial JS.
@@ -267,20 +280,24 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 
 - `<title>`: "AnkiGen — free Anki vocabulary decks in 15 languages".
 - Meta description, canonical URL, Open Graph and Twitter card (with `og-image.png`, 1200×630, rendered from `tools/og-image.html`).
-- JSON-LD `WebApplication` (free offer, `inLanguage` list).
+- `<meta name="author">` and `twitter:creator` for the author (`AUTHOR_NAME`, `AUTHOR_URL` in `src/config.js`).
+- JSON-LD `@graph`: the `WebApplication` (free offer, `inLanguage` list, `featureList`, screenshot, license, author), the `WebSite` it is part of, and the author as a `Person` with `sameAs` (X, Patreon, Buy Me a Coffee).
 - Semantic headings, `noscript` text describing the tool, `robots.txt`, and `sitemap.xml` (built with the landing pages).
 - These static files repeat URLs from `src/config.js` and the language count, because crawlers and link previews run no scripts. `tests/site.test.mjs` checks that they agree with `config.js` and `languages.json`.
 - Crawlers read `robots.txt` only at the root of a host. For a project site that is `xenohunter.github.io/robots.txt`, outside this repository, so submit `sitemap.xml` in Google Search Console instead. The file under `/ankigen/` is harmless.
 - **Speed:** `index.html` has a `modulepreload` link for every module of the first load (the test checks the list), so the browser fetches them all at once instead of in four rounds. The footer appears only after the first render, so it doesn't jump down while the steps appear.
+- The canonical URL is the bare app address; `?lang=` addresses are the same page in another interface language (§13), not separate pages. Search engines get the languages from the landing pages, which are written in their visitors' languages.
 - **Landing pages:** `tools/landing.mjs` makes them from the bundles `tools/bundle.mjs` has just built, so they describe the deck the site serves.
   - `decks/<learning>-for-<known>-speakers/` for each bilingual pair: 210 pages once all 15 languages are complete. Same-language decks get no pages, and a pair without words gets none yet. The slugs come from the English names in `languages.json`, so renaming a language moves its pages.
   - Each page has its own title and description and shows the deck with the app's own code:
     - the word count, and the field rows and deck options the app shows for the pair, with their help texts;
     - every module with words, with the count the module tree shows, up to three sample words and its country-specific words. Samples are the module's own single-meaning words first, never from an 18+ module and never vulgar or offensive.
-  - "Build your deck" opens the app with a preset hash (the pair with Core I), and each module opens it with only that module.
+  - "Build your deck" opens the app with a preset hash (the pair with Core I), and each module opens it with only that module; both in the visitors' interface language (`?lang=<known>`).
   - `decks/` lists the pages by the language you speak. The app's footer and noscript text link to it, and every page links to the other decks for the same speakers and for the same learned language.
-  - Plain HTML with the app's stylesheet and no scripts: canonical URL, Open Graph tags and a JSON-LD `BreadcrumbList`.
-  - A page is written in the language its visitors speak. `data/landing/<code>.json` (unit `landing:<code>`, `docs/GENERATION.md`) translates `englishTexts()`: the page texts, module, field and option texts, language names, and per pair the heading, title, description and lede. Counts use the translation's CLDR plural forms. A page uses its translation only when that is complete and made from the current English texts (it records their hash); otherwise it is in English, as English speakers' pages are. `lang` and `og:locale` follow. The hub stays in English, but names each page in that page's language. The app itself stays English (UI localization is a non-goal).
+  - Plain HTML with the app's stylesheet and no scripts: canonical URL, Open Graph tags, author, and JSON-LD: a `BreadcrumbList`, and on a pair's page a `LearningResource` (flashcards, free, about the learned `Language`, in both languages).
+  - The pages for one learned language that are written in their visitors' language name each other with `<link rel="alternate" hreflang>` (the known language's code), with the English speakers' page as `x-default`. A page in English only because its translation is missing names none and is named by none.
+  - A page is written in the language its visitors speak. `data/landing/<code>.json` (unit `landing:<code>`, `docs/GENERATION.md`) translates `englishTexts()`: the page texts, module, field and option texts, language names, and per pair the heading, title, description and lede. Counts use the translation's CLDR plural forms. A page uses its translation only when that is complete and made from the current English texts (it records their hash); otherwise it is in English, as English speakers' pages are. `lang` and `og:locale` follow. The hub stays in English, but names each page in that page's language.
+  - The footer is the app's, in the page's language from `data/ui` (§13): support links, the decks and the source, the licenses, the author. The landing texts don't repeat it.
   - `sitemap.xml` lists the app, `decks/` and every page.
 
 ## 11. Testing
@@ -297,7 +314,9 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - `tools/lint-data.mjs` on `data/` and on `tests/fixtures/data` in CI.
 - **site:** the static files agree with `src/config.js` and the registry; `modulepreload` matches the import graph; the first load stays within its budget.
 - **tools:** `tools/apkg.mjs` matches `buildApkg`; the site from `tools/bundle.mjs` loads the same data as the source files, and its landing pages are the ones the source files give; `lint-data --gate` passes and fails as it should.
-- **landing:** a page for every pair with words, at its slug; unique titles and descriptions; every link resolves, and the app links decode to the page's pair; module counts match the deck; no 18+ or vulgar samples; the hub and the sitemap list exactly the pages; same data, same pages.
+- **landing:** a page for every pair with words, at its slug; unique titles and descriptions; every link resolves, and the app links decode to the page's pair in its visitors' language; module counts match the deck; no 18+ or vulgar samples; the hub and the sitemap list exactly the pages; same data, same pages; hreflang only among pages in their own language; the structured data.
+- **i18n:** the language a visitor gets; texts, plurals and numbers per language, and the English fallback; every `data/ui` translation complete and current; the bundle gives the same texts as the source files; the page's address.
+- **site** also checks that `index.html`'s texts are the English of `src/ui/strings.js`, and that its early language check knows the interface languages.
 - Optional Playwright smoke test (Chromium): pick ja ← ru, select Core I, toggle reverse, download, check the blob size is > 0.
 
 ## 12. CI/CD
@@ -305,3 +324,20 @@ The manual checks on real devices are in `docs/ANKI_CHECKLIST.md`. The user-faci
 - `ci.yml` (push/PR): Node 22, `node tools/lint-data.mjs`, `node tools/lint-data.mjs --data tests/fixtures/data --meta data/meta`, `node --test`.
 - `pages.yml` (push to `master`, or run by hand): lint, tests, the data gate, `node tools/bundle.mjs --site _site` (app + vendor + bundles + data/meta + SEO files + landing pages and sitemap), then `actions/upload-pages-artifact` and `actions/deploy-pages`. One-time setup: Settings → Pages → Source: GitHub Actions.
 - **Data gate:** `node tools/lint-data.mjs --gate` fails unless every active language has an entry for every concept, which is 100% in the `entries` column of `--report`. A failing gate fails the build, so nothing deploys. A manual run can skip it with the input "Deploy even if some languages are incomplete". The site ships only when every language is complete.
+
+## 13. Interface language
+
+The page speaks the 15 languages (SPEC §4). `src/ui/i18n.js` holds the language and turns keys into texts; it has no DOM, so it runs under `node --test`.
+
+- **Texts:**
+  - English: `src/ui/strings.js` (`STRINGS`, and `PLURALS` for texts with a number), plus the feedback dialog's own texts in `src/ui/feedback-dialog.js`, which register with the dialog (`addEnglish`), so they stay out of the first load.
+  - Translations: `data/ui/<code>.json` has `texts`, `plural` (one form per CLDR plural category of the language, `Intl.PluralRules`) and the two fixed field rows (`fields.word`, `fields.translation`); `data/landing/<code>.json` (§10) gives the module, category, field and option texts and the language names.
+  - `t(key, values)`, `plural(key, n, values)` and `number(n)` use the translation, else the English text, key by key: a new English text shows in English until its translations arrive.
+  - `{placeholders}` are filled in at run time. A sentence is never assembled from pieces in English order; a text with a number is one whole text per plural category ("{n} words here exist only in…").
+- **Which language:** `pickLanguage`: the address's `?lang=`, else the last choice (`localStorage` `ankigen:lang`), else the first of `navigator.languages` the page speaks (by primary subtag: `zh-TW` → `zh`, `sr-Latn` → `sr`), else English. `UI_LANGUAGES` lists them, in the order of the chips; the inline script in `index.html` repeats the rule to hide the English texts (`i18n-pending`) until a translation arrives, so a non-English visitor never sees English first. English visitors see the static text at once.
+- **Loading:** the translation loads with the meta files (`getUiTexts`, one bundle `ui-<code>.json` of about 7 KB gzipped), before the first render. Switching loads the new one, then relabels the page in place: focus, scroll, open sections and the search box are kept.
+- **Live texts** (`ui/dom.js`): `h()` takes `msg(key)` or `live(fn)` for a text node or an attribute; `relabel()` redoes them all after a switch (nodes are held weakly, so removed ones drop out). Texts a part computes in `update()` are redone by the re-render that follows; parts that keep built rows (the field table, the word list) rebuild them when `languageEpoch()` changes. `index.html` marks its texts with `data-t="key"` (a `{placeholder}` keeps its element, marked `data-part`) and `data-plural="key"` (counted by the number of languages).
+- **Also switched:** `<html lang>` (the language's tag; Serbian in Cyrillic), the title and the description, number formats and plural rules, the frames' type-the-answer label, and the share text. Card captions don't change: they follow the known language (`labels.json`).
+- **The menu** (`ui/locale.js`): a button with the current language's flag and code, and a popover of the languages (two columns, read down) with flags and native names, arrow keys, Home/End, Esc and Tab to leave. Flags are images, `img/flags/<country>.svg` for the `country` of `languages.json`: Windows shows no flag emoji. Simplified where an emblem would not read at 20 px (Spain's and Serbia's civil flags, Portugal's sphere and shield).
+- **Checks:** `tools/ui-texts.mjs check` (also in `lint-data`): every English text present and non-empty, the same `{placeholders}`, every plural category with exactly one `{n}`, no HTML, full-width punctuation in Chinese and Japanese, prose not left in English and in the language's script, no unknown keys. Each file records the hash of the English it follows (`source`); when the English changes, lint warns until the translation is updated and stamped again (`tools/ui-texts.mjs stamp <code>`, which also writes it in canonical order). The translations are written by hand (or by Claude Code), not by the API pipeline.
+- **Adding an interface language:** a complete `data/ui/<code>.json` (stamped), the language in `UI_LANGUAGES` and in `index.html`'s early check, its landing translation for the module texts, and a flag if its country is new.

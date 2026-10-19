@@ -1,5 +1,5 @@
 {
-  "source": "44bca71ba593",
+  "source": "09e485b33d7e",
   "texts": {
     "decks": "Talie",
     "cta": "Stwórz swoją talię",
@@ -22,11 +22,7 @@
     "about": "Słowa, tłumaczenia i zdania przykładowe zostały przygotowane przez model AI i są sprawdzane przez ludzi, język po języku. Jeśli coś wygląda źle, zaznacz to na podglądzie fiszki w AnkiGen i naciśnij Ctrl+Enter (⌘+Enter na Macu) albo użyj tam przycisku Feedback. Każde zgłoszenie pomaga poprawić talię dla wszystkich.",
     "moreHeading": "Więcej talii",
     "moreForYou": "Więcej talii dla osób mówiących po polsku",
-    "allDecks": "Wszystkie talie według par języków",
-    "support": "Wesprzyj projekt:",
-    "source": "Kod źródłowy na GitHubie",
-    "license": "Kod na licencji {mit}; słownictwo na licencji {cc}.",
-    "versions": "Dane {data} · Aplikacja {app}"
+    "allDecks": "Wszystkie talie według par języków"
   },
   "languages": {
     "en": "Angielski",

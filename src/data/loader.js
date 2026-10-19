@@ -1,8 +1,8 @@
 // @ts-check
 // Data loading (ARCHITECTURE §3). Production reads the bundles that tools/bundle.mjs writes under
-// bundles/<data version>/ (meta.json, concepts.json, <code>.json); without bundles it reads the source
-// files under data/ directly. A missing vocabulary file means "no data", never an error; only the meta
-// files are required. Every getter is cached, so calling one early (e.g. on hover) prefetches.
+// bundles/<data version>/ (meta.json, concepts.json, <code>.json, ui-<code>.json); without bundles it reads
+// the source files under data/ directly. A missing vocabulary file means "no data", never an error; only the
+// meta files are required. Every getter is cached, so calling one early (e.g. on hover) prefetches.
 //
 // Dev override: createLoader({ dataDir: 'tests/fixtures/data' }) (from ?data=…) reads concepts and
 // layers from that directory; meta always comes from data/meta.
@@ -155,5 +155,22 @@ export function createLoader({ fetchJson = httpJson, fetchText = httpText, dataD
   /** The card stylesheet, embedded verbatim in the note type. */
   const getCardCss = () => once('css', async () => (await fetchText('css/card.css')) ?? '');
 
-  return { getMeta, getConcepts, getLanguage, getCardCss };
+  /**
+   * The page's texts in a language (ui/i18n.js): data/ui/<code>.json and data/landing/<code>.json, or their
+   * bundle. Without `ui` the load failed; it is not cached, so the next call tries again.
+   * @param {string} code @returns {Promise<import('../ui/i18n.js').Translation>}
+   */
+  const getUiTexts = (code) => {
+    const key = `ui:${code}`;
+    const texts = once(key, async () => {
+      const bundle = await bundleBase();
+      if (bundle) return (await fetchJson(`${bundle.base}ui-${code}.json`)) ?? {};
+      const [ui, landing] = await Promise.all([fetchJson(`data/ui/${code}.json`), fetchJson(`data/landing/${code}.json`)]);
+      return { ui, landing };
+    });
+    texts.then((t) => t.ui || cache.delete(key), () => cache.delete(key));
+    return texts;
+  };
+
+  return { getMeta, getConcepts, getLanguage, getCardCss, getUiTexts };
 }

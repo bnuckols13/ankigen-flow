@@ -1,86 +1,115 @@
 // @ts-check
 // The feedback dialog (SPEC §5): the message, prefilled with the quote; an optional category and email; a
 // honeypot; the privacy note. Client limits and the POST are in feedback/client.js. ui/feedback.js loads
-// this module on first use, with the text the dialog shows (kept here, out of the first page load).
+// this module on first use, with the English texts the dialog shows (kept here, out of the first page load;
+// data/ui translates them with the page's other texts).
 
 import { APP_VERSION, FEEDBACK_ENDPOINT, SITE_URL } from '../config.js';
 import { EMAIL, decide, fingerprint, loadState, payload, record, requestBody, saveState, send } from '../feedback/client.js';
 import { SAME, encodeHash } from '../state.js';
-import { count } from './format.js';
-import { h } from './dom.js';
+import { bind, fillNodes, h, msg } from './dom.js';
+import { addEnglish, plural, t } from './i18n.js';
 
 /** @typedef {import('./feedback.js').ReportContext} ReportContext */
 
 // ---------------------------------------------------------------- text
 
-/** [value sent to the sheet, label] */
-export const CATEGORIES = /** @type {const} */ ([
-  ['wrong-translation', 'Wrong translation'],
-  ['typo', 'Typo'],
-  ['wrong-form', 'Wrong form'],
-  ['bad-example', 'Bad example'],
-  ['suggestion', 'Suggestion'],
-  ['other', 'Other'],
-]);
+/** The values sent to the sheet; the labels are fb.category.<value>. */
+export const CATEGORIES = /** @type {const} */ (['wrong-translation', 'typo', 'wrong-form', 'bad-example', 'suggestion', 'other']);
 
-/** docs/FEEDBACK.md, "Privacy note for the site". */
-export const PRIVACY_NOTE =
-  'Reports are stored in a private spreadsheet and used only to fix the vocabulary and, if you leave an email, to reply to you. We store a random ID kept in your browser to filter spam. No tracking, no analytics.';
-
-const EMAIL_HINT = 'If you want us to get back to you, leave your email.';
-const THANKS = 'Thank you! Your report was sent.';
-
-/** @type {Record<import('../feedback/client.js').Garbage, string>} */
-export const GARBAGE_HINTS = {
-  letters: 'This has no words in it. Could you describe what’s wrong?',
-  short: 'That’s very short. A few words about what’s wrong help us fix it.',
-  repeated: 'This looks like repeated characters. Could you describe what’s wrong?',
-  duplicate: 'You’ve already sent this report.',
+/** The dialog's English texts (see ui/strings.js). fb.privacy is docs/FEEDBACK.md's "Privacy note for the site". */
+export const DIALOG_STRINGS = {
+  'fb.title': 'Feedback',
+  'fb.close': 'Close',
+  'fb.about': 'About {word}',
+  'fb.message': 'Message',
+  'fb.category': 'Category',
+  'fb.choose': 'Choose…',
+  'fb.category.wrong-translation': 'Wrong translation',
+  'fb.category.typo': 'Typo',
+  'fb.category.wrong-form': 'Wrong form',
+  'fb.category.bad-example': 'Bad example',
+  'fb.category.suggestion': 'Suggestion',
+  'fb.category.other': 'Other',
+  'fb.email': 'Email',
+  'fb.optional': '(optional)',
+  'fb.emailHint': 'If you want us to get back to you, leave your email.',
+  'fb.keys': '{shortcut} to send',
+  'fb.cancel': 'Cancel',
+  'fb.send': 'Send',
+  'fb.sendAnyway': 'Send anyway',
+  'fb.sending': 'Sending…',
+  'fb.privacy':
+    'Reports are stored in a private spreadsheet and used only to fix the vocabulary and, if you leave an email, to reply to you. We store a random ID kept in your browser to filter spam. No tracking, no analytics.',
+  'fb.thanks': 'Thank you! Your report was sent.',
+  'fb.garbage.letters': 'This has no words in it. Could you describe what’s wrong?',
+  'fb.garbage.short': 'That’s very short. A few words about what’s wrong help us fix it.',
+  'fb.garbage.repeated': 'This looks like repeated characters. Could you describe what’s wrong?',
+  'fb.garbage.duplicate': 'You’ve already sent this report.',
+  'fb.wait.gap': 'Please wait {time} before sending another report.',
+  'fb.wait.burst': 'You’ve sent several reports in a few minutes. Please try again in {time}.',
+  'fb.wait.daily': 'That’s a lot of reports in one day, thank you! You can send more in {time}.',
+  'fb.error.network': 'Could not reach the report server. Check your connection and try again.',
+  'fb.error.timeout': 'The report server did not answer in time. Please try again.',
+  'fb.error.daily_cap': 'The report box is full for today. Please try again tomorrow.',
+  'fb.error.client_cap': 'You’ve sent a lot of reports in the last few hours. Please try again later.',
+  'fb.error.bad_email': 'Please check the email address, or leave it empty.',
+  'fb.error.too_large': 'The message is too long. Please shorten it.',
+  'fb.error.empty': 'Please write a message.',
+  'fb.error.server': 'The report server had a problem. Please try again in a minute.',
+  'fb.place.forward': 'forward card',
+  'fb.place.reverse': 'reverse card',
+  'fb.place.front': 'front',
+  'fb.place.back': 'back',
+  'fb.field.word': 'word',
+  'fb.field.translation': 'translation',
+  'fb.field.definition': 'definition',
+  'fb.field.romanization': 'romanization',
+  'fb.field.otherScript': 'other script',
+  'fb.field.measureWord': 'measure word',
+  'fb.field.hanja': 'hanja',
+  'fb.field.forms': 'key forms',
+  'fb.field.ipa': 'IPA',
+  'fb.field.examples': 'examples',
+  'fb.field.related': 'antonyms & related',
+  'fb.field.etymology': 'etymology',
+  'fb.field.pos': 'part of speech',
+  'fb.field.register': 'register',
+  'fb.field.emoji': 'emoji',
+  'fb.field.conceptId': 'concept ID',
 };
+
+/** Waiting times, rounded up. */
+export const DIALOG_PLURALS = {
+  seconds: { one: '{n} second', other: '{n} seconds' },
+  minutes: { one: '{n} minute', other: '{n} minutes' },
+  hours: { one: '{n} hour', other: '{n} hours' },
+};
+
+addEnglish(DIALOG_STRINGS, DIALOG_PLURALS);
+
+const ERRORS = new Set(['network', 'timeout', 'daily_cap', 'client_cap', 'bad_email', 'too_large', 'empty']);
 
 /** "12 seconds", "3 minutes", "5 hours", rounded up. @param {number} ms */
 function duration(ms) {
   const s = Math.max(1, Math.ceil(ms / 1000));
-  if (s < 60) return count(s, 'second');
-  if (s < 3600) return count(Math.ceil(s / 60), 'minute');
-  return count(Math.ceil(s / 3600), 'hour');
+  if (s < 60) return plural('seconds', s);
+  if (s < 3600) return plural('minutes', Math.ceil(s / 60));
+  return plural('hours', Math.ceil(s / 3600));
 }
 
 /** @param {{ reason: 'gap' | 'burst' | 'daily', waitMs: number }} limit */
-export function waitText({ reason, waitMs }) {
-  if (reason === 'gap') return `Please wait ${duration(waitMs)} before sending another report.`;
-  if (reason === 'burst') return `You’ve sent several reports in a few minutes. Please try again in ${duration(waitMs)}.`;
-  return `That’s a lot of reports in one day, thank you! You can send more in ${duration(waitMs)}.`;
-}
+export const waitText = ({ reason, waitMs }) => t(`fb.wait.${reason}`, { time: duration(waitMs) });
 
 /** Errors from send() in feedback/client.js and from feedback/Code.gs. @param {string} error */
-export function sendErrorText(error) {
-  switch (error) {
-    case 'network':
-      return 'Could not reach the report server. Check your connection and try again.';
-    case 'timeout':
-      return 'The report server did not answer in time. Please try again.';
-    case 'daily_cap':
-      return 'The report box is full for today. Please try again tomorrow.';
-    case 'client_cap':
-      return 'You’ve sent a lot of reports in the last few hours. Please try again later.';
-    case 'bad_email':
-      return 'Please check the email address, or leave it empty.';
-    case 'too_large':
-      return 'The message is too long. Please shorten it.';
-    case 'empty':
-      return 'Please write a message.';
-    default:
-      return 'The report server had a problem. Please try again in a minute.';
-  }
-}
+export const sendErrorText = (error) => t(`fb.error.${ERRORS.has(error) ? error : 'server'}`);
 
-/** How the dialog names the field a selection came from. */
+/** How the dialog names the field a selection came from: the note type's field → fb.field.<name>. */
 const FIELD_LABELS = /** @type {Record<string, string>} */ ({
   Word: 'word', WordRuby: 'word', TypeTarget: 'word', Disambig: 'word', Translation: 'translation',
-  Romanization: 'romanization', OtherScript: 'other script', MeasureWord: 'measure word', Hanja: 'hanja',
-  Forms: 'key forms', IPA: 'IPA', Examples: 'examples', Related: 'antonyms & related', Etymology: 'etymology',
-  POS: 'part of speech', Register: 'register', Emoji: 'emoji', ConceptId: 'concept ID',
+  Romanization: 'romanization', OtherScript: 'otherScript', MeasureWord: 'measureWord', Hanja: 'hanja',
+  Forms: 'forms', IPA: 'ipa', Examples: 'examples', Related: 'related', Etymology: 'etymology',
+  POS: 'pos', Register: 'register', Emoji: 'emoji', ConceptId: 'conceptId',
 });
 
 /**
@@ -88,18 +117,20 @@ const FIELD_LABELS = /** @type {Record<string, string>} */ ({
  * @param {ReportContext} context @param {boolean} same same-language mode (the translation is a definition)
  */
 export function placeText({ direction, side, field }, same) {
-  const label = field === 'Translation' && same ? 'definition' : field ? (FIELD_LABELS[field] ?? field) : '';
-  return [direction && `${direction} card`, side, label].filter(Boolean).join(', ');
+  const name = field === 'Translation' && same ? 'definition' : field ? FIELD_LABELS[field] : '';
+  const label = name ? t(`fb.field.${name}`) : (field ?? '');
+  const parts = [direction === 'forward' || direction === 'reverse' ? t(`fb.place.${direction}`) : direction, side === 'front' || side === 'back' ? t(`fb.place.${side}`) : side, label];
+  return parts.filter(Boolean).join(', ');
 }
 
 // ---------------------------------------------------------------- dialog
 
 /**
- * @param {string} id @param {string} label @param {HTMLElement} control
+ * @param {string} id @param {string} label the key of its text @param {HTMLElement} control
  * @param {{ optional?: boolean, hint?: HTMLElement }} [opts]
  */
 function field(id, label, control, { optional = false, hint } = {}) {
-  return h('div', { class: 'fb-field' }, h('label', { for: id }, label, optional && h('span', { class: 'fb-opt' }, ' (optional)')), control, hint);
+  return h('div', { class: 'fb-field' }, h('label', { for: id }, msg(label), optional && h('span', { class: 'fb-opt' }, ' ', msg('fb.optional'))), control, hint);
 }
 
 /**
@@ -123,35 +154,43 @@ export function createDialog({ app, storage, shortcut, onSent }) {
   const category = h(
     'select',
     { id: 'fb-category', name: 'category' },
-    h('option', { value: '' }, 'Choose…'),
-    ...CATEGORIES.map(([value, label]) => h('option', { value }, label)),
+    h('option', { value: '' }, msg('fb.choose')),
+    ...CATEGORIES.map((value) => h('option', { value }, msg(`fb.category.${value}`))),
   );
   const email = h('input', { id: 'fb-email', name: 'email', type: 'email', maxlength: '254', autocomplete: 'email', 'aria-describedby': 'fb-email-hint' });
   const honeypot = h('input', { name: 'website', type: 'text', tabindex: '-1', autocomplete: 'off' });
   const status = h('p', { class: 'fb-status', role: 'status' });
-  const sendButton = h('button', { type: 'submit', class: 'button primary' }, 'Send');
+  /** Send, or Send anyway after a warning. */
+  let sendKey = 'fb.send';
+  const sendButton = h('button', { type: 'submit', class: 'button primary' });
+  bind(sendButton, (button) => (button.textContent = t(sendKey)));
+  /** @param {'fb.send' | 'fb.sendAnyway'} key */
+  const sendText = (key) => {
+    sendKey = key;
+    sendButton.textContent = t(key);
+  };
   const close = () => dialog.close();
   const form = h(
     'form',
     { class: 'fb-form', novalidate: true },
-    h('div', { class: 'fb-head' }, h('h2', { id: 'fb-title' }, 'Feedback'), h('button', { type: 'button', class: 'fb-x', 'aria-label': 'Close', onclick: close }, '×')),
+    h('div', { class: 'fb-head' }, h('h2', { id: 'fb-title' }, msg('fb.title')), h('button', { type: 'button', class: 'fb-x', 'aria-label': msg('fb.close'), onclick: close }, '×')),
     about,
-    field('fb-message', 'Message', message),
-    field('fb-category', 'Category', category, { optional: true }),
-    field('fb-email', 'Email', email, { optional: true, hint: h('p', { class: 'fb-hint', id: 'fb-email-hint' }, EMAIL_HINT) }),
+    field('fb-message', 'fb.message', message),
+    field('fb-category', 'fb.category', category, { optional: true }),
+    field('fb-email', 'fb.email', email, { optional: true, hint: h('p', { class: 'fb-hint', id: 'fb-email-hint' }, msg('fb.emailHint')) }),
     h('div', { class: 'fb-hp', 'aria-hidden': 'true' }, h('label', null, 'Leave this empty ', honeypot)),
     status,
     h(
       'div',
       { class: 'fb-actions' },
-      h('span', { class: 'fb-keys' }, `${shortcut} to send`),
-      h('button', { type: 'button', class: 'button', onclick: close }, 'Cancel'),
+      h('span', { class: 'fb-keys' }, msg('fb.keys', { shortcut })),
+      h('button', { type: 'button', class: 'button', onclick: close }, msg('fb.cancel')),
       sendButton,
     ),
-    h('p', { class: 'fb-privacy' }, PRIVACY_NOTE),
+    h('p', { class: 'fb-privacy' }, msg('fb.privacy')),
   );
-  const thanksClose = h('button', { type: 'button', class: 'button primary', onclick: close }, 'Close');
-  const thanks = h('div', { class: 'fb-done', hidden: true }, h('p', { class: 'fb-thanks', role: 'status' }, THANKS), thanksClose);
+  const thanksClose = h('button', { type: 'button', class: 'button primary', onclick: close }, msg('fb.close'));
+  const thanks = h('div', { class: 'fb-done', hidden: true }, h('p', { class: 'fb-thanks', role: 'status' }, msg('fb.thanks')), thanksClose);
   const dialog = h('dialog', { class: 'fb', id: 'feedback', 'aria-labelledby': 'fb-title' }, form, thanks);
   document.body.append(dialog);
 
@@ -160,7 +199,8 @@ export function createDialog({ app, storage, shortcut, onSent }) {
     if (!c?.word && !c?.conceptId) return [];
     const { config, ctx } = app.view();
     const where = placeText(c, config.know === SAME);
-    return ['About ', h('b', { lang: ctx?.learn.tag ?? null }, c.word || c.conceptId || ''), where ? ` · ${where}` : ''];
+    const word = h('b', { lang: ctx?.learn.tag ?? null }, c.word || c.conceptId || '');
+    return [...fillNodes(t('fb.about'), { word }), where ? ` · ${where}` : ''];
   }
 
   /** @param {string} text @param {HTMLElement} [focus] */
@@ -179,7 +219,7 @@ export function createDialog({ app, storage, shortcut, onSent }) {
     about.hidden = !line.length;
     say('');
     confirmed = '';
-    sendButton.textContent = 'Send';
+    sendText('fb.send');
     form.hidden = false;
     thanks.hidden = true;
     sent = false;
@@ -208,8 +248,8 @@ export function createDialog({ app, storage, shortcut, onSent }) {
     if (decision.action === 'wait') return say(waitText(decision));
     if (decision.action === 'confirm') {
       confirmed = fingerprint(report);
-      sendButton.textContent = 'Send anyway';
-      return say(GARBAGE_HINTS[decision.reason], message);
+      sendText('fb.sendAnyway');
+      return say(t(`fb.garbage.${decision.reason}`), message);
     }
     if (decision.action === 'send') {
       const { config } = app.view();
@@ -225,7 +265,7 @@ export function createDialog({ app, storage, shortcut, onSent }) {
       };
       sending = true;
       sendButton.disabled = true;
-      say('Sending…');
+      say(t('fb.sending'));
       const result = await send(requestBody(payload(report, env)), { endpoint: FEEDBACK_ENDPOINT });
       sending = false;
       sendButton.disabled = false;
@@ -246,7 +286,7 @@ export function createDialog({ app, storage, shortcut, onSent }) {
   message.addEventListener('input', () => {
     if (!confirmed) return;
     confirmed = '';
-    sendButton.textContent = 'Send';
+    sendText('fb.send');
     say('');
   });
   // Ctrl/Cmd+Enter sends; the page's own shortcut handler must not see it.

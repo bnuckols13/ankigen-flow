@@ -3,11 +3,9 @@
 // cards) and the Serbian script (shown when Serbian is on either side).
 
 import { usesSerbian } from '../state.js';
-import { h } from './dom.js';
+import { h, live, msg } from './dom.js';
+import { optionText } from './i18n.js';
 import { help } from './popover.js';
-
-/** @type {Record<string, string>} */
-const SCRIPT_LABEL = { cyrl: 'Cyrillic', latn: 'Latin' };
 
 /**
  * @param {HTMLElement} root
@@ -15,13 +13,15 @@ const SCRIPT_LABEL = { cyrl: 'Cyrillic', latn: 'Latin' };
  */
 export function mountOptions(root, app) {
   const option = (/** @type {string} */ id) => app.meta.fields.deckOptions.find((/** @type {any} */ o) => o.id === id);
+  /** The option's label and help, live. @param {any} def */
+  const texts = (def) => ({ label: live(() => optionText(def).label), about: live(() => optionText(def).help) });
 
   /** @param {string} id @param {(on: boolean) => Partial<import('../state.js').Config>} change */
   function toggle(id, change) {
-    const def = option(id);
+    const { label, about } = texts(option(id));
     const input = h('input', { type: 'checkbox', role: 'switch' });
     input.addEventListener('change', () => app.update(() => change(input.checked)));
-    const el = h('div', { class: 'opt' }, h('label', { class: 'switch' }, input, h('span', null, def.label)), help(def.label, def.help));
+    const el = h('div', { class: 'opt' }, h('label', { class: 'switch' }, input, h('span', null, label)), help(label, about));
     root.append(el);
     return { input, el };
   }
@@ -36,12 +36,13 @@ export function mountOptions(root, app) {
     input.addEventListener('change', () => app.update(() => ({ srScript: /** @type {any} */ (value) })));
     return input;
   });
+  const { label, about } = texts(sr);
   const script = h(
     'div',
     { class: 'opt' },
-    h('span', { id: scriptId, class: 'opt-label' }, sr.label),
-    h('div', { class: 'seg', role: 'radiogroup', 'aria-labelledby': scriptId }, ...scripts.map((input, i) => h('label', null, input, h('span', null, SCRIPT_LABEL[sr.values[i]] ?? sr.values[i])))),
-    help(sr.label, sr.help),
+    h('span', { id: scriptId, class: 'opt-label' }, label),
+    h('div', { class: 'seg', role: 'radiogroup', 'aria-labelledby': scriptId }, ...scripts.map((input, i) => h('label', null, input, h('span', null, msg(`options.${sr.values[i]}`))))),
+    help(label, about),
   );
   root.append(script);
 

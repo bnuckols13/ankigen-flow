@@ -1,12 +1,13 @@
 // @ts-check
 // Feedback entry points (SPEC §5, ARCHITECTURE §9): the Feedback button in the corner, Ctrl/Cmd+Enter, and
 // where a report comes from: the selected text, its card (data-concept, data-word), its field (data-field)
-// and the card face (data-dir, data-side). Selections are read in the page and in the preview frames; the
-// frames run no scripts, so the page listens to their documents itself (watch). Buttons marked data-report
-// take the selection on pointerdown, because on phones a tap clears it before the click.
+// and the card face (data-dir, data-side). The page's own selection is read here; the preview frames can't be
+// read from the page, so they post theirs, and their Ctrl/Cmd+Enter, through ui/preview.js (frames). Buttons
+// marked data-report take the selection on pointerdown, because on phones a tap clears it before the click.
 // The dialog (ui/feedback-dialog.js, with feedback/client.js) loads when the browser is idle, or on first use.
 
-import { h, icon, whenIdle } from './dom.js';
+import { h, icon, live, msg, whenIdle } from './dom.js';
+import { t } from './i18n.js';
 
 /**
  * Where a report points. Every key is optional: feedback can be about nothing in particular.
@@ -22,6 +23,11 @@ import { h, icon, whenIdle } from './dom.js';
 /**
  * Open the dialog about `fallback`, unless text is selected on a card (or anywhere, without a fallback).
  * @typedef {(fallback?: ReportContext | null, opts?: { useSelection?: boolean }) => void} ReportFn
+ */
+
+/**
+ * What the preview frames tell: the selection on a face (null once it is gone), and Ctrl/Cmd+Enter.
+ * @typedef {{ select: (frame: Window, context: ReportContext | null) => void, shortcut: () => void }} FrameReports
  */
 
 /** How long a selection taken on pointerdown waits for its click. */
@@ -55,8 +61,8 @@ function readSelection(doc) {
  */
 export function mountFeedback({ app, storage }) {
   const shortcut = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent) ? '⌘+Enter' : 'Ctrl+Enter';
-  /** @type {Document | null} the document whose selection changed last: the page or a preview frame */
-  let selectionDoc = null;
+  /** The selection on a preview face, while it is newer than the page's. @type {{ frame: Window, context: ReportContext } | null} */
+  let frameSelection = null;
   /** @type {{ context: ReportContext | null, time: number } | null} */
   let pending = null;
   /** @type {Promise<import('./feedback-dialog.js').Dialog> | null} */
@@ -73,12 +79,13 @@ export function mountFeedback({ app, storage }) {
   /** A quote that was reported stays selected otherwise, and the next report would quote it again. @param {ReportContext | null} context */
   function onSent(context) {
     if (!context?.selectedText) return;
-    for (const doc of [selectionDoc, document]) doc?.getSelection()?.removeAllRanges();
-    selectionDoc = null;
+    frameSelection?.frame.postMessage({ ankigen: 1, type: 'clear' }, '*'); // a frame's origin is opaque
+    document.getSelection()?.removeAllRanges();
+    frameSelection = null;
   }
 
-  /** The current selection: in the document where it changed last, else in the page. */
-  const current = () => (selectionDoc?.defaultView ? readSelection(selectionDoc) : null) ?? readSelection(document);
+  /** The current selection: on a preview face if it changed last there, else in the page. */
+  const current = () => frameSelection?.context ?? readSelection(document);
 
   /** @type {ReportFn} */
   function open(fallback = null, { useSelection = true } = {}) {
@@ -89,32 +96,28 @@ export function mountFeedback({ app, storage }) {
     loadDialog().then((d) => d.show(context), () => {});
   }
 
-  /** Ctrl/Cmd+Enter: report the selection, else the card in focus (a list row), else just feedback. @param {KeyboardEvent} event */
-  function onKeydown(event) {
-    if (event.key !== 'Enter' || !(event.ctrlKey || event.metaKey) || event.isComposing) return;
-    event.preventDefault();
+  /** Ctrl/Cmd+Enter: report the selection, else the card in focus (a list row), else just feedback. */
+  function onShortcut() {
     pending = null;
     const card = document.activeElement?.closest('[data-concept]');
     open(card ? { conceptId: card.getAttribute('data-concept') ?? '', word: card.getAttribute('data-word') ?? '' } : null);
   }
 
-  /** Follow the selection and the shortcut in a document: the page, or a preview frame once it has loaded. @param {Document} doc */
-  function watch(doc) {
-    doc.addEventListener('selectionchange', () => {
-      if (readSelection(doc)) selectionDoc = doc;
-      else if (selectionDoc === doc) selectionDoc = null;
-    });
-    doc.addEventListener('keydown', onKeydown);
-  }
-
   const fab = h(
     'button',
-    { type: 'button', class: 'fab', 'data-report': true, title: `Feedback (${shortcut})`, onclick: () => open() },
+    { type: 'button', class: 'fab', 'data-report': true, title: live(() => t('feedback.title', { shortcut })), onclick: () => open() },
     icon('flag'),
-    h('span', { class: 'fab-label' }, 'Feedback'),
+    h('span', { class: 'fab-label' }, msg('feedback.button')),
   );
   document.body.append(fab);
-  watch(document);
+  document.addEventListener('selectionchange', () => {
+    if (readSelection(document)) frameSelection = null;
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' || !(event.ctrlKey || event.metaKey) || event.isComposing) return;
+    event.preventDefault();
+    onShortcut();
+  });
   document.addEventListener(
     'pointerdown',
     (event) => {
@@ -124,5 +127,14 @@ export function mountFeedback({ app, storage }) {
   );
   whenIdle(() => loadDialog().catch(() => {}));
 
-  return { open, watch };
+  /** @type {FrameReports} */
+  const frames = {
+    select(frame, context) {
+      if (context) frameSelection = { frame, context };
+      else if (frameSelection?.frame === frame) frameSelection = null;
+    },
+    shortcut: onShortcut,
+  };
+
+  return { open, frames };
 }

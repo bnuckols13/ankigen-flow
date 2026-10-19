@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AnkiGen — free Anki vocabulary decks in 15 languages</title>
 <meta name="description" content="Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.">
+<meta name="author" content="Phil Filippak">
 <link rel="canonical" href="https://xenohunter.github.io/ankigen/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
@@ -22,35 +23,83 @@
 <meta property="og:image:alt" content="AnkiGen: free Anki vocabulary decks in 15 languages, with a sample card for the Japanese word 水, water.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@blisstweeting">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "AnkiGen",
-  "url": "https://xenohunter.github.io/ankigen/",
-  "image": "https://xenohunter.github.io/ankigen/og-image.png",
-  "description": "Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.",
-  "applicationCategory": "EducationalApplication",
-  "operatingSystem": "Any",
-  "browserRequirements": "Requires JavaScript",
-  "isAccessibleForFree": true,
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "inLanguage": ["en", "ru", "sr", "ja", "zh", "de", "es", "pt", "pl", "ko", "nl", "fr", "hy", "tr", "el"]
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://xenohunter.github.io/ankigen/#app",
+      "name": "AnkiGen",
+      "url": "https://xenohunter.github.io/ankigen/",
+      "image": "https://xenohunter.github.io/ankigen/og-image.png",
+      "screenshot": "https://xenohunter.github.io/ankigen/og-image.png",
+      "description": "Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": ["en", "ru", "sr", "ja", "zh", "de", "es", "pt", "pl", "ko", "nl", "fr", "hy", "tr", "el"],
+      "featureList": [
+        "Vocabulary decks for any pair of 15 languages, or with definitions in the language you learn",
+        "Topic modules, from the most frequent words to food, housing, health, work and travel",
+        "Card fields you choose, on the side you choose: readings, romanization, key forms, IPA, example sentences",
+        "Reverse cards and typing the answer",
+        "A live card preview and a searchable word list",
+        "An .apkg file for Anki, AnkiDroid and AnkiMobile; downloading again updates the same deck"
+      ],
+      "license": "https://github.com/xenohunter/ankigen/blob/master/LICENSE",
+      "author": { "@id": "https://xenohunter.github.io/ankigen/#author" },
+      "isPartOf": { "@id": "https://xenohunter.github.io/ankigen/#site" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://xenohunter.github.io/ankigen/#site",
+      "name": "AnkiGen",
+      "url": "https://xenohunter.github.io/ankigen/",
+      "inLanguage": ["en", "ru", "sr", "ja", "zh", "de", "es", "pt", "pl", "ko", "nl", "fr", "hy", "tr", "el"],
+      "publisher": { "@id": "https://xenohunter.github.io/ankigen/#author" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://xenohunter.github.io/ankigen/#author",
+      "name": "Phil Filippak",
+      "url": "https://x.com/blisstweeting",
+      "sameAs": ["https://x.com/blisstweeting", "https://www.patreon.com/cw/blisstweeting", "https://buymeacoffee.com/blisstweeting"]
+    }
+  ]
 }
 </script>
 <!-- With scripts the app renders its steps (without, the noscript text replaces them); the footer then waits
-     for the first render, so it does not jump down as the steps appear. -->
-<script>document.documentElement.classList.add('js');</script>
+     for the first render, so it does not jump down as the steps appear. When the interface language will not
+     be English (the rule of pickLanguage in src/ui/i18n.js), the page's texts wait for their translation too. -->
+<script>
+  (function () {
+    var root = document.documentElement;
+    var ui = 'en ru sr ja zh de es pt pl ko nl fr hy tr el'.split(' ');
+    var picks = [new URLSearchParams(location.search).get('lang')];
+    try { picks.push(localStorage.getItem('ankigen:lang')); } catch (e) {}
+    var browser = navigator.languages || [navigator.language];
+    for (var i = 0; i < browser.length; i++) picks.push(String(browser[i]).toLowerCase().split('-')[0]);
+    root.classList.add('js');
+    for (var j = 0; j < picks.length; j++) {
+      if (picks[j] && ui.indexOf(picks[j]) >= 0) {
+        if (picks[j] !== 'en') root.classList.add('i18n-pending');
+        break;
+      }
+    }
+  })();
+</script>
 <link rel="stylesheet" href="css/app.css">
 <script type="module" src="src/main.js"></script>
 <!-- Every module src/main.js imports, so the browser fetches them at once (tests/site.test.mjs keeps this list in sync). -->
-<link rel="modulepreload" href="src/config.js">
 <link rel="modulepreload" href="src/data/loader.js">
 <link rel="modulepreload" href="src/deck/deck.js">
 <link rel="modulepreload" href="src/deck/fields.js">
 <link rel="modulepreload" href="src/deck/names.js">
 <link rel="modulepreload" href="src/deck/render.js">
-<link rel="modulepreload" href="src/deck/search.js">
 <link rel="modulepreload" href="src/deck/select.js">
 <link rel="modulepreload" href="src/deck/templates.js">
 <link rel="modulepreload" href="src/state.js">
@@ -64,20 +113,26 @@
 <link rel="modulepreload" href="src/ui/download.js">
 <link rel="modulepreload" href="src/ui/feedback.js">
 <link rel="modulepreload" href="src/ui/fields.js">
-<link rel="modulepreload" href="src/ui/format.js">
+<link rel="modulepreload" href="src/ui/i18n.js">
 <link rel="modulepreload" href="src/ui/languages.js">
 <link rel="modulepreload" href="src/ui/modules.js">
 <link rel="modulepreload" href="src/ui/options.js">
 <link rel="modulepreload" href="src/ui/popover.js">
 <link rel="modulepreload" href="src/ui/preview.js">
-<link rel="modulepreload" href="src/ui/sidebar.js">
 <link rel="modulepreload" href="src/ui/steps.js">
+<link rel="modulepreload" href="src/ui/strings.js">
 </head>
 <body>
-<header class="site-head">
-  <h1 class="logo">AnkiGen</h1>
-  <p class="lede">Free Anki vocabulary decks in 15 languages, built right in your browser.</p>
-  <p class="draft">The vocabulary is machine-drafted and only partly reviewed. Feedback is very welcome.<span class="help-slot" id="draft-help"></span></p>
+<header class="site-head app-head">
+  <div class="head-main">
+    <h1 class="logo">AnkiGen</h1>
+    <p class="lede" data-plural="lede">Free Anki vocabulary decks in 15 languages, built right in your browser.</p>
+    <p class="draft"><span data-t="head.draft">The vocabulary is machine-drafted and only partly reviewed. Feedback is very welcome.</span><span class="help-slot" id="draft-help"></span></p>
+  </div>
+  <div class="head-support-slot">
+    <p class="support head-support" id="head-support"><span data-t="support">Support this project:</span> <span><a class="button" href="https://www.patreon.com/cw/blisstweeting" target="_blank" rel="noopener">Patreon</a> <a class="button" href="https://buymeacoffee.com/blisstweeting" target="_blank" rel="noopener">Buy Me a Coffee</a></span></p>
+  </div>
+  <div class="locale-slot" id="locale"></div>
 </header>
 
 <noscript>
@@ -90,48 +145,53 @@
 <div class="layout">
   <main class="steps" id="steps">
     <section class="step" id="step-learn" aria-labelledby="h-learn">
-      <h2 id="h-learn"><span class="step-num" aria-hidden="true">1</span>I’m learning</h2>
+      <h2 id="h-learn"><span class="step-num" aria-hidden="true">1</span><span data-t="step.learn">I’m learning</span></h2>
       <div class="chips" id="learn-chips" role="radiogroup" aria-labelledby="h-learn"></div>
       <p class="status" id="learn-status" role="status"></p>
     </section>
 
     <section class="step" id="step-know" aria-labelledby="h-know" hidden>
-      <h2 id="h-know"><span class="step-num" aria-hidden="true">2</span>I speak</h2>
-      <div class="chips" id="know-chips" role="radiogroup" aria-labelledby="h-know"></div>
+      <h2 id="h-know"><span class="step-num" aria-hidden="true">2</span><span data-t="step.know">I speak</span></h2>
+      <div class="know-chips" id="know-chips" role="radiogroup" aria-labelledby="h-know"></div>
       <p class="status" id="know-status" role="status"></p>
     </section>
 
     <section class="step" id="step-modules" aria-labelledby="h-modules" hidden>
-      <h2 id="h-modules"><span class="step-num" aria-hidden="true">3</span>Modules</h2>
+      <h2 id="h-modules"><span class="step-num" aria-hidden="true">3</span><span data-t="step.modules">Modules</span></h2>
       <p class="step-note" id="modules-summary"></p>
       <div class="tree" id="modules"></div>
     </section>
 
     <section class="step" id="step-fields" aria-labelledby="h-fields" hidden>
-      <h2 id="h-fields"><span class="step-num" aria-hidden="true">4</span>Card fields</h2>
-      <p class="step-note">Choose what each card shows, and on which side. The preview follows along.</p>
+      <h2 id="h-fields"><span class="step-num" aria-hidden="true">4</span><span data-t="step.fields">Card fields</span></h2>
+      <p class="step-note" data-t="step.fieldsNote">Choose what each card shows, and on which side. The preview follows along.</p>
       <div class="ftable" id="fields"></div>
     </section>
 
     <section class="step" id="step-options" aria-labelledby="h-options" hidden>
-      <h2 id="h-options"><span class="step-num" aria-hidden="true">5</span>Card options</h2>
+      <h2 id="h-options"><span class="step-num" aria-hidden="true">5</span><span data-t="step.options">Card options</span></h2>
       <div class="opts" id="options"></div>
     </section>
 
     <section class="step" id="step-download" aria-labelledby="h-download" hidden>
-      <h2 id="h-download"><span class="step-num" aria-hidden="true">6</span>Download</h2>
+      <h2 id="h-download"><span class="step-num" aria-hidden="true">6</span><span data-t="step.download">Download</span></h2>
       <div id="download"></div>
+    </section>
+
+    <section class="step step-plain" id="step-share" aria-labelledby="h-share" hidden>
+      <h2 id="h-share" data-t="step.share">Share</h2>
+      <div class="share" id="share"></div>
     </section>
   </main>
 
   <div class="side">
     <aside class="preview-panel" id="preview-panel" aria-labelledby="h-preview">
-      <h2 id="h-preview">Preview</h2>
+      <h2 id="h-preview" data-t="preview.heading">Preview</h2>
       <div class="pv"></div>
     </aside>
 
     <aside class="cards-panel" id="cards-panel" aria-labelledby="h-cards" hidden>
-      <h2 id="h-cards">Words</h2>
+      <h2 id="h-cards" data-t="list.heading">Words</h2>
       <div class="cl"></div>
     </aside>
   </div>
@@ -139,29 +199,30 @@
 
 <div class="mobile-bar" id="mobile-bar" hidden>
   <button type="button" class="bar-cards" id="open-cards" hidden><span id="mobile-count"></span></button>
-  <button type="button" class="button" id="open-preview">Preview</button>
+  <button type="button" class="button" id="open-preview" data-t="preview.heading">Preview</button>
 </div>
 
 <dialog class="sheet" id="preview-dialog" aria-labelledby="h-sheet">
   <div class="sheet-head">
-    <h2 id="h-sheet">Preview</h2>
-    <button type="button" class="button" id="close-preview">Close</button>
+    <h2 id="h-sheet" data-t="preview.heading">Preview</h2>
+    <button type="button" class="button" id="close-preview" data-t="preview.close">Close</button>
   </div>
   <div class="pv"></div>
 </dialog>
 
 <dialog class="sheet" id="cards-dialog" aria-labelledby="h-cards-sheet">
   <div class="sheet-head">
-    <h2 id="h-cards-sheet">Words</h2>
-    <button type="button" class="button" id="close-cards">Close</button>
+    <h2 id="h-cards-sheet" data-t="list.heading">Words</h2>
+    <button type="button" class="button" id="close-cards" data-t="preview.close">Close</button>
   </div>
   <div class="cl"></div>
 </dialog>
 
 <footer class="site-foot">
-  <p class="support">Support this project: <span><a class="button" href="https://www.patreon.com/cw/blisstweeting" target="_blank" rel="noopener">Patreon</a> <a class="button" href="https://buymeacoffee.com/blisstweeting" target="_blank" rel="noopener">Buy Me a Coffee</a></span></p>
-  <p class="foot-line"><a href="decks/">Decks by language pair</a> · <a href="https://github.com/xenohunter/ankigen" target="_blank" rel="noopener">Source on GitHub</a><span id="versions"></span></p>
-  <p class="foot-line">Code under the <a href="https://github.com/xenohunter/ankigen/blob/master/LICENSE" target="_blank" rel="noopener">MIT license</a>; vocabulary under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>.</p>
+  <p class="support"><span data-t="support">Support this project:</span> <span><a class="button" href="https://www.patreon.com/cw/blisstweeting" target="_blank" rel="noopener">Patreon</a> <a class="button" href="https://buymeacoffee.com/blisstweeting" target="_blank" rel="noopener">Buy Me a Coffee</a></span></p>
+  <p class="foot-line"><a href="decks/" data-t="foot.decks">Decks by language pair</a> · <a href="https://github.com/xenohunter/ankigen" target="_blank" rel="noopener" data-t="foot.source">Source on GitHub</a></p>
+  <p class="foot-line" data-t="foot.license">Code under the <a data-part="mit" href="https://github.com/xenohunter/ankigen/blob/master/LICENSE" target="_blank" rel="noopener">MIT</a> license; vocabulary under <a data-part="cc" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>.</p>
+  <p class="foot-line" data-t="foot.author">Created by <a data-part="name" href="https://x.com/blisstweeting" target="_blank" rel="noopener">Phil Filippak</a></p>
 </footer>
 
 </body>

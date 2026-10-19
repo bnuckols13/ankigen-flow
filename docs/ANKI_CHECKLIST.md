@@ -1,6 +1,6 @@
 # Anki import checklist (manual)
 
-A hands-on test of the `.apkg` files on Anki desktop and AnkiDroid. It takes about 40 minutes. The page's "?" next to Download explains updating a deck; its text is `UPDATE_HELP` in `src/ui/copy.js`, so check it against what you see.
+A hands-on test of the `.apkg` files on Anki desktop and AnkiDroid. It takes about 40 minutes. The page's "?" next to Download explains updating a deck; its text is `update.*` in `src/ui/strings.js`, so check it against what you see.
 
 ## Already verified automatically
 

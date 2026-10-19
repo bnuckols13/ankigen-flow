@@ -23,3 +23,15 @@ How they are loaded:
 
 - `sql-wasm.js` is a classic script that defines `initSqlJs`. The page adds it with a `<script>` tag on first download and calls `initSqlJs({ locateFile: (f) => 'vendor/' + f })`. Node (tests, `tools/apkg.mjs`) loads it through `tools/lib/sqljs.mjs`.
 - `fflate.js` is imported as an ES module by `src/deck/apkg.js`.
+
+## Share logos
+
+`src/ui/share-icons.js` holds the path data (`d`, viewBox `0 0 24 24`) of nine logos, copied as is from
+[simple-icons](https://simpleicons.org) 16.33.0, `icons/<name>.svg`: x, facebook, reddit, telegram, whatsapp, vk, line,
+sinaweibo (as `weibo`) and bluesky. They load with the Share block only.
+
+- Tarball `simple-icons-16.33.0.tgz`: SHA-256 `11e1ab7c25fd0acbf0014c4a88745c33fe0f87341e6d94c7ba1e62334b2d2375`;
+  npm integrity `sha512-z14u6A8ngAg9mgERRsNO8YkjIMefehIpBk7A8Dz3Gd91945qFP19MLPSHgV4z8P5u/MRYd5e07OTzaDoB4d6qA==`.
+- License: CC0-1.0 for the icon data. The logos are trademarks of their owners, shown only to link to their sites.
+
+The flags in `img/flags/` are drawn for this project (no third-party source).

@@ -1,5 +1,5 @@
 {
-  "source": "25755b72c30b",
+  "source": "975849aa1bf2",
   "texts": {
     "decks": "Decks",
     "cta": "Maak je deck",
@@ -22,11 +22,7 @@
     "about": "Woorden, vertalingen en voorbeeldzinnen zijn opgesteld met een AI-model en worden, taal voor taal, door mensen gecontroleerd. Ziet iets er verkeerd uit, selecteer het dan op een voorbeeldkaart in AnkiGen en druk op Ctrl+Enter (⌘+Enter op een Mac), of gebruik daar de knop Feedback. Elke melding helpt het deck voor iedereen te verbeteren.",
     "moreHeading": "Meer decks",
     "moreForYou": "Meer decks voor Nederlandstaligen",
-    "allDecks": "Alle decks per taalpaar",
-    "support": "Steun dit project:",
-    "source": "Broncode op GitHub",
-    "license": "Code onder de {mit}-licentie; woordenschat onder {cc}.",
-    "versions": "Data {data} · App {app}"
+    "allDecks": "Alle decks per taalpaar"
   },
   "languages": {
     "en": "Engels",

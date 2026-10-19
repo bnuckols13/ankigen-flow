@@ -1,0 +1,206 @@
+{
+  "source": "dac76c54ff4f",
+  "texts": {
+    "head.draft": "词汇由 AI 起草，目前只有一部分经过人工审核。非常欢迎你的反馈。",
+    "head.draftTopic": "词汇草稿",
+    "head.draftHelp1": "单词、释义和例句由 AI 模型起草，目前正由真人逐个语言进行审核。",
+    "head.draftHelp2": "如果发现错误，请在预览卡片上选中有问题的内容，然后按 Ctrl+Enter（Mac 上按 ⌘+Enter），或使用右下角的“反馈”按钮。每一条反馈都有助于为所有人改进牌组。",
+    "head.language": "界面语言",
+    "head.languageNow": "界面语言：{language}",
+    "help.about": "关于{topic}",
+    "support": "支持这个项目：",
+    "fatal": "AnkiGen 无法加载单词列表。请检查网络连接，然后重新加载页面。",
+    "step.learn": "我在学",
+    "step.know": "我会说",
+    "step.modules": "模块",
+    "step.fields": "卡片字段",
+    "step.fieldsNote": "选择每张卡片显示的内容以及显示在哪一面。预览会随之更新。",
+    "step.options": "卡片选项",
+    "step.download": "下载",
+    "step.share": "分享",
+    "lang.same": "同一种语言",
+    "lang.sameNote": "词语释义",
+    "lang.sameHelp": "卡片上显示的是用所学语言写的简短释义，而不是翻译。适合已经能读懂这门语言简单句子的学习者。",
+    "lang.loading": "正在加载单词（{language}）…",
+    "lang.failed": "无法加载单词（{language}）。请检查网络连接，然后重新加载页面。",
+    "modules.hint": "选择你想要的主题，之后还可以再添加。",
+    "modules.show": "显示{category}模块",
+    "modules.tally": "{n}/{total}",
+    "modules.adultTopic": "18+ 模块",
+    "modules.adultHelp": "脏话、侮辱性词语和粗俗俚语，按语气强弱在各语言之间对应。只有选中这个模块时才会加入牌组，即使其中有的词也属于其他模块。",
+    "modules.localTopic": "{module}：本地特有词",
+    "placement.off": "关",
+    "placement.front": "正面",
+    "placement.back": "背面",
+    "placement.on": "开",
+    "placement.word": "随单词",
+    "fields.alwaysFront": "始终在正面",
+    "fields.alwaysBack": "始终在背面",
+    "fields.examples": "例句数量",
+    "options.cyrl": "西里尔字母",
+    "options.latn": "拉丁字母",
+    "download.deck": "牌组",
+    "download.size": "大小",
+    "download.file": "文件",
+    "download.button": "下载牌组",
+    "download.later": "以后如何更新牌组",
+    "download.laterTopic": "更新牌组",
+    "download.loading": "加载中…",
+    "download.secure": "下载需要安全连接：请通过 https://（或 localhost）打开页面。",
+    "download.building": "正在生成牌组…",
+    "download.saved": "已保存 {file}。用 Anki 打开（File → Import），或在手机上点按它，用 AnkiDroid 打开。",
+    "download.failed": "无法生成牌组（{error}）。请重试。",
+    "update.title": "更新牌组",
+    "update.intro": "改了字段、添加了模块，或者想要更新的数据？重新下载，再用默认选项把新文件导入 Anki（File → Import）。Anki 会更新你现有的笔记及其版式，把新单词加入同一个牌组，并保留你的复习进度。",
+    "update.edits": "你对 AnkiGen 笔记所做的修改和标签会被新版本替换。旗标、暂停的卡片和学习进度都会保留。",
+    "update.deck": "新卡片会进入名称完全相同的牌组。如果你重命名或移动过它，新卡片会出现在一个使用原名称的新牌组中，你可以再把它们移过去。",
+    "update.noteType": "如果你更改过 AnkiGen 笔记类型的字段，导入时请勾选“Merge note types”（合并笔记类型），否则 Anki 无法更新这些笔记。",
+    "update.reverse": "关闭了反向卡片？Anki 会把旧的反向卡片保留为空白卡片。可以通过 Tools → Empty Cards 删除它们。",
+    "share.copy": "复制链接",
+    "share.copied": "链接已复制",
+    "share.copyFailed": "无法复制链接。请从地址栏复制。",
+    "share.more": "分享…",
+    "share.on": "分享到 {site}",
+    "share.email": "电子邮件",
+    "preview.heading": "预览",
+    "preview.another": "换一个词",
+    "preview.report": "报告问题",
+    "preview.reportTitle": "报告这张卡片的问题",
+    "preview.forward": "正向卡片",
+    "preview.reverse": "反向卡片",
+    "preview.front": "正面",
+    "preview.back": "背面",
+    "preview.face": "{card}·{side}",
+    "preview.typeAnswer": "输入答案",
+    "preview.pickLanguages": "选择你在学的语言和你会说的语言，这里就会显示卡片示例。",
+    "preview.loading": "正在加载单词…",
+    "preview.pickModules": "选择模块后，这里会显示卡片示例。",
+    "preview.empty": "所选模块中暂时还没有这两种语言的单词。",
+    "preview.close": "关闭",
+    "list.heading": "单词",
+    "list.search": "搜索单词",
+    "list.label": "牌组中的单词",
+    "list.report": "报告“{word}”的问题",
+    "list.reportTitle": "报告问题",
+    "list.noMatch": "没有与“{query}”匹配的单词。",
+    "list.open": "单词列表：{size}",
+    "feedback.button": "反馈",
+    "feedback.title": "反馈（{shortcut}）",
+    "foot.decks": "按语言组合浏览牌组",
+    "foot.source": "GitHub 上的源代码",
+    "foot.license": "代码采用 {mit} 许可；词汇采用 {cc} 许可。",
+    "foot.author": "作者：{name}",
+    "fb.title": "反馈",
+    "fb.close": "关闭",
+    "fb.about": "单词：{word}",
+    "fb.message": "留言",
+    "fb.category": "类别",
+    "fb.choose": "请选择…",
+    "fb.category.wrong-translation": "翻译错误",
+    "fb.category.typo": "拼写错误",
+    "fb.category.wrong-form": "词形错误",
+    "fb.category.bad-example": "例句不当",
+    "fb.category.suggestion": "建议",
+    "fb.category.other": "其他",
+    "fb.email": "电子邮件",
+    "fb.optional": "（可选）",
+    "fb.emailHint": "如果希望我们回复你，请留下你的电子邮件地址。",
+    "fb.keys": "按 {shortcut} 发送",
+    "fb.cancel": "取消",
+    "fb.send": "发送",
+    "fb.sendAnyway": "仍然发送",
+    "fb.sending": "正在发送…",
+    "fb.privacy": "报告保存在一个不公开的电子表格中，仅用于修正词汇；如果你留下了电子邮件地址，也用于回复你。我们会记录保存在你浏览器中的一个随机 ID，用来过滤垃圾信息。没有跟踪，也没有统计分析。",
+    "fb.thanks": "谢谢！你的报告已发送。",
+    "fb.garbage.letters": "这里没有任何文字。能描述一下哪里有问题吗？",
+    "fb.garbage.short": "内容太短了。写几个字说明问题，能帮助我们修正。",
+    "fb.garbage.repeated": "这看起来是重复的字符。能描述一下哪里有问题吗？",
+    "fb.garbage.duplicate": "你已经发送过这条报告了。",
+    "fb.wait.gap": "请等待{time}后再发送下一条报告。",
+    "fb.wait.burst": "你在几分钟内发送了多条报告。请在{time}后重试。",
+    "fb.wait.daily": "一天内收到这么多报告，谢谢你！{time}后可以继续发送。",
+    "fb.error.network": "无法连接到报告服务器。请检查网络连接后重试。",
+    "fb.error.timeout": "报告服务器没有及时响应。请重试。",
+    "fb.error.daily_cap": "今天的报告数量已达上限。请明天再试。",
+    "fb.error.client_cap": "你在过去几个小时内发送了很多报告。请稍后再试。",
+    "fb.error.bad_email": "请检查电子邮件地址，或将其留空。",
+    "fb.error.too_large": "留言太长了，请删减一些。",
+    "fb.error.empty": "请填写留言。",
+    "fb.error.server": "报告服务器出现了问题。请一分钟后重试。",
+    "fb.place.forward": "正向卡片",
+    "fb.place.reverse": "反向卡片",
+    "fb.place.front": "正面",
+    "fb.place.back": "背面",
+    "fb.field.word": "单词",
+    "fb.field.translation": "翻译",
+    "fb.field.definition": "释义",
+    "fb.field.romanization": "拉丁转写",
+    "fb.field.otherScript": "另一种文字",
+    "fb.field.measureWord": "量词",
+    "fb.field.hanja": "汉字词（Hanja）",
+    "fb.field.forms": "关键变化形式",
+    "fb.field.ipa": "IPA",
+    "fb.field.examples": "例句",
+    "fb.field.related": "反义词与相关词",
+    "fb.field.etymology": "词源",
+    "fb.field.pos": "词性",
+    "fb.field.register": "语体",
+    "fb.field.emoji": "表情符号",
+    "fb.field.conceptId": "概念 ID"
+  },
+  "plural": {
+    "title": {
+      "other": "AnkiGen — 支持 {n} 种语言的免费 Anki 词汇牌组"
+    },
+    "lede": {
+      "other": "支持 {n} 种语言的免费 Anki 词汇牌组，直接在浏览器中生成。"
+    },
+    "description": {
+      "other": "直接在浏览器中生成免费的 Anki 词汇牌组：{n} 种语言、按主题划分的模块，卡片字段随你选择。下载适用于 Anki 或 AnkiDroid 的 .apkg 文件。"
+    },
+    "word": {
+      "other": "{n} 个词"
+    },
+    "note": {
+      "other": "{n} 条笔记"
+    },
+    "card": {
+      "other": "{n} 张卡片"
+    },
+    "example": {
+      "other": "{n} 个例句"
+    },
+    "modulesChosen": {
+      "other": "已选 {n} 个模块（共 {total} 个）"
+    },
+    "searchWords": {
+      "other": "在 {n} 个词中搜索"
+    },
+    "matches": {
+      "other": "{shown} / {n} 个词"
+    },
+    "localTerms": {
+      "other": "这里有 {n} 个词只存在于你正在学习的语言中，例如 {example}。其他语言没有完全对应的词，所以卡片会用你的语言来解释。"
+    },
+    "seconds": {
+      "other": "{n} 秒"
+    },
+    "minutes": {
+      "other": "{n} 分钟"
+    },
+    "hours": {
+      "other": "{n} 小时"
+    }
+  },
+  "fields": {
+    "word": {
+      "label": "单词",
+      "help": "你正在学习的单词。在正向卡片上始终显示在问题一面。"
+    },
+    "translation": {
+      "label": "翻译",
+      "labelSame": "释义",
+      "help": "用你的语言给出的对应词；如果你的语言用同一个词表达多个意思，会附上简短提示。在同一种语言模式下，这里是简短的释义。"
+    }
+  }
+}

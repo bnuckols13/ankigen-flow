@@ -1,0 +1,206 @@
+{
+  "source": "dac76c54ff4f",
+  "texts": {
+    "head.draft": "어휘는 기계로 초안을 만들었고 일부만 검수되었습니다. 의견은 언제든 환영합니다.",
+    "head.draftTopic": "어휘 초안",
+    "head.draftHelp1": "단어, 번역, 예문은 AI 모델로 초안을 만들었고, 언어별로 사람이 차례로 검수하고 있습니다.",
+    "head.draftHelp2": "잘못된 부분을 발견하면 미리보기 카드에서 해당 부분을 선택하고 Ctrl+Enter(Mac은 ⌘+Enter)를 누르거나, 오른쪽 아래의 '피드백' 버튼을 이용해 주세요. 제보 하나하나가 모두의 덱을 고치는 데 도움이 됩니다.",
+    "head.language": "인터페이스 언어",
+    "head.languageNow": "인터페이스 언어: {language}",
+    "help.about": "{topic} 안내",
+    "support": "이 프로젝트 후원하기:",
+    "fatal": "AnkiGen이 단어 목록을 불러오지 못했습니다. 연결을 확인하고 페이지를 새로고침해 주세요.",
+    "step.learn": "배우는 언어",
+    "step.know": "사용하는 언어",
+    "step.modules": "모듈",
+    "step.fields": "카드 필드",
+    "step.fieldsNote": "카드에 무엇을 어느 면에 보여 줄지 고르세요. 미리보기에 바로 반영됩니다.",
+    "step.options": "카드 옵션",
+    "step.download": "내려받기",
+    "step.share": "공유",
+    "lang.same": "같은 언어",
+    "lang.sameNote": "단어 뜻풀이",
+    "lang.sameHelp": "번역 대신 배우는 언어로 된 짧은 뜻풀이가 카드에 나옵니다. 그 언어로 쉬운 문장을 읽을 수 있을 때 좋아요.",
+    "lang.loading": "단어를 불러오는 중({language})…",
+    "lang.failed": "단어를 불러오지 못했습니다({language}). 연결을 확인하고 페이지를 새로고침해 주세요.",
+    "modules.hint": "원하는 주제를 고르세요. 나중에 더 추가할 수 있어요.",
+    "modules.show": "{category} 모듈 보기",
+    "modules.tally": "{total}개 중 {n}개",
+    "modules.adultTopic": "18+ 모듈",
+    "modules.adultHelp": "욕설, 모욕적인 말, 저속한 속어를 언어 사이에서 강도에 맞춰 모았습니다. 다른 모듈에 함께 속한 단어라도 이 모듈을 선택했을 때만 덱에 들어갑니다.",
+    "modules.localTopic": "{module}: 그 언어에만 있는 단어",
+    "placement.off": "끄기",
+    "placement.front": "앞면",
+    "placement.back": "뒷면",
+    "placement.on": "켜기",
+    "placement.word": "단어 옆",
+    "fields.alwaysFront": "항상 앞면",
+    "fields.alwaysBack": "항상 뒷면",
+    "fields.examples": "예문 개수",
+    "options.cyrl": "키릴 문자",
+    "options.latn": "라틴 문자",
+    "download.deck": "덱",
+    "download.size": "크기",
+    "download.file": "파일",
+    "download.button": "덱 내려받기",
+    "download.later": "나중에 덱 업데이트하기",
+    "download.laterTopic": "덱 업데이트",
+    "download.loading": "불러오는 중…",
+    "download.secure": "내려받으려면 보안 연결이 필요합니다. https://(또는 localhost)로 페이지를 여세요.",
+    "download.building": "덱을 만드는 중…",
+    "download.saved": "{file} 파일을 저장했습니다. Anki에서 여세요(File → Import). 휴대폰에서는 파일을 탭하면 AnkiDroid에서 열립니다.",
+    "download.failed": "덱을 만들지 못했습니다({error}). 다시 시도해 주세요.",
+    "update.title": "덱 업데이트",
+    "update.intro": "필드를 바꿨거나, 모듈을 추가했거나, 더 새로운 데이터가 필요한가요? 다시 내려받아 새 파일을 기본 옵션 그대로 Anki에 가져오세요(File → Import). 기존 노트와 레이아웃이 업데이트되고, 새 단어는 같은 덱에 추가되며, 학습 기록은 그대로 유지됩니다.",
+    "update.edits": "AnkiGen 노트에 직접 한 편집과 태그는 새 버전으로 바뀝니다. 플래그, 보류한 카드, 학습 기록은 그대로 남습니다.",
+    "update.deck": "새 카드는 이 이름과 똑같은 덱에 들어갑니다. 덱 이름을 바꾸거나 옮겼다면 원래 이름의 새 덱에 나타나며, 거기서 옮길 수 있어요.",
+    "update.noteType": "AnkiGen 노트 유형의 필드를 바꿨다면 가져올 때 'Merge note types'를 체크하세요. 그러지 않으면 Anki가 이 노트들을 업데이트할 수 없습니다.",
+    "update.reverse": "역방향 카드를 껐나요? 예전 카드는 빈 카드로 남습니다. Tools → Empty Cards로 지우세요.",
+    "share.copy": "링크 복사",
+    "share.copied": "링크를 복사했습니다",
+    "share.copyFailed": "링크를 복사하지 못했습니다. 주소 표시줄에서 복사해 주세요.",
+    "share.more": "공유…",
+    "share.on": "{site}에 공유",
+    "share.email": "이메일",
+    "preview.heading": "미리보기",
+    "preview.another": "다른 단어",
+    "preview.report": "제보",
+    "preview.reportTitle": "이 카드의 문제 제보하기",
+    "preview.forward": "정방향 카드",
+    "preview.reverse": "역방향 카드",
+    "preview.front": "앞면",
+    "preview.back": "뒷면",
+    "preview.face": "{card}, {side}",
+    "preview.typeAnswer": "정답 입력",
+    "preview.pickLanguages": "배우는 언어와 사용하는 언어를 고르면 여기에 카드 예시가 나타납니다.",
+    "preview.loading": "단어를 불러오는 중…",
+    "preview.pickModules": "모듈을 고르면 여기에 카드 예시가 나타납니다.",
+    "preview.empty": "선택한 모듈에 이 언어 조합의 단어가 아직 없습니다.",
+    "preview.close": "닫기",
+    "list.heading": "단어",
+    "list.search": "단어 검색",
+    "list.label": "덱의 단어",
+    "list.report": "{word}의 문제 제보하기",
+    "list.reportTitle": "문제 제보하기",
+    "list.noMatch": "'{query}'와 일치하는 단어가 없습니다.",
+    "list.open": "단어 목록: {size}",
+    "feedback.button": "피드백",
+    "feedback.title": "피드백({shortcut})",
+    "foot.decks": "언어 조합별 덱",
+    "foot.source": "GitHub 소스",
+    "foot.license": "코드는 {mit} 라이선스, 어휘는 {cc} 라이선스입니다.",
+    "foot.author": "만든 사람: {name}",
+    "fb.title": "피드백",
+    "fb.close": "닫기",
+    "fb.about": "단어: {word}",
+    "fb.message": "메시지",
+    "fb.category": "분류",
+    "fb.choose": "선택…",
+    "fb.category.wrong-translation": "잘못된 번역",
+    "fb.category.typo": "오타",
+    "fb.category.wrong-form": "잘못된 형태",
+    "fb.category.bad-example": "부적절한 예문",
+    "fb.category.suggestion": "제안",
+    "fb.category.other": "기타",
+    "fb.email": "이메일",
+    "fb.optional": "(선택)",
+    "fb.emailHint": "답장을 원하시면 이메일을 남겨 주세요.",
+    "fb.keys": "{shortcut}로 보내기",
+    "fb.cancel": "취소",
+    "fb.send": "보내기",
+    "fb.sendAnyway": "그래도 보내기",
+    "fb.sending": "보내는 중…",
+    "fb.privacy": "제보는 비공개 스프레드시트에 저장되며, 어휘를 고치는 데와 이메일을 남기신 경우 답장하는 데에만 쓰입니다. 스팸을 거르기 위해 브라우저에 저장된 임의의 ID를 기록합니다. 추적이나 분석은 하지 않습니다.",
+    "fb.thanks": "감사합니다! 제보를 보냈습니다.",
+    "fb.garbage.letters": "단어가 하나도 없네요. 무엇이 잘못됐는지 적어 주시겠어요?",
+    "fb.garbage.short": "너무 짧아요. 무엇이 잘못됐는지 몇 마디만 적어 주시면 고치는 데 도움이 됩니다.",
+    "fb.garbage.repeated": "같은 문자가 반복된 것 같아요. 무엇이 잘못됐는지 적어 주시겠어요?",
+    "fb.garbage.duplicate": "이미 보낸 제보입니다.",
+    "fb.wait.gap": "다음 제보를 보내기 전에 {time} 기다려 주세요.",
+    "fb.wait.burst": "몇 분 사이에 제보를 여러 건 보내셨네요. {time} 후에 다시 시도해 주세요.",
+    "fb.wait.daily": "하루에 제보를 정말 많이 보내 주셨네요. 감사합니다! {time} 후에 더 보낼 수 있습니다.",
+    "fb.error.network": "제보 서버에 연결할 수 없습니다. 연결을 확인하고 다시 시도해 주세요.",
+    "fb.error.timeout": "제보 서버가 제때 응답하지 않았습니다. 다시 시도해 주세요.",
+    "fb.error.daily_cap": "오늘 받을 수 있는 제보가 가득 찼습니다. 내일 다시 시도해 주세요.",
+    "fb.error.client_cap": "최근 몇 시간 동안 제보를 많이 보내셨습니다. 나중에 다시 시도해 주세요.",
+    "fb.error.bad_email": "이메일 주소를 확인하거나 비워 두세요.",
+    "fb.error.too_large": "메시지가 너무 깁니다. 줄여 주세요.",
+    "fb.error.empty": "메시지를 입력해 주세요.",
+    "fb.error.server": "제보 서버에 문제가 생겼습니다. 1분 뒤에 다시 시도해 주세요.",
+    "fb.place.forward": "정방향 카드",
+    "fb.place.reverse": "역방향 카드",
+    "fb.place.front": "앞면",
+    "fb.place.back": "뒷면",
+    "fb.field.word": "단어",
+    "fb.field.translation": "번역",
+    "fb.field.definition": "뜻풀이",
+    "fb.field.romanization": "로마자 표기",
+    "fb.field.otherScript": "다른 문자",
+    "fb.field.measureWord": "양사",
+    "fb.field.hanja": "한자",
+    "fb.field.forms": "주요 활용형",
+    "fb.field.ipa": "IPA",
+    "fb.field.examples": "예문",
+    "fb.field.related": "반의어와 관련어",
+    "fb.field.etymology": "어원",
+    "fb.field.pos": "품사",
+    "fb.field.register": "어체",
+    "fb.field.emoji": "이모지",
+    "fb.field.conceptId": "개념 ID"
+  },
+  "plural": {
+    "title": {
+      "other": "AnkiGen — {n}개 언어의 무료 Anki 단어 덱"
+    },
+    "lede": {
+      "other": "{n}개 언어의 무료 Anki 단어 덱을 브라우저에서 바로 만드세요."
+    },
+    "description": {
+      "other": "브라우저에서 바로 무료 Anki 단어 덱을 만드세요. {n}개 언어, 주제별 모듈, 원하는 카드 필드를 고를 수 있습니다. Anki나 AnkiDroid용 .apkg 파일을 내려받으세요."
+    },
+    "word": {
+      "other": "단어 {n}개"
+    },
+    "note": {
+      "other": "노트 {n}개"
+    },
+    "card": {
+      "other": "카드 {n}장"
+    },
+    "example": {
+      "other": "예문 {n}개"
+    },
+    "modulesChosen": {
+      "other": "모듈 {total}개 중 {n}개 선택됨"
+    },
+    "searchWords": {
+      "other": "단어 {n}개에서 검색"
+    },
+    "matches": {
+      "other": "단어 {n}개 중 {shown}개"
+    },
+    "localTerms": {
+      "other": "이 모듈의 단어 {n}개는 배우는 언어에만 있습니다(예: {example}). 다른 언어에는 정확히 맞는 단어가 없어서 카드에서 사용하는 언어로 설명합니다."
+    },
+    "seconds": {
+      "other": "{n}초"
+    },
+    "minutes": {
+      "other": "{n}분"
+    },
+    "hours": {
+      "other": "{n}시간"
+    }
+  },
+  "fields": {
+    "word": {
+      "label": "단어",
+      "help": "배우는 단어입니다. 정방향 카드에서는 항상 질문 면에 나옵니다."
+    },
+    "translation": {
+      "label": "번역",
+      "labelSame": "뜻풀이",
+      "help": "사용하는 언어로 된 단어입니다. 그 언어에서 한 단어가 여러 뜻으로 쓰이면 짧은 힌트가 붙습니다. 같은 언어 모드에서는 짧은 뜻풀이가 나옵니다."
+    }
+  }
+}

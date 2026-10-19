@@ -1,5 +1,5 @@
 {
-  "source": "d3f044c6aaa9",
+  "source": "90d5a0ebb9f3",
   "texts": {
     "decks": "Baralhos",
     "cta": "Cria o teu baralho",
@@ -22,11 +22,7 @@
     "about": "As palavras, as traduções e as frases de exemplo foram redigidas com um modelo de IA e estão a ser verificadas por pessoas, língua a língua. Se algo parecer errado, seleciona-o num cartão de pré-visualização no AnkiGen e prime Ctrl+Enter (⌘+Enter num Mac) ou usa o botão Feedback aí. Cada comunicação ajuda a corrigir o baralho para todos.",
     "moreHeading": "Mais baralhos",
     "moreForYou": "Mais baralhos para falantes de português",
-    "allDecks": "Todos os baralhos por par de línguas",
-    "support": "Apoiar este projeto:",
-    "source": "Código-fonte no GitHub",
-    "license": "Código sob a licença {mit}; vocabulário sob {cc}.",
-    "versions": "Dados {data} · App {app}"
+    "allDecks": "Todos os baralhos por par de línguas"
   },
   "languages": {
     "en": "Inglês",

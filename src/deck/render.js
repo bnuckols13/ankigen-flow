@@ -4,6 +4,8 @@
 // {{type:Field}} (a disabled input on the question; the expected answer on the answer side).
 // Field values are already HTML.
 
+import { escapeAttr } from '../text/html.js';
+
 /** @typedef {import('./templates.js').NoteType} NoteType */
 
 /** Anki's empty-field test: only whitespace and <br>/<div> tags. */
@@ -19,9 +21,10 @@ export function isEmptyField(value) {
 /**
  * @param {string} template
  * @param {Record<string, string>} fields
- * @param {{ frontSide?: string, answer?: boolean }} [opts] answer: render {{type:…}} as the answer side does
+ * @param {{ frontSide?: string, answer?: boolean, typeLabel?: string }} [opts] answer: render {{type:…}} as the answer
+ *   side does; typeLabel: the accessible name of the box for typing the answer
  */
-export function renderTemplate(template, fields, { frontSide = '', answer = false } = {}) {
+export function renderTemplate(template, fields, { frontSide = '', answer = false, typeLabel = 'Type the answer' } = {}) {
   let html = template;
   for (let m = SECTION.exec(html); m; m = SECTION.exec(html)) {
     const [whole, kind, name, body] = m;
@@ -34,7 +37,7 @@ export function renderTemplate(template, fields, { frontSide = '', answer = fals
     if (type) {
       return answer
         ? `<code id="typeans">${fields[type[1]] ?? ''}</code>`
-        : '<input id="typeans" type="text" disabled aria-label="Type the answer">';
+        : `<input id="typeans" type="text" disabled aria-label="${escapeAttr(typeLabel)}">`;
     }
     return fields[tag.replace(/^.*:/, '')] ?? '';
   });
@@ -48,12 +51,13 @@ function isBlank(html) {
 /**
  * Both faces of one card, or null when Anki would not create it (empty question).
  * @param {NoteType} noteType @param {Record<string, string>} fields @param {number} ord 0 = forward, 1 = reverse
+ * @param {{ typeLabel?: string }} [opts] typeLabel: the accessible name of the box for typing the answer
  * @returns {{ front: string, back: string } | null}
  */
-export function renderCard(noteType, fields, ord) {
+export function renderCard(noteType, fields, ord, { typeLabel } = {}) {
   const tpl = noteType.templates[ord];
   if (!tpl) return null;
-  const front = renderTemplate(tpl.qfmt, fields);
+  const front = renderTemplate(tpl.qfmt, fields, { typeLabel });
   if (isBlank(front)) return null;
   return { front, back: renderTemplate(tpl.afmt, fields, { frontSide: front, answer: true }) };
 }

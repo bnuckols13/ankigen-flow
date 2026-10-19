@@ -6,11 +6,13 @@
 <title>Page not found — AnkiGen</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://xenohunter.github.io/ankigen/">
-<!-- GitHub Pages serves this for any unknown path: go to the app, keeping a configuration in the hash
-     (but not from the app's own address, which would loop if the site were broken). -->
+<!-- GitHub Pages serves this for any unknown path: go to the app, keeping a configuration in the hash and the
+     interface language (but not from the app's own address, which would loop if the site were broken). -->
 <script>
   var home = 'https://xenohunter.github.io/ankigen/';
-  if (location.href.split('#')[0] !== home) location.replace(home + location.hash);
+  var lang = /[?&]lang=([a-z]{2})(?:&|$)/.exec(location.search);
+  var target = home + (lang ? '?lang=' + lang[1] : '');
+  if (location.href.split('#')[0] !== target) location.replace(target + location.hash);
 </script>
 <style>
   :root { color-scheme: light dark; }

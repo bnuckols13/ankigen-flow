@@ -3,9 +3,9 @@
 // modules; each module shows how many words it has for the chosen languages. An 18+ badge marks adult
 // modules, and a "?" explains words that only some languages have (country-specific terms).
 
-import { ADULT_HELP, localTermsHelp } from './copy.js';
-import { h } from './dom.js';
-import { count } from './format.js';
+import { localTermsHelp } from './copy.js';
+import { h, live, msg } from './dom.js';
+import { categoryName, moduleText, number, plural, t } from './i18n.js';
 import { help } from './popover.js';
 
 /** @typedef {import('./app.js').App} App */
@@ -34,7 +34,14 @@ export function mountModules(root, summary, app) {
     // Open by default as modules.json says, and wherever the loaded config already selects something.
     const open = Boolean(cat.open) || ids.some((/** @type {string} */ id) => initial.has(id));
     list.hidden = !open;
-    const toggle = h('button', { type: 'button', class: 'cat-toggle', 'aria-expanded': String(open), 'aria-controls': listId, 'aria-label': `Show ${cat.name} modules` });
+    const name = live(() => categoryName(cat));
+    const toggle = h('button', {
+      type: 'button',
+      class: 'cat-toggle',
+      'aria-expanded': String(open),
+      'aria-controls': listId,
+      'aria-label': live(() => t('modules.show', { category: categoryName(cat) })),
+    });
     toggle.addEventListener('click', () => {
       list.hidden = !list.hidden;
       toggle.setAttribute('aria-expanded', String(!list.hidden));
@@ -49,7 +56,7 @@ export function mountModules(root, summary, app) {
       box.addEventListener('change', () => setModules([m.id], box.checked));
       const words = h('span', { class: 'mod-words' });
       const localText = h('p');
-      const local = h('span', { class: 'mod-help', hidden: true }, help(`${m.name}: local words`, localText));
+      const local = h('span', { class: 'mod-help', hidden: true }, help(live(() => t('modules.localTopic', { module: moduleText(m).name })), localText));
       list.append(
         h(
           'li',
@@ -57,13 +64,13 @@ export function mountModules(root, summary, app) {
           h(
             'div',
             { class: 'mod-head' },
-            h('label', { class: 'mod-label' }, box, h('span', { class: 'mod-name' }, m.name)),
+            h('label', { class: 'mod-label' }, box, h('span', { class: 'mod-name' }, live(() => moduleText(m).name))),
             m.adult ? h('span', { class: 'badge' }, '18+') : null,
-            m.adult ? help('18+ modules', ADULT_HELP) : null,
+            m.adult ? help(msg('modules.adultTopic'), msg('modules.adultHelp')) : null,
             local,
             words,
           ),
-          h('p', { class: 'mod-desc', id: `desc-${m.id}` }, m.desc),
+          h('p', { class: 'mod-desc', id: `desc-${m.id}` }, live(() => moduleText(m).desc)),
         ),
       );
       modules.push({ id: m.id, input: box, words, local, localText });
@@ -73,7 +80,7 @@ export function mountModules(root, summary, app) {
       h(
         'div',
         { class: 'cat' },
-        h('div', { class: 'cat-head' }, toggle, h('label', { class: 'cat-label' }, input, h('span', { class: 'cat-name' }, cat.name)), tally),
+        h('div', { class: 'cat-head' }, toggle, h('label', { class: 'cat-label' }, input, h('span', { class: 'cat-name' }, name)), tally),
         list,
       ),
     );
@@ -84,21 +91,20 @@ export function mountModules(root, summary, app) {
     /** @param {View} view */
     update({ config, ready, counts, local }) {
       const selected = new Set(config.modules);
-      const learnName = config.learn ? meta.languages.languages[config.learn]?.name : '';
       for (const m of modules) {
         m.input.checked = selected.has(m.id);
-        m.words.textContent = ready ? count(counts.get(m.id) ?? 0, 'word') : '';
+        m.words.textContent = ready ? plural('word', counts.get(m.id) ?? 0) : '';
         const terms = ready ? local.get(m.id) : undefined;
         m.local.hidden = !terms;
-        if (terms) m.localText.textContent = localTermsHelp(terms.count, terms.example, learnName);
+        if (terms) m.localText.textContent = localTermsHelp(terms.count, terms.example);
       }
       for (const c of categories) {
         const n = c.ids.filter((id) => selected.has(id)).length;
         c.input.checked = n === c.ids.length;
         c.input.indeterminate = n > 0 && n < c.ids.length;
-        c.tally.textContent = n ? `${n} of ${c.ids.length}` : '';
+        c.tally.textContent = n ? t('modules.tally', { n: number(n), total: number(c.ids.length) }) : '';
       }
-      summary.textContent = selected.size ? `${count(selected.size, 'module')} of ${total} selected` : 'Pick the topics you want; you can add more later.';
+      summary.textContent = selected.size ? plural('modulesChosen', selected.size, { total: number(total) }) : t('modules.hint');
     },
   };
 }

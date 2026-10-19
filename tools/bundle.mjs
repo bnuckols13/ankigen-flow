@@ -1,10 +1,12 @@
 #!/usr/bin/env node
-// Build the site for GitHub Pages (ARCHITECTURE §3, §12): the page, its code and styles, data/meta, the SEO
-// files, the data bundles under bundles/<data version>/, and the landing pages with the sitemap
+// Build the site for GitHub Pages (ARCHITECTURE §3, §12): the page, its code, styles and images, data/meta,
+// the SEO files, the data bundles under bundles/<data version>/, and the landing pages with the sitemap
 // (tools/landing.mjs, made from those bundles):
 //   meta.json      languages, modules, fields, labels and version, as src/data/loader.js reads them
 //   concepts.json  { module: { id: concept } } in module tree order, without the authors' notes
 //   <code>.json    one per language with data: all its layers, { lang, ex, ipa, etym }, keyed by concept ID
+//   ui-<code>.json one per interface language but English: its texts, from data/ui and data/landing
+//                  (tools/ui-texts.mjs uiBundle)
 //
 //   node tools/bundle.mjs [--site _site] [--data data] [--meta <data>/meta]
 //
@@ -17,12 +19,14 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { createLoader } from '../src/data/loader.js';
+import { UI_LANGUAGES } from '../src/ui/i18n.js';
 import { DECKS_DIR, appMeta, landingSite, readTranslations, translatedLanguages } from './landing.mjs';
+import { readUiTexts, uiBundle } from './ui-texts.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 
 /** What the site is made of, relative to the repository root. Everything else (docs, tools, tests, .env) stays out. */
-export const SITE_FILES = ['index.html', '404.html', 'robots.txt', 'og-image.png', 'favicon.svg', 'apple-touch-icon.png', 'css', 'src', 'vendor'];
+export const SITE_FILES = ['index.html', '404.html', 'robots.txt', 'og-image.png', 'favicon.svg', 'apple-touch-icon.png', 'css', 'img', 'src', 'vendor'];
 const LAYERS = ['lang', 'ex', 'ipa', 'etym'];
 /** Written into every site this tool builds; a directory without it is never replaced. */
 const MARKER = '.ankigen-site';
@@ -58,6 +62,11 @@ export function makeBundles(dataDir, metaDir) {
       for (const module of modules) Object.assign(bundle[layer], readJson(path.join(dataDir, layer, code, `${module}.json`)));
     }
     if (LAYERS.some((layer) => Object.keys(bundle[layer]).length)) files[`${code}.json`] = bundle;
+  }
+  const ui = readUiTexts(dataDir);
+  const landing = readTranslations(dataDir);
+  for (const code of UI_LANGUAGES) {
+    if (code !== 'en' && (ui[code] || landing[code])) files[`ui-${code}.json`] = uiBundle(ui[code] ?? null, landing[code] ?? null);
   }
   return {
     version: /** @type {string} */ (meta.version.data),
@@ -98,7 +107,7 @@ export async function buildSite({ siteDir, dataDir, metaDir }) {
   fs.mkdirSync(bundleDir, { recursive: true });
   for (const [name, text] of Object.entries(files)) fs.writeFileSync(path.join(bundleDir, name), text);
   const translations = readTranslations(dataDir);
-  const pages = await landingSite(siteLoader(siteDir), translations);
+  const pages = await landingSite(siteLoader(siteDir), translations, readUiTexts(dataDir));
   for (const [name, text] of Object.entries(pages)) {
     fs.mkdirSync(path.dirname(path.join(siteDir, name)), { recursive: true });
     fs.writeFileSync(path.join(siteDir, name), text);

@@ -1,9 +1,10 @@
-// The page's DOM-free parts: the step rule, counts, and the app model on the fixtures.
+// The page's DOM-free parts: the step rule, counts, and the app model on the fixtures. (The interface
+// language is tested in tests/i18n.test.mjs; here the texts are English.)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { shownSteps } from '../src/ui/steps.js';
-import { count, deckSize } from '../src/ui/format.js';
-import { listStatus, localTermsHelp } from '../src/ui/copy.js';
+import { deckSize, listStatus, localTermsHelp } from '../src/ui/copy.js';
+import { plural } from '../src/ui/i18n.js';
 import { createApp } from '../src/ui/app.js';
 import { localTerms } from '../src/deck/select.js';
 import { buildDeck } from '../src/deck/deck.js';
@@ -27,20 +28,20 @@ test('each step appears once the previous one has a choice', () => {
   assert.deepEqual(steps({}), ['learn']);
   assert.deepEqual(steps({ learn: 'ja' }), ['learn', 'know']);
   assert.deepEqual(steps({ learn: 'ja', know: 'ru' }), ['learn', 'know', 'modules']);
-  assert.deepEqual(steps({ learn: 'ja', know: '=', modules: ['food'] }), ['learn', 'know', 'modules', 'fields', 'options', 'download']);
+  assert.deepEqual(steps({ learn: 'ja', know: '=', modules: ['food'] }), ['learn', 'know', 'modules', 'fields', 'options', 'download', 'share']);
   // Later choices are kept, but their steps stay hidden while an earlier step is open again.
   assert.deepEqual(steps({ learn: 'ja', modules: ['food'] }), ['learn', 'know']);
 });
 
 test('counts read naturally', () => {
-  assert.equal(count(1, 'note'), '1 note');
-  assert.equal(count(1734, 'note'), '1,734 notes');
+  assert.equal(plural('note', 1), '1 note');
+  assert.equal(plural('note', 1734), '1,734 notes');
   assert.equal(deckSize(1734, 3468), '1,734 notes · 3,468 cards');
   assert.equal(
-    localTermsHelp(1, '住民票', 'Japanese'),
-    '1 word here is specific to Japanese, such as 住民票. Other languages have no exact word for it, so your cards explain it in the language you speak.',
+    localTermsHelp(1, '住民票'),
+    '1 word here exists only in the language you are learning, such as 住民票. Other languages have no exact word for it, so your cards explain it in the language you speak.',
   );
-  assert.match(localTermsHelp(12, 'green card', 'English'), /^12 words here are specific to English, such as green card\. .* for them, so your cards explain them/);
+  assert.match(localTermsHelp(12, 'green card'), /^12 words here exist only in the language you are learning, such as green card\. .* for them, so your cards explain them/);
   assert.equal(listStatus(1734, 1734, ''), '', 'the search box shows the total');
   assert.equal(listStatus(12, 1734, ' water '), '12 of 1,734 words');
   assert.equal(listStatus(0, 1734, 'xqz'), 'No words match “xqz”.');

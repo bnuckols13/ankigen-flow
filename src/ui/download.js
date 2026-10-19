@@ -4,9 +4,9 @@
 
 import { buildDeck } from '../deck/deck.js';
 import { apkgFileName, deckName } from '../deck/names.js';
-import { UPDATE_HELP, downloadedText } from './copy.js';
-import { h, whenIdle } from './dom.js';
-import { deckSize } from './format.js';
+import { deckSize } from './copy.js';
+import { h, msg, whenIdle } from './dom.js';
+import { t } from './i18n.js';
 import { help } from './popover.js';
 
 /** @type {Promise<any> | null} */
@@ -39,49 +39,60 @@ function save(bytes, name) {
 /**
  * @param {HTMLElement} root
  * @param {import('./app.js').App} app
+ * @param {{ onSaved?: () => void }} [opts] onSaved: a deck was handed to the browser
  */
-export function mountDownload(root, app) {
+export function mountDownload(root, app, { onSaved } = {}) {
   const deck = h('dd');
   const size = h('dd');
   const file = h('dd', { class: 'dl-file' });
-  const button = h('button', { type: 'button', class: 'button primary' }, 'Download deck');
+  const button = h('button', { type: 'button', class: 'button primary' }, msg('download.button'));
   const status = h('p', { class: 'dl-status', role: 'status' });
+  /** The status line, worked out again in the interface language on every update. @type {() => string} */
+  let say = () => '';
   const updateHelp = h(
     'div',
     null,
-    h('p', null, h('strong', null, UPDATE_HELP.title)),
-    h('p', null, UPDATE_HELP.intro),
-    h('ul', null, ...UPDATE_HELP.points.map((p) => h('li', null, p))),
+    h('p', null, h('strong', null, msg('update.title'))),
+    h('p', null, msg('update.intro')),
+    h('ul', null, ...['update.edits', 'update.deck', 'update.noteType', 'update.reverse'].map((key) => h('li', null, msg(key)))),
   );
   root.append(
-    h('dl', { class: 'dl-summary' }, h('dt', null, 'Deck'), deck, h('dt', null, 'Size'), size, h('dt', null, 'File'), file),
-    h('div', { class: 'dl-actions' }, button, h('span', { class: 'dl-help' }, 'Updating a deck later', help('updating a deck', updateHelp))),
+    h('dl', { class: 'dl-summary' }, h('dt', null, msg('download.deck')), deck, h('dt', null, msg('download.size')), size, h('dt', null, msg('download.file')), file),
+    h('div', { class: 'dl-actions' }, button, h('span', { class: 'dl-help' }, msg('download.later'), help(msg('download.laterTopic'), updateHelp))),
     status,
   );
 
   let busy = false;
   let prefetched = false;
 
+  /** @param {() => string} text */
+  function setStatus(text) {
+    say = text;
+    status.textContent = text();
+  }
+
   button.addEventListener('click', async () => {
     const input = app.deckInput();
     if (!input || busy) return;
     if (!globalThis.crypto?.subtle) {
       // Note IDs are SHA-256 hashes, and browsers offer crypto.subtle only on HTTPS and localhost.
-      status.textContent = 'Downloading needs a secure connection: open the page over https:// (or localhost).';
+      setStatus(() => t('download.secure'));
       return;
     }
     busy = true;
     button.disabled = true;
     button.setAttribute('aria-busy', 'true');
-    status.textContent = 'Building your deck…';
+    setStatus(() => t('download.building'));
     try {
       const [SQL, { buildApkg }] = await Promise.all([loadSql(), loadPackager()]);
       const bytes = await buildApkg({ SQL, config: input.config, meta: input.meta, deck: buildDeck(input) });
       const name = apkgFileName(input.config, input.meta);
       save(bytes, name);
-      status.textContent = downloadedText(name);
+      setStatus(() => t('download.saved', { file: name }));
+      onSaved?.();
     } catch (error) {
-      status.textContent = `Could not build the deck (${error instanceof Error ? error.message : error}). Please try again.`;
+      const reason = error instanceof Error ? error.message : String(error);
+      setStatus(() => t('download.failed', { error: reason }));
     } finally {
       busy = false;
       button.removeAttribute('aria-busy');
@@ -93,9 +104,11 @@ export function mountDownload(root, app) {
     /** @param {import('./app.js').View} view */
     update(view) {
       const { config, ready, notes, cards } = view;
+      const said = say(); // the same text again would be announced again
+      if (status.textContent !== said) status.textContent = said;
       if (!config.learn || !config.know) return;
       deck.textContent = deckName(config, app.meta);
-      size.textContent = ready ? deckSize(notes.length, cards) : 'Loading…';
+      size.textContent = ready ? deckSize(notes.length, cards) : t('download.loading');
       file.textContent = apkgFileName(config, app.meta);
       if (!busy) button.disabled = !ready || !notes.length;
       if (!prefetched && config.modules.length) {

@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
+import { AUTHOR_NAME, AUTHOR_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
 import { decodeHash, moduleIds, validate } from '../src/state.js';
 import { assembleConcepts, moduleOrder } from '../src/data/loader.js';
 import { moduleCounts, selectNotes } from '../src/deck/select.js';
@@ -66,12 +66,20 @@ test('every page has its own title and description, its canonical address and br
     assert.equal(head(html, 'property', 'og:title'), title);
     assert.equal(head(html, 'property', 'og:description'), description);
     assert.ok(/** @type {string} */ (description).length <= 160, `${file}: the description fits a search result`);
-    const ld = JSON.parse(/** @type {string} */ (html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1]));
-    assert.equal(ld['@type'], 'BreadcrumbList');
-    const items = ld.itemListElement;
+    const graph = JSON.parse(/** @type {string} */ (html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1]))['@graph'];
+    const items = graph.find((/** @type {any} */ node) => node['@type'] === 'BreadcrumbList').itemListElement;
     assert.deepEqual(items.map((/** @type {any} */ i) => i.position), items.map((/** @type {any} */ _, /** @type {number} */ i) => i + 1));
     assert.deepEqual(items.map((/** @type {any} */ i) => i.item), [SITE_URL, ...(file === HUB ? [] : [SITE_URL + DECKS_DIR]), undefined], 'the last crumb is this page');
     if (file !== HUB) assert.equal(items.at(-1).name, html.match(/<h1>([^<]*)<\/h1>/)?.[1]);
+    const resource = graph.find((/** @type {any} */ node) => node['@type'] === 'LearningResource');
+    if (file === HUB) {
+      assert.equal(resource, undefined);
+      continue;
+    }
+    const [learn, know] = /** @type {[string, string]} */ (pairOf.get(file));
+    assert.deepEqual([resource.url, resource.name, resource.description], [SITE_URL + dirOf(file), items.at(-1).name, description]);
+    assert.deepEqual([resource.inLanguage, resource.about.alternateName, resource.about.name], [[learn, know], learn, meta.languages.languages[learn].name]);
+    assert.deepEqual([resource.isAccessibleForFree, resource.author.url], [true, AUTHOR_URL]);
   }
   assert.equal(titles.size, pages.length + 1);
   assert.equal(descriptions.size, pages.length + 1);
@@ -93,12 +101,13 @@ test('links open the app with the pair chosen, and every link resolves in the si
       assert.equal(target, 'index.html', `${file}: a hash link goes to the app`);
       const config = decodeHash(url.hash, meta);
       assert.deepEqual([config?.learn, config?.know], pairOf.get(file), `${file}: ${href}`);
+      assert.equal(url.searchParams.get('lang'), config?.know, `${file}: ${href} opens the app in its visitors' language`);
       assert.equal(config?.modules.length, 1, `${file}: ${href} chooses one module`);
     }
   }
   const cta = (/** @type {string} */ file) => files[file].match(/<a class="button primary" href="([^"]+)">Build your deck<\/a>/)?.[1].replaceAll('&amp;', '&');
-  assert.equal(cta('decks/japanese-for-russian-speakers/index.html'), '../../#v1&l=ja&k=ru&m=core-1&x=2');
-  assert.equal(cta('decks/serbian-for-english-speakers/index.html'), '../../#v1&l=sr&k=en&m=core-1&x=2&sr=c');
+  assert.equal(cta('decks/japanese-for-russian-speakers/index.html'), '../../?lang=ru#v1&l=ja&k=ru&m=core-1&x=2');
+  assert.equal(cta('decks/serbian-for-english-speakers/index.html'), '../../?lang=en#v1&l=sr&k=en&m=core-1&x=2&sr=c');
 });
 
 test('a page shows the deck the app builds: its size, the words per module, samples and local words', async () => {
@@ -152,15 +161,17 @@ test('words of the 18+ modules, and vulgar or offensive ones, are never samples'
 
 test('the pages share the app’s icons, link preview and footer; their absolute URLs come from src/config.js', () => {
   const shared = (/** @type {string} */ html) => html.match(/<meta (?:name="(?:color-scheme|theme-color|twitter:card)"|property="og:(?:type|site_name|image[^"]*|locale)")[^>]*>/g);
-  const allowed = [SITE_URL, REPO_URL, PATREON_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, 'https://schema.org', 'http://www.sitemaps.org/schemas/sitemap/0.9'];
+  const allowed = [SITE_URL, REPO_URL, PATREON_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, AUTHOR_URL, 'https://schema.org', 'http://www.sitemaps.org/schemas/sitemap/0.9'];
   for (const [file, text] of Object.entries(files)) {
     for (const [url] of text.matchAll(/https?:\/\/[^\s"'<>)]+/g)) assert.ok(allowed.some((prefix) => url.startsWith(prefix)), `${file}: ${url} is not in src/config.js`);
     if (!file.endsWith('.html')) continue;
     assert.deepEqual(shared(text), shared(index), file);
     const root = '../'.repeat(file.split('/').length - 1);
     for (const rel of ['icon', 'apple-touch-icon', 'stylesheet']) assert.equal(head(text, 'rel', rel), root + head(index, 'rel', rel), `${file}: ${rel}`);
-    for (const url of [PATREON_URL, BUY_ME_A_COFFEE_URL, REPO_URL, `${REPO_URL}/blob/master/LICENSE`, DATA_LICENSE_URL]) assert.ok(text.includes(`href="${url}"`), `${file} links to ${url}`);
-    assert.match(text, new RegExp(`Data ${meta.version.data.replace(/\./g, '\\.')} · App `));
+    for (const url of [PATREON_URL, BUY_ME_A_COFFEE_URL, REPO_URL, `${REPO_URL}/blob/master/LICENSE`, DATA_LICENSE_URL, AUTHOR_URL]) assert.ok(text.includes(`href="${url}"`), `${file} links to ${url}`);
+    assert.ok(text.includes(`<p class="foot-line">Created by <a href="${AUTHOR_URL}" target="_blank" rel="noopener">${AUTHOR_NAME}</a></p>`), `${file}: the author`);
+    assert.doesNotMatch(text, /· App |Data \d/, `${file}: no versions in the footer, as in the app`);
+    assert.equal(head(text, 'name', 'author'), AUTHOR_NAME);
     assert.doesNotMatch(text, /<script(?! type="application\/ld\+json")/, 'no scripts but the structured data');
   }
 });
@@ -187,7 +198,9 @@ function fakeRussian() {
 test('with a translation, the pages for its speakers are in their language', async () => {
   const ru = fakeRussian();
   assert.deepEqual(checkTexts(ru, meta, 'ru'), []);
-  const out = await landingSite(fixtureLoader(), { ru });
+  /** The app's texts in Russian (data/ui): the footer's. */
+  const ui = { ru: { texts: { support: 'Ру Support this project:', 'foot.decks': 'Ру Decks by language pair', 'foot.author': 'Ру Created by {name}' } } };
+  const out = await landingSite(fixtureLoader(), { ru }, ui);
   const html = out['decks/japanese-for-russian-speakers/index.html'];
   assert.match(html, /^<!doctype html>\n<html lang="ru-RU">/);
   assert.match(html, /<meta property="og:locale" content="ru_RU">/);
@@ -201,6 +214,9 @@ test('with a translation, the pages for its speakers are in their language', asy
   assert.match(html, /<dt>Ру Reading \(furigana\)<\/dt>/);
   assert.match(html, /<li><a href="\.\.\/">Ру Decks<\/a><\/li>/, 'the breadcrumb');
   assert.match(html, /<p class="support">Ру Support this project: <span><a class="button" href="[^"]+" [^>]*>Patreon<\/a> <a class="button" href="[^"]+" [^>]*>Buy Me a Coffee<\/a><\/span><\/p>/, 'brand names stay as they are');
+  assert.match(html, /<a href="\.\.\/\.\.\/decks\/">Ру Decks by language pair<\/a> · <a href="[^"]+" [^>]*>Source on GitHub<\/a>/, 'the footer, from data/ui; English where it has no text');
+  assert.match(html, new RegExp(`Ру Created by <a href="${AUTHOR_URL}"[^>]*>${AUTHOR_NAME}</a>`));
+  assert.match(out['decks/japanese-for-english-speakers/index.html'], /<p class="support">Support this project: /, 'pages in English have the English footer');
   assert.match(html, /<a href="\.\.\/english-for-russian-speakers\/" lang="ru-RU">Ру English<\/a>/, 'decks for the same speakers, named in their language');
   assert.match(html, /<a href="\.\.\/japanese-for-english-speakers\/" lang="en">Japanese for English speakers<\/a>/, 'pages in English are named in English');
   const en = out['decks/japanese-for-english-speakers/index.html'];
@@ -238,4 +254,19 @@ test('checkTexts names what is wrong with a translation', () => {
     'texts.intro: not in Cyrillic script',
     'texts.step1: contains < or >; write plain text',
   ]);
+});
+
+test('pages in their visitors’ language name each other for search engines (hreflang)', async () => {
+  const alternates = (/** @type {string} */ html) => [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/g)].map((m) => [m[1], m[2]]);
+  for (const page of pages) assert.deepEqual(alternates(files[page]), [], `${page}: only English pages without translations, one per learned language`);
+  const out = await landingSite(fixtureLoader(), { ru: fakeRussian() });
+  const ja = [
+    ['en', `${SITE_URL}decks/japanese-for-english-speakers/`],
+    ['ru', `${SITE_URL}decks/japanese-for-russian-speakers/`],
+    ['x-default', `${SITE_URL}decks/japanese-for-english-speakers/`],
+  ];
+  assert.deepEqual(alternates(out['decks/japanese-for-russian-speakers/index.html']), ja);
+  assert.deepEqual(alternates(out['decks/japanese-for-english-speakers/index.html']), ja, 'both pages name both');
+  assert.deepEqual(alternates(out['decks/english-for-russian-speakers/index.html']), [], 'no other page about English is in its visitors’ language');
+  assert.deepEqual(alternates(out['decks/japanese-for-german-speakers/index.html']), [], 'a page in English for German speakers is nobody’s alternate');
 });

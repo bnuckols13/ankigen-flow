@@ -2,10 +2,11 @@
 // The page's model: the config store, the data loaded so far, and the deck view derived from both.
 // No DOM, so it runs under node --test with the fixture loader; main.js and the other ui/ modules render it.
 
-import { SAME, createStore, validate } from '../state.js';
+import { SAME, createStore, encodeHash, validate } from '../state.js';
 import { localTerms, moduleCounts, selectNotes } from '../deck/select.js';
 import { deckContext, noteFields } from '../deck/fields.js';
 import { noteType } from '../deck/templates.js';
+import { language } from './i18n.js';
 
 /** @typedef {import('../state.js').Config} Config */
 /** @typedef {import('../data/loader.js').LanguageData} LanguageData */
@@ -203,6 +204,18 @@ export function createApp({ loader, meta, initial, random = Math.random }) {
       if (!others.length) return;
       sampleKey = others[Math.floor(random() * others.length)].key;
       notify();
+    },
+    /**
+     * The page's address for the current config and interface language: `href` (the address now, which keeps
+     * any other parameter) with ?lang= and the config hash.
+     * @param {string} href
+     */
+    address(href) {
+      const url = new URL(href);
+      url.searchParams.set('lang', language());
+      const config = store.get();
+      url.hash = config.learn ? encodeHash(config, meta) : '';
+      return url.href;
     },
     /** Everything buildDeck needs for the current config, or null while loading. */
     deckInput() {

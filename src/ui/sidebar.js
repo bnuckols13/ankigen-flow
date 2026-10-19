@@ -8,8 +8,8 @@
 import { noteSummary } from '../deck/fields.js';
 import { createSearch } from '../deck/search.js';
 import { listEmptyText, listStatus } from './copy.js';
-import { debounce, h, icon } from './dom.js';
-import { count } from './format.js';
+import { debounce, h, icon, msg } from './dom.js';
+import { languageEpoch, plural, t } from './i18n.js';
 
 /** @typedef {import('./app.js').View} View */
 /** @typedef {import('../deck/select.js').Note} Note */
@@ -28,14 +28,13 @@ export function mountCardList(root, app, { isActive, report, onPick }) {
   const search = h('input', {
     type: 'search',
     class: 'cl-search',
-    placeholder: 'Search words',
-    'aria-label': 'Search words',
+    'aria-label': msg('list.search'),
     autocomplete: 'off',
     spellcheck: 'false',
     enterkeyhint: 'search',
   });
   const status = h('p', { class: 'cl-status', role: 'status' });
-  const list = h('div', { class: 'cl-list', role: 'list', 'aria-label': 'Words in the deck' });
+  const list = h('div', { class: 'cl-list', role: 'list', 'aria-label': msg('list.label') });
   const viewport = h('div', { class: 'cl-viewport' }, list);
   const empty = h('p', { class: 'cl-empty' });
   const body = h('div', { class: 'cl-body' }, h('div', { class: 'cl-tools' }, search, status), viewport);
@@ -53,6 +52,8 @@ export function mountCardList(root, app, { isActive, report, onPick }) {
   let summaries = new Map();
   /** @type {Map<string, HTMLElement>} note key → row in the DOM */
   const rows = new Map();
+  /** the interface language the rows were made in */
+  let epoch = -1;
   let rowHeight = 0;
   /** the row in the tab order */
   let active = 0;
@@ -84,7 +85,7 @@ export function mountCardList(root, app, { isActive, report, onPick }) {
       disambig && h('span', { class: 'cl-dis', lang: ctx.know.tag }, disambig),
       h('span', { class: 'cl-tr', lang: ctx.know.tag, 'data-field': 'Translation' }, translation),
     );
-    const flag = h('button', { type: 'button', class: 'cl-report', tabindex: '-1', 'aria-label': `Report a problem with ${word}`, title: 'Report a problem' }, icon('flag'));
+    const flag = h('button', { type: 'button', class: 'cl-report', tabindex: '-1', 'aria-label': t('list.report', { word }), title: t('list.reportTitle') }, icon('flag'));
     return h('div', { class: 'cl-row', role: 'listitem', 'data-key': note.key }, pick, flag);
   }
 
@@ -143,7 +144,7 @@ export function mountCardList(root, app, { isActive, report, onPick }) {
     active = 0;
     for (const row of rows.values()) row.remove();
     rows.clear();
-    search.placeholder = `Search ${count(view.notes.length, 'word')}`;
+    search.placeholder = plural('searchWords', view.notes.length);
     status.textContent = listStatus(shown.length, view.notes.length, search.value);
     list.style.height = `${shown.length * rowHeight}px`;
     if (!keepScroll) viewport.scrollTop = 0;
@@ -216,10 +217,15 @@ export function mountCardList(root, app, { isActive, report, onPick }) {
     empty.hidden = !message;
     body.hidden = Boolean(message);
     if (message || !next.ctx) return;
-    if (next.notes !== source) {
+    const fresh = next.notes !== source;
+    if (fresh) {
       source = next.notes;
       finder = createSearch(next.notes, next.ctx);
       summaries = new Map();
+    }
+    // New notes, or texts in another language: start the rows over.
+    if (fresh || epoch !== languageEpoch()) {
+      epoch = languageEpoch();
       refilter(true);
     } else {
       for (const row of rows.values()) place(row, Number(row.dataset.index));

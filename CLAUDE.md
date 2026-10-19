@@ -24,6 +24,7 @@ Free static web app (GitHub Pages) that builds Anki decks in the browser from cu
 
 - Vocabulary files under `data/concepts|lang|ex|ipa|etym` change only through `tools/gen/merge-unit.mjs` / `tools/gen/batch.mjs`, or when the owner asks for a specific edit. After any data change, run `node tools/lint-data.mjs --fix` and then `node tools/lint-data.mjs`.
 - Concept IDs are permanent (they seed Anki note GUIDs). Never rename or reuse one; retire with `data/meta/retired.json`.
+- `data/ui/<code>.json` (the page's own texts, ARCHITECTURE §13) is edited by hand: after changing English texts in `src/ui/strings.js` or the feedback dialog, update every translation, then `node tools/ui-texts.mjs stamp <code>…`.
 - The API key for the generation pipeline lives in `.env` as `ANKIGEN_API_KEY` (gitignored; `tools/gen/batch.mjs` reads it itself). Never read, print or edit `.env`, never echo the key, never put keys in other files, logs or commits. Do not set `ANTHROPIC_API_KEY` anywhere: it would switch Claude Code itself to API billing.
 - `.claude/settings.json` denies reading `.env` and running `git commit`/`git push`; keep those rules.
 
@@ -34,6 +35,7 @@ node tools/lint-data.mjs [--report] [--warnings] [--fix]          # validate dat
 node tools/lint-data.mjs --data tests/fixtures/data --meta data/meta   # validate the golden sample
 node tools/gen/plan.mjs status | list | show <unit>                 # generation progress / unit inputs
 node tools/gen/batch.mjs estimate | submit | status | collect | retry | sync | auto   # API runner
+node tools/ui-texts.mjs check | stamp <code>…                     # the page's translations in data/ui
 ```
 
 ## Code conventions

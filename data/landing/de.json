@@ -1,5 +1,5 @@
 {
-  "source": "67cd7ced5fda",
+  "source": "c8187bc92e07",
   "texts": {
     "decks": "Decks",
     "cta": "Dein Deck erstellen",
@@ -22,11 +22,7 @@
     "about": "Wörter, Übersetzungen und Beispielsätze wurden mit einem KI-Modell entworfen und werden Sprache für Sprache von Menschen geprüft. Wenn dir etwas falsch vorkommt, markiere es auf einer Vorschaukarte in AnkiGen und drücke Strg+Enter (⌘+Enter auf dem Mac) oder nutze dort die Schaltfläche „Feedback“. Jede Meldung hilft, das Deck für alle zu verbessern.",
     "moreHeading": "Weitere Decks",
     "moreForYou": "Weitere Decks für Deutschsprachige",
-    "allDecks": "Alle Decks nach Sprachpaar",
-    "support": "Unterstütze dieses Projekt:",
-    "source": "Quellcode auf GitHub",
-    "license": "Code unter der {mit}-Lizenz; Vokabular unter {cc}.",
-    "versions": "Daten {data} · App {app}"
+    "allDecks": "Alle Decks nach Sprachpaar"
   },
   "languages": {
     "en": "Englisch",

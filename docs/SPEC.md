@@ -86,20 +86,26 @@ Each row is Off / Front / Back (some rows have fewer choices). Defaults are in `
 
 ## 4. Page flow and UI
 
-Minimal, clean, fast. English UI. Card captions use the language the user speaks, via `labels.json`.
+Minimal, clean, fast. Card captions use the language the user speaks, via `labels.json`.
 
-1. **Title + short description**, plus a one-line disclaimer: vocabulary is machine-drafted and partly unreviewed, and feedback is welcome.
-2. **I'm learning:** language chips with native names (Српски, 日本語, Հայերեն) and English names as tooltips.
-3. **I speak:** chips plus a **Same language** button (definitions instead of translations).
+**Interface language:** the page is in any of the 15 languages, chosen with a menu in the header's top-right corner: the current language's flag and code, opening a list of the languages with their flags and native names. A flag is the language's country in `languages.json`, drawn as an image (Windows shows no flag emoji). Choosing one switches every text at once, without a reload.
+- The language is in the address (`?lang=ru`), so a shared link opens in it. Without one, the page takes the visitor's last choice, else the browser's language when the page speaks it, else English.
+- Module, field and option texts and the language names come from the landing pages' translations (`data/landing`); the page's own texts are in `data/ui`. A text a translation lacks is shown in English.
+
+1. **Title + short description**, plus a one-line disclaimer: vocabulary is machine-drafted and partly unreviewed, and feedback is welcome. Top right, beside the interface language: "Support this project:" with Patreon and Buy Me a Coffee (as in the footer).
+2. **I'm learning:** language chips with native names (Српски, 日本語, Հայերեն) and the names in the interface language as tooltips.
+3. **I speak:** first a **Same language** button on a row of its own, with "— word definitions" in muted text (the interface language's clearest phrase: ru «толковый словарь»), set apart from the language chips below by a thin line.
 4. **Modules:** a tree with expand/collapse and checkboxes at module and category level, a selected count, and an 18+ badge on Profanity.
 5. **Card fields:** the field table and examples slider.
 6. **Reverse cards / Type the answer** toggles.
 7. **Download:** summary plus the button.
+8. **Share** (no number, no card background), with Download: "Copy link" first (the page's address: the deck and the interface language), then the system share sheet where the browser has one, X, Facebook, Reddit, Telegram, WhatsApp, VK (Russian interface), LINE (Japanese), Weibo (Chinese), Bluesky and email.
 
 How the steps behave:
 - Each step's block appears once the previous step has a choice.
 - Steps stay editable; changing an earlier step never resets later choices unless they become invalid.
-- "?" popups explain non-obvious controls: same-language mode, modules with country-specific terms, 18+, each field row, reverse cards, type the answer, Serbian script, concept ID, the draft disclaimer, and how to re-import updates.
+- "?" popups explain non-obvious controls: modules with country-specific terms, 18+, each field row, reverse cards, type the answer, Serbian script, concept ID, the draft disclaimer, and how to re-import updates. Same-language mode is explained by its note, and in full by its tooltip.
+- After the first download, the header's support links are sticky: while their place is out of view they slide down from the top edge of the window and stay there.
 
 Always-visible elements:
 - **Live counter:** "1,734 notes · 3,468 cards".
@@ -108,8 +114,9 @@ Always-visible elements:
 - **Shareable state:** the full configuration lives in the URL hash, so a link reproduces the exact deck. The last configuration is also remembered locally.
 - **Footer:**
   - "Support this project:" with two buttons, Patreon and Buy Me a Coffee;
-  - data version and app version;
-  - link to the GitHub repo.
+  - links to the decks by language pair and the GitHub repo;
+  - the licenses;
+  - "Created by Phil Filippak", the name linking to https://x.com/blisstweeting.
 
 ## 5. Feedback and error reports
 
@@ -153,4 +160,4 @@ Always-visible elements:
 
 ## 8. Non-goals (for now)
 
-Audio, images, user accounts, server-side generation, translations of example sentences beyond the slot-parallel scheme, UI localization, slang, analytics.
+Audio, images, user accounts, server-side generation, translations of example sentences beyond the slot-parallel scheme, slang, analytics.

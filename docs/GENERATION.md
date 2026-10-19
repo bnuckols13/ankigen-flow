@@ -73,7 +73,9 @@ Other commands and options:
 
 **Cost:** `batch.mjs estimate` puts English at about $5 (upper bound, before caching); all of phases 2–4 should land around **$80–100** at batch pricing. Measured: about 1.8× the estimate, ≈ $7–8.5 per language for its lang units (11 languages, 583 units: $80.65). Only about 0.8 characters of text come back per billed output token; the rest is presumably the model's reasoning, which the runner doesn't keep. So a large unit can reach `--max-tokens` with ~30,000 characters of text; the retry splits it. The system prompt (data format + unit instructions + golden sample) is marked for prompt caching.
 
-Landing texts translate `englishTexts()` in `tools/landing.mjs` (with the module, field and option texts of `data/meta`) into `data/landing/<code>.json`, with a hash of the English they came from. When those English texts change, `lint-data` warns, the pages of that language fall back to English, and the plan lists the unit again: rerun `auto --type landing`.
+Landing texts translate `englishTexts()` in `tools/landing.mjs` (with the module, field and option texts of `data/meta`) into `data/landing/<code>.json`, with a hash of the English they came from. When those English texts change, `lint-data` warns, the pages of that language fall back to English, and the plan lists the unit again: rerun `auto --type landing`. The app shows their module, field and option texts and language names in its interface language too (ARCHITECTURE §13).
+
+The app's own texts in other languages (`data/ui/<code>.json`, with the landing pages' footer) are not a unit: they are written by hand or by Claude Code, checked by `lint-data`, and stamped with `node tools/ui-texts.mjs stamp <code>`.
 
 ## 3. Checkpoints for you
 

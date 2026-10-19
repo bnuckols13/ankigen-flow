@@ -1,0 +1,206 @@
+{
+  "source": "dac76c54ff4f",
+  "texts": {
+    "head.draft": "語彙は AI で下書きしたもので、確認はまだ一部だけです。ご意見をお待ちしています。",
+    "head.draftTopic": "語彙の下書き",
+    "head.draftHelp1": "単語、訳、例文は AI モデルで下書きを作り、言語ごとに人の手で確認を進めています。",
+    "head.draftHelp2": "おかしな点を見つけたら、プレビューカード上でその部分を選択して Ctrl+Enter（Mac は ⌘+Enter）を押すか、右下の「フィードバック」ボタンを使ってください。報告はすべて、みんなが使うデッキの改善に役立ちます。",
+    "head.language": "表示言語",
+    "head.languageNow": "表示言語：{language}",
+    "help.about": "{topic}について",
+    "support": "このプロジェクトを支援する：",
+    "fatal": "AnkiGen の単語リストを読み込めませんでした。接続を確認して、ページを再読み込みしてください。",
+    "step.learn": "学習する言語",
+    "step.know": "話せる言語",
+    "step.modules": "モジュール",
+    "step.fields": "カードのフィールド",
+    "step.fieldsNote": "各カードに表示する内容と、表裏のどちらに表示するかを選びます。プレビューにすぐ反映されます。",
+    "step.options": "カードのオプション",
+    "step.download": "ダウンロード",
+    "step.share": "共有",
+    "lang.same": "同じ言語",
+    "lang.sameNote": "単語の定義",
+    "lang.sameHelp": "訳の代わりに、学習している言語での短い定義がカードに表示されます。その言語で簡単な文が読めるようになったらおすすめです。",
+    "lang.loading": "単語を読み込んでいます（{language}）…",
+    "lang.failed": "単語を読み込めませんでした（{language}）。接続を確認して、ページを再読み込みしてください。",
+    "modules.hint": "必要なトピックを選んでください。あとから追加できます。",
+    "modules.show": "{category}のモジュールを表示",
+    "modules.tally": "{n}/{total}",
+    "modules.adultTopic": "18+ モジュール",
+    "modules.adultHelp": "罵り言葉、侮辱語、下品なスラングを、言語間で強さをそろえて収録しています。ほかのモジュールにも含まれる語であっても、このモジュールを選んだときだけデッキに入ります。",
+    "modules.localTopic": "{module}：その言語特有の語",
+    "placement.off": "オフ",
+    "placement.front": "表",
+    "placement.back": "裏",
+    "placement.on": "オン",
+    "placement.word": "単語と一緒",
+    "fields.alwaysFront": "常に表面",
+    "fields.alwaysBack": "常に裏面",
+    "fields.examples": "例文の数",
+    "options.cyrl": "キリル文字",
+    "options.latn": "ラテン文字",
+    "download.deck": "デッキ",
+    "download.size": "サイズ",
+    "download.file": "ファイル",
+    "download.button": "デッキをダウンロード",
+    "download.later": "あとでデッキを更新するには",
+    "download.laterTopic": "デッキの更新",
+    "download.loading": "読み込み中…",
+    "download.secure": "ダウンロードには安全な接続が必要です。https:// で（または localhost で）ページを開いてください。",
+    "download.building": "デッキを作成しています…",
+    "download.saved": "{file} を保存しました。Anki で開くか（File → Import）、スマートフォンでタップして AnkiDroid で開いてください。",
+    "download.failed": "デッキを作成できませんでした（{error}）。もう一度お試しください。",
+    "update.title": "デッキの更新",
+    "update.intro": "フィールドを変更したとき、モジュールを追加したとき、新しいデータがほしいときは、もう一度ダウンロードして、新しいファイルを Anki に読み込んでください（File → Import、オプションは初期設定のまま）。既存のノートとレイアウトが更新され、新しい単語が同じデッキに追加されます。学習の進捗もそのまま残ります。",
+    "update.edits": "AnkiGen のノートに加えた編集やタグは、新しいバージョンで置き換えられます。フラグ、保留中のカード、学習の進捗は残ります。",
+    "update.deck": "新しいカードは、この名前とまったく同じデッキに追加されます。デッキの名前を変えたり移動したりした場合は、元の名前の新しいデッキに入るので、そこから移動できます。",
+    "update.noteType": "AnkiGen のノートタイプのフィールドを変更した場合は、読み込むときに「Merge note types」にチェックを入れてください。入れないと、Anki はこれらのノートを更新できません。",
+    "update.reverse": "逆方向カードをオフにしましたか？ 古いカードは空のカードとして残ります。Tools → Empty Cards で削除してください。",
+    "share.copy": "リンクをコピー",
+    "share.copied": "リンクをコピーしました",
+    "share.copyFailed": "リンクをコピーできませんでした。アドレスバーからコピーしてください。",
+    "share.more": "共有…",
+    "share.on": "{site} で共有",
+    "share.email": "メール",
+    "preview.heading": "プレビュー",
+    "preview.another": "別の単語",
+    "preview.report": "報告",
+    "preview.reportTitle": "このカードの問題を報告",
+    "preview.forward": "順方向カード",
+    "preview.reverse": "逆方向カード",
+    "preview.front": "表面",
+    "preview.back": "裏面",
+    "preview.face": "{card}・{side}",
+    "preview.typeAnswer": "答えを入力",
+    "preview.pickLanguages": "学習する言語と話せる言語を選ぶと、ここにカードの例が表示されます。",
+    "preview.loading": "単語を読み込んでいます…",
+    "preview.pickModules": "モジュールを選ぶと、ここにカードの例が表示されます。",
+    "preview.empty": "選んだモジュールには、この言語の組み合わせの単語がまだありません。",
+    "preview.close": "閉じる",
+    "list.heading": "単語",
+    "list.search": "単語を検索",
+    "list.label": "デッキの単語",
+    "list.report": "{word} の問題を報告",
+    "list.reportTitle": "問題を報告",
+    "list.noMatch": "「{query}」に一致する単語はありません。",
+    "list.open": "単語リスト：{size}",
+    "feedback.button": "フィードバック",
+    "feedback.title": "フィードバック（{shortcut}）",
+    "foot.decks": "言語ペア別のデッキ",
+    "foot.source": "GitHub のソースコード",
+    "foot.license": "コードは{mit}ライセンス、語彙は{cc}で公開しています。",
+    "foot.author": "作成：{name}",
+    "fb.title": "フィードバック",
+    "fb.close": "閉じる",
+    "fb.about": "単語：{word}",
+    "fb.message": "メッセージ",
+    "fb.category": "カテゴリー",
+    "fb.choose": "選択…",
+    "fb.category.wrong-translation": "訳の誤り",
+    "fb.category.typo": "誤字",
+    "fb.category.wrong-form": "語形の誤り",
+    "fb.category.bad-example": "不適切な例文",
+    "fb.category.suggestion": "提案",
+    "fb.category.other": "その他",
+    "fb.email": "メールアドレス",
+    "fb.optional": "（任意）",
+    "fb.emailHint": "返信をご希望の場合は、メールアドレスを入力してください。",
+    "fb.keys": "{shortcut} で送信",
+    "fb.cancel": "キャンセル",
+    "fb.send": "送信",
+    "fb.sendAnyway": "このまま送信",
+    "fb.sending": "送信中…",
+    "fb.privacy": "報告は非公開のスプレッドシートに保存され、語彙の修正と、メールアドレスが入力された場合の返信にだけ使われます。スパムを防ぐため、ブラウザに保存されたランダムな ID を記録します。トラッキングやアクセス解析は行いません。",
+    "fb.thanks": "ありがとうございます！ 報告を送信しました。",
+    "fb.garbage.letters": "単語が含まれていません。どこがおかしいか書いていただけますか？",
+    "fb.garbage.short": "とても短いようです。どこがおかしいか一言添えていただけると、修正に役立ちます。",
+    "fb.garbage.repeated": "同じ文字の繰り返しのようです。どこがおかしいか書いていただけますか？",
+    "fb.garbage.duplicate": "この報告はすでに送信済みです。",
+    "fb.wait.gap": "次の報告まで{time}お待ちください。",
+    "fb.wait.burst": "短時間に何件も報告が送信されました。{time}後にもう一度お試しください。",
+    "fb.wait.daily": "1日でたくさんの報告をありがとうございます！ あと{time}で、また送信できるようになります。",
+    "fb.error.network": "報告サーバーに接続できませんでした。接続を確認して、もう一度お試しください。",
+    "fb.error.timeout": "報告サーバーから時間内に応答がありませんでした。もう一度お試しください。",
+    "fb.error.daily_cap": "今日の報告の受付数が上限に達しました。明日もう一度お試しください。",
+    "fb.error.client_cap": "ここ数時間に多くの報告が送信されています。しばらくしてからもう一度お試しください。",
+    "fb.error.bad_email": "メールアドレスを確認するか、空欄にしてください。",
+    "fb.error.too_large": "メッセージが長すぎます。短くしてください。",
+    "fb.error.empty": "メッセージを入力してください。",
+    "fb.error.server": "報告サーバーで問題が発生しました。1分ほどしてからもう一度お試しください。",
+    "fb.place.forward": "順方向カード",
+    "fb.place.reverse": "逆方向カード",
+    "fb.place.front": "表面",
+    "fb.place.back": "裏面",
+    "fb.field.word": "単語",
+    "fb.field.translation": "訳",
+    "fb.field.definition": "定義",
+    "fb.field.romanization": "ローマ字表記",
+    "fb.field.otherScript": "もう一方の文字",
+    "fb.field.measureWord": "量詞・助数詞",
+    "fb.field.hanja": "漢字（ハンジャ）",
+    "fb.field.forms": "主な語形",
+    "fb.field.ipa": "IPA",
+    "fb.field.examples": "例文",
+    "fb.field.related": "反意語・関連語",
+    "fb.field.etymology": "語源",
+    "fb.field.pos": "品詞",
+    "fb.field.register": "文体・丁寧さ",
+    "fb.field.emoji": "絵文字",
+    "fb.field.conceptId": "コンセプトID"
+  },
+  "plural": {
+    "title": {
+      "other": "AnkiGen — {n}言語対応の無料 Anki 単語デッキ"
+    },
+    "lede": {
+      "other": "{n}言語の無料 Anki 単語デッキを、ブラウザ上で作成できます。"
+    },
+    "description": {
+      "other": "無料の Anki 単語デッキをブラウザ上で作成できます。{n}言語に対応し、トピック別のモジュールとカードのフィールドを自由に選べます。Anki や AnkiDroid 用の .apkg ファイルをダウンロードできます。"
+    },
+    "word": {
+      "other": "{n}語"
+    },
+    "note": {
+      "other": "{n}件のノート"
+    },
+    "card": {
+      "other": "{n}枚のカード"
+    },
+    "example": {
+      "other": "例文{n}件"
+    },
+    "modulesChosen": {
+      "other": "{total}個中{n}個のモジュールを選択中"
+    },
+    "searchWords": {
+      "other": "{n}語から検索"
+    },
+    "matches": {
+      "other": "{n}語中{shown}語"
+    },
+    "localTerms": {
+      "other": "ここには、学習している言語にしかない語が{n}語あります（例：{example}）。ほかの言語には正確に対応する語がないため、カードではあなたの言語で説明します。"
+    },
+    "seconds": {
+      "other": "{n}秒"
+    },
+    "minutes": {
+      "other": "{n}分"
+    },
+    "hours": {
+      "other": "{n}時間"
+    }
+  },
+  "fields": {
+    "word": {
+      "label": "単語",
+      "help": "学習している単語。順方向カードでは常に問題側に表示されます。"
+    },
+    "translation": {
+      "label": "訳",
+      "labelSame": "定義",
+      "help": "あなたの言語での訳。あなたの言語で1つの語に複数の意味がある場合は、短いヒントが付きます。同じ言語モードでは短い定義になります。"
+    }
+  }
+}

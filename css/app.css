@@ -106,6 +106,32 @@ input[type="checkbox"] {
   padding-block: 2rem 1.25rem;
 }
 
+/* The app's header: the title and lede; the support links; the interface language. */
+.app-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas: "main support language";
+  align-items: start;
+  gap: 0.75rem 1.25rem;
+}
+
+.head-main {
+  grid-area: main;
+}
+
+.head-support-slot {
+  grid-area: support;
+}
+
+/* Keeps the button's place while the page loads. */
+.locale-slot {
+  display: flex;
+  grid-area: language;
+  justify-content: flex-end;
+  min-width: 5rem;
+  min-height: 2.5rem;
+}
+
 .logo {
   margin: 0;
   font-size: 1.75rem;
@@ -119,19 +145,22 @@ input[type="checkbox"] {
 
 /* Where a "?" button will be, so the line doesn't grow when it arrives. */
 .help-slot {
-  flex: none;
+  display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
 }
 
+/* The "?" follows the last word, also when the line wraps (translations run longer). */
 .draft {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
   margin: 0.6rem 0 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.draft .help,
+.draft .help-slot {
+  margin-left: 0.4rem;
+  vertical-align: middle;
 }
 
 .dev-banner {
@@ -186,32 +215,177 @@ html:not(.js) .layout {
   text-underline-offset: 3px;
 }
 
-/* The label, then the two buttons; on a narrow screen the buttons wrap together, below the label. */
-.site-foot .support,
-.site-foot .support span {
+/* The support links, in the header and the footer: the label, then the two buttons; on a narrow screen the
+   buttons wrap together, below the label. */
+.support,
+.support > span {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
 }
 
+.support {
+  margin: 0;
+}
+
 .site-foot .support {
   margin: 0 0 0.9rem;
 }
 
-.site-foot .support .button {
+.support .button {
   border-color: var(--accent);
   color: var(--accent-ink);
   font-weight: 600;
   text-decoration: none;
 }
 
+.head-support {
+  justify-content: flex-end;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* After the first download (ui/support.js), while its place in the header is out of view: pinned to the top of
+   the window, sliding down from its edge. */
+.head-support.is-pinned {
+  position: fixed;
+  top: 0;
+  right: var(--pin-right, 1.5rem);
+  z-index: 8;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
+  background: var(--surface);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.12);
+  animation: pin-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes pin-in {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+/* Clear of the pinned links: what scrolls into view, and the sticky column beside the steps. */
+html:has(.is-pinned) {
+  scroll-padding-top: 4rem;
+}
+
 .foot-line {
   margin: 0.3rem 0 0;
 }
 
-#versions:not(:empty)::before {
-  content: " · ";
+/* The interface language menu (ui/locale.js). */
+.loc-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 2.5rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.loc-button::after {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 0.1rem;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.loc-button:hover {
+  border-color: var(--accent);
+}
+
+.loc-button[aria-busy="true"] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.flag {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.14);
+}
+
+/* Two columns, read down: arrow keys follow the same order. */
+.loc-menu {
+  position: fixed;
+  inset: auto;
+  width: max-content;
+  max-height: calc(100vh - 1rem);
+  margin: 0;
+  padding: 0.35rem;
+  overflow-y: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.18);
+}
+
+.loc-menu:popover-open {
+  display: grid;
+  grid-template-rows: repeat(8, auto);
+  grid-auto-flow: column;
+  gap: 0.1rem 0.25rem;
+}
+
+.loc-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 9.5rem;
+  padding: 0.45rem 0.7rem 0.45rem 0.55rem;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: start;
+  cursor: pointer;
+}
+
+.loc-item:hover,
+.loc-item:focus-visible {
+  background: var(--accent-soft);
+}
+
+.loc-item:focus-visible {
+  outline-offset: -2px;
+}
+
+.loc-item[aria-checked="true"] {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.loc-item[aria-checked="true"]::after {
+  content: "✓";
+  margin-left: auto;
+  padding-left: 0.75rem;
+}
+
+/* A translation is on its way (see index.html): the page's texts wait for it, the English stays hidden. */
+.i18n-pending:not(.ready) [data-t],
+.i18n-pending:not(.ready) [data-plural] {
+  visibility: hidden;
 }
 
 /* ------------------------------------------------------------------ layout */
@@ -362,10 +536,20 @@ html:not(.js) .layout {
   cursor: not-allowed;
 }
 
-.chip-with-help {
-  display: inline-flex;
+/* Step 2: "Same language" on a row of its own, set apart from the languages. */
+.same-row {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem 0.6rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.same-note {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 /* "?" buttons and their popovers */
@@ -405,7 +589,8 @@ html:not(.js) .layout {
 
 /* Browsers without the Popover API would show every popover inline: keep them hidden there. */
 @supports not selector(:popover-open) {
-  .help-pop {
+  .help-pop,
+  .loc-menu {
     display: none;
   }
 }
@@ -738,6 +923,48 @@ html:not(.js) .layout {
   display: none;
 }
 
+/* The Share block (ui/share.js): no number, no card of its own. */
+.step-plain {
+  background: transparent;
+}
+
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.share-copy .icon,
+.share-row .button .icon {
+  color: var(--accent);
+}
+
+.share-site {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.share-site:hover {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.share-status {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.share-status:empty {
+  display: none;
+}
+
 .icon {
   display: inline-flex;
   flex: none;
@@ -764,10 +991,40 @@ html:not(.js) .layout {
   height: calc(100vh - 2rem);
 }
 
+html:has(.is-pinned) .side {
+  top: 4rem;
+  max-height: calc(100vh - 5rem);
+}
+
+html:has(.is-pinned) .side:has(> .cards-panel:not([hidden])) {
+  height: calc(100vh - 5rem);
+}
+
+/* The faces scroll inside the panel when they don't fit, under its heading and buttons; a face itself never
+   scrolls (its frame takes the face's height, ui/preview.js). */
 .preview-panel {
+  display: flex;
   flex: 0 1 auto;
+  flex-direction: column;
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
+}
+
+.preview-panel > .pv,
+.sheet .pv {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pv-faces {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-right: -0.6rem;
+  padding-right: 0.6rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .side:has(> .cards-panel:not([hidden])) > .preview-panel {
@@ -1058,10 +1315,11 @@ html:not(.js) .layout {
 }
 
 .sheet .pv {
-  flex: 1;
-  min-height: 0;
-  padding: 0.85rem 1rem 1.5rem;
-  overflow: auto;
+  padding: 0.85rem 1rem 0;
+}
+
+.sheet .pv-faces {
+  padding-bottom: 1.5rem;
 }
 
 .sheet .cl {
@@ -1462,6 +1720,26 @@ html:not(.js) .layout {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* The language button beside the title; the support links under the lede. */
+  .app-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "main language" "support support";
+  }
+
+  .head-support {
+    justify-content: flex-start;
+  }
+
+  /* Pinned: a bar across the top. */
+  .head-support.is-pinned {
+    right: 0;
+    left: 0;
+    justify-content: center;
+    padding-inline: 1rem;
+    border-width: 0 0 1px;
+    border-radius: 0;
+  }
+
   /* Clear of the bottom bar and the Feedback button above it. */
   .site-foot {
     padding-bottom: calc(9rem + env(safe-area-inset-bottom));
@@ -1529,6 +1807,11 @@ html:not(.js) .layout {
     padding-inline: 1rem;
   }
 
+  /* A slim bar: the two buttons speak for themselves. */
+  .head-support.is-pinned > span:first-child {
+    display: none;
+  }
+
   .f-row {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1556,5 +1839,6 @@ html:not(.js) .layout {
   *::before,
   *::after {
     transition: none !important;
+    animation: none !important;
   }
 }

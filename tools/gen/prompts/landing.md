@@ -18,13 +18,11 @@ Every key of `en` is required, with the same keys inside. `plural` has one entry
 
 How to write:
 - Natural, idiomatic text, the way a good local website would say it: plain and friendly, not salesy, about as long as the English. Address the reader the way such sites usually do in that language (ru «вы», de "du" or "Sie" consistently, ja polite form).
-- `texts.support` is a label in front of two buttons, Patreon and Buy Me a Coffee: end it with a colon, spaced the way your language spaces one (fr "Soutenir ce projet :").
-- Keep as they are: AnkiGen, Anki, AnkiDroid, .apkg, IPA, CC BY-SA 4.0, MIT. Anki's menu names ("File → Import", "Tools → Empty Cards") stay in English, because Anki may show them in English; you may add the usual local name in brackets.
-- **Placeholders** ({module}, {deck}, {caption}, {count}, {example}, {mit}, {cc}, {data}, {app}, {words}, {modules}, {n}) stay exactly as written, once each, untranslated. The pipeline rejects a text whose placeholders differ from the English.
+- Keep as they are: AnkiGen, Anki, AnkiDroid, .apkg, IPA. Anki's menu names ("File → Import", "Tools → Empty Cards") stay in English, because Anki may show them in English; you may add the usual local name in brackets.
+- **Placeholders** ({module}, {deck}, {caption}, {count}, {example}, {words}, {modules}, {n}) stay exactly as written, once each, untranslated. The pipeline rejects a text whose placeholders differ from the English.
   - {words}, {modules} and {count} become a complete count phrase, already in the right plural form: "3 442 слова", "35 модулей". Put them where that standalone form is correct (after a colon, in a list, as the subject), never after a preposition or verb that would need another case. Rephrase the sentence if you must.
   - {module} becomes a module name, such as "Core I" in your translation; quote it the usual way of your language («…», „…“, 「…」) if it would otherwise have to take a case ending.
-  - {example} becomes a word in the language being learned; {caption} a card caption in your language; {deck} the deck's name in Anki; {data} and {app} version numbers.
-  - {mit} becomes the link "MIT" and {cc} the link "CC BY-SA 4.0".
+  - {example} becomes a word in the language being learned; {caption} a card caption in your language; {deck} the deck's name in Anki.
 - `plural`: each form contains {n}, written as your language writes a number with that noun (ja "{n}語", zh "{n} 个词", de "{n} Wörter").
 - `languages`: each language's name as a standalone noun, as a list or button would show it (ru "Английский", de "Englisch", ja "英語").
 - `pairs.<code>`: the page for learning that language.

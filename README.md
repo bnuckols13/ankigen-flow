@@ -4,7 +4,7 @@ Free Anki vocabulary decks in 15 languages, built right in your browser: **https
 
 Pick the language you're learning and one you speak, or short definitions in the same language. Choose topic modules, from the 500 most frequent words to food, housing, health, work and travel. Then choose what each card shows, and download an `.apkg` for Anki or AnkiDroid. The deck is built in your browser; nothing is uploaded.
 
-Languages: English, Russian, Serbian, Japanese, Chinese, German, Spanish, Portuguese, Polish, Korean, Dutch, French, Armenian, Turkish and Greek.
+Languages: English, Russian, Serbian, Japanese, Chinese, German, Spanish, Portuguese, Polish, Korean, Dutch, French, Armenian, Turkish and Greek. The page itself speaks all of them too: pick one with the flag menu in the top-right corner, or link to it with `?lang=ru`.
 
 Decks are deterministic: the same settings and data version always give the same notes with the same IDs. You can download again later with more modules, other fields or newer data, and import the new file over the old deck. Anki updates the notes and keeps your review history.
 
@@ -60,10 +60,12 @@ The landing pages are one static page per language pair with words, such as `dec
 |---|---|
 | `index.html`, `css/`, `src/` | the app: native ES modules, no framework, no build step |
 | `vendor/` | sql.js and fflate, pinned, with their licenses |
-| `data/` | the vocabulary: concepts, per-language layers, `meta/` (languages, modules, fields, labels, version), `landing/` (the landing pages' translations) |
+| `data/` | the vocabulary: concepts, per-language layers, `meta/` (languages, modules, fields, labels, version), `landing/` (the landing pages' translations), `ui/` (the page's translations) |
+| `img/flags/` | the interface languages' flags |
 | `tools/lint-data.mjs` | data validator (`--report`, `--fix`, `--warnings`, `--gate`) |
 | `tools/bundle.mjs` | builds the site with one data bundle per language |
 | `tools/landing.mjs` | the landing pages per language pair and the sitemap (`tools/bundle.mjs` writes them) |
+| `tools/ui-texts.mjs` | checks the page's translations in `data/ui/` and stamps them (`check`, `stamp <code>`) |
 | `tools/apkg.mjs` | builds an `.apkg` in Node from a configuration hash (for testing imports) |
 | `tools/gen/` | generation planner, unit merger, API batch runner, prompts |
 | `tools/og-image.html` | source of `og-image.png`, the link preview picture |
@@ -76,7 +78,7 @@ The landing pages are one static page per language pair with words, such as `dec
 
 - Code: [MIT](LICENSE).
 - Vocabulary in `data/`: [CC BY-SA 4.0](data/LICENSE.md).
-- `vendor/`: sql.js and fflate under their own licenses (MIT), see `vendor/README.md`.
+- `vendor/`: sql.js and fflate under their own licenses (MIT), see `vendor/README.md`. The share logos come from simple-icons (CC0), see the same file.
 
 ## Support
 

@@ -1,5 +1,5 @@
 {
-  "source": "09798f3d90bb",
+  "source": "c76200e4b871",
   "texts": {
     "decks": "Mazos",
     "cta": "Crea tu mazo",
@@ -22,11 +22,7 @@
     "about": "Las palabras, traducciones y frases de ejemplo se redactaron con un modelo de IA y personas las están revisando, idioma por idioma. Si algo te parece incorrecto, selecciónalo en una tarjeta de la vista previa de AnkiGen y pulsa Ctrl+Enter (⌘+Enter en Mac), o usa el botón Feedback que hay allí. Cada aviso ayuda a mejorar el mazo para todos.",
     "moreHeading": "Más mazos",
     "moreForYou": "Más mazos para hispanohablantes",
-    "allDecks": "Todos los mazos por par de idiomas",
-    "support": "Apoya este proyecto:",
-    "source": "Código en GitHub",
-    "license": "Código con licencia {mit}; vocabulario con licencia {cc}.",
-    "versions": "Datos {data} · App {app}"
+    "allDecks": "Todos los mazos por par de idiomas"
   },
   "languages": {
     "en": "Inglés",

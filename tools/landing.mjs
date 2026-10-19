@@ -12,24 +12,29 @@
 //
 // A page is written in the language its visitors speak (the known language) once data/landing/<code>.json holds
 // a complete translation of englishTexts() for it (unit landing:<code>, docs/GENERATION.md); until then, and for
-// English speakers, it is in English. The hub stays in English.
+// English speakers, it is in English. The hub stays in English. The footer is the app's, with its texts from
+// data/ui (tools/ui-texts.mjs); the pages in their visitors' language link to each other (hreflang), and their
+// links open the app in that language (?lang=).
 import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { APP_VERSION, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
+import { AUTHOR_NAME, AUTHOR_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
 import { encodeHash, isFieldShown, moduleIds, validate } from '../src/state.js';
 import { localTerms, moduleCounts, selectNotes } from '../src/deck/select.js';
 import { deckContext, langTag, noteSummary } from '../src/deck/fields.js';
 import { deckName } from '../src/deck/names.js';
 import { escapeAttr, escapeHtml } from '../src/text/html.js';
-import { DRAFT_HELP, UPDATE_HELP } from '../src/ui/copy.js';
-import { count } from '../src/ui/format.js';
+import { UI_LANGUAGES } from '../src/ui/i18n.js';
+import { STRINGS } from '../src/ui/strings.js';
 import { fullWidthLang, hasAsciiPunctuation } from './lib/data.mjs';
 
 /** @typedef {import('../src/data/loader.js').Concepts} Concepts */
 /** @typedef {import('../src/data/loader.js').LanguageData} LanguageData */
 /** @typedef {import('../src/deck/select.js').Note} Note */
-/** @typedef {{ meta: any, concepts: Concepts, data: Map<string, LanguageData>, translations?: Record<string, any> }} Input */
+/**
+ * @typedef {{ meta: any, concepts: Concepts, data: Map<string, LanguageData>, translations?: Record<string, any>, ui?: Record<string, any> }} Input
+ *   translations: data/landing, { code: texts }; ui: data/ui, { code: texts } (the footer)
+ */
 
 /**
  * @typedef {object} Pair  a language pair with words, and its page
@@ -46,6 +51,8 @@ import { fullWidthLang, hasAsciiPunctuation } from './lib/data.mjs';
 /**
  * @typedef {object} Voice  what the pages of one known language are written in
  * @property {any} t        englishTexts() or its translation
+ * @property {any} ui       the app's texts in that language (data/ui), or null for English
+ * @property {boolean} own  the pages are in their visitors' language (translated, or for English speakers)
  * @property {string} tag   lang attribute
  * @property {string} locale
  * @property {Intl.PluralRules} plural
@@ -60,6 +67,9 @@ const SAMPLES = 3;
 const UNSAFE_REGISTERS = new Set(['vulgar', 'offensive']);
 const NO_DATA = { lang: new Map(), ex: new Map(), ipa: new Map(), etym: new Map() };
 const EXTERNAL = 'target="_blank" rel="noopener"';
+
+/** "1 language pair", "20 language pairs", for the hub (in English). @param {number} n @param {string} one */
+const count = (n, one) => `${n.toLocaleString('en-US')} ${n === 1 ? one : `${one}s`}`;
 
 /** "Japanese" → "japanese", "Portuguese (Brazil)" → "portuguese-brazil". @param {string} name */
 export function slug(name) {
@@ -116,16 +126,12 @@ export function englishTexts(meta, know) {
       step1: 'Choose the modules you want. Each one shows how many words it has for your pair.',
       step2: 'Choose what each card shows, and on which side. The preview shows real cards as you go.',
       step3: 'Download the .apkg file and open it with Anki (File → Import), or tap it on your phone to open it in AnkiDroid.',
-      update: UPDATE_HELP.intro,
+      update: STRINGS['update.intro'],
       aboutHeading: 'About the vocabulary',
-      about: `${DRAFT_HELP[0]} If something looks wrong, select it on a preview card in AnkiGen and press Ctrl+Enter (⌘+Enter on a Mac), or use the Feedback button there. Every report helps fix the deck for everyone.`,
+      about: `${STRINGS['head.draftHelp1']} If something looks wrong, select it on a preview card in AnkiGen and press Ctrl+Enter (⌘+Enter on a Mac), or use the Feedback button there. Every report helps fix the deck for everyone.`,
       moreHeading: 'More decks',
       moreForYou: `More decks for ${k} speakers`,
       allDecks: 'All decks by language pair',
-      support: 'Support this project:',
-      source: 'Source on GitHub',
-      license: 'Code under the {mit} license; vocabulary under {cc}.',
-      versions: 'Data {data} · App {app}',
     },
     plural: { word: { one: '{n} word', other: '{n} words' }, module: { one: '{n} module', other: '{n} modules' } },
     languages: Object.fromEntries(active.map((code) => [code, nameOf(meta, code)])),
@@ -159,7 +165,7 @@ export function textsSource(meta, know) {
 const placeholders = (text) => [...text.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort().join(' ');
 
 /** Letters of the registry's scripts, to see that a translation is written in its language's script. */
-const SCRIPT_LETTERS = /** @type {Record<string, RegExp>} */ ({
+export const SCRIPT_LETTERS = /** @type {Record<string, RegExp>} */ ({
   Latin: /\p{Script=Latin}/u,
   Cyrillic: /\p{Script=Cyrillic}/u,
   Greek: /\p{Script=Greek}/u,
@@ -270,12 +276,23 @@ export function landingIssues(dataDir, meta) {
   return issues;
 }
 
-/** @param {any} meta @param {string} know @param {any} translation @returns {Voice} */
-function voice(meta, know, translation) {
+/** @param {any} meta @param {string} know @param {any} translation @param {any} [ui] @returns {Voice} */
+function voice(meta, know, translation, ui = null) {
   const reg = meta.languages.languages[know];
   const [tag, locale] = translation ? [langTag(reg, know, 'cyrl'), reg.locale] : ['en', 'en-US'];
-  return { t: translation ?? englishTexts(meta, know), tag, locale, plural: new Intl.PluralRules(locale), number: new Intl.NumberFormat(locale) };
+  return {
+    t: translation ?? englishTexts(meta, know),
+    ui: translation ? ui : null,
+    own: Boolean(translation) || know === 'en',
+    tag,
+    locale,
+    plural: new Intl.PluralRules(locale),
+    number: new Intl.NumberFormat(locale),
+  };
 }
+
+/** A text of the app (src/ui/strings.js) in a page's language. @param {Voice} v @param {keyof typeof STRINGS} key */
+const appText = (v, key) => v.ui?.texts?.[key] ?? STRINGS[key];
 
 /** "3,442 words", "3 442 слова": a count in the plural form its language needs. @param {Voice} v @param {'word' | 'module'} noun @param {number} n */
 function counted(v, noun, n) {
@@ -338,14 +355,14 @@ function pairs({ meta, concepts, data }) {
  * @param {Input} input
  */
 export function landingFiles(input) {
-  const { meta, translations = {} } = input;
+  const { meta, translations = {}, ui = {} } = input;
   const list = pairs(input);
   const translated = new Set(translatedLanguages(meta, translations));
   /** @type {Map<string, Voice>} */
-  const voices = new Map(meta.languages.active.map((/** @type {string} */ know) => [know, voice(meta, know, translated.has(know) ? translations[know] : null)]));
+  const voices = new Map(meta.languages.active.map((/** @type {string} */ know) => [know, voice(meta, know, translated.has(know) ? translations[know] : null, ui[know])]));
   /** @type {Record<string, string>} */
   const files = {};
-  for (const pair of list) files[`${pair.dir}index.html`] = pairHtml(pair, list, meta, voices);
+  for (const pair of list) files[`${pair.dir}index.html`] = pairHtml(pair, list, meta, voices, siblings(pair, list, voices));
   files[`${DECKS_DIR}index.html`] = hubHtml(list, meta, voices);
   files['sitemap.xml'] = sitemapXml(['', DECKS_DIR, ...list.map((p) => p.dir)]);
   return files;
@@ -353,14 +370,15 @@ export function landingFiles(input) {
 
 /**
  * The same, from the data a loader reads (tools/bundle.mjs passes one that reads the built site).
- * @param {ReturnType<typeof import('../src/data/loader.js').createLoader>} loader @param {Record<string, any>} [translations]
+ * @param {ReturnType<typeof import('../src/data/loader.js').createLoader>} loader
+ * @param {Record<string, any>} [translations] data/landing @param {Record<string, any>} [ui] data/ui
  */
-export async function landingSite(loader, translations = {}) {
+export async function landingSite(loader, translations = {}, ui = {}) {
   const meta = await loader.getMeta();
   const concepts = await loader.getConcepts();
   const codes = /** @type {string[]} */ (meta.languages.active);
   const data = new Map(await Promise.all(codes.map(async (code) => /** @type {[string, LanguageData]} */ ([code, await loader.getLanguage(code)]))));
-  return landingFiles({ meta, concepts, data, translations });
+  return landingFiles({ meta, concepts, data, translations, ui });
 }
 
 // ---------------------------------------------------------------- pages
@@ -368,30 +386,37 @@ export async function landingSite(loader, translations = {}) {
 /** @param {string} dir */
 const depth = (dir) => dir.split('/').filter(Boolean).length;
 
+/** The author, for the structured data. */
+const AUTHOR = { '@type': 'Person', name: AUTHOR_NAME, url: AUTHOR_URL };
+
 /**
- * The page around a body: head (canonical URL, link preview, breadcrumb data), breadcrumb, footer.
- * @param {{ meta: any, v: Voice, dir: string, title: string, description: string, trail: { name: string, dir: string }[], body: string }} page
- *   trail: the breadcrumb after AnkiGen, ending with this page
+ * The page around a body: head (canonical URL, link preview, the same page in other languages, structured
+ * data), breadcrumb, footer.
+ * @param {{ v: Voice, dir: string, title: string, description: string, trail: { name: string, dir: string }[], body: string,
+ *   alternates?: { hreflang: string, dir: string }[], about?: object[] }} page
+ *   trail: the breadcrumb after AnkiGen, ending with this page; alternates: hreflang links; about: more
+ *   structured data
  */
-function pageHtml({ meta, v, dir, title, description, trail, body }) {
-  const { t } = v;
+function pageHtml({ v, dir, title, description, trail, body, alternates = [], about = [] }) {
   const root = '../'.repeat(depth(dir));
   const url = SITE_URL + dir;
   const crumbs = [{ name: 'AnkiGen', dir: '' }, ...trail];
   const last = crumbs.length - 1;
-  const ld = {
-    '@context': 'https://schema.org',
+  const breadcrumb = {
     '@type': 'BreadcrumbList',
     itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, ...(i < last ? { item: SITE_URL + c.dir } : {}) })),
   };
+  const ld = { '@context': 'https://schema.org', '@graph': [breadcrumb, ...about] };
   // Every crumb is this page or a directory above it.
   const nav = crumbs
     .map((c, i) => `<li><a href="${'../'.repeat(depth(dir) - depth(c.dir)) || './'}"${i === last ? ' aria-current="page"' : ''}>${escapeHtml(c.name)}</a></li>`)
     .join('');
-  const license = fillHtml(t.texts.license, {
+  const languages = alternates.map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${SITE_URL + a.dir}">\n`).join('');
+  const license = fillHtml(appText(v, 'foot.license'), {
     mit: `<a href="${REPO_URL}/blob/master/LICENSE" ${EXTERNAL}>MIT</a>`,
     cc: `<a href="${DATA_LICENSE_URL}" ${EXTERNAL}>CC&nbsp;BY-SA&nbsp;4.0</a>`,
   });
+  const author = fillHtml(appText(v, 'foot.author'), { name: `<a href="${AUTHOR_URL}" ${EXTERNAL}>${escapeHtml(AUTHOR_NAME)}</a>` });
   return `<!doctype html>
 <html lang="${v.tag}">
 <head>
@@ -399,8 +424,9 @@ function pageHtml({ meta, v, dir, title, description, trail, body }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeHtml(title)}</title>
 <meta name="description" content="${escapeAttr(description)}">
+<meta name="author" content="${escapeAttr(AUTHOR_NAME)}">
 <link rel="canonical" href="${url}">
-<meta name="color-scheme" content="light dark">
+${languages}<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151618" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="${root}favicon.svg" type="image/svg+xml">
@@ -416,6 +442,7 @@ function pageHtml({ meta, v, dir, title, description, trail, body }) {
 <meta property="og:image:alt" content="AnkiGen: free Anki vocabulary decks in 15 languages, with a sample card for the Japanese word 水, water.">
 <meta property="og:locale" content="${ogLocale(v.locale)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@${AUTHOR_URL.split('/').pop()}">
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 <link rel="stylesheet" href="${root}css/app.css">
 </head>
@@ -429,23 +456,40 @@ ${body}
 </main>
 
 <footer class="site-foot">
-  <p class="support">${escapeHtml(t.texts.support)} <span><a class="button" href="${PATREON_URL}" ${EXTERNAL}>Patreon</a> <a class="button" href="${BUY_ME_A_COFFEE_URL}" ${EXTERNAL}>Buy Me a Coffee</a></span></p>
-  <p class="foot-line"><a href="${REPO_URL}" ${EXTERNAL}>${escapeHtml(t.texts.source)}</a> · ${escapeHtml(fill(t.texts.versions, { data: meta.version.data, app: APP_VERSION }))}</p>
+  <p class="support">${escapeHtml(appText(v, 'support'))} <span><a class="button" href="${PATREON_URL}" ${EXTERNAL}>Patreon</a> <a class="button" href="${BUY_ME_A_COFFEE_URL}" ${EXTERNAL}>Buy Me a Coffee</a></span></p>
+  <p class="foot-line"><a href="${root}${DECKS_DIR}">${escapeHtml(appText(v, 'foot.decks'))}</a> · <a href="${REPO_URL}" ${EXTERNAL}>${escapeHtml(appText(v, 'foot.source'))}</a></p>
   <p class="foot-line">${license}</p>
+  <p class="foot-line">${author}</p>
 </footer>
 </body>
 </html>
 `;
 }
 
-/** @param {Pair} pair @param {Pair[]} list @param {any} meta @param {Map<string, Voice>} voices */
-function pairHtml(pair, list, meta, voices) {
+/**
+ * The same page in other languages (hreflang): the pages for the same learned language that are written in their
+ * visitors' language, this one included, and the English speakers' page for anyone else. None for a page in
+ * English for speakers of another language (its translation is missing).
+ * @param {Pair} pair @param {Pair[]} list @param {Map<string, Voice>} voices
+ */
+function siblings(pair, list, voices) {
+  if (!voices.get(pair.know)?.own) return [];
+  const pages = list.filter((p) => p.learn === pair.learn && voices.get(p.know)?.own).map((p) => ({ hreflang: p.know, dir: p.dir }));
+  const english = pages.find((p) => p.hreflang === 'en');
+  return pages.length < 2 ? [] : [...pages, ...(english ? [{ hreflang: 'x-default', dir: english.dir }] : [])];
+}
+
+/**
+ * @param {Pair} pair @param {Pair[]} list @param {any} meta @param {Map<string, Voice>} voices
+ * @param {{ hreflang: string, dir: string }[]} alternates
+ */
+function pairHtml(pair, list, meta, voices, alternates) {
   const { learn, know, ctx, notes, counts } = pair;
   const v = /** @type {Voice} */ (voices.get(know));
   const { t } = v;
   const p = t.pairs[learn];
-  /** The app with this pair and these modules chosen. @param {string[]} modules */
-  const appHref = (modules) => escapeAttr(`../../${encodeHash(validate({ learn, know, modules }, meta), meta)}`);
+  /** The app with this pair and these modules chosen, in the visitors' language. @param {string[]} modules */
+  const appHref = (modules) => escapeAttr(`../../${UI_LANGUAGES.includes(know) ? `?lang=${know}` : ''}${encodeHash(validate({ learn, know, modules }, meta), meta)}`);
   const groups = moduleGroups(meta, counts);
   const first = groups[0].modules[0];
   const words = counted(v, 'word', notes.length);
@@ -479,7 +523,19 @@ ${groups.map((g) => `<h3>${escapeHtml(t.categories[g.id])}</h3>\n<ul class="lp-m
 
 ${moreHtml(pair, list, voices)}`;
   const description = fill(p.description, { words, modules });
-  return pageHtml({ meta, v, dir: pair.dir, title: p.title, description, trail: [{ name: t.texts.decks, dir: DECKS_DIR }, { name: p.name, dir: pair.dir }], body });
+  const resource = {
+    '@type': 'LearningResource',
+    name: p.name,
+    description,
+    url: SITE_URL + pair.dir,
+    inLanguage: [learn, know],
+    learningResourceType: 'Flashcards',
+    isAccessibleForFree: true,
+    about: { '@type': 'Language', name: nameOf(meta, learn), alternateName: learn },
+    author: AUTHOR,
+  };
+  const trail = [{ name: t.texts.decks, dir: DECKS_DIR }, { name: p.name, dir: pair.dir }];
+  return pageHtml({ v, dir: pair.dir, title: p.title, description, trail, body, alternates, about: [resource] });
 }
 
 /**
@@ -607,7 +663,7 @@ function hubHtml(list, meta, voices) {
 <p>${escapeHtml(description)} Every deck is built in your browser, with no account and nothing to install.</p>
 ${sections.join('\n')}`;
   const english = voice(meta, 'en', null);
-  return pageHtml({ meta, v: english, dir: DECKS_DIR, title: 'Anki vocabulary decks by language pair — AnkiGen', description, trail: [{ name: english.t.texts.decks, dir: DECKS_DIR }], body });
+  return pageHtml({ v: english, dir: DECKS_DIR, title: 'Anki vocabulary decks by language pair — AnkiGen', description, trail: [{ name: english.t.texts.decks, dir: DECKS_DIR }], body });
 }
 
 /** @param {string[]} dirs relative to the site root */

@@ -1,5 +1,5 @@
 {
-  "source": "9e26488fca74",
+  "source": "e486707e8ba6",
   "texts": {
     "decks": "牌组",
     "cta": "制作你的牌组",
@@ -22,11 +22,7 @@
     "about": "单词、释义和例句由 AI 模型起草，目前正由真人逐个语言进行审核。如果发现错误，请在 AnkiGen 的预览卡片上选中有问题的内容，然后按 Ctrl+Enter（Mac 上按 ⌘+Enter），或使用那里的反馈按钮。每一条反馈都有助于为所有人改进牌组。",
     "moreHeading": "更多牌组",
     "moreForYou": "更多适合中文用户的牌组",
-    "allDecks": "按语言组合浏览全部牌组",
-    "support": "支持这个项目：",
-    "source": "GitHub 上的源代码",
-    "license": "代码采用 {mit} 许可；词汇采用 {cc} 许可。",
-    "versions": "数据 {data} · 应用 {app}"
+    "allDecks": "按语言组合浏览全部牌组"
   },
   "languages": {
     "en": "英语",

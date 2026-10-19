@@ -1,5 +1,5 @@
 {
-  "source": "ddc947ca0acf",
+  "source": "7349fabc4b79",
   "texts": {
     "decks": "Desteler",
     "cta": "Destenizi oluşturun",
@@ -22,11 +22,7 @@
     "about": "Kelimeler, çeviriler ve örnek cümleler bir yapay zekâ modeliyle taslak olarak hazırlandı ve dil dil insanlar tarafından kontrol ediliyor. Yanlış görünen bir şey olursa AnkiGen'de bir önizleme kartında onu seçip Ctrl+Enter'a (Mac'te ⌘+Enter) basın ya da oradaki geri bildirim düğmesini kullanın. Her bildirim, destenin herkes için düzeltilmesine yardımcı olur.",
     "moreHeading": "Daha fazla deste",
     "moreForYou": "Türkçe konuşanlar için daha fazla deste",
-    "allDecks": "Dil çiftine göre tüm desteler",
-    "support": "Bu projeyi destekleyin:",
-    "source": "GitHub'da kaynak kodu",
-    "license": "Kod {mit} lisansı altında; kelime hazinesi {cc} altında.",
-    "versions": "Veri {data} · Uygulama {app}"
+    "allDecks": "Dil çiftine göre tüm desteler"
   },
   "languages": {
     "en": "İngilizce",

@@ -1,5 +1,5 @@
 {
-  "source": "dae58b869fb1",
+  "source": "7ef9728fb2a4",
   "texts": {
     "decks": "덱",
     "cta": "내 덱 만들기",
@@ -22,11 +22,7 @@
     "about": "단어, 번역, 예문은 AI 모델로 초안을 만들었고, 언어별로 사람이 차례로 검수하고 있습니다. 잘못된 부분을 발견하면 AnkiGen의 미리보기 카드에서 해당 부분을 선택하고 Ctrl+Enter(Mac은 ⌘+Enter)를 누르거나 피드백 버튼을 이용해 주세요. 제보 하나하나가 모두의 덱을 고치는 데 도움이 됩니다.",
     "moreHeading": "다른 덱",
     "moreForYou": "한국어 화자를 위한 다른 덱",
-    "allDecks": "언어 쌍별 전체 덱",
-    "support": "이 프로젝트 후원하기:",
-    "source": "GitHub 소스",
-    "license": "코드는 {mit} 라이선스, 어휘는 {cc} 라이선스입니다.",
-    "versions": "데이터 {data} · 앱 {app}"
+    "allDecks": "언어 쌍별 전체 덱"
   },
   "languages": {
     "en": "영어",
