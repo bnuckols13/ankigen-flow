@@ -112,6 +112,27 @@ input#typeans {
   border-radius: 6px;
 }
 
+/* Flow drills (src/deck/flow.js). */
+.speak { margin-top: 0.6em; }
+.speak.big { font-size: 1.6em; margin: 0.4em 0; }
+.hint { color: var(--muted); font-size: 0.75em; margin-top: 0.5em; }
+.cue { color: var(--accent); font-size: 0.75em; font-style: italic; margin-top: 1em; }
+.voice { color: var(--muted); font-size: 0.65em; letter-spacing: 0.04em; margin-top: 0.3em; }
+.sh-line { font-size: 1.2em; margin-top: 0.4em; }
+.sh-gloss { color: var(--muted); font-size: 0.85em; margin-top: 0.3em; }
+.sh-word { font-size: 0.9em; margin-top: 0.9em; }
+.sh-tr { color: var(--muted); }
+.rx { font-size: 1.8em; font-weight: 500; margin-top: 0.4em; }
+.rx-k { color: var(--muted); font-size: 0.5em; font-weight: 400; vertical-align: middle; }
+.rx-a { color: var(--accent); font-size: 1.8em; font-weight: 500; }
+.bar { height: 6px; max-width: 14em; margin: 0.9em auto 0; border-radius: 3px; background: var(--rule); overflow: hidden; }
+.bar-fill { height: 100%; background: var(--accent); transform-origin: left; animation: ag-drain 1.5s linear forwards; }
+@keyframes ag-drain { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .bar-fill { animation: none; } }
+/* The site's preview stands in for Anki's play button (deck/render.js). */
+.tts { display: inline-block; cursor: default; }
+.tts-speed { color: var(--muted); font-size: 0.6em; margin-left: 0.2em; }
+
 @media (max-width: 480px) {
   .card { font-size: 18px; }
 }

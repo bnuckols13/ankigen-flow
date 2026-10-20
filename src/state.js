@@ -6,7 +6,11 @@
 //   l learn · k know ('=' = same-language mode) · m modules (canonical order) · f field placements that
 //   differ from the default (o off, f front, b back, n on, w with the word) · x examples 0–3 ·
 //   r reverse · t type the answer (needs r) · sr Serbian script (c|l, written when Serbian is involved).
+//   Flow drills (deck/flow.js): a audio on cards · e ear cards · s shadow cards · sp the shadow card's slow
+//   pass (written with s) · rx reflex cards · cu drill cues · vc the voice the learner speaks as.
 // Unknown keys are ignored; an invalid value falls back to its default and keeps the rest.
+
+import { DEFAULT_SPEED, SPEEDS, VOICE_MAX } from './deck/flow.js';
 
 /** @typedef {'off' | 'front' | 'back' | 'on' | 'word'} Placement */
 /** @typedef {'cyrl' | 'latn'} Script */
@@ -22,6 +26,13 @@
  * @property {boolean} reverse
  * @property {boolean} type        type the answer; only effective with reverse
  * @property {Script} srScript
+ * @property {boolean} audio     text-to-speech of the word on forward fronts and reverse backs
+ * @property {boolean} ear       ear cards: the word heard (and in IPA) before it is seen
+ * @property {boolean} shadow    shadow cards: an example sentence played slow and then at speed
+ * @property {number} speed      the shadow card's slow pass (SPEEDS)
+ * @property {boolean} reflex    reflex cards: article or key form, said inside a draining bar
+ * @property {boolean} cues      a drill cue on every question side
+ * @property {string} voice      the native speaker the learner speaks as ('' = none)
  */
 
 /**
@@ -57,7 +68,7 @@ const SCRIPT_CODE = { cyrl: 'c', latn: 'l' };
 const invert = (map) => Object.fromEntries(Object.entries(map).map(([k, v]) => [v, k]));
 const CODE_PLACEMENT = invert(PLACEMENT_CODE);
 const CODE_SCRIPT = invert(SCRIPT_CODE);
-const HASH_KEYS = ['l', 'k', 'm', 'f', 'x', 'r', 't', 'sr'];
+const HASH_KEYS = ['l', 'k', 'm', 'f', 'x', 'r', 't', 'sr', 'a', 'e', 's', 'sp', 'rx', 'cu', 'vc'];
 
 // ---------------------------------------------------------------- meta helpers
 
@@ -133,7 +144,19 @@ export function defaultConfig(meta) {
     reverse: Boolean(deckOption(meta, 'reverse')?.default),
     type: Boolean(deckOption(meta, 'typeAnswer')?.default),
     srScript: deckOption(meta, 'srScript')?.default === 'latn' ? 'latn' : 'cyrl',
+    audio: false,
+    ear: false,
+    shadow: false,
+    speed: DEFAULT_SPEED,
+    reflex: false,
+    cues: false,
+    voice: '',
   };
+}
+
+/** A voice name as kept: trimmed, one line, at most VOICE_MAX characters. @param {unknown} raw */
+export function cleanVoice(raw) {
+  return typeof raw === 'string' ? raw.replace(/[\p{C}]+/gu, ' ').replace(/\s+/g, ' ').trim().slice(0, VOICE_MAX) : '';
 }
 
 /**
@@ -158,6 +181,7 @@ export function validate(raw, meta) {
   const { min, max } = examplesRange(meta);
   const examples = Number.isInteger(raw.examples) && raw.examples >= min && raw.examples <= max ? raw.examples : base.examples;
   const reverse = typeof raw.reverse === 'boolean' ? raw.reverse : base.reverse;
+  const flag = (/** @type {keyof Config} */ key) => (typeof raw[key] === 'boolean' ? /** @type {boolean} */ (raw[key]) : /** @type {boolean} */ (base[key]));
   return {
     v: 1,
     learn,
@@ -168,6 +192,13 @@ export function validate(raw, meta) {
     reverse,
     type: typeof raw.type === 'boolean' ? raw.type : base.type,
     srScript: raw.srScript === 'cyrl' || raw.srScript === 'latn' ? raw.srScript : base.srScript,
+    audio: flag('audio'),
+    ear: flag('ear'),
+    shadow: flag('shadow'),
+    speed: SPEEDS.includes(raw.speed) ? raw.speed : base.speed,
+    reflex: flag('reflex'),
+    cues: flag('cues'),
+    voice: cleanVoice(raw.voice),
   };
 }
 
@@ -201,6 +232,12 @@ export function encodeHash(config, meta) {
   if (config.reverse) parts.push('r=1');
   if (typesAnswer(config)) parts.push('t=1');
   if (usesSerbian(config)) parts.push(`sr=${SCRIPT_CODE[config.srScript]}`);
+  if (config.audio) parts.push('a=1');
+  if (config.ear) parts.push('e=1');
+  if (config.shadow) parts.push('s=1', `sp=${config.speed}`);
+  if (config.reflex) parts.push('rx=1');
+  if (config.cues) parts.push('cu=1');
+  if (config.voice) parts.push(`vc=${encodeURIComponent(config.voice)}`);
   return '#' + parts.join('&');
 }
 
@@ -243,6 +280,13 @@ export function decodeHash(hash, meta) {
       reverse,
       type: reverse && values.t === '1',
       srScript: CODE_SCRIPT[values.sr],
+      audio: values.a === '1',
+      ear: values.e === '1',
+      shadow: values.s === '1',
+      speed: values.sp !== undefined && /^0\.\d+$/.test(values.sp) ? Number(values.sp) : undefined,
+      reflex: values.rx === '1',
+      cues: values.cu === '1',
+      voice: values.vc,
     },
     meta,
   );

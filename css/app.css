@@ -943,6 +943,30 @@ html:has(.is-pinned) {
   margin-right: 0.2rem;
 }
 
+/* Flow drills (ui/flow.js). */
+.opt .text {
+  font: inherit;
+  min-width: 12rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: inherit;
+}
+.opt-sub {
+  margin-left: 1.2rem;
+}
+.opt-sub.is-disabled {
+  opacity: 0.5;
+}
+.flow-tts {
+  margin: 0.2rem 0 0;
+}
+.flow-lede {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 0.95rem;
+}
+
 .dl-summary {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);

@@ -17,7 +17,7 @@ const ALL_FRONT = { reverse: true, fields: { romanization: 'front', forms: 'fron
 test('forward: Front rows ask, Back rows answer', async () => {
   const { noteType } = await fixtureDeck({ learn: 'ru', know: 'en', ...ALL_FRONT });
   const [fwd] = noteType.templates;
-  assert.deepEqual(fieldsIn(fwd.qfmt), ['Emoji', 'Word', 'Disambig', 'Romanization', 'Forms', 'IPA', 'POS', 'Register']);
+  assert.deepEqual(fieldsIn(fwd.qfmt), ['Emoji', 'Word', 'Disambig', 'Romanization', 'Forms', 'IPA', 'POS', 'Register', 'Cue']);
   assert.ok(!fieldsIn(fwd.qfmt).includes('Translation'));
   assert.ok(fieldsIn(afterAnswer(fwd.afmt)).includes('Translation'));
   assert.ok(fieldsIn(afterAnswer(fwd.afmt)).includes('Examples'), 'examples are always on the back');
@@ -28,7 +28,7 @@ test('reverse: every learning-side row moves to the answer', async () => {
   const rev = noteType.templates[1];
   assert.match(rev.qfmt, /^\{\{#Reverse\}\}[\s\S]*\{\{\/Reverse\}\}$/);
   const question = fieldsIn(rev.qfmt);
-  assert.deepEqual(question, ['Emoji', 'Translation', 'POS', 'Register']);
+  assert.deepEqual(question, ['Emoji', 'Translation', 'POS', 'Register', 'Cue']);
   for (const f of LEARNING_FIELDS) assert.ok(!question.includes(f), `${f} is not on the reverse question`);
   const answer = fieldsIn(afterAnswer(rev.afmt));
   for (const f of ['Word', 'Disambig', 'Romanization', 'Forms', 'IPA', 'Examples', 'Related']) assert.ok(answer.includes(f), `${f} on the reverse answer`);
@@ -62,8 +62,8 @@ test('captions are in the known language; lang attributes mark both languages', 
   assert.match(noteType.templates[0].afmt, /<div class="cap">Beispiele<\/div>/);
   assert.match(noteType.templates[0].qfmt, /<div class="word" lang="ja-JP"/);
   assert.match(noteType.templates[0].afmt, /<div class="translation" lang="de-DE"/);
-  assert.equal(noteType.name, 'AnkiGen 日本語 (Deutsch)');
-  assert.equal((await fixtureDeck({ learn: 'ja', know: '=' })).noteType.name, 'AnkiGen 日本語 (definitions)');
+  assert.equal(noteType.name, 'AnkiGen Flow 日本語 (Deutsch)');
+  assert.equal((await fixtureDeck({ learn: 'ja', know: '=' })).noteType.name, 'AnkiGen Flow 日本語 (definitions)');
   assert.match(noteType.css, /\.nightMode/);
 });
 

@@ -8,6 +8,7 @@ import { FIELD_NAMES } from '../src/deck/fields.js';
 import { cardId, deckId, fieldChecksum, modelId, noteGuid, noteId } from '../src/deck/ids.js';
 import { stripHtml } from '../src/text/html.js';
 import { fixtureDeck } from './helpers/fixtures.mjs';
+import { SITE_URL } from '../src/config.js';
 import { loadSqlJs } from '../tools/lib/sqljs.mjs';
 
 const NOW = 1_792_300_000_000; // fixed export clock, ms
@@ -89,30 +90,33 @@ test('one note type: fixed fields, Forward/Reverse templates, card.css verbatim,
   assert.deepEqual(Object.keys(models), [String(mid)]);
   const m = models[mid];
   assert.equal(m.id, mid);
-  assert.equal(m.name, 'AnkiGen Русский (English)');
+  assert.equal(m.name, 'AnkiGen Flow Русский (English)');
   assert.equal(m.did, await deckId('ru', 'en'));
   assert.deepEqual([m.type, m.mod, m.usn, m.sortf], [0, SEC, -1, 0]);
   assert.deepEqual(m.flds.map((/** @type {any} */ f) => [f.ord, f.name]), FIELD_NAMES.map((name, ord) => [ord, name]));
   assert.deepEqual(m.tmpls.map((/** @type {any} */ t) => [t.ord, t.name, t.qfmt, t.afmt]),
     noteType.templates.map((t, ord) => [ord, t.name, t.qfmt, t.afmt]));
   assert.ok(css.length > 0 && m.css === css);
-  // What Anki itself computes for these templates (checked against Anki 26.09): the forward question needs
-  // Word or Disambig; the reverse one needs Translation and Reverse.
-  assert.deepEqual(m.req, [[0, 'any', [0, 3]], [1, 'all', [4, 18]]]);
+  // What Anki computed for AnkiGen's two templates (checked against Anki 26.09) was: the forward question needs
+  // Word or Disambig; the reverse one needs Translation and Reverse. The Cue field closes every question, so it
+  // now counts as a third way to fill the forward question and makes Translation optional on the reverse one
+  // (only in this legacy rule; Translation is never empty). The flow cards each need their own field: Ear,
+  // ShadowSpeech, ReflexAnswer.
+  assert.deepEqual(m.req, [[0, 'any', [0, 3, 27]], [1, 'all', [18]], [2, 'all', [20]], [3, 'all', [21]], [4, 'all', [25]]]);
 });
 
-test('decks: Default plus AnkiGen::<pair> with the stable id and a link back to this configuration', async () => {
+test('decks: Default plus AnkiGen Flow::<pair> with the stable id and a link back to this configuration', async () => {
   const { json, config, meta } = await build({ learn: 'ru', know: 'en', modules: ['core-1'] });
   const did = await deckId('ru', 'en');
   const decks = json('decks');
   assert.deepEqual(Object.keys(decks), ['1', String(did)]);
   assert.equal(decks[1].name, 'Default');
   const deck = decks[did];
-  assert.deepEqual([deck.id, deck.name, deck.mod, deck.usn, deck.conf, deck.dyn], [did, 'AnkiGen::Русский (English)', SEC, -1, 1, 0]);
+  assert.deepEqual([deck.id, deck.name, deck.mod, deck.usn, deck.conf, deck.dyn], [did, 'AnkiGen Flow::Русский (English)', SEC, -1, 1, 0]);
   assert.equal(deckName(config, meta), deck.name);
   assert.equal(
     deck.desc,
-    'Made with <a href="https://xenohunter.github.io/ankigen/#v1&amp;l=ru&amp;k=en&amp;m=core-1&amp;x=2">AnkiGen</a> · data ' + meta.version.data,
+    `Made with <a href="${SITE_URL}#v1&amp;l=ru&amp;k=en&amp;m=core-1&amp;x=2">AnkiGen Flow</a> · data ` + meta.version.data,
   );
 });
 
@@ -142,7 +146,7 @@ test('notes: stable GUIDs, clock ids, fields in order, Anki sort field and check
     assert.match(row.tags, /^ (ankigen::[a-z-]+::[a-z0-9-]+ )+$/);
   }
   // рука́ = hand + arm: one note, keyed by word-hand.
-  const ruka = stored.find((r) => r.guid === 'wV3#_8fELM');
+  const ruka = stored.find((r) => r.guid === 'Lr.4[2YqAo');
   assert.equal(ruka?.sfld, 'рука́ f.');
   assert.equal(ruka?.flds.split('\x1f')[FIELD_NAMES.indexOf('Translation')], '<span class="m">hand;</span> <span class="m">arm</span>');
   assert.equal(ruka?.tags, ' ankigen::foundations::core-1 ankigen::health-safety::health ');
@@ -157,7 +161,7 @@ test('cards: a forward card per note, reverse only when on; clock ids; due = not
       ivl: 0, factor: 0, reps: 0, lapses: 0, left: 0, odue: 0, odid: 0, flags: 0, data: '{}',
     })));
     assert.deepEqual(rows('select * from cards order by id'), expected);
-    const reverseField = rows('select flds from notes').map((r) => r.flds.split('\x1f').at(-1));
+    const reverseField = rows('select flds from notes').map((r) => r.flds.split('\x1f')[FIELD_NAMES.indexOf('Reverse')]);
     assert.ok(reverseField.every((v) => v === (reverse ? '1' : '')));
   }
 });
@@ -165,11 +169,11 @@ test('cards: a forward card per note, reverse only when on; clock ids; due = not
 test('same-language decks use "=" in the hashes and "definitions" in the names', async () => {
   const { rows, json, config, meta, notes } = await build({ learn: 'en', know: '=' });
   const did = await deckId('en', '=');
-  assert.equal(json('decks')[did].name, 'AnkiGen::English (definitions)');
-  assert.equal(json('models')[await modelId('en', '=')].name, 'AnkiGen English (definitions)');
+  assert.equal(json('decks')[did].name, 'AnkiGen Flow::English (definitions)');
+  assert.equal(json('models')[await modelId('en', '=')].name, 'AnkiGen Flow English (definitions)');
   assert.equal(rows('select guid from notes order by id')[0].guid, await noteGuid('en', '=', notes[0].key));
-  assert.equal(apkgFileName(config, meta), `ankigen-en-en-${meta.version.data}.apkg`);
-  assert.equal(apkgFileName({ ...config, know: 'ru' }, meta), `ankigen-en-ru-${meta.version.data}.apkg`);
+  assert.equal(apkgFileName(config, meta), `ankigen-flow-en-en-${meta.version.data}.apkg`);
+  assert.equal(apkgFileName({ ...config, know: 'ru' }, meta), `ankigen-flow-en-ru-${meta.version.data}.apkg`);
 });
 
 test('an empty selection still gives a valid, empty package', async () => {

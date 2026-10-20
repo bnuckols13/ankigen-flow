@@ -1,11 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { createLoader, safeDataDir } from '../src/data/loader.js';
 import { fixtureLoader, readJsonFile } from './helpers/fixtures.mjs';
 import { paths, loadRegistry, loadConcepts } from '../tools/lib/data.mjs';
 
-const REPO = path.resolve(new URL('..', import.meta.url).pathname);
+const REPO = fileURLToPath(new URL('..', import.meta.url));
 
 test('per-file mode: canonical order matches the data tools', async () => {
   const loader = fixtureLoader();

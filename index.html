@@ -7,7 +7,7 @@
 <meta name="description" content="Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.">
 <meta name="author" content="Phil Filippak">
 <meta name="google-site-verification" content="CVVJ-6nZA48CJzuK8J69mahfxQ6KOre7-QNwDtC4SGk">
-<link rel="canonical" href="https://xenohunter.github.io/ankigen/">
+<link rel="canonical" href="https://bnuckols13.github.io/ankigen-flow/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151618" media="(prefers-color-scheme: dark)">
@@ -15,10 +15,10 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AnkiGen">
-<meta property="og:url" content="https://xenohunter.github.io/ankigen/">
+<meta property="og:url" content="https://bnuckols13.github.io/ankigen-flow/">
 <meta property="og:title" content="AnkiGen — free Anki vocabulary decks in 15 languages">
 <meta property="og:description" content="Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.">
-<meta property="og:image" content="https://xenohunter.github.io/ankigen/og-image.png">
+<meta property="og:image" content="https://bnuckols13.github.io/ankigen-flow/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="AnkiGen: free Anki vocabulary decks in 15 languages, with a sample card for the Japanese word 水, water.">
@@ -31,11 +31,11 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "@id": "https://xenohunter.github.io/ankigen/#app",
+      "@id": "https://bnuckols13.github.io/ankigen-flow/#app",
       "name": "AnkiGen",
-      "url": "https://xenohunter.github.io/ankigen/",
-      "image": "https://xenohunter.github.io/ankigen/og-image.png",
-      "screenshot": "https://xenohunter.github.io/ankigen/og-image.png",
+      "url": "https://bnuckols13.github.io/ankigen-flow/",
+      "image": "https://bnuckols13.github.io/ankigen-flow/og-image.png",
+      "screenshot": "https://bnuckols13.github.io/ankigen-flow/og-image.png",
       "description": "Build free Anki vocabulary decks right in your browser: 15 languages, topic modules and the card fields you want. Download an .apkg for Anki or AnkiDroid.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any",
@@ -51,21 +51,21 @@
         "A live card preview and a searchable word list",
         "An .apkg file for Anki, AnkiDroid and AnkiMobile; downloading again updates the same deck"
       ],
-      "license": "https://github.com/xenohunter/ankigen/blob/master/LICENSE",
-      "author": { "@id": "https://xenohunter.github.io/ankigen/#author" },
-      "isPartOf": { "@id": "https://xenohunter.github.io/ankigen/#site" }
+      "license": "https://github.com/bnuckols13/ankigen-flow/blob/master/LICENSE",
+      "author": { "@id": "https://bnuckols13.github.io/ankigen-flow/#author" },
+      "isPartOf": { "@id": "https://bnuckols13.github.io/ankigen-flow/#site" }
     },
     {
       "@type": "WebSite",
-      "@id": "https://xenohunter.github.io/ankigen/#site",
+      "@id": "https://bnuckols13.github.io/ankigen-flow/#site",
       "name": "AnkiGen",
-      "url": "https://xenohunter.github.io/ankigen/",
+      "url": "https://bnuckols13.github.io/ankigen-flow/",
       "inLanguage": ["en", "ru", "sr", "ja", "zh", "de", "es", "pt", "pl", "ko", "nl", "fr", "hy", "tr", "el"],
-      "publisher": { "@id": "https://xenohunter.github.io/ankigen/#author" }
+      "publisher": { "@id": "https://bnuckols13.github.io/ankigen-flow/#author" }
     },
     {
       "@type": "Person",
-      "@id": "https://xenohunter.github.io/ankigen/#author",
+      "@id": "https://bnuckols13.github.io/ankigen-flow/#author",
       "name": "Phil Filippak",
       "url": "https://x.com/blisstweeting",
       "sameAs": ["https://x.com/blisstweeting", "https://www.patreon.com/cw/blisstweeting", "https://buymeacoffee.com/blisstweeting"]
@@ -99,6 +99,7 @@
 <link rel="modulepreload" href="src/data/loader.js">
 <link rel="modulepreload" href="src/deck/deck.js">
 <link rel="modulepreload" href="src/deck/fields.js">
+<link rel="modulepreload" href="src/deck/flow.js">
 <link rel="modulepreload" href="src/deck/names.js">
 <link rel="modulepreload" href="src/deck/render.js">
 <link rel="modulepreload" href="src/deck/select.js">
@@ -127,8 +128,9 @@
 <body>
 <header class="site-head app-head">
   <div class="head-main">
-    <h1 class="logo">AnkiGen</h1>
+    <h1 class="logo">AnkiGen Flow</h1>
     <p class="lede" data-plural="lede">Free Anki vocabulary decks in 15 languages, built right in your browser.</p>
+    <p class="flow-lede">Flow drills after the Mimic Method: the ear and the mouth before the page. Cards that speak, cards to shadow, reflexes to drill, and the voice you borrow.</p>
     <p class="draft"><span data-t="head.draft">The vocabulary is machine-drafted and only partly reviewed. Feedback is very welcome.</span><span class="help-slot" id="draft-help"></span></p>
   </div>
   <div class="head-support-slot">
@@ -175,8 +177,13 @@
       <div class="opts" id="options"></div>
     </section>
 
+    <section class="step" id="step-flow" aria-labelledby="h-flow" hidden>
+      <h2 id="h-flow"><span class="step-num" aria-hidden="true">6</span><span>Flow drills</span></h2>
+      <div class="opts" id="flow"></div>
+    </section>
+
     <section class="step" id="step-download" aria-labelledby="h-download" hidden>
-      <h2 id="h-download"><span class="step-num" aria-hidden="true">6</span><span data-t="step.download">Download</span></h2>
+      <h2 id="h-download"><span class="step-num" aria-hidden="true">7</span><span data-t="step.download">Download</span></h2>
       <div id="download"></div>
     </section>
 
@@ -222,9 +229,10 @@
 
 <footer class="site-foot">
   <p class="support"><span data-t="support">Support this project:</span> <span><a class="button" href="https://www.patreon.com/cw/blisstweeting" target="_blank" rel="noopener">Patreon</a> <a class="button" href="https://buymeacoffee.com/blisstweeting" target="_blank" rel="noopener">Buy Me a Coffee</a></span></p>
-  <p class="foot-line"><a href="decks/" data-t="foot.decks">Decks by language pair</a> · <a href="languages.html" data-keep-lang data-t="foot.languages">Supported languages</a> · <a href="https://github.com/xenohunter/ankigen" target="_blank" rel="noopener" data-t="foot.source">Source on GitHub</a></p>
-  <p class="foot-line" data-t="foot.license">Code under the <a data-part="mit" href="https://github.com/xenohunter/ankigen/blob/master/LICENSE" target="_blank" rel="noopener">MIT</a> license; vocabulary under <a data-part="cc" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>.</p>
+  <p class="foot-line"><a href="decks/" data-t="foot.decks">Decks by language pair</a> · <a href="languages.html" data-keep-lang data-t="foot.languages">Supported languages</a> · <a href="https://github.com/bnuckols13/ankigen-flow" target="_blank" rel="noopener" data-t="foot.source">Source on GitHub</a></p>
+  <p class="foot-line" data-t="foot.license">Code under the <a data-part="mit" href="https://github.com/bnuckols13/ankigen-flow/blob/master/LICENSE" target="_blank" rel="noopener">MIT</a> license; vocabulary under <a data-part="cc" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-SA&nbsp;4.0</a>.</p>
   <p class="foot-line" data-t="foot.author">Created by <a data-part="name" href="https://x.com/blisstweeting" target="_blank" rel="noopener">Phil Filippak</a></p>
+  <p class="foot-line">A fork of <a href="https://github.com/xenohunter/ankigen" target="_blank" rel="noopener">AnkiGen</a> (<a href="https://xenohunter.github.io/ankigen/" target="_blank" rel="noopener">the original site</a>) with flow drills after Idahosa Ness’s Mimic Method. The drills are the fork’s; the vocabulary and the deck builder are AnkiGen’s.</p>
 </footer>
 
 </body>

@@ -4,14 +4,14 @@
 
 import { prefersReducedMotion } from './dom.js';
 
-/** @typedef {'learn' | 'know' | 'modules' | 'fields' | 'options' | 'download' | 'share'} Step */
+/** @typedef {'learn' | 'know' | 'modules' | 'fields' | 'options' | 'flow' | 'download' | 'share'} Step */
 
 /** Which steps are shown for a config. Pure. @param {import('../state.js').Config} config @returns {Record<Step, boolean>} */
 export function shownSteps(config) {
   const know = Boolean(config.learn);
   const modules = know && Boolean(config.know);
   const rest = modules && config.modules.length > 0;
-  return { learn: true, know, modules, fields: rest, options: rest, download: rest, share: rest };
+  return { learn: true, know, modules, fields: rest, options: rest, flow: rest, download: rest, share: rest };
 }
 
 /** Steps worth scrolling to when they appear: the next choice after a language. */

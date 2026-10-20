@@ -13,6 +13,7 @@ import { escapeAttr, escapeHtml, stripHtml } from '../text/html.js';
 import { exampleHtml, stripFurigana, stripTarget, wordRubyHtml } from '../text/furigana.js';
 import { SCHEMES, srToLatin } from '../text/translit.js';
 import { stripStress } from '../text/normalize.js';
+import { cueFor, reflexFields, shadowFields, speechText, ttsLang } from './flow.js';
 
 /** @typedef {import('./select.js').Note} Note */
 /** @typedef {import('./select.js').Disambig} Disambig */
@@ -20,10 +21,14 @@ import { stripStress } from '../text/normalize.js';
 /** @typedef {import('../data/loader.js').Concepts} Concepts */
 /** @typedef {import('../data/loader.js').LanguageData} LanguageData */
 
-/** The note type's fields, in order. Never reorder or rename within schema v1. */
+/**
+ * The note type's fields, in order. Never reorder or rename within schema v1. The first 19 are AnkiGen's; the
+ * flow fields (deck/flow.js) follow them, each empty unless its drill is on.
+ */
 export const FIELD_NAMES = /** @type {const} */ ([
   'Word', 'WordRuby', 'TypeTarget', 'Disambig', 'Translation', 'Romanization', 'OtherScript', 'MeasureWord',
   'Hanja', 'Forms', 'IPA', 'Examples', 'Related', 'Etymology', 'POS', 'Register', 'Emoji', 'ConceptId', 'Reverse',
+  'Speech', 'Ear', 'ShadowSpeech', 'ShadowLine', 'ShadowGloss', 'ReflexPrompt', 'ReflexAnswer', 'ReflexSpeech', 'Cue',
 ]);
 
 /** @typedef {Record<(typeof FIELD_NAMES)[number], string>} Fields */
@@ -82,7 +87,7 @@ export function deckContext({ config, meta, concepts, learnData, knowData }) {
     meta,
     concepts,
     same,
-    learn: { code: learnCode, reg: languages[learnCode], data: learnData, tag: langTag(languages[learnCode], learnCode, config.srScript) },
+    learn: { code: learnCode, reg: languages[learnCode], data: learnData, tag: langTag(languages[learnCode], learnCode, config.srScript), tts: ttsLang(languages[learnCode], learnCode) },
     know: { code: knowCode, reg: languages[knowCode], data: knowData, tag: langTag(languages[knowCode], knowCode, config.srScript) },
     /** @param {string} id */
     place: (id) => placementOf(meta, config, id),
@@ -123,6 +128,26 @@ export function noteFields(note, ctx) {
     Emoji: on('emoji') ? escapeHtml(unique(concepts.map((c) => c?.emoji)).join(' ')) : '',
     ConceptId: on('conceptId') ? escapeHtml(note.conceptIds.join(', ')) : '',
     Reverse: ctx.config.reverse ? '1' : '',
+    ...flowFields(note, ctx, concepts[0]?.pos),
+  };
+}
+
+/**
+ * The flow fields (deck/flow.js), each filled only while its drill is on, so a deck without flow drills is
+ * byte for byte AnkiGen's.
+ * @param {Note} note @param {DeckContext} ctx @param {string | undefined} pos
+ */
+function flowFields(note, ctx, pos) {
+  const { config } = ctx;
+  const entry = note.learnEntries[0];
+  const empty = { ShadowSpeech: '', ShadowLine: '', ShadowGloss: '' };
+  const none = { ReflexPrompt: '', ReflexAnswer: '', ReflexSpeech: '' };
+  return {
+    Speech: config.audio || config.ear ? escapeHtml(speechText(entry, ctx)) : '',
+    Ear: config.ear ? '1' : '',
+    ...(config.shadow ? shadowFields(note, ctx) : empty),
+    ...(config.reflex ? reflexFields(note, ctx, pos) : none),
+    Cue: config.cues ? escapeHtml(cueFor(note.key, config.voice)) : '',
   };
 }
 

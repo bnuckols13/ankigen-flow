@@ -88,6 +88,7 @@ async function main() {
     modules: byId('step-modules'),
     fields: byId('step-fields'),
     options: byId('step-options'),
+    flow: byId('step-flow'),
     download: byId('step-download'),
     share: byId('step-share'),
   });
@@ -98,6 +99,26 @@ async function main() {
   const modules = mountModules(byId('modules'), byId('modules-summary'), app);
   const fields = mountFields(byId('fields'), app);
   const options = mountOptions(byId('options'), app);
+  // The flow drills step (ui/flow.js) loads when it first appears, like the Share block: its texts are long.
+  /** @type {{ update: (view: View) => void } | null} */
+  let flow = null;
+  let flowLoading = false;
+  const flowStep = {
+    /** @param {View} view */
+    update(view) {
+      if (flow) flow.update(view);
+      else if (!flowLoading && shownSteps(view.config).flow) {
+        flowLoading = true;
+        import('./ui/flow.js').then(
+          (m) => {
+            flow = m.mountFlow(byId('flow'), app);
+            flow.update(app.view());
+          },
+          () => (flowLoading = false), // offline: the next render tries again
+        );
+      }
+    },
+  };
   const download = mountDownload(byId('download'), app, { onSaved: stickSupport });
   const feedback = mountFeedback({ app, storage });
 
@@ -191,7 +212,7 @@ async function main() {
     lists?.then(({ side }) => side.show(), () => {});
   });
 
-  const parts = [steps, languages, modules, fields, options, download, shareBlock, side, panel, sheet, mobileBar];
+  const parts = [steps, languages, modules, fields, options, flowStep, download, shareBlock, side, panel, sheet, mobileBar];
   const render = (/** @type {View} */ view) => {
     for (const part of parts) part.update(view);
   };

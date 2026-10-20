@@ -1,10 +1,11 @@
 // @ts-check
 // A small Anki template renderer for the preview and the sidebar (ARCHITECTURE §8), so the site shows
 // exactly what Anki will: {{Field}}, {{#Field}}…{{/Field}}, {{^Field}}…{{/Field}}, {{FrontSide}} and
-// {{type:Field}} (a disabled input on the question; the expected answer on the answer side).
-// Field values are already HTML.
+// {{type:Field}} (a disabled input on the question; the expected answer on the answer side) and
+// {{tts lang [speed=…]:Field}} (a speaker mark carrying the text Anki would read, nothing when the field is
+// empty, as Anki shows no button then). Field values are already HTML.
 
-import { escapeAttr } from '../text/html.js';
+import { escapeAttr, stripHtml } from '../text/html.js';
 
 /** @typedef {import('./templates.js').NoteType} NoteType */
 
@@ -33,6 +34,13 @@ export function renderTemplate(template, fields, { frontSide = '', answer = fals
   }
   return html.replace(TAG, (_, tag) => {
     if (tag === 'FrontSide') return frontSide;
+    const tts = /^tts\s+(\S+)((?:\s+\w+=\S+)*)\s*:(.+)$/.exec(tag);
+    if (tts) {
+      const value = fields[tts[3]] ?? '';
+      if (isEmptyField(value)) return '';
+      const speed = /speed=([\d.]+)/.exec(tts[2])?.[1];
+      return `<span class="tts" title="${escapeAttr(stripHtml(value))}">🔊${speed ? `<span class="tts-speed">×${speed}</span>` : ''}</span>`;
+    }
     const type = /^type:(.+)$/.exec(tag);
     if (type) {
       return answer

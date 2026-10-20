@@ -12,6 +12,7 @@ import { escapeAttr, stripHtml } from '../text/html.js';
 import { deckSize } from './copy.js';
 import { debounce, h, live, msg } from './dom.js';
 import { t } from './i18n.js';
+import { CARD_NAMES } from '../deck/flow.js';
 
 /** @typedef {import('./app.js').View} View */
 /** @typedef {import('./feedback.js').ReportContext} ReportContext */
@@ -107,15 +108,17 @@ export function mountPreview(root, app, { id, isActive, frames, onReset }) {
   const faces = [];
   /** @type {HTMLElement[]} */
   const directions = [];
-  for (const [ord, card] of /** @type {[number, string][]} */ ([[0, 'preview.forward'], [1, 'preview.reverse']])) {
+  /** The card types, by template ordinal, each with its heading (the flow cards' are English only). @type {[number, () => string][]} */
+  const cards = [[0, () => t('preview.forward')], [1, () => t('preview.reverse')], [2, () => CARD_NAMES.ear], [3, () => CARD_NAMES.shadow], [4, () => CARD_NAMES.reflex]];
+  for (const [ord, card] of cards) {
     const figures = /** @type {const} */ (['front', 'back']).map((side) => {
       const sideKey = side === 'front' ? 'preview.front' : 'preview.back';
-      const title = live(() => t('preview.face', { card: t(card), side: t(sideKey) }));
+      const title = live(() => t('preview.face', { card: card(), side: t(sideKey) }));
       const frame = h('iframe', { sandbox: 'allow-scripts', title, class: 'pv-frame' });
       faces.push({ ord, side, frame, doc: '' });
       return h('figure', { class: 'pv-face' }, h('figcaption', null, msg(sideKey)), frame);
     });
-    const section = h('section', { class: 'pv-dir', 'aria-labelledby': `${id}-dir-${ord}` }, h('h3', { id: `${id}-dir-${ord}` }, msg(card)), h('div', { class: 'pv-pair' }, ...figures));
+    const section = h('section', { class: 'pv-dir', 'aria-labelledby': `${id}-dir-${ord}` }, h('h3', { id: `${id}-dir-${ord}` }, live(card)), h('div', { class: 'pv-pair' }, ...figures));
     directions.push(section);
   }
   const body = h('div', { class: 'pv-faces' }, ...directions);
@@ -160,6 +163,9 @@ export function mountPreview(root, app, { id, isActive, frames, onReset }) {
     const css = view.noteType.css;
     const note = { concept: view.sample.conceptIds.join(','), word: stripHtml(fields.Word) };
     directions[1].hidden = !view.config.reverse;
+    directions[2].hidden = !view.config.ear;
+    directions[3].hidden = !view.config.shadow || !fields.ShadowSpeech;
+    directions[4].hidden = !view.config.reflex || !fields.ReflexAnswer;
     for (const face of faces) {
       const card = renderCard(view.noteType, fields, face.ord, { typeLabel: t('preview.typeAnswer') });
       if (!card) continue;

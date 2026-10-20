@@ -28,7 +28,7 @@ test('each step appears once the previous one has a choice', () => {
   assert.deepEqual(steps({}), ['learn']);
   assert.deepEqual(steps({ learn: 'ja' }), ['learn', 'know']);
   assert.deepEqual(steps({ learn: 'ja', know: 'ru' }), ['learn', 'know', 'modules']);
-  assert.deepEqual(steps({ learn: 'ja', know: '=', modules: ['food'] }), ['learn', 'know', 'modules', 'fields', 'options', 'download', 'share']);
+  assert.deepEqual(steps({ learn: 'ja', know: '=', modules: ['food'] }), ['learn', 'know', 'modules', 'fields', 'options', 'flow', 'download', 'share']);
   // Later choices are kept, but their steps stay hidden while an earlier step is open again.
   assert.deepEqual(steps({ learn: 'ja', modules: ['food'] }), ['learn', 'know']);
 });
@@ -109,6 +109,9 @@ test('the live card count equals the cards the export creates', async () => {
     { learn: 'ja', know: 'de', reverse: true, type: true },
     { learn: 'en', know: '=', reverse: true },
     { learn: 'sr', know: 'en' },
+    { learn: 'de', know: 'en', ear: true, shadow: true, reflex: true, cues: true, audio: true },
+    { learn: 'ru', know: 'en', reverse: true, shadow: true, reflex: true, voice: 'Anna' },
+    { learn: 'ja', know: '=', ear: true, reflex: true },
   ]) {
     const app = await fixtureApp({ modules: meta.modules.categories.flatMap((/** @type {any} */ c) => c.modules.map((/** @type {any} */ m) => m.id)), ...partial });
     const input = /** @type {NonNullable<ReturnType<typeof app.deckInput>>} */ (app.deckInput());

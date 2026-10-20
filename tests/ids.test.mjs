@@ -14,10 +14,10 @@ test('base91 matches Anki', () => {
 });
 
 test('note GUIDs are stable', async () => {
-  assert.equal(await noteGuid('ru', 'en', 'word-hand'), 'wV3#_8fELM');
-  assert.equal(await noteGuid('en', 'ru', 'word-brother-older'), 'uM?cViv.-y');
-  assert.equal(await noteGuid('ja', 'de', 'word-residence-record-jp'), 'tdiE~vYEaF');
-  assert.equal(await noteGuid('ja', '=', 'word-water'), 'z:GhtVOg`X');
+  assert.equal(await noteGuid('ru', 'en', 'word-hand'), 'Lr.4[2YqAo');
+  assert.equal(await noteGuid('en', 'ru', 'word-brother-older'), 'k`[kty-L}S');
+  assert.equal(await noteGuid('ja', 'de', 'word-residence-record-jp'), 'C*H=g)o.{a');
+  assert.equal(await noteGuid('ja', '=', 'word-water'), 'cc)G8rR{Oo');
 });
 
 test('GUIDs depend on the language pair and the key', async () => {
@@ -31,9 +31,9 @@ test('GUIDs depend on the language pair and the key', async () => {
 });
 
 test('deck and note type IDs are stable 53-bit integers', async () => {
-  assert.equal(await deckId('ja', 'ru'), 230182069211153);
-  assert.equal(await modelId('ja', 'ru'), 4808853534681696);
-  assert.equal(await deckId('ja', '='), 8285850594927682);
+  assert.equal(await deckId('ja', 'ru'), 3355082269022541);
+  assert.equal(await modelId('ja', 'ru'), 3745503778540576);
+  assert.equal(await deckId('ja', '='), 1102383711317535);
   for (const id of [await deckId('en', 'sr'), await modelId('el', 'hy')]) {
     assert.ok(Number.isSafeInteger(id) && id >= 1e12 && id < 2 ** 53);
   }
@@ -45,11 +45,12 @@ test('note and card IDs count from the export clock', () => {
   assert.equal(noteId(t, 41), t + 41);
   assert.equal(cardId(t, 0, 0), t);
   assert.equal(cardId(t, 0, 1), t + 1);
-  assert.equal(cardId(t, 41, 0), t + 82);
-  assert.equal(cardId(t, 41, 1), t + 83);
+  assert.equal(cardId(t, 0, 4), t + 4);
+  assert.equal(cardId(t, 41, 0), t + 205);
+  assert.equal(cardId(t, 41, 1), t + 206);
   const cards = new Set();
-  for (let i = 0; i < 1000; i++) for (const ord of [0, 1]) cards.add(cardId(t, i, ord));
-  assert.equal(cards.size, 2000);
+  for (let i = 0; i < 1000; i++) for (const ord of [0, 1, 2, 3, 4]) cards.add(cardId(t, i, ord));
+  assert.equal(cards.size, 5000);
 });
 
 test('field checksum matches Anki', async () => {

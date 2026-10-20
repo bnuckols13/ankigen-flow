@@ -115,7 +115,7 @@ test('a page shows the deck the app builds: its size, the words per module, samp
   const config = validate({ learn: 'ja', know: 'ru', modules: moduleIds(meta) }, meta);
   const [ja, ru] = [await loader.getLanguage('ja'), await loader.getLanguage('ru')];
   const notes = selectNotes(config, meta, concepts, ja, ru);
-  assert.match(html, new RegExp(`<p class="lp-facts">${notes.length} words · 7 modules · Anki deck: AnkiGen::日本語 \\(Русский\\)</p>`));
+  assert.match(html, new RegExp(`<p class="lp-facts">${notes.length} words · 7 modules · Anki deck: AnkiGen Flow::日本語 \\(Русский\\)</p>`));
   const counts = moduleCounts(config, meta, concepts, ja, ru);
   const listed = [...html.matchAll(/<h4><a href="[^"]*m=([\w-]+)&amp;[^"]*">[^<]*<\/a>(?: <span class="badge">18\+<\/span>)? <span class="lp-count">(\d+) words?<\/span><\/h4>/g)];
   assert.deepEqual(
@@ -206,7 +206,7 @@ test('with a translation, the pages for its speakers are in their language', asy
   assert.match(html, /<meta property="og:locale" content="ru_RU">/);
   assert.match(html, /<title>Ру Free Japanese Anki deck for Russian speakers — AnkiGen<\/title>/);
   assert.match(html, /<h1>Ру Japanese for Russian speakers<\/h1>/);
-  assert.match(html, /<p class="lp-facts">14 слов · 7 модулей · Ру Anki deck: AnkiGen::日本語 \(Русский\)<\/p>/, 'Russian plural forms');
+  assert.match(html, /<p class="lp-facts">14 слов · 7 модулей · Ру Anki deck: AnkiGen Flow::日本語 \(Русский\)<\/p>/, 'Russian plural forms');
   assert.match(html, /Ру Core I<\/a> <span class="lp-count">12 слов<\/span>/);
   assert.match(html, /Ру Time &amp; calendar<\/a> <span class="lp-count">2 слова<\/span>/);
   assert.match(html, /Ру Survival phrases<\/a> <span class="lp-count">1 слово<\/span>/);

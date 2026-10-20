@@ -1,4 +1,5 @@
-// ARCHITECTURE §1: the page's initial JS stays within 60 KB gzipped. sql.js, fflate and the packager are
+// ARCHITECTURE §1: the page's initial JS stays within 66 KB gzipped (AnkiGen's 60 KB plus the flow drills:
+// deck/flow.js renders fields and templates, so the preview needs it up front; the step's own UI is lazy). sql.js, fflate and the packager are
 // loaded only on download, the feedback dialog with its client on first use (or when the browser is idle),
 // the word list once the deck has modules, the language menu after the first render, the Share block when it
 // appears, the pinned support links after a download and the Reset all dialog on first use, so they must not
@@ -8,19 +9,19 @@ import assert from 'node:assert/strict';
 import zlib from 'node:zlib';
 import { staticGraph } from './helpers/modules.mjs';
 
-const BUDGET = 60 * 1024;
+const BUDGET = 66 * 1024;
 
-test('initial JS: within 60 KB gzipped, without the download-only modules (the app and the languages page)', () => {
+test('initial JS: within 66 KB gzipped, without the download-only modules (the app and the languages page)', () => {
   const lazy = [
     'src/deck/apkg.js', 'vendor/fflate.js', 'vendor/sql-wasm.js', 'src/ui/feedback-dialog.js', 'src/feedback/client.js',
     'src/ui/sidebar.js', 'src/deck/search.js', 'src/ui/locale.js', 'src/ui/share.js', 'src/ui/share-icons.js', 'src/ui/support.js',
-    'src/ui/reset.js',
+    'src/ui/reset.js', 'src/ui/flow.js',
   ];
   for (const entry of ['src/main.js', 'src/languages-page.js']) {
     const graph = staticGraph(entry);
     const files = [...graph.keys()];
     for (const file of lazy) assert.ok(!files.includes(file), `${entry}: ${file} is loaded up front`);
     const gzipped = [...graph.values()].reduce((sum, source) => sum + zlib.gzipSync(source).length, 0);
-    assert.ok(gzipped <= BUDGET, `${entry}: initial JS is ${(gzipped / 1024).toFixed(1)} KB gzipped (budget 60 KB)`);
+    assert.ok(gzipped <= BUDGET, `${entry}: initial JS is ${(gzipped / 1024).toFixed(1)} KB gzipped (budget 66 KB)`);
   }
 });

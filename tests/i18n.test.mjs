@@ -3,6 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { createLoader } from '../src/data/loader.js';
 import { createApp } from '../src/ui/app.js';
 import { deckSize, listStatus, localTermsHelp } from '../src/ui/copy.js';
@@ -14,8 +15,8 @@ import { canonicalUi, checkUi, englishUi, readUiTexts, uiBundle, uiSource } from
 import { fixtureLoader } from './helpers/fixtures.mjs';
 
 const ROOT = new URL('../', import.meta.url);
-const meta = appMeta(new URL('data/meta', ROOT).pathname);
-const translations = readUiTexts(new URL('data', ROOT).pathname);
+const meta = appMeta(fileURLToPath(new URL('data/meta', ROOT)));
+const translations = readUiTexts(fileURLToPath(new URL('data', ROOT)));
 /** @param {string} code */
 const landingOf = (code) => JSON.parse(fs.readFileSync(new URL(`data/landing/${code}.json`, ROOT), 'utf8'));
 /** @param {string} code */

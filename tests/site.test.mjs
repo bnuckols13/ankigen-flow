@@ -3,7 +3,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { AUTHOR_NAME, AUTHOR_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL } from '../src/config.js';
+import { fileURLToPath } from 'node:url';
+import { AUTHOR_NAME, AUTHOR_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, PATREON_URL, REPO_URL, SITE_URL, UPSTREAM_SITE_URL, UPSTREAM_URL } from '../src/config.js';
 import { UI_LANGUAGES } from '../src/ui/i18n.js';
 import { PLURALS, STRINGS } from '../src/ui/strings.js';
 import { langTag } from '../src/deck/fields.js';
@@ -22,7 +23,7 @@ const active = /** @type {string[]} */ (registry.active);
 const head = (attr, value) => headOf(html, attr, value);
 
 test('every absolute URL in the static files comes from src/config.js', () => {
-  const allowed = [SITE_URL, REPO_URL, PATREON_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, AUTHOR_URL, 'https://schema.org'];
+  const allowed = [SITE_URL, REPO_URL, UPSTREAM_URL, UPSTREAM_SITE_URL, PATREON_URL, BUY_ME_A_COFFEE_URL, DATA_LICENSE_URL, AUTHOR_URL, 'https://schema.org'];
   for (const file of ['index.html', LANGUAGES_PAGE, '404.html', 'robots.txt']) {
     for (const [url] of read(file).matchAll(/https?:\/\/[^\s"'<>)]+/g)) {
       assert.ok(allowed.some((prefix) => url.startsWith(prefix)), `${file}: ${url} is not in src/config.js`);
@@ -117,7 +118,7 @@ test('the texts of index.html are the English of src/ui/strings.js, and the earl
 
 test('the languages page lists the active languages, as src/languages-page.js translates them', () => {
   const page = read(LANGUAGES_PAGE);
-  const meta = appMeta(new URL('data/meta', ROOT).pathname);
+  const meta = appMeta(fileURLToPath(new URL('data/meta', ROOT)));
   const pageHead = (/** @type {string} */ attr, /** @type {string} */ value) => headOf(page, attr, value);
   assert.ok(checkPageTexts(page) > 8);
   const title = page.match(/<title>([^<]*)<\/title>/)?.[1];

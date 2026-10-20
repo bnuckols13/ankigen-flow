@@ -66,7 +66,7 @@ test('tools/apkg.mjs writes the same package as buildApkg for a config hash', as
     const now = 1_792_300_000_000;
     const args = ['tools/apkg.mjs', '#v1&l=ru&k=en&m=core-1,time&r=1', '--data', 'tests/fixtures/data', '--out', out, '--now', String(now)];
     const stdout = execFileSync(process.execPath, args, { cwd: new URL('..', import.meta.url), encoding: 'utf8' });
-    assert.match(stdout, /AnkiGen::Русский \(English\), 11 notes, 22 cards/);
+    assert.match(stdout, /AnkiGen Flow::Русский \(English\), 11 notes, 22 cards/);
     const deck = await fixtureDeck({ learn: 'ru', know: 'en', modules: ['core-1', 'time'], reverse: true });
     const file = path.join(out, apkgFileName(deck.config, deck.meta));
     const expected = await buildApkg({ SQL: await loadSqlJs(), config: deck.config, meta: deck.meta, deck, now });

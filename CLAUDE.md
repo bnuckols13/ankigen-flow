@@ -1,46 +1,37 @@
-# AnkiGen: instructions for Claude Code
+# AnkiGen Flow: instructions for Claude Code
 
-Free static web app (GitHub Pages) that builds Anki decks in the browser from curated multilingual vocabulary.
+A fork of AnkiGen (https://github.com/xenohunter/ankigen, by Phil Filippak) that adds flow drills after the Mimic Method to the decks it builds: spoken cards, ear cards, shadow cards, reflex cards, drill cues and the voice the learner speaks as. Start with `docs/FLOW.md`; AnkiGen's own documents below still hold for everything else.
 
-- Repo: https://github.com/xenohunter/ankigen. Site: https://xenohunter.github.io/ankigen/
-- Working copy: `/home/xenohunter/projects/ankigen` (WSL). **This repo is the single source of truth.** Never assume another copy exists or is newer.
+- Working copy: `~/ankigen-flow` (Windows). Upstream is the `origin` remote; keep its history so upstream changes can be merged.
+- Planned site: https://bnuckols13.github.io/ankigen-flow/ (src/config.js). Not deployed yet.
 
-## Git: the owner commits, you don't
+## Git
 
-- Never run `git commit`, `git push`, `git rebase`, `git reset --hard`, `git checkout -- <file>`, `git stash` or anything that rewrites history or discards changes.
-- Read-only git is fine: `status`, `diff`, `log`.
-- The default branch is **`master`**. Never rename it, never create or switch to `main`, never change the default branch.
-- When a piece of work is ready, stop and summarize it with a suggested commit message. The owner reviews and commits.
+- Commit only when Brian asks. Default branch `master`, as upstream. No AI attribution lines in commits.
+- `.claude/settings.json` denies reading `.env` and running `git commit`/`git push`; keep those rules.
 
 ## Read before working
 
-- `docs/SPEC.md`: product decisions (final unless you find a contradiction; then ask).
-- `docs/ARCHITECTURE.md`: technical design.
-- `docs/DATA_FORMAT.md`: data contract. Implemented by `tools/lib/data.mjs`.
-- `docs/GENERATION.md`: how vocabulary is generated (API batch runner, units).
-- `docs/CLAUDE_CODE_PROMPT.md`: the build plan in milestones.
+- `docs/FLOW.md`: the drills, their fields and templates, what is not here.
+- `docs/SPEC.md`, `docs/ARCHITECTURE.md`, `docs/DATA_FORMAT.md`: AnkiGen's product decisions, design and data contract. Where they say two templates or 19 fields, the fork has five and 28 (`docs/FLOW.md` §3).
 
-## Data rules
+## Rules kept from upstream
 
-- Vocabulary files under `data/concepts|lang|ex|ipa|etym` change only through `tools/gen/merge-unit.mjs` / `tools/gen/batch.mjs`, or when the owner asks for a specific edit. After any data change, run `node tools/lint-data.mjs --fix` and then `node tools/lint-data.mjs`.
-- Concept IDs are permanent (they seed Anki note GUIDs). Never rename or reuse one; retire with `data/meta/retired.json`.
-- `data/ui/<code>.json` (the page's own texts, ARCHITECTURE §13) is edited by hand: after changing English texts in `src/ui/strings.js` or the feedback dialog, update every translation, then `node tools/ui-texts.mjs stamp <code>…`.
-- The API key for the generation pipeline lives in `.env` as `ANKIGEN_API_KEY` (gitignored; `tools/gen/batch.mjs` reads it itself). Never read, print or edit `.env`, never echo the key, never put keys in other files, logs or commits. Do not set `ANTHROPIC_API_KEY` anywhere: it would switch Claude Code itself to API billing.
-- `.claude/settings.json` denies reading `.env` and running `git commit`/`git push`; keep those rules.
+- Vocabulary files under `data/concepts|lang|ex|ipa|etym` change only through the generation tools or when asked for a specific edit; then `node tools/lint-data.mjs --fix` and `node tools/lint-data.mjs`.
+- Concept IDs are permanent. Never rename or reuse one; retire with `data/meta/retired.json`.
+- The flow field order after AnkiGen's 19 fields, the template order and the `ankigen-flow/v1/` ID prefix are part of every user's deck: never change them.
+- A deck with every drill off must stay AnkiGen's deck field for field (the snapshot tests check this).
+- The flow texts stay out of `src/ui/strings.js` (which the translation checker owns); they live in `src/ui/flow.js` and `src/deck/flow.js`.
+- No framework, no build step: native ES modules, vanilla JS with JSDoc and `// @ts-check`, plain CSS. Pure logic has no DOM access and is unit-tested.
 
 ## Commands
 
 ```
-node tools/lint-data.mjs [--report] [--warnings] [--fix]          # validate data/
-node tools/lint-data.mjs --data tests/fixtures/data --meta data/meta   # validate the golden sample
-node tools/gen/plan.mjs status | list | show <unit>                 # generation progress / unit inputs
-node tools/gen/batch.mjs estimate | submit | status | collect | retry | sync | auto   # API runner
-node tools/ui-texts.mjs check | stamp <code>…                     # the page's translations in data/ui
+python3 -m http.server 8000        # open http://localhost:8000/ (add ?data=tests/fixtures/data for the small test set)
+npm test                           # unit tests (node --test)
+node tools/lint-data.mjs           # validate data/
+node tools/apkg.mjs '#v1&l=es&k=en&m=core-1&e=1&s=1&rx=1&cu=1' --out tmp   # an .apkg from a hash, in Node
+node tools/bundle.mjs              # build the site into _site/
 ```
 
-## Code conventions
-
-- No framework, no app build step: native ES modules, vanilla JS with JSDoc + `// @ts-check`, plain CSS.
-- Vendored dependencies in `vendor/` (pinned, with licenses). Node 22 for tooling; tests use `node --test`.
-- Pure logic (state, deck, text, feedback limits) has no DOM access and is unit-tested.
-- Deterministic deck output (see ARCHITECTURE §7). Missing data is never an error.
+On this machine the clone has `core.autocrlf false`: the snapshot tests compare files byte for byte.

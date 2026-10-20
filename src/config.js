@@ -5,8 +5,11 @@
 /** Keep in sync with package.json "version" (a test checks it). */
 export const APP_VERSION = '1.0.0';
 
-export const SITE_URL = 'https://xenohunter.github.io/ankigen/';
-export const REPO_URL = 'https://github.com/xenohunter/ankigen';
+export const SITE_URL = 'https://bnuckols13.github.io/ankigen-flow/';
+export const REPO_URL = 'https://github.com/bnuckols13/ankigen-flow';
+/** The project this is a fork of: AnkiGen by Phil Filippak (docs/FLOW.md). */
+export const UPSTREAM_URL = 'https://github.com/xenohunter/ankigen';
+export const UPSTREAM_SITE_URL = 'https://xenohunter.github.io/ankigen/';
 export const PATREON_URL = 'https://www.patreon.com/cw/blisstweeting';
 export const BUY_ME_A_COFFEE_URL = 'https://buymeacoffee.com/blisstweeting';
 /** The vocabulary's license (the code is MIT, see LICENSE). */

@@ -7,9 +7,10 @@
 // note's position. Anki never matches on them (it shifts a clashing ID on import), but it shows them
 // as "Created"/"Added" dates and the `added:N` search compares card IDs.
 //
-// Never change the `ankigen/v1/` prefix: every user's notes would turn into new notes.
+// Never change the `ankigen-flow/v1/` prefix: every user's notes would turn into new notes. (AnkiGen itself
+// uses `ankigen/v1/`; the Flow fork's notes are different notes, with more fields and cards.)
 
-const PREFIX = 'ankigen/v1/';
+const PREFIX = 'ankigen-flow/v1/';
 
 /** Anki's base91 alphabet (anki/utils.py): ASCII letters, digits, then 29 symbols. */
 const BASE91 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&()*+,-./:;<=>?@[]^_`{|}~';
@@ -73,13 +74,16 @@ export function noteId(exportMs, position) {
   return exportMs + position;
 }
 
+/** How many card ids a note takes: one per template (Forward, Reverse, Ear, Shadow, Reflex). */
+export const CARDS_PER_NOTE = 5;
+
 /**
  * @param {number} exportMs
  * @param {number} position 0-based note position
- * @param {number} ord 0 = forward, 1 = reverse
+ * @param {number} ord the template ordinal: 0 forward, 1 reverse, 2 ear, 3 shadow, 4 reflex
  */
 export function cardId(exportMs, position, ord) {
-  return exportMs + 2 * position + ord;
+  return exportMs + CARDS_PER_NOTE * position + ord;
 }
 
 /**

@@ -17,7 +17,7 @@ test('learning ru / known en: рука́ is one note "hand; arm", keyed by word-
   assert.equal(hand.key, 'word-hand');
   assert.equal(noteWith(deck, 'word-arm'), hand);
   assert.equal(stripHtml(hand.fields.Translation), 'hand; arm');
-  assert.equal(await noteGuid('ru', 'en', hand.key), 'wV3#_8fELM');
+  assert.equal(await noteGuid('ru', 'en', hand.key), 'Lr.4[2YqAo');
 });
 
 test('a merged note keeps its key when the first member is not in the deck', async () => {

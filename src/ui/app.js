@@ -6,6 +6,7 @@ import { SAME, createStore, encodeHash, validate } from '../state.js';
 import { localTerms, moduleCounts, selectNotes } from '../deck/select.js';
 import { deckContext, noteFields } from '../deck/fields.js';
 import { noteType } from '../deck/templates.js';
+import { flowCounts } from '../deck/flow.js';
 import { language } from './i18n.js';
 
 /** @typedef {import('../state.js').Config} Config */
@@ -20,7 +21,8 @@ import { language } from './i18n.js';
  * @property {Config} config
  * @property {boolean} ready  concepts and both languages are loaded
  * @property {Note[]} notes   the deck's notes, in canonical order
- * @property {number} cards   a forward card per note, plus a reverse card when reverse is on
+ * @property {number} cards   a forward card per note, plus a reverse and an ear card when those are on, plus
+ *   the shadow and reflex cards of the notes that have an example or a reflex drill
  * @property {Map<string, number>} counts  words per module for this language pair
  * @property {Map<string, { count: number, example: string }>} local  words only some languages have, per module
  * @property {import('../deck/fields.js').DeckContext | null} ctx
@@ -138,11 +140,12 @@ export function createApp({ loader, meta, initial, random = Math.random }) {
     }
     const notes = selectNotes(config, meta, concepts, learnData, knowData);
     const ctx = deckContext(input);
+    const flow = config.shadow || config.reflex ? flowCounts(notes, ctx) : { shadow: 0, reflex: 0 };
     return {
       config,
       ready: true,
       notes,
-      cards: notes.length * (config.reverse ? 2 : 1),
+      cards: notes.length * (1 + (config.reverse ? 1 : 0) + (config.ear ? 1 : 0)) + (config.shadow ? flow.shadow : 0) + (config.reflex ? flow.reflex : 0),
       counts: pairCache.counts,
       local: pairCache.local,
       ctx,

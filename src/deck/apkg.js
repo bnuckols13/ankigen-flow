@@ -14,6 +14,7 @@
 import { strToU8, zipSync } from '../../vendor/fflate.js';
 import { SITE_URL } from '../config.js';
 import { encodeHash } from '../state.js';
+import { usesFlow } from './flow.js';
 import { escapeAttr, escapeHtml, stripHtml } from '../text/html.js';
 import { noteTags } from './deck.js';
 import { cardId, deckId, fieldChecksum, modelId, noteGuid, noteId } from './ids.js';
@@ -73,10 +74,22 @@ const DEFAULT_DCONF = {
 /** Zip entry time: 1980-01-01 00:00, the DOS epoch. fflate reads it in local time, so this is the same everywhere. */
 const ZIP_TIME = new Date(1980, 0, 1);
 
-/** Shown on the deck's overview screen; the link reopens this exact configuration. @param {Config} config @param {any} meta */
-function deckDescription(config, meta) {
+/**
+ * Shown on the deck's overview screen; the link reopens this exact configuration. With flow drills on, it also
+ * says what the drills ask of the learner and that the cards speak with the device's text-to-speech voices.
+ * @param {Config} config @param {any} meta
+ */
+export function deckDescription(config, meta) {
   const url = SITE_URL + encodeHash(config, meta);
-  return `Made with <a href="${escapeAttr(url)}">AnkiGen</a> · data ${escapeHtml(meta.version.data)}`;
+  const made = `Made with <a href="${escapeAttr(url)}">AnkiGen Flow</a> · data ${escapeHtml(meta.version.data)}`;
+  if (!usesFlow(config)) return made;
+  const drills = [config.ear && 'ear', config.shadow && 'shadow', config.reflex && 'reflex'].filter(Boolean);
+  const voice = meta.languages.languages[/** @type {string} */ (config.learn)]?.name ?? config.learn;
+  const lines = [made];
+  if (drills.length) lines.push(`Flow drills: ${drills.join(', ')}. Say every answer out loud before you flip; the card is a cue for the mouth, not a test for the eye.`);
+  if (config.audio || drills.length) lines.push(`The cards speak with your device's text-to-speech. Install a ${escapeHtml(voice)} voice (Anki desktop, AnkiDroid and AnkiMobile all read {{tts}} tags).`);
+  if (config.voice) lines.push(`You speak as ${escapeHtml(config.voice)}: borrow the voice, the face and the melody, past the point of embarrassment.`);
+  return lines.join('<br>');
 }
 
 /**
